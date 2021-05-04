@@ -8,6 +8,7 @@ return require('packer').startup(function()
 
   -- LSP
   use {'neovim/nvim-lspconfig'}
+  use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
