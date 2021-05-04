@@ -39,18 +39,24 @@ return require('packer').startup(function(use)
     use {'windwp/nvim-autopairs'}
 
     -- Theme
-    use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        -- your statusline
-        config = function()
-            require '_galaxyline'
-        end,
-        -- some optional icons
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
+    use 'folke/tokyonight.nvim'
+    vim.cmd([[colorscheme tokyonight]])
+    -- use {
+    --     'glepnir/galaxyline.nvim',
+    --     branch = 'main',
+    --     -- your statusline
+    --     config = function()
+    --         require '_galaxyline'
+    --     end,
+    --     -- some optional icons
+    --     requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    -- }
+
+    use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 
     use {"folke/which-key.nvim"}
+
+    use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
 
     -- Global remapping
     ------------------------------

@@ -36,7 +36,7 @@ require'lir'.setup {
     },
     float = {
         size_percentage = 0.5,
-        winblend = 15,
+        winblend = 0,
         border = true,
         borderchars = {"╔", "═", "╗", "║", "╝", "═", "╚", "║"}
 
