@@ -1,3 +1,6 @@
+lua require('opts')
 lua require('plugins')
+lua require('_lsp')
 lua require('_lir')
+lua require('_telescope')
 lua require('_nvim-autopair')
