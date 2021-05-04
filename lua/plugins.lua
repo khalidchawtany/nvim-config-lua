@@ -17,6 +17,9 @@ return require('packer').startup(function(use)
     -- Completion
     use {'nvim-lua/completion-nvim'}
 
+    -- Snippets
+    use {'norcalli/snippets.nvim'}
+
     -- File Browser
     use {'tamago324/lir.nvim', requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}}
     use {'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'}}
