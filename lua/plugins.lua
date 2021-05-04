@@ -2,6 +2,10 @@ return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Utilities
+  -- Mapping
+  use { 'svermeulen/vimpeccable' }
+
   -- LSP
   use {'neovim/nvim-lspconfig'}
 
@@ -18,7 +22,7 @@ return require('packer').startup(function()
   use { 'tamago324/lir.nvim', requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'} }
   use { 'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'} }
 
-use { 'nvim-lua/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use { 'nvim-lua/telescope.nvim', requires = { 'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim' } }
 
   -- Git
   use {
