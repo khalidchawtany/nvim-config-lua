@@ -45,4 +45,14 @@ return require('packer').startup(function()
       requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
+use { "folke/which-key.nvim" }
+
+
+-- Global remapping
+------------------------------
+require('telescope').setup{
+  defaults = {
+  }
+}
+
 end)
