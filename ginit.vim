@@ -5,7 +5,7 @@
  " set guifont=OperatorMonoLig\ Nerd\ Font:h18
  " GuiFont! OperatorMonoLig Nerd Font:h18
  " GuiFont! Fira Code:h20
- GuiFont! FiraCode Nerd Font:h20
+ GuiFont! FiraCode Nerd Font:h18
 " set guifont=OperatorMono\ Nerd\ Font:h18
 " set guifont=PT\ Mono:h20
 " set guifont=RobotoMono\ Nerd\ Font:h19

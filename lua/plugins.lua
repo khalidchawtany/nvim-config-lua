@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
     use {'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'}}
     use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}}
 
-    use {'nvim-lua/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}}
+    use {'nvim-lua/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-fzy-native.nvim'}}
 
     -- Git
     use {
@@ -61,6 +61,25 @@ return require('packer').startup(function(use)
         requires = {'nvim-lua/plenary.nvim'},
         config = function()
             require('gitsigns').setup()
+        end
+    }
+
+    -- Comments
+    use {
+        'terrortylor/nvim-comment',
+        config = function()
+            require('nvim_comment').setup({
+                -- Linters prefer comment and line to have a space in between markers
+                marker_padding = true,
+                -- should comment out empty or whitespace only lines
+                comment_empty = true,
+                -- Should key mappings be created
+                create_mappings = true,
+                -- Normal mode mapping left hand side
+                line_mapping = "gcc",
+                -- Visual/Operator mapping left hand side
+                operator_mapping = "gc"
+            })
         end
     }
 
@@ -93,6 +112,8 @@ return require('packer').startup(function(use)
     -- }
 
     use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
+
+    use {'romgrk/barbar.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
     use {"folke/which-key.nvim"}
 

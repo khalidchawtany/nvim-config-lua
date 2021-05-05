@@ -22,7 +22,7 @@ require'lir'.setup {
         ['.'] = actions.toggle_show_hidden,
         ['D'] = actions.delete,
 
-        ['J'] = function()
+        ['<c-space>'] = function()
             mark_actions.toggle_mark()
             vim.cmd('normal! j')
         end,

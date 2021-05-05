@@ -1,8 +1,8 @@
 vim.cmd [[
-	nnoremap <leader>ff <cmd>Telescope find_files<cr>
-	nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-	nnoremap <leader>fb <cmd>Telescope buffers<cr>
-	nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+	nnoremap <c-p><c-p> <cmd>Telescope find_files<cr>
+	nnoremap <c-p><c-a> <cmd>Telescope live_grep<cr>
+	nnoremap <c-p><c-o> <cmd>Telescope buffers<cr>
+	nnoremap <c-p><c-h> <cmd>Telescope help_tags<cr>
 
 	noremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 	noremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
@@ -70,3 +70,5 @@ require('telescope').setup {
     }
 }
 
+require('telescope').setup {extensions = {fzy_native = {override_generic_sorter = false, override_file_sorter = true}}}
+require('telescope').load_extension('fzy_native')
