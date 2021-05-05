@@ -97,6 +97,18 @@ return require('packer').startup(function(use)
     use {"folke/which-key.nvim"}
 
     use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+    use {
+        'p00f/nvim-ts-rainbow',
+        config = function()
+            require'nvim-treesitter.configs'.setup {
+                rainbow = {
+                    enable = true,
+                    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+                    max_file_lines = 1000 -- Do not enable for files with more than 1000 lines, int
+                }
+            }
+        end
+    }
 
     -- Global remapping
     ------------------------------
