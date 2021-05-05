@@ -64,6 +64,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {'tpope/vim-fugitive'}
+
     -- Comments
     use {
         'terrortylor/nvim-comment',

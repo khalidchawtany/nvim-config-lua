@@ -150,7 +150,7 @@ set.t_vb = ''
 set.startofline = false -- Dont reset cursor to start of line when moving around
 
 set.ruler = true -- Show the cursor position
-set.shortmess = 'atIc' -- Dont show the intro message when starting Vim and Prevent completion message flickers
+-- set.shortmess = 'lnxTo0FatIc' -- Dont show the intro message when starting Vim and Prevent completion message flickers
 
 set.scrolloff = 2
 set.sidescrolloff = 5
