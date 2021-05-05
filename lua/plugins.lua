@@ -10,8 +10,17 @@ return require('packer').startup(function(use)
         end
     }
 
-    -- Tutorials
+    -- Tutorials and Easymotion
     use {'tjdevries/train.nvim'}
+    use {
+        'phaazon/hop.nvim',
+        as = 'hop',
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            require'hop'.setup {keys = 'etovxqpdygfblzhckisuran'}
+            -- vim.api.nvim_set_keymap('n', '$', "<cmd>lua require'hop'.hint_words()<cr>", {})
+        end
+    }
 
     -- Utilities
     -- Mapping
@@ -61,7 +70,7 @@ return require('packer').startup(function(use)
     -- Theme
     use {
         'folke/tokyonight.nvim',
-        setup = function()
+        config = function()
             vim.g.tokyonight_style = "storm"
             vim.g.tokyonight_italic_functions = true
             vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
@@ -83,7 +92,7 @@ return require('packer').startup(function(use)
     --     requires = {'kyazdani42/nvim-web-devicons', opt = true}
     -- }
 
-    use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+    use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
     use {"folke/which-key.nvim"}
 
