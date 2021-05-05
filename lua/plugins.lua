@@ -3,7 +3,15 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Startup
-    use {'glepnir/dashboard-nvim'}
+    use {
+        'glepnir/dashboard-nvim',
+        config = function()
+            vim.cmd([[ let g:dashboard_default_executive ='telescope'  ]])
+        end
+    }
+
+    -- Tutorials
+    use {'tjdevries/train.nvim'}
 
     -- Utilities
     -- Mapping
@@ -13,6 +21,13 @@ return require('packer').startup(function(use)
     use {'neovim/nvim-lspconfig'}
     use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
     use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
+
+    use {
+        'simrat39/symbols-outline.nvim',
+        config = function()
+            require('_symbols-outline')
+        end
+    }
 
     -- Treesitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -44,8 +59,19 @@ return require('packer').startup(function(use)
     use {'windwp/nvim-autopairs'}
 
     -- Theme
-    use 'folke/tokyonight.nvim'
-    vim.cmd([[colorscheme tokyonight]])
+    use {
+        'folke/tokyonight.nvim',
+        setup = function()
+            vim.g.tokyonight_style = "storm"
+            vim.g.tokyonight_italic_functions = true
+            vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
+            vim.g.tokyonight_hide_inactive_statusline = true
+            ---vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
+
+            vim.cmd([[colorscheme tokyonight]])
+        end
+    }
+
     -- use {
     --     'glepnir/galaxyline.nvim',
     --     branch = 'main',

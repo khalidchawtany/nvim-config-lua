@@ -12,3 +12,5 @@ lua require('_lualine')
 lua require('maps')
 
 let g:indent_blankline_filetype_exclude = ['dashboard', 'help']
+let g:dashboard_default_executive ='telescope'
+
