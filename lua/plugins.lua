@@ -2,6 +2,9 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- Startup
+    use {'glepnir/dashboard-nvim'}
+
     -- Utilities
     -- Mapping
     use {'svermeulen/vimpeccable'}
@@ -9,6 +12,7 @@ return require('packer').startup(function(use)
     -- LSP
     use {'neovim/nvim-lspconfig'}
     use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
+    use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
 
     -- Treesitter
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -23,6 +27,7 @@ return require('packer').startup(function(use)
     -- File Browser
     use {'tamago324/lir.nvim', requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}}
     use {'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'}}
+    use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}}
 
     use {'nvim-lua/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'}}
 
@@ -62,4 +67,10 @@ return require('packer').startup(function(use)
     ------------------------------
     require('telescope').setup {defaults = {}}
 
+    function _G.dump(...)
+        local objects = vim.tbl_map(vim.inspect, {...})
+        print(unpack(objects))
+    end
+
 end)
+
