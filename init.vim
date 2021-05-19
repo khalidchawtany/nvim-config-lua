@@ -32,19 +32,19 @@ set termencoding=utf-8
 " let g:loaclleader = "\\"
 " 
 lua require('opts')
+source ~/.config/nvim/func.vim
 lua require('plugins')
 lua require('_lsp')
-lua require('_completion-nvim')
+"lua require('_completion-nvim')
 lua require('_snippets-nvim')
 lua require('_nvim-autopair')
 lua require('_lir')
-lua require('_tabline')
 lua require('_nvim-tree')
 lua require('_telescope')
 lua require('_treesitter')
 lua require('_which-key')
 lua require('_lualine')
-source ~/.config/nvim/func.vim
+lua require('_tabline')
 source ~/.config/nvim/lua/maps.vim
 source ~/.config/nvim/lua/_fugitive.vim
 

@@ -2,18 +2,33 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Startup
+    -- { Dashboard
     use {
         'glepnir/dashboard-nvim',
-        config = function()
+        setup = function()
             vim.cmd [[ let g:dashboard_default_executive ='telescope'  ]]
+            -- vim.g.dashboard_custom_section = {
+            --     buffer_list = {
+            --         description = {'? Recently lase session                 SPC b b'},
+            --         command = 'Some Command or function(your funciton name)'
+            --     }}
+            vim.g.dashboard_custom_shortcut = {
+                last_session = 'SPC s l',
+                find_history = 'SPC f h',
+                find_file = 'SPC f f',
+                new_file = 'SPC c n',
+                change_colorscheme = 'SPC t c',
+                find_word = 'SPC f a',
+                book_marks = 'SPC f b'
+            }
         end
     }
+    -- }
 
-    use {'kopischke/vim-stay'}
-
-    -- Tutorials and Easymotion
+    -- { Tutorials and Easymotion
     use {'tjdevries/train.nvim'}
+
+    -- { Hop
     use {
         'phaazon/hop.nvim',
         as = 'hop',
@@ -32,13 +47,15 @@ return require('packer').startup(function(use)
             ]]
         end
     }
+    -- }
 
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
+    -- }
 
     -- Utilities
     -- Mapping
     use {'svermeulen/vimpeccable'}
-
+    use {'kopischke/vim-stay'}
     use {
         'tpope/vim-sleuth',
         setup = function()
@@ -63,9 +80,35 @@ return require('packer').startup(function(use)
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use {'nvim-treesitter/nvim-treesitter-refactor'}
 
-    -- Completion
-    use {'nvim-lua/completion-nvim'}
+    -- { Completion
+    use {'nvim-lua/completion-nvim', disable = true}
 
+    use {
+        'hrsh7th/nvim-compe',
+        config = function()
+            require'compe'.setup {
+                enabled = true,
+                autocomplete = true,
+                debug = false,
+                min_length = 1,
+                preselect = 'enable',
+                throttle_time = 80,
+                source_timeout = 200,
+                incomplete_delay = 400,
+                max_abbr_width = 100,
+                max_kind_width = 100,
+                max_menu_width = 100,
+                documentation = true,
+
+                source = {path = true, buffer = true, calc = true, nvim_lsp = true, nvim_lua = true, vsnip = false, ultisnips = false}
+            }
+            vim.cmd [[ highlight link CompeDocumentation NormalFloat ]]
+
+        end
+    }
+    -- }
+
+    -- { miniyank
     use {
         'bfredl/nvim-miniyank',
         setup = function()
@@ -89,9 +132,69 @@ return require('packer').startup(function(use)
 
         end
     }
+    -- }
+
+    -- { UnconditionalPaste
+    use {'vim-scripts/UnconditionalPaste', keys = {'<Plug>UnconditionalPaste'}}
+    vim.cmd [[
+    Map n gPP  <Plug>UnconditionalPasteGPlusBefore
+    Map n gPp  <Plug>UnconditionalPasteGPlusAfter
+    Map n gpP  <Plug>UnconditionalPastePlusBefore
+    Map n gpp  <Plug>UnconditionalPastePlusAfter
+    Map n gUP  <Plug>UnconditionalPasteRecallUnjoinBefore
+    Map n gUp  <Plug>UnconditionalPasteRecallUnjoinAfter
+    Map n guP  <Plug>UnconditionalPasteUnjoinBefore
+    Map n gup  <Plug>UnconditionalPasteUnjoinAfter
+    Map n gQP  <Plug>UnconditionalPasteRecallQueriedBefore
+    Map n gQp  <Plug>UnconditionalPasteRecallQueriedAfter
+    Map n gqP  <Plug>UnconditionalPasteQueriedBefore
+    Map n gqp  <Plug>UnconditionalPasteQueriedAfter
+    Map n gQBP <Plug>UnconditionalPasteRecallDelimitedBefore
+    Map n gQBp <Plug>UnconditionalPasteRecallDelimitedAfter
+    Map n gqbP <Plug>UnconditionalPasteDelimitedBefore
+    Map n gqbp <Plug>UnconditionalPasteDelimitedAfter
+    Map n gBP  <Plug>UnconditionalPasteJaggedBefore
+    Map n gBp  <Plug>UnconditionalPasteJaggedAfter
+    Map n gsP  <Plug>UnconditionalPasteSpacedBefore
+    Map n gsp  <Plug>UnconditionalPasteSpacedAfter
+    Map n g#P  <Plug>UnconditionalPasteCommentedBefore
+    Map n g#p  <Plug>UnconditionalPasteCommentedAfter
+    Map n g>P  <Plug>UnconditionalPasteShiftedBefore
+    Map n g>p  <Plug>UnconditionalPasteShiftedAfter
+    Map n g[[P <Plug>UnconditionalPasteLessIndentBefore
+    Map n g[[p <Plug>UnconditionalPasteLessIndentAfter
+    Map n g\]\]P <Plug>UnconditionalPasteMoreIndentBefore
+    Map n g\]\]p <Plug>UnconditionalPasteMoreIndentAfter
+    Map n g]p  <Plug>UnconditionalPasteIndentedAfter
+    Map n g[p  <Plug>UnconditionalPasteIndentedBefore
+    Map n g[P  <Plug>UnconditionalPasteIndentedBefore
+    Map n g]P  <Plug>UnconditionalPasteIndentedBefore
+    Map n g,"P <Plug>UnconditionalPasteCommaDoubleQuoteBefore
+    Map n g,"p <Plug>UnconditionalPasteCommaDoubleQuoteAfter
+    Map n g,'P <Plug>UnconditionalPasteCommaSingleQuoteBefore
+    Map n g,'p <Plug>UnconditionalPasteCommaSingleQuoteAfter
+    Map n g,P  <Plug>UnconditionalPasteCommaBefore
+    Map n g,p  <Plug>UnconditionalPasteCommaAfter
+    Map n gbP  <Plug>UnconditionalPasteBlockBefore
+    Map n gbp  <Plug>UnconditionalPasteBlockAfter
+    Map n glP  <Plug>UnconditionalPasteLineBefore
+    Map n glp  <Plug>UnconditionalPasteLineAfter
+    Map n gcP  <Plug>UnconditionalPasteCharBefore
+    Map n gcp  <Plug>UnconditionalPasteCharAfter
+    ]]
+    -- }
 
     -- Snippets
     use {'norcalli/snippets.nvim'}
+
+    use {
+        'junegunn/vim-easy-align',
+        cmd = {'EasyAlign'},
+        keys = {'<Plug>(EasyAlign)'},
+        config = function()
+            vim.g.easy_align_ignore_comment = 0 -- align comments
+        end
+    }
 
     -- Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
     vim.cmd [[
@@ -102,15 +205,6 @@ return require('packer').startup(function(use)
 
         nmap g<cr> <Plug>(EasyAlign)
       ]]
-
-    use {
-        'junegunn/vim-easy-align',
-        cmd = {'EasyAlign'},
-        keys = {'<Plug>(EasyAlign)'},
-        config = function()
-            vim.g.easy_align_ignore_comment = 0 -- align comments
-        end
-    }
 
     use {'machakann/vim-sandwich'}
 

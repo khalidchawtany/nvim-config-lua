@@ -20,6 +20,20 @@ function! Map(mode, key, ...) abort"{{{
   endfor
 endfunction
 
+
+function! StripWhitespace()"{{{
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfunction"}}}
+
+
+function! FindGitDirOrRoot()
+  return system('git rev-parse --show-toplevel 2> /dev/' . v:null)[:-2]
+endfunction
+
 command! -nargs=* Map call Map(<f-args>)
 
 
