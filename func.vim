@@ -23,22 +23,6 @@ endfunction
 command! -nargs=* Map call Map(<f-args>)
 
 
- 
-function! Pastefixput(cmd) abort
-  let internal = getreg('0', 0, 1)
-  let external = getreg(v:register, 0, 1)
-  return internal ==# external
-        \ ? printf('"0%s', a:cmd)
-        \ : a:cmd
-endfunction
-
- 
-nnoremap <silent><expr> <Plug>(pastefix-p) Pastefixput('p')
-nnoremap <silent><expr> <Plug>(pastefix-P) Pastefixput('P')
-nmap p <Plug>(pastefix-p)
-nmap P <Plug>(pastefix-P)
-
-
 function! Preserve(command)"{{{
   " Save the last search.
   let search = @/

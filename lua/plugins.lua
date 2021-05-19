@@ -59,6 +59,30 @@ return require('packer').startup(function(use)
     -- Completion
     use {'nvim-lua/completion-nvim'}
 
+    use {
+        'bfredl/nvim-miniyank',
+        setup = function()
+
+            vim.g.miniyank_filename = "/Users/" .. vim.fn.expand('$USER') .. "/.local/share/nvim/cache/miniyank.mpack"
+
+            vim.g.miniyank_maxitems = 1000
+
+            vim.cmd [[
+              map p <Plug>(miniyank-autoput)
+              map P <Plug>(miniyank-autoPut)
+              map [p <Plug>(miniyank-cycle)
+
+              map ]p <Plug>(miniyank-startput)
+              map ]P <Plug>(miniyank-startPut)
+
+              map <Leader>mc <Plug>(miniyank-tochar)
+              map <Leader>ml <Plug>(miniyank-toline)
+              map <Leader>mb <Plug>(miniyank-toblock)
+              ]]
+
+        end
+    }
+
     -- Snippets
     use {'norcalli/snippets.nvim'}
 
