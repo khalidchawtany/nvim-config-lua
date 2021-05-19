@@ -41,6 +41,7 @@ lua require('_lir')
 lua require('_tabline')
 lua require('_nvim-tree')
 lua require('_telescope')
+lua require('_treesitter')
 lua require('_which-key')
 lua require('_lualine')
 source ~/.config/nvim/func.vim
