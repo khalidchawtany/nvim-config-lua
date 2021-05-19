@@ -1,3 +1,28 @@
+
+" The following function takes a command such as the following
+" >>   Map !NV key <plug-name> command
+"      !       -indiucates that the mapping is silent
+"      CAPS    -capital letters indicate noremap
+function! Map(mode, key, ...) abort"{{{
+  let ops=""
+  for op in a:000
+    let ops = ops . ' ' .op
+  endfor
+
+  "echomsg a:mode "-" a:key "-" ops
+  let silent=""
+  for c in split(a:mode, '\zs')
+    if c == "!"                       | let silent="<silent>"      | continue | endif
+    if type(c)==1 && tolower(c) !=# c | let c=tolower(c)."noremap" | else     | let c=tolower(c)."map" | endif
+    if stridx(c, "t") == 0 && !has("nvim") | continue | endif
+    execute c silent a:key ops
+    let silent=""
+  endfor
+endfunction
+
+command! -nargs=* Map call Map(<f-args>)
+
+
  
 function! Pastefixput(cmd) abort
   let internal = getreg('0', 0, 1)

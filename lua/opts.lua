@@ -1,7 +1,5 @@
 local set = vim.o
 local setg = vim.g
-local api = vim.api
-local fn = vim.fn
 local home = os.getenv("HOME")
 
 vim.g.mapleader = " "
@@ -72,7 +70,7 @@ set.termguicolors = true
 set.textwidth = 80
 
 -- Always have the clipboard be the same as my regular clipboard
--- set.clipboard = vim.o.clipboard .. 'unnamedplus'
+set.clipboard = vim.o.clipboard .. 'unnamedplus'
 
 -- Keep diffme function state
 vim.cmd('let $diff_me=0')

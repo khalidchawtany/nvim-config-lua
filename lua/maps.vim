@@ -7,6 +7,17 @@ nnoremap <silent> <c-l> <c-w><c-l>
 " Maximize current split
 nnoremap <c-w>M <C-w>_<C-w><Bar>
 
+nnoremap <silent><nowait> <BS> :syntax sync minlines=1000<cr>:nohlsearch \| echo "" \|redraw! \| diffupdate \| normal \<Plug>(FastFoldUpdate) \| silent! call clever_f#reset()  <cr>
+
+
+nnoremap <c-s><space> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+Map nox F     <Plug>(clever-f-F)
+Map nox T     <Plug>(clever-f-T)
+Map nox f     <Plug>(clever-f-f)
+Map nox t     <Plug>(clever-f-t)
 
 nnoremap <c-w>O            :wincmd o\|tabonly\|BufOnly<cr>
 nnoremap <c-;>wo           :tabonly \| BufOnly<cr>

@@ -33,6 +33,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
+
     -- Utilities
     -- Mapping
     use {'svermeulen/vimpeccable'}
@@ -81,13 +83,27 @@ return require('packer').startup(function(use)
 
     use {'machakann/vim-sandwich'}
 
-    -- File Browser
+    -- File Browser  And Navigation
     use {'tamago324/lir.nvim', requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}}
     use {'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'}}
     use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}}
 
     use {'nvim-lua/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-fzy-native.nvim'}}
     use {'nvim-telescope/telescope-project.nvim', requires = {'nvim-lua/telescope.nvim'}}
+
+    use {
+        'el-iot/buffer-tree-explorer',
+        cmd = {'Tree'},
+        setup = function()
+            vim.g.buffer_tree_explorer_compress = 1
+            vim.cmd [[ nnoremap <c-p>o <cmd>Tree<cr> ]]
+        end
+    }
+    -- augroup BufferTreeAuGroup
+    -- au!
+    -- au BufWinEnter BufferTree :silent unmap <buffer> j<cr>
+    -- au BufWinEnter BufferTree :silent unmap <buffer> k<cr>
+    -- augroup END
 
     -- Git
     use {
@@ -159,7 +175,11 @@ return require('packer').startup(function(use)
 
     use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
 
+    use {'crispgm/nvim-tabline'}
+
     use {
+        disable = true,
+        opt = true,
         'romgrk/barbar.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
         config = function()
@@ -206,7 +226,20 @@ return require('packer').startup(function(use)
 
     use {"folke/which-key.nvim"}
 
-    use {'lukas-reineke/indent-blankline.nvim', branch = 'lua'}
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        branch = 'lua',
+        setup = function()
+            vim.g.indent_blankline_use_treesitter = true
+            vim.g.indent_blankline_show_first_indent_level = false
+            vim.g.indent_blankline_char = '│'
+
+            vim.g.indent_blankline_show_current_context = true
+            -- vim.cmd [[ let g:indent_blankline_show_current_context=v:true ]]
+            vim.g.indent_blankline_context_highlight_list = {'Identifier'}
+        end
+    }
+
     use {
         'p00f/nvim-ts-rainbow',
         config = function()
