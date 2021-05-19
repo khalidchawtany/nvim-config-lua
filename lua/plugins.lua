@@ -39,6 +39,13 @@ return require('packer').startup(function(use)
     -- Mapping
     use {'svermeulen/vimpeccable'}
 
+    use {
+        'tpope/vim-sleuth',
+        setup = function()
+            vim.g.sleuth_automatic = 1
+        end
+    }
+
     -- LSP
     use {'neovim/nvim-lspconfig'}
     use {'kabouzeid/nvim-lspinstall'}
