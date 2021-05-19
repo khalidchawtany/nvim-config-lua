@@ -52,7 +52,12 @@ require"lspconfig".efm.setup {
         }
     }
 }
-vim.cmd([[ autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100) ]])
-
+-- vim.cmd([[ autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100) ]])
+vim.cmd([[ autocmd BufWritePre *.lua lua vim.lsp.buf.formatting() ]])
 -- PHP
 require'lspconfig'.phpactor.setup {}
+
+require'lspinstall'.setup() -- important
+
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do require'lspconfig'[server].setup {} end

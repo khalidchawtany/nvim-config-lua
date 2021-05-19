@@ -7,13 +7,13 @@ local home = os.getenv("HOME")
 vim.g.mapleader = " "
 vim.g.loaclleader = "\\"
 
---- Fuzzy finder: ignore stuff that can't be opened, and generated files
+-- Fuzzy finder: ignore stuff that can't be opened, and generated files
 setg.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 set.wildignore = vim.o.wildignore .. ',' .. '*.o,*~,*.pyc,*pycache*' -- Ignore compiled files
 set.wildignorecase = true
 set.wildmode = 'full' -- Complete the longest common string,
 set.wildoptions = 'pum' -- show wildmenu as normal autocompleting menu
-set.pumblend = 20
+set.pumblend = 0 -- make pum NOT transparent
 set.pumheight = 15
 set.wildmenu = true
 set.completeopt = 'menuone,noinsert,noselect'
@@ -72,7 +72,7 @@ set.termguicolors = true
 set.textwidth = 80
 
 -- Always have the clipboard be the same as my regular clipboard
-set.clipboard = vim.o.clipboard .. 'unnamedplus'
+-- set.clipboard = vim.o.clipboard .. 'unnamedplus'
 
 -- Keep diffme function state
 vim.cmd('let $diff_me=0')
@@ -132,7 +132,7 @@ vim.cmd('syntax on')
 set.cursorline = false
 
 set.timeout = true
-set.timeoutlen = 750
+set.timeoutlen = 200
 
 set.ttimeout = true
 set.ttimeoutlen = 0
@@ -163,13 +163,3 @@ set.display = set.display .. ',lastline'
 set.synmaxcol = 500 -- max syntax highlight chars
 set.foldopen = "block,hor,insert,jump,mark,percent,quickfix,search,tag,undo"
 
------------NOT MINE-------
-set.conceallevel = 2
--- set.fileformat = 'unix'
-set.jumpoptions = "stack"
-set.diffopt = "hiddenoff,iwhiteall,algorithm:patience"
-set.cscopequickfix = "s-,c-,d-,i-,t-,e-"
-set.path = '.,,,**'
-set.formatlistpat = "^\\s*\\[({]\\?\\([0-9]\\+\\|[a-zA-Z]\\+\\)[\\]:.)}]\\s\\+\\|^\\s*[-Ð+o*¥]\\s\\+"
--- set.fillchars = "stlnc:È,vert:?,fold:á"
--- set.guicursor = "n:blinkwait60-blinkon175-blinkoff175,i-ci-ve:ver25"

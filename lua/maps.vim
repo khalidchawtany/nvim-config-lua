@@ -1,3 +1,55 @@
+
+nnoremap <silent> <c-h> <c-w><c-h>
+nnoremap <silent> <c-j> <c-w><c-j>
+nnoremap <silent> <c-k> <c-w><c-k>
+nnoremap <silent> <c-l> <c-w><c-l>
+
+" Maximize current split
+nnoremap <c-w>M <C-w>_<C-w><Bar>
+
+
+nnoremap <c-w>O            :wincmd o\|tabonly\|BufOnly<cr>
+nnoremap <c-;>wo           :tabonly \| BufOnly<cr>
+
+nnoremap <c-;>wa           :BufOnly -1<cr>
+nmap     <c-;>ww           <Plug>BW
+nnoremap <silent> <c-;>wu  :silent! WipeoutUnmodified<cr>
+nnoremap <c-;><c-;>wa      :tabonly \| BufOnly \| bufdo execute ":bw!"<cr>
+
+
+
+nnoremap <leader>t<space>  :tabonly<cr>
+nnoremap <leader>q<space>  :tabclose<cr>
+nnoremap <leader>qq        :q<cr>
+nnoremap <leader>qa        :qall<cr>
+nnoremap <leader>qQ        :qall!<cr>
+
+nnoremap <leader>wq        :wq<cr>
+nnoremap <leader>ww        :w<cr>
+nnoremap <leader>wa        :wall<cr>
+nnoremap <leader>wu        :update<cr>
+
+
+"Shift-Enter is like ]<space>
+inoremap <silent> <s-cr> <esc>m`o<esc>``a
+
+map  ‰   <c-cr>
+map  ◊   <c-'>
+map  Ú   <c-;>
+map  Ą   <c-bs>
+map  ⌂   <M-cr>
+map  Ặ   <s-cr>
+map  ◊Ú  <C-'><C-;>
+
+
+nnoremap <leader>tl :tabs<cr>
+nnoremap <leader>tn :tabnew<cr>
+nnoremap <leader>td :tab split<cr>
+nnoremap <leader>tt :tabnew \| e term://zsh<cr>
+nnoremap <leader>th :tab help<space>
+nnoremap <leader>tm0 :tabmove 0<cr>
+
+
 inoremap <D-v> <c-r>+
 nnoremap <D-v> "+p
 "Use <Tab> and <S-Tab> to navigate through popup menu
@@ -101,6 +153,8 @@ tnoremap <D-v> <C-\><C-N>pi
 vmap > >gv
 vmap < <gv
 
+ nnoremap <c-k><c-d> :silent! call Preserve("normal gg=G")<cr>
+
 " Move visual block
 vnoremap <c-j> :m '>+1<CR>gv=gv
 vnoremap <c-k> :m '<-2<CR>gv=gv
@@ -120,16 +174,6 @@ nnoremap <c-g>si `[v`]
 
 
 
-nnoremap <leader>t<space>  :tabonly<cr>
-nnoremap <leader>q<space>  :tabclose<cr>
-nnoremap <leader>qq        :q<cr>
-nnoremap <leader>qa        :qall<cr>
-nnoremap <leader>qQ        :qall!<cr>
-
-nnoremap <leader>wq        :wq<cr>
-nnoremap <leader>ww        :w<cr>
-nnoremap <leader>wa        :wall<cr>
-nnoremap <leader>wu        :update<cr>
 
 
 "CD into:
@@ -141,15 +185,15 @@ nnoremap cd. :lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr>:pwd<cr>
 nnoremap cdp :lcd <c-r>=GetPluginPath()<cr><cr>:pwd<cr>
 
 fun! GetPluginPath()
-	let dirs = split(expand('%:p'), '/')
-	let idx = index(dirs, 'plugins')
-	"  filter(split(expand('%:h'), '/'), 'v:val == "plugins"')
-	if(idx == -1)
-		return '.'
-	endif
+  let dirs = split(expand('%:p'), '/')
+  let idx = index(dirs, 'plugins')
+  "  filter(split(expand('%:h'), '/'), 'v:val == "plugins"')
+  if(idx == -1)
+    return '.'
+  endif
 
-	let path = '/'.join(dirs[:idx + 2], '/')
-	return path
+  let path = '/'.join(dirs[:idx + 2], '/')
+  return path
 endf
 
 

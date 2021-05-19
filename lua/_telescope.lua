@@ -1,3 +1,4 @@
+local vim = vim
 vim.cmd [[
 	nnoremap <c-p><c-p> <cmd>Telescope find_files<cr>
 	nnoremap <c-p><c-a> <cmd>Telescope live_grep<cr>
@@ -9,6 +10,10 @@ vim.cmd [[
 	noremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 	noremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 ]]
+
+vim.api.nvim_set_keymap('n', '<C-p><c-\\>', ":lua require'telescope'.extensions.project.project{}<CR>", {noremap = true, silent = true})
+
+vim.api.nvim_set_keymap('n', 'gd', ":lua require('telescope.builtin').lsp_definitions()<CR>", {noremap = true, silent = true})
 
 local actions = require('telescope.actions')
 
@@ -24,6 +29,7 @@ require('telescope').setup {
                 ["<C-i>"] = actions.select_horizontal,
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
+                ["<c-space>"] = actions.toggle_selection + actions.move_selection_better,
 
                 -- Add up multiple actions
                 ["<CR>"] = actions.select_default + actions.center
