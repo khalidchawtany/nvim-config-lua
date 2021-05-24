@@ -186,6 +186,8 @@ return require('packer').startup(function(use)
 
     -- Snippets
     use {'norcalli/snippets.nvim'}
+    use {'hrsh7th/vim-vsnip'}
+    use {'hrsh7th/vim-vsnip-integ'}
 
     use {
         'junegunn/vim-easy-align',
@@ -215,6 +217,15 @@ return require('packer').startup(function(use)
 
     use {'nvim-lua/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-fzy-native.nvim'}}
     use {'nvim-telescope/telescope-project.nvim', requires = {'nvim-lua/telescope.nvim'}}
+
+    -- use {'junegunn/fzf', dir = '~/.fzf', run = '/Users/juju/.local/share/nvim/site/pack/packer/start/fzf/install --all'}
+    use {'junegunn/fzf'}
+    use {
+        'junegunn/fzf.vim',
+        config = function()
+            require('_fzf')
+        end
+    }
 
     use {
         'el-iot/buffer-tree-explorer',
@@ -249,6 +260,17 @@ return require('packer').startup(function(use)
         keys = {'<Plug>(abolish_coerce_word)', '<Plug>(abolish-coerce)', 'crs', 'crm', 'crc', 'cru', 'cr-', 'cr.', 'cr<space>'}
     }
 
+    use {
+        'terryma/vim-multiple-cursors',
+        config = function()
+            vim.g.multi_cursor_use_default_mapping = 0
+            vim.g.multi_cursor_next_key = '<C-n>'
+            vim.g.multi_cursor_prev_key = '<C-p>'
+            vim.g.multi_cursor_skip_key = '<C-x>'
+            vim.g.multi_cursor_quit_key = '<Esc>'
+        end
+    }
+
     -- Comments
     use {
         'terrortylor/nvim-comment',
@@ -261,9 +283,9 @@ return require('packer').startup(function(use)
                 -- Should key mappings be created
                 create_mappings = true,
                 -- Normal mode mapping left hand side
-                line_mapping = "gcc",
+                line_mapping = "<leader>cc",
                 -- Visual/Operator mapping left hand side
-                operator_mapping = "gc"
+                operator_mapping = "<leader>c"
             })
         end
     }

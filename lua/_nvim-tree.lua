@@ -1,19 +1,16 @@
 local vim = vim
 
-vim.g.nvim_tree_side = 'right'
-
-vim.g.nvim_tree_show_icons = {git = 1, folders = 0, files = 0}
+vim.g.nvim_tree_show_icons = {git = 1, folders = 1, files = 1}
 
 -- default shows no icon by default
 vim.g.nvim_tree_icons = {
-    default = '?',
-    symlink = '?',
-    git = {unstaged = "?", staged = "?", unmerged = "?", renamed = "?", untracked = "?", deleted = "?", ignored = "?"},
-    folder = {default = "?", open = "?", empty = "?", empty_open = "?", symlink = "?", symlink_open = "?"},
-    lsp = {hint = "?", info = "?", warning = "?", error = "?"}
+    default = '',
+    symlink = '',
+    git = {unstaged = "✗", staged = "✓", unmerged = "", renamed = "➜", untracked = "★", deleted = ""},
+    folder = {default = "", open = "", empty = "", empty_open = "", symlink = "", symlink_open = ""}
 }
-vim.g.nvim_tree_side = 'right' -- left by default
-vim.g.nvim_tree_width = 40 -- 30 by default
+vim.g.nvim_tree_side = 'left' -- left by default
+vim.g.nvim_tree_width = 30 -- 30 by default
 vim.g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'} -- empty by default
 vim.g.nvim_tree_gitignore = 1 -- 0 by default
 vim.g.nvim_tree_auto_open = 1 -- 0 by default, opens the tree when typing `vim $DIR` or `vim`

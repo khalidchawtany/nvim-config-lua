@@ -40,6 +40,11 @@ nnoremap <leader>ww        :w<cr>
 nnoremap <leader>wa        :wall<cr>
 nnoremap <leader>wu        :update<cr>
 
+nnoremap <c-k><c-f> :lua vim.lsp.buf.formatting()<cr>
+
+nnoremap <leader>ev :e ~/.config/nvim<cr>
+
+nnoremap cof :set foldmethod=expr \| set foldexpr=nvim_treesitter#foldexpr()<cr>
 
 "Shift-Enter is like ]<space>
 inoremap <silent> <s-cr> <esc>m`o<esc>``a
