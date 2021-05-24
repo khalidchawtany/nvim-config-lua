@@ -55,6 +55,14 @@ return require('packer').startup(function(use)
     -- Utilities
     -- Mapping
     use {'svermeulen/vimpeccable'}
+
+    use {
+        'khalidchawtany/vim-submode',
+        config = function()
+            require('_submode')
+        end
+    }
+
     use {'kopischke/vim-stay'}
     use {
         'tpope/vim-sleuth',
@@ -64,6 +72,20 @@ return require('packer').startup(function(use)
     }
 
     use {'gioele/vim-autoswap'}
+
+    use {
+        'lyokha/vim-xkbswitch',
+        config = function()
+            if vim.fn.has('mac') then
+                -- using https://github.com/vovkasm/input-source-switcher
+                vim.g.XkbSwitchLib = '/Users/juju/Development/Applications/input-source-switcher/build/libInputSourceSwitcher.dylib'
+            elseif vim.fn.has('win') then
+                vim.g.XkbSwitchLib = 'C:\\Development\\libxkbswitch64.dll'
+                vim.g.XkbSwitchIMappingsTrData = 'C:\\Development\\charmap.txt'
+            end
+            vim.g.XkbSwitchEnabled = 1
+        end
+    }
 
     -- LSP
     use {'neovim/nvim-lspconfig'}
@@ -254,6 +276,12 @@ return require('packer').startup(function(use)
 
     use {'tpope/vim-fugitive'}
 
+    use {'junegunn/gv.vim', {cmd = {'GV', 'GV!', 'GV?'}}}
+    vim.cmd [[ nnoremap  <leader>gl :GV<cr>]]
+
+    use {'gregsexton/gitv', {cmd = {'Gitv'}}}
+    vim.cmd [[nnoremap <leader>gv :Gitv<cr>]]
+
     use {'tpope/vim-unimpaired'}
 
     use {
@@ -262,6 +290,13 @@ return require('packer').startup(function(use)
         keys = {'<Plug>(abolish_coerce_word)', '<Plug>(abolish-coerce)', 'crs', 'crm', 'crc', 'cru', 'cr-', 'cr.', 'cr<space>'}
     }
 
+    use {'machakann/vim-sandwich'}
+
+    -- InlineEdit
+    use {'AndrewRadev/inline_edit.vim', {cmd = {'InlineEdit'}}}
+    vim.cmd [[xnoremap <leader>ei <cmd>InlineEdit<cr>]]
+
+    -- multiple cursor
     use {
         'terryma/vim-multiple-cursors',
         config = function()
@@ -305,7 +340,16 @@ return require('packer').startup(function(use)
             vim.g.tokyonight_hide_inactive_statusline = true
             ---vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
 
-            vim.cmd([[colorscheme tokyonight]])
+            -- vim.cmd([[colorscheme tokyonight]])
+        end
+    }
+
+    use {
+        'navarasu/onedark.nvim',
+        config = function()
+            vim.g.onedark_style = 'cool'
+            vim.cmd [[colorscheme onedark]]
+
         end
     }
 
