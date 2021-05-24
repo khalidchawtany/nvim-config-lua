@@ -63,6 +63,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {'gioele/vim-autoswap'}
+
     -- LSP
     use {'neovim/nvim-lspconfig'}
     use {'kabouzeid/nvim-lspinstall'}
