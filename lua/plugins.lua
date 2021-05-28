@@ -37,13 +37,13 @@ return require('packer').startup(function(use)
             require'hop'.setup {keys = 'etovxqpdygfblzhckisuran'}
             -- vim.api.nvim_set_keymap('n', '$', "<cmd>lua require'hop'.hint_words()<cr>", {})
             vim.cmd [[
-            nnoremap sw <cmd>HopWord<cr>
+            nnoremap <leader>sw <cmd>HopWord<cr>
 
-            nnoremap s/ <cmd>HopPattern<cr>
-            nnoremap ss <cmd>HopChar1<cr>
-            nnoremap sf <cmd>HopChar2<cr>
+            nnoremap <leader>s<leader> <cmd>HopPattern<cr>
+            nnoremap <leader>ss <cmd>HopChar1<cr>
+            nnoremap <leader>sf <cmd>HopChar2<cr>
 
-            nnoremap sj <cmd>HopLine<cr>
+            nnoremap <leader>sj <cmd>HopLine<cr>
             ]]
         end
     }
@@ -61,7 +61,7 @@ return require('packer').startup(function(use)
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
     -- }
 
-    -- Utilities
+    -- HTTP
     use {
         'NTBBloodbath/rest.nvim',
         requires = {'nvim-lua/plenary.nvim'},
@@ -70,6 +70,11 @@ return require('packer').startup(function(use)
             vim.cmd [[nmap <leader>ht <Plug>RestNvim]]
         end
     }
+
+    -- Utilities
+
+    use {'tyru/capture.vim', {cmd = {'Capture'}}}
+
     use {'svermeulen/vimpeccable'}
 
     use {
@@ -150,7 +155,7 @@ return require('packer').startup(function(use)
                 max_menu_width = 100,
                 documentation = true,
 
-                source = {path = true, buffer = true, calc = true, nvim_lsp = true, nvim_lua = true, vsnip = false, ultisnips = false}
+                source = {path = true, buffer = true, calc = true, nvim_lsp = true, nvim_lua = true, vsnip = false, ultisnips = true}
             }
             vim.cmd [[ highlight link CompeDocumentation NormalFloat ]]
 
@@ -203,6 +208,41 @@ return require('packer').startup(function(use)
     }
     use {'hrsh7th/vim-vsnip'}
     use {'hrsh7th/vim-vsnip-integ'}
+
+    use {
+        'drmingdrmer/xptemplate',
+        -- event = {'VimEnter'},
+        config = function()
+            vim.cmd [[set runtimepath+=/Users/juju/.config/nvim/xpt-personal]]
+            vim.g.xptemplate_key = '<c-\\>'
+            vim.g.xptemplate_nav_next = '<C-j>'
+            vim.g.xptemplate_nav_prev = '<C-k>'
+        end
+    }
+
+    use {
+        'SirVer/ultisnips',
+        -- keys = {'<c-cr>'},
+        -- cmd = {'UltiSnipsEdit'},
+        config = function()
+            -- vim.cmd [[call UltiSnips#FileTypeChanged()]]
+
+            -- vim.cmd [[au VimEnter * au! UltiSnipsFileType]]
+
+            vim.g.UltiSnipsEnableSnipMate = 0
+            vim.g.UltiSnipsExpandTrigger = "<c-cr>"
+            vim.g.UltiSnipsJumpForwardTrigger = "<c-cr>"
+            vim.g.UltiSnipsJumpBackwardTrigger = "<M-cr>"
+
+            vim.g.ultisnips_java_brace_style = "nl"
+            vim.g.Ultisnips_java_brace_style = "nl"
+            vim.g.UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
+            -- vim.g.UltiSnipsSnippetDirectories = [ "/Volumes/Home/.config/nvim/plugged/vim-snippets/UltiSnips"]
+        end
+
+    }
+    use {'honza/vim-snippets'}
+    -- au filetype php set iskeyword+=$
 
     use {
         'junegunn/vim-easy-align',

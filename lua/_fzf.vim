@@ -294,6 +294,7 @@ nnoremap <silent> <c-p><c-o> <cmd>call fzf#run({
       \   'source':  reverse(<sid>buflist()),
       \   'sink*':    function('<sid>bufopen'),
       \   'options': '+m --reverse --expect=ctrl-t,ctrl-v,ctrl-s',
+      \   'window': { 'width': 0.9, 'height': 0.7 }
       \ })<CR>
 
 "}}} _open_buffers -term
@@ -308,6 +309,7 @@ function! s:fzf_neighbouring_files()
         \ 'source': command,
         \ 'sink':   'e',
         \ 'options': '-m -x +s',
+      \   'window': { 'width': 0.9, 'height': 0.7 }
         \ })
 endfunction
 
@@ -349,7 +351,7 @@ command! -nargs=* AgCustom call fzf#run({
       \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
       \            '--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
       \            '--color hl:68,hl+:110',
-      \ 'down':    '50%'
+      \   'window': { 'width': 0.9, 'height': 0.7 }
       \ })
 nnoremap <silent> <c-p><c-q> <cmd>FZFNeigh<cr>
 "}}} _Ag
@@ -382,6 +384,7 @@ nnoremap <silent> <c-p><c-;> <cmd>call fzf#run({
       \   'source':  reverse(<sid>termlist()),
       \   'sink':    function('<sid>termtabopen'),
       \   'options': '+m --reverse',
+      \   'window': { 'width': 0.9, 'height': 0.7 }
       \ })<CR>
 
 "}}} _open_terms

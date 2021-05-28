@@ -1,0 +1,259 @@
+global !p
+def camelize(t):
+  if len(t) == 1:
+    return t[0].upper()
+  if len(t) > 1:
+    return t[0].upper() + t[1:]
+  else:
+    return ""
+endglobal
+
+
+################################################################################
+#                                    Helper                                    #
+################################################################################
+#{{{
+
+snippet ofs "Row(Cell) to String property assignment"
+_$1.$2 = dt.Rows[0]["$2"].ToString();
+$0
+endsnippet
+
+snippet ofi "Row(Cell) to Integer property assignment"
+_$1.$2 = int.Parse(dt.Rows[0]["$2"].ToString());
+$0
+endsnippet
+
+snippet of$ "Row(Cell) to Decimal property assignment"
+_$1.$2 = Decimal.Parse(dt.Rows[0]["$2"].ToString());
+$0
+endsnippet
+
+snippet ofd "Row(Cell) to DateTime property assignment"
+_$1.$2 = DateTime.Parse(dt.Rows[0]["$2"].ToString());
+$0
+endsnippet
+
+snippet cn "CN_Name"
+private const string CN_${VISUAL} = "${VISUAL}";$0
+endsnippet
+
+snippet cns "CN_Name(s)"
+`!p
+for line in snip.v.text.splitlines():
+  line = line.strip()
+  snip += 'private const string CN_' + line + ' = "' + line + '";'
+`
+endsnippet
+
+
+
+
+snippet p2p "Set object Properties from the params"
+`!p
+for line in snip.v.text.splitlines():
+  line = (line.strip()).split(" ")[1]
+  snip += '_o.' + line + ' = ' + line + ';'
+`
+endsnippet
+
+
+
+#}}}
+
+
+
+################################################################################
+#                                  Properties                                  #
+################################################################################
+#{{{
+
+snippet propf "Full property with validation and DataSateChange"
+private $1 _${2:PropertyName};
+public $1 `!p snip.rv=camelize(t[2])`
+{
+  get { return _$2; }
+  set {
+    if (_$2 != value)
+    {
+      const string propertyName = "`!p snip.rv=camelize(t[2])`";
+      DataSateChanged(EntityStateEnum.Modified);
+      _$2 = value;
+    }
+  }
+}
+endsnippet
+
+snippet propfi "Full instance property with validation and DataSateChange"
+public `!p snip.rv=camelize(t[2])[:-2]` `!p snip.rv=camelize(t[2])[:-2]`Instance { get; set; }
+public String `!p snip.rv=camelize(t[2])[:-2]`$3
+{
+  get { return `!p snip.rv=camelize(t[2])[:-2]`Instance.$3; }
+  private set{}
+}
+
+private $1 _${2:PropertyName};
+public $1 `!p snip.rv=camelize(t[2])`
+{
+  get { return _$2; }
+  set {
+    if (_$2 != value)
+    {
+      const string propertyName = "`!p snip.rv=camelize(t[2])`";
+      DataSateChanged(EntityStateEnum.Modified);
+      _$2 = value;
+      `!p snip.rv=camelize(t[2])[:-2]`Instance = `!p snip.rv=camelize(t[2])[:-2]`.Create(`!p snip.rv=camelize(t[2])`);
+    }
+  }
+}
+$0
+endsnippet
+
+#}}}
+################################################################################
+#                                     TEST                                     #
+################################################################################
+#{{{
+
+snippet tf "Test Fixture" b
+[TestFixture]
+public class $1
+{
+	$0
+}
+endsnippet
+
+snippet tu "Test Unit" b
+[Test]
+public void ${1:should_be_true}()
+{
+	${0:true.ShouldBeTrue();}
+}
+endsnippet
+
+snippet tsetup "Test SetUp"
+[SetUp]
+public void SetUp()
+{
+	$0
+}
+endsnippet
+
+snippet tteardown "Test TearDown"
+[TearDown]
+public void TearDown()
+{
+	$0
+}
+endsnippet
+
+snippet tfsetup "Test Fixture SetUp"
+[OneTimeSetUpAttribute]
+public void TestFixtureSetUp()
+{
+	$0
+}
+endsnippet
+
+snippet tfteardown "Test Fixture SetUp"
+[OneTimeTearDownAttribute]
+public void TestFixtureTearDown()
+{
+	${VISUAL}$0
+}
+endsnippet
+
+
+
+snippet tohp "Test Object has Property"
+`!p
+
+lines = snip.v.text.splitlines()
+first_line = lines[0]
+for line in lines[1:]:
+  line = (line.strip()).split(" ")[1]
+  snip +='''[Test]
+	public void {0}Has{1}()
+	{{
+		Assert.That(_{2}.{1}, Is.EqualTo(_{1}));
+	}}
+'''.format(camelize(first_line), line, first_line)
+`
+endsnippet
+
+
+
+
+
+
+#}}}
+
+snippet region "Region"
+#region $1
+
+	${VISUAL}$0
+
+#endregion
+endsnippet
+
+snippet # "Region"
+#region $1
+
+	${VISUAL}$0
+
+#endregion
+endsnippet
+
+################################################################################
+#                                   XML Docs                                   #
+################################################################################
+#{{{
+snippet docsa "XML docs all entries"
+/*
+ * <summery>
+ * $1
+ * </summery>
+ * <param name="${2:parmmaname}">${3:Pram Description}</param>
+ * <value> ${4:true or false} </value>
+ * <returns> ${5:True if there are unsaved changes; False if not} </returns>
+ * <remarks></remarks>
+ */
+endsnippet
+
+snippet docp "XML doc Parameter" i
+<param name="${2:parmmaname}">${3:Pram Description}</param>
+endsnippet
+
+snippet docss "XML docs summery"
+/*
+ * <summery>
+ * $1
+ * </summery>
+ */
+endsnippet
+
+snippet doc "XML doc skeleton"
+/*
+ *$1
+ */
+endsnippet
+
+snippet docv "XML doc values" i
+<value> ${1:Possible Values of this Property} </value>
+endsnippet
+
+snippet docs "XML doc return" i
+<summery>
+* $1
+* </summery>
+endsnippet
+
+snippet docr "XML doc return" i
+<returns> ${1:True if there are unsaved changes; False if not} </returns>
+endsnippet
+
+snippet docm "XML doc remarks" i
+<remarks> ${1:additiona info} </remarks>
+endsnippet
+
+#}}}

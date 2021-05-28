@@ -1,13 +1,13 @@
 local vim = vim
 vim.cmd [[
-	nnoremap <c-space><c-p> <cmd>Telescope find_files<cr>
-        nnoremap <c-space>pp :execute 'Telescope find_files find_command=fd,'.expand("<cword>")<cr>
-	nnoremap <c-space><c-a> <cmd>Telescope live_grep<cr>
-	nnoremap <c-space>a <cmd>Telescope grep_string<cr>
-	nnoremap <c-space><c-o> <cmd>Telescope buffers<cr>
-	nnoremap <c-space><c-h> <cmd>Telescope help_tags<cr>
-	nnoremap <c-space><c--> <cmd>Telescope lsp_document_symbols<cr>
-	nnoremap <c-space><c-l> <cmd>Telescope current_buffer_fuzzy_find<cr>
+	nnoremap <c-s><c-p> <cmd>Telescope find_files<cr>
+        nnoremap <c-s>pp :execute 'Telescope find_files find_command=fd,'.expand("<cword>")<cr>
+	nnoremap <c-s><c-a> <cmd>Telescope live_grep<cr>
+	nnoremap <c-s>a <cmd>Telescope grep_string<cr>
+	nnoremap <c-s><c-o> <cmd>Telescope buffers<cr>
+	nnoremap <c-s><c-h> <cmd>Telescope help_tags<cr>
+	nnoremap <c-s><c--> <cmd>Telescope lsp_document_symbols<cr>
+	nnoremap <c-s><c-l> <cmd>Telescope current_buffer_fuzzy_find<cr>
 ]]
 
 vim.api.nvim_set_keymap('n', '<C-p><c-\\>', ":lua require'telescope'.extensions.project.project{}<CR>", {noremap = true, silent = true})
