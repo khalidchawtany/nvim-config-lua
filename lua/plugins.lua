@@ -26,7 +26,7 @@ return require('packer').startup(function(use)
     -- }
 
     -- { Tutorials and Easymotion
-    use {'tjdevries/train.nvim'}
+    use 'tjdevries/train.nvim'
 
     -- { Hop
     use {
@@ -56,7 +56,7 @@ return require('packer').startup(function(use)
             require('_easymotion')
         end
     }
-    use {'aykamko/vim-easymotion-segments', {keys = {'<Plug>(easymotion-'}}}
+    use {'aykamko/vim-easymotion-segments', keys = {'<Plug>(easymotion-'}}
 
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
     -- }
@@ -73,9 +73,9 @@ return require('packer').startup(function(use)
 
     -- Utilities
 
-    use {'tyru/capture.vim', {cmd = {'Capture'}}}
+    use {'tyru/capture.vim', cmd = {'Capture'}}
 
-    use {'svermeulen/vimpeccable'}
+    use 'svermeulen/vimpeccable'
 
     use {
         'khalidchawtany/vim-submode',
@@ -85,7 +85,7 @@ return require('packer').startup(function(use)
     }
     use "kevinhwang91/nvim-bqf"
 
-    use {'kopischke/vim-stay'}
+    use 'kopischke/vim-stay'
 
     use {
         'tpope/vim-sleuth',
@@ -94,7 +94,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {'gioele/vim-autoswap'}
+    use 'gioele/vim-autoswap'
 
     use {
         'lyokha/vim-xkbswitch',
@@ -111,14 +111,14 @@ return require('packer').startup(function(use)
     }
 
     -- LSP
-    use {'neovim/nvim-lspconfig'}
-    use {'kabouzeid/nvim-lspinstall'}
+    use 'neovim/nvim-lspconfig'
+    use 'kabouzeid/nvim-lspinstall'
     use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
     use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
 
     use {
         'simrat39/symbols-outline.nvim',
-        cmd = {'SymbolsOutline', 'SymbolsOutlineOpen'},
+        -- cmd = {'SymbolsOutline', 'SymbolsOutlineOpen'},
         config = function()
             require('_symbols-outline')
         end
@@ -132,8 +132,8 @@ return require('packer').startup(function(use)
             require('_treesitter')
         end
     }
-    use {'nvim-treesitter/nvim-treesitter-refactor'}
-    use {'nvim-treesitter/nvim-treesitter-textobjects'}
+    use 'nvim-treesitter/nvim-treesitter-refactor'
+    use 'nvim-treesitter/nvim-treesitter-textobjects'
 
     -- { Completion
     use {'nvim-lua/completion-nvim', disable = true}
@@ -206,8 +206,8 @@ return require('packer').startup(function(use)
             require('_snippets-nvim')
         end
     }
-    use {'hrsh7th/vim-vsnip'}
-    use {'hrsh7th/vim-vsnip-integ'}
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
 
     use {
         'drmingdrmer/xptemplate',
@@ -241,7 +241,7 @@ return require('packer').startup(function(use)
         end
 
     }
-    use {'honza/vim-snippets'}
+    use 'honza/vim-snippets'
     -- au filetype php set iskeyword+=$
 
     use {
@@ -284,7 +284,7 @@ return require('packer').startup(function(use)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
     -- use {'junegunn/fzf', dir = '~/.fzf', run = '/Users/juju/.local/share/nvim/site/pack/packer/start/fzf/install --all'}
-    use {'junegunn/fzf'}
+    use 'junegunn/fzf'
     use {
         'junegunn/fzf.vim',
         config = function()
@@ -292,16 +292,16 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {'pbogut/fzf-mru.vim'}
+    use 'pbogut/fzf-mru.vim'
 
     use {
-        'yuki-ycino/fzf-preview.vim', {
-            cmd = {
-                'FzfPreviewProjectFiles', 'FzfPreviewGitFiles', 'FzfPreviewDirectoryFiles', 'FzfPreviewGitStatus', 'FzfPreviewBuffers',
-                'FzfPreviewProjectOldFiles', 'FzfPreviewProjectMruFiles', 'FzfPreviewProjectGrep', 'FzfPreviewOldFiles', 'FzfPreviewMruFiles',
-                'FzfPreviewFromResources'
-            }
+        'yuki-ycino/fzf-preview.vim',
+        cmd = {
+            'FzfPreviewProjectFiles', 'FzfPreviewGitFiles', 'FzfPreviewDirectoryFiles', 'FzfPreviewGitStatus', 'FzfPreviewBuffers',
+            'FzfPreviewProjectOldFiles', 'FzfPreviewProjectMruFiles', 'FzfPreviewProjectGrep', 'FzfPreviewOldFiles', 'FzfPreviewMruFiles',
+            'FzfPreviewFromResources'
         }
+
     }
 
     use {
@@ -334,13 +334,13 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {'junegunn/gv.vim', {cmd = {'GV', 'GV!', 'GV?'}}}
+    use {'junegunn/gv.vim', cmd = {'GV', 'GV!', 'GV?'}}
     vim.cmd [[ nnoremap  <leader>gl :GV<cr>]]
 
-    use {'gregsexton/gitv', {cmd = {'Gitv'}}}
+    use {'gregsexton/gitv', cmd = {'Gitv'}}
     vim.cmd [[nnoremap <leader>gv :Gitv<cr>]]
 
-    use {'tpope/vim-unimpaired'}
+    use 'tpope/vim-unimpaired'
 
     use {
         'tpope/vim-abolish',
@@ -348,10 +348,10 @@ return require('packer').startup(function(use)
         keys = {'<Plug>(abolish_coerce_word)', '<Plug>(abolish-coerce)', 'crs', 'crm', 'crc', 'cru', 'cr-', 'cr.', 'cr<space>'}
     }
 
-    use {'machakann/vim-sandwich'}
+    use 'machakann/vim-sandwich'
 
     -- InlineEdit
-    use {'AndrewRadev/inline_edit.vim', {cmd = {'InlineEdit'}}}
+    use {'AndrewRadev/inline_edit.vim', cmd = {'InlineEdit'}}
     vim.cmd [[xnoremap <leader>ei <cmd>InlineEdit<cr>]]
 
     -- multiple cursor
@@ -366,7 +366,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {'gabesoft/vim-ags', {cmd = {'Ags'}}}
+    use {'gabesoft/vim-ags', cmd = {'Ags'}}
 
     -- Comments
     use {
@@ -418,7 +418,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {'drewtempelmeyer/palenight.vim'}
+    use 'drewtempelmeyer/palenight.vim'
 
     -- use {
     --     'glepnir/galaxyline.nvim',
