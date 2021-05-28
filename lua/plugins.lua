@@ -248,8 +248,20 @@ return require('packer').startup(function(use)
     use {
         'junegunn/fzf.vim',
         config = function()
-            require('_fzf')
+            vim.cmd [[source ~/.config/nvim/lua/_fzf.vim]]
         end
+    }
+
+    use {'pbogut/fzf-mru.vim'}
+
+    use {
+        'yuki-ycino/fzf-preview.vim', {
+            cmd = {
+                'FzfPreviewProjectFiles', 'FzfPreviewGitFiles', 'FzfPreviewDirectoryFiles', 'FzfPreviewGitStatus', 'FzfPreviewBuffers',
+                'FzfPreviewProjectOldFiles', 'FzfPreviewProjectMruFiles', 'FzfPreviewProjectGrep', 'FzfPreviewOldFiles', 'FzfPreviewMruFiles',
+                'FzfPreviewFromResources'
+            }
+        }
     }
 
     use {

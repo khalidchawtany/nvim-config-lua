@@ -1,19 +1,13 @@
 local vim = vim
 vim.cmd [[
-	nnoremap <c-p><c-p> <cmd>Telescope find_files<cr>
-        nnoremap <c-p>pp :execute 'Telescope find_files find_command=fd,'.expand("<cword>")<cr>
-	nnoremap <c-p><c-a> <cmd>Telescope live_grep<cr>
-	nnoremap <c-p>a <cmd>Telescope grep_string<cr>
-	nnoremap <c-p><c-o> <cmd>Telescope buffers<cr>
-	nnoremap <c-p><c-h> <cmd>Telescope help_tags<cr>
-	nnoremap <c-p><c--> <cmd>Telescope lsp_document_symbols<cr>
-	nnoremap <c-p><c-l> <cmd>Telescope current_buffer_fuzzy_find<cr>
-
-
-	noremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-	noremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-	noremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-	noremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+	nnoremap <c-space><c-p> <cmd>Telescope find_files<cr>
+        nnoremap <c-space>pp :execute 'Telescope find_files find_command=fd,'.expand("<cword>")<cr>
+	nnoremap <c-space><c-a> <cmd>Telescope live_grep<cr>
+	nnoremap <c-space>a <cmd>Telescope grep_string<cr>
+	nnoremap <c-space><c-o> <cmd>Telescope buffers<cr>
+	nnoremap <c-space><c-h> <cmd>Telescope help_tags<cr>
+	nnoremap <c-space><c--> <cmd>Telescope lsp_document_symbols<cr>
+	nnoremap <c-space><c-l> <cmd>Telescope current_buffer_fuzzy_find<cr>
 ]]
 
 vim.api.nvim_set_keymap('n', '<C-p><c-\\>', ":lua require'telescope'.extensions.project.project{}<CR>", {noremap = true, silent = true})
