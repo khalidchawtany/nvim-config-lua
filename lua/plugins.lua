@@ -1,11 +1,20 @@
 return require('packer').startup(function(use)
+    local ouse = use
+    use = function(plug)
+        if type(plug) == 'table' and #plug >= 1 and plug['init'] ~= nil then
+            if type(plug['init']) == 'function' then plug['init'] {} end
+            if type(plug['init']) == 'string' then require(plug['init']) end
+        end
+        ouse(plug)
+    end
+
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
     -- { Dashboard
     use {
         'glepnir/dashboard-nvim',
-        setup = function()
+        config = function()
             vim.cmd [[ let g:dashboard_default_executive ='telescope'  ]]
             -- vim.g.dashboard_custom_section = {
             --     buffer_list = {
@@ -49,13 +58,7 @@ return require('packer').startup(function(use)
     }
     -- }
 
-    use {
-        'Lokaltog/vim-easymotion',
-        keys = {'<Plug>(easymotion-', 's'},
-        config = function()
-            require('_easymotion')
-        end
-    }
+    use {'Lokaltog/vim-easymotion', keys = {'<Plug>(easymotion-', 's'}, init = '_easymotion'}
     use {'aykamko/vim-easymotion-segments', keys = {'<Plug>(easymotion-'}}
 
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
@@ -77,19 +80,14 @@ return require('packer').startup(function(use)
 
     use 'svermeulen/vimpeccable'
 
-    use {
-        'khalidchawtany/vim-submode',
-        config = function()
-            require('_submode')
-        end
-    }
+    use {'khalidchawtany/vim-submode', init = '_submode'}
     use "kevinhwang91/nvim-bqf"
 
     use 'kopischke/vim-stay'
 
     use {
         'tpope/vim-sleuth',
-        setup = function()
+        config = function()
             vim.g.sleuth_automatic = 1
         end
     }
@@ -119,19 +117,11 @@ return require('packer').startup(function(use)
     use {
         'simrat39/symbols-outline.nvim',
         -- cmd = {'SymbolsOutline', 'SymbolsOutlineOpen'},
-        config = function()
-            require('_symbols-outline')
-        end
+        init = '_symbols-outline'
     }
 
     -- Treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-        config = function()
-            require('_treesitter')
-        end
-    }
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', init = '_treesitter'}
     use 'nvim-treesitter/nvim-treesitter-refactor'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
 
@@ -166,7 +156,7 @@ return require('packer').startup(function(use)
     -- { miniyank
     use {
         'bfredl/nvim-miniyank',
-        setup = function()
+        config = function()
 
             vim.g.miniyank_filename = "/Users/" .. vim.fn.expand('$USER') .. "/.local/share/nvim/cache/miniyank.mpack"
 
@@ -190,22 +180,11 @@ return require('packer').startup(function(use)
     -- }
 
     -- { UnconditionalPaste
-    use {
-        'vim-scripts/UnconditionalPaste',
-        keys = {'<Plug>UnconditionalPaste'},
-        setup = function()
-            require('_unconditional-paste')
-        end
-    }
+    use {'vim-scripts/UnconditionalPaste', keys = {'<Plug>UnconditionalPaste'}, init = '_unconditional-paste'}
     -- }
 
     -- Snippets
-    use {
-        'norcalli/snippets.nvim',
-        config = function()
-            require('_snippets-nvim')
-        end
-    }
+    use {'norcalli/snippets.nvim', init = '_snippets-nvim'}
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/vim-vsnip-integ'
 
@@ -244,39 +223,18 @@ return require('packer').startup(function(use)
     use 'honza/vim-snippets'
     -- au filetype php set iskeyword+=$
 
-    use {
-        'junegunn/vim-easy-align',
-        cmd = {'EasyAlign'},
-        keys = {'<Plug>(EasyAlign)'},
-        setup = function()
-            require('_easyalign')
-        end
-    }
+    use {'junegunn/vim-easy-align', cmd = {'EasyAlign'}, keys = {{'visual', '<cr>'}}, init = '_easyalign'}
 
     -- File Browser  And Navigation
-    use {
-        'tamago324/lir.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'},
-        config = function()
-            require('_lir')
-        end
-    }
+    use {'tamago324/lir.nvim', requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}, init = '_lir'}
     use {'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'}}
 
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = {'kyazdani42/nvim-web-devicons'},
-        config = function()
-            require('_nvim-tree')
-        end
-    }
+    use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}, init = '_nvim-tree'}
 
     use {
         'nvim-lua/telescope.nvim',
         requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-fzy-native.nvim'},
-        config = function()
-            require('_telescope')
-        end
+        init = '_telescope'
     }
 
     use {'nvim-telescope/telescope-project.nvim', requires = {'nvim-lua/telescope.nvim'}}
@@ -307,7 +265,7 @@ return require('packer').startup(function(use)
     use {
         'el-iot/buffer-tree-explorer',
         cmd = {'Tree'},
-        setup = function()
+        config = function()
             vim.g.buffer_tree_explorer_compress = 1
             vim.cmd [[ nnoremap <c-p>o <cmd>Tree<cr> ]]
         end
@@ -327,12 +285,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {
-        'tpope/vim-fugitive',
-        config = function()
-            require('_fugitive')
-        end
-    }
+    use {'tpope/vim-fugitive', init = '_fugitive'}
 
     use {'junegunn/gv.vim', cmd = {'GV', 'GV!', 'GV?'}}
     vim.cmd [[ nnoremap  <leader>gl :GV<cr>]]
@@ -388,12 +341,7 @@ return require('packer').startup(function(use)
     }
 
     -- Autopairs
-    use {
-        'windwp/nvim-autopairs',
-        config = function()
-            require('_nvim-autopair')
-        end
-    }
+    use {'windwp/nvim-autopairs', init = '_nvim-autopair'}
 
     -- Theme
     use {
@@ -431,20 +379,9 @@ return require('packer').startup(function(use)
     --     requires = {'kyazdani42/nvim-web-devicons', opt = true}
     -- }
 
-    use {
-        'hoob3rt/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
-        config = function()
-            require('_lualine')
-        end
-    }
+    use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}, init = '_lualine'}
 
-    use {
-        'crispgm/nvim-tabline',
-        config = function()
-            require('_tabline')
-        end
-    }
+    use {'crispgm/nvim-tabline', init = '_tabline'}
 
     use {
         disable = true,
@@ -493,17 +430,12 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {
-        "folke/which-key.nvim",
-        config = function()
-            require('_which-key')
-        end
-    }
+    use {"folke/which-key.nvim", init = '_which-key'}
 
     use {
         'lukas-reineke/indent-blankline.nvim',
         branch = 'lua',
-        setup = function()
+        config = function()
             vim.g.indent_blankline_use_treesitter = true
             vim.g.indent_blankline_show_first_indent_level = false
             vim.g.indent_blankline_char = '│'
