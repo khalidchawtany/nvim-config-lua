@@ -223,7 +223,7 @@ return require('packer').startup(function(use)
     use 'honza/vim-snippets'
     -- au filetype php set iskeyword+=$
 
-    use {'junegunn/vim-easy-align', cmd = {'EasyAlign'}, keys = {{'visual', '<cr>'}}, init = '_easyalign'}
+    use {'junegunn/vim-easy-align', cmd = {'EasyAlign'}, keys = {{'v', '<cr>'}}, init = '_easyalign'}
 
     -- File Browser  And Navigation
     use {'tamago324/lir.nvim', requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}, init = '_lir'}
@@ -287,7 +287,7 @@ return require('packer').startup(function(use)
 
     use {'tpope/vim-fugitive', init = '_fugitive'}
 
-    use {'junegunn/gv.vim', cmd = {'GV', 'GV!', 'GV?'}}
+    use {'junegunn/gv.vim', cmd = {'GV'}}
     vim.cmd [[ nnoremap  <leader>gl :GV<cr>]]
 
     use {'gregsexton/gitv', cmd = {'Gitv'}}
