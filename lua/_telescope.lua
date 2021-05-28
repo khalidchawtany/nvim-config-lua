@@ -1,6 +1,7 @@
 local vim = vim
 vim.cmd [[
 	nnoremap <c-p><c-p> <cmd>Telescope find_files<cr>
+        nnoremap <c-p>pp :execute 'Telescope find_files find_command=fd,'.expand("<cword>")<cr>
 	nnoremap <c-p><c-a> <cmd>Telescope live_grep<cr>
 	nnoremap <c-p>a <cmd>Telescope grep_string<cr>
 	nnoremap <c-p><c-o> <cmd>Telescope buffers<cr>
@@ -83,5 +84,18 @@ require('telescope').setup {
     }
 }
 
-require('telescope').setup {extensions = {fzy_native = {override_generic_sorter = false, override_file_sorter = true}}}
+require('telescope').setup {
+    extensions = {
+        fzy_native = {override_generic_sorter = false, override_file_sorter = true},
+
+        fzf = {
+            fuzzy = true, -- false will only do exact matching
+            override_generic_sorter = false, -- override the generic sorter
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+            -- the default case_mode is "smart_case"
+        }
+    }
+}
 require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('fzf')

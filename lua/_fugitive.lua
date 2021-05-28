@@ -1,10 +1,10 @@
-   autocmd User fugitive
-         \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-         \   nnoremap <buffer> .. :edit %:h<CR> |
-         \ endif
+vim.cmd [[
    autocmd BufReadPost fugitive://* set bufhidden=delete
+
    " autocmd BufEnter * if &ft=="fugitive" | call feedkeys("o") | endif
+
    autocmd BufNewFile  fugitive://* call PM_SOURCE('vim-fugitive') | let g:NewFugitiveFile=1 | call feedkeys(';<BS>')
+
    " set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
     nnoremap <leader>gs :call FugitiveDetect(expand('%:p')) \| :Gstatus<cr>
     nnoremap <leader>g<leader> :call FugitiveDetect(getcwd()) \| :Gtabedit :<cr>
@@ -20,3 +20,4 @@
    " Fugitive Conflict Resolution
    " nnoremap gdh :diffget //2<CR>
    " nnoremap gdl :diffget //3<CR>
+]]

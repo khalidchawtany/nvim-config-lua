@@ -36,19 +36,14 @@ source ~/.config/nvim/func.vim
 lua require('plugins')
 lua require('_lsp')
 "lua require('_completion-nvim')
-lua require('_snippets-nvim')
-lua require('_nvim-autopair')
-lua require('_lir')
-lua require('_nvim-tree')
-lua require('_telescope')
-lua require('_treesitter')
-lua require('_which-key')
-lua require('_lualine')
-lua require('_tabline')
 source ~/.config/nvim/lua/maps.vim
-source ~/.config/nvim/lua/_fugitive.vim
 
 let g:indent_blankline_filetype_exclude = ['dashboard', 'help']
 
 let g:dashboard_default_executive ='telescope'
 
+
+autocmd User fugitive
+      \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+      \   nnoremap <buffer> .. :edit %:h<CR> |
+      \ endif

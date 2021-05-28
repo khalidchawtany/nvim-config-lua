@@ -49,11 +49,27 @@ return require('packer').startup(function(use)
     }
     -- }
 
+    use {
+        'Lokaltog/vim-easymotion',
+        keys = {'<Plug>(easymotion-', 's'},
+        config = function()
+            require('_easymotion')
+        end
+    }
+    use {'aykamko/vim-easymotion-segments', {keys = {'<Plug>(easymotion-'}}}
+
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
     -- }
 
     -- Utilities
-    -- Mapping
+    use {
+        'NTBBloodbath/rest.nvim',
+        requires = {'nvim-lua/plenary.nvim'},
+        keys = {'<Plug>RestNvim'},
+        config = function()
+            vim.cmd [[nmap <leader>ht <Plug>RestNvim]]
+        end
+    }
     use {'svermeulen/vimpeccable'}
 
     use {
@@ -62,8 +78,10 @@ return require('packer').startup(function(use)
             require('_submode')
         end
     }
+    use "kevinhwang91/nvim-bqf"
 
     use {'kopischke/vim-stay'}
+
     use {
         'tpope/vim-sleuth',
         setup = function()
@@ -95,14 +113,22 @@ return require('packer').startup(function(use)
 
     use {
         'simrat39/symbols-outline.nvim',
+        cmd = {'SymbolsOutline', 'SymbolsOutlineOpen'},
         config = function()
             require('_symbols-outline')
         end
     }
 
     -- Treesitter
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+            require('_treesitter')
+        end
+    }
     use {'nvim-treesitter/nvim-treesitter-refactor'}
+    use {'nvim-treesitter/nvim-treesitter-textobjects'}
 
     -- { Completion
     use {'nvim-lua/completion-nvim', disable = true}
@@ -159,57 +185,22 @@ return require('packer').startup(function(use)
     -- }
 
     -- { UnconditionalPaste
-    use {'vim-scripts/UnconditionalPaste', keys = {'<Plug>UnconditionalPaste'}}
-    vim.cmd [[
-    Map n gPP  <Plug>UnconditionalPasteGPlusBefore
-    Map n gPp  <Plug>UnconditionalPasteGPlusAfter
-    Map n gpP  <Plug>UnconditionalPastePlusBefore
-    Map n gpp  <Plug>UnconditionalPastePlusAfter
-    Map n gUP  <Plug>UnconditionalPasteRecallUnjoinBefore
-    Map n gUp  <Plug>UnconditionalPasteRecallUnjoinAfter
-    Map n guP  <Plug>UnconditionalPasteUnjoinBefore
-    Map n gup  <Plug>UnconditionalPasteUnjoinAfter
-    Map n gQP  <Plug>UnconditionalPasteRecallQueriedBefore
-    Map n gQp  <Plug>UnconditionalPasteRecallQueriedAfter
-    Map n gqP  <Plug>UnconditionalPasteQueriedBefore
-    Map n gqp  <Plug>UnconditionalPasteQueriedAfter
-    Map n gQBP <Plug>UnconditionalPasteRecallDelimitedBefore
-    Map n gQBp <Plug>UnconditionalPasteRecallDelimitedAfter
-    Map n gqbP <Plug>UnconditionalPasteDelimitedBefore
-    Map n gqbp <Plug>UnconditionalPasteDelimitedAfter
-    Map n gBP  <Plug>UnconditionalPasteJaggedBefore
-    Map n gBp  <Plug>UnconditionalPasteJaggedAfter
-    Map n gsP  <Plug>UnconditionalPasteSpacedBefore
-    Map n gsp  <Plug>UnconditionalPasteSpacedAfter
-    Map n g#P  <Plug>UnconditionalPasteCommentedBefore
-    Map n g#p  <Plug>UnconditionalPasteCommentedAfter
-    Map n g>P  <Plug>UnconditionalPasteShiftedBefore
-    Map n g>p  <Plug>UnconditionalPasteShiftedAfter
-    Map n g[[P <Plug>UnconditionalPasteLessIndentBefore
-    Map n g[[p <Plug>UnconditionalPasteLessIndentAfter
-    Map n g\]\]P <Plug>UnconditionalPasteMoreIndentBefore
-    Map n g\]\]p <Plug>UnconditionalPasteMoreIndentAfter
-    Map n g]p  <Plug>UnconditionalPasteIndentedAfter
-    Map n g[p  <Plug>UnconditionalPasteIndentedBefore
-    Map n g[P  <Plug>UnconditionalPasteIndentedBefore
-    Map n g]P  <Plug>UnconditionalPasteIndentedBefore
-    Map n g,"P <Plug>UnconditionalPasteCommaDoubleQuoteBefore
-    Map n g,"p <Plug>UnconditionalPasteCommaDoubleQuoteAfter
-    Map n g,'P <Plug>UnconditionalPasteCommaSingleQuoteBefore
-    Map n g,'p <Plug>UnconditionalPasteCommaSingleQuoteAfter
-    Map n g,P  <Plug>UnconditionalPasteCommaBefore
-    Map n g,p  <Plug>UnconditionalPasteCommaAfter
-    Map n gbP  <Plug>UnconditionalPasteBlockBefore
-    Map n gbp  <Plug>UnconditionalPasteBlockAfter
-    Map n glP  <Plug>UnconditionalPasteLineBefore
-    Map n glp  <Plug>UnconditionalPasteLineAfter
-    Map n gcP  <Plug>UnconditionalPasteCharBefore
-    Map n gcp  <Plug>UnconditionalPasteCharAfter
-    ]]
+    use {
+        'vim-scripts/UnconditionalPaste',
+        keys = {'<Plug>UnconditionalPaste'},
+        setup = function()
+            require('_unconditional-paste')
+        end
+    }
     -- }
 
     -- Snippets
-    use {'norcalli/snippets.nvim'}
+    use {
+        'norcalli/snippets.nvim',
+        config = function()
+            require('_snippets-nvim')
+        end
+    }
     use {'hrsh7th/vim-vsnip'}
     use {'hrsh7th/vim-vsnip-integ'}
 
@@ -217,30 +208,40 @@ return require('packer').startup(function(use)
         'junegunn/vim-easy-align',
         cmd = {'EasyAlign'},
         keys = {'<Plug>(EasyAlign)'},
-        config = function()
-            vim.g.easy_align_ignore_comment = 0 -- align comments
+        setup = function()
+            require('_easyalign')
         end
     }
 
-    -- Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-    vim.cmd [[
-        vmap <Enter> <Plug>(EasyAlign)
-
-        " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-        vnoremap g<Enter> :EasyAlign */[(,)]\\+/<left><left><left><left>
-
-        nmap g<cr> <Plug>(EasyAlign)
-      ]]
-
-    use {'machakann/vim-sandwich'}
-
     -- File Browser  And Navigation
-    use {'tamago324/lir.nvim', requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}}
+    use {
+        'tamago324/lir.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'},
+        config = function()
+            require('_lir')
+        end
+    }
     use {'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'}}
-    use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}}
 
-    use {'nvim-lua/telescope.nvim', requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-fzy-native.nvim'}}
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {'kyazdani42/nvim-web-devicons'},
+        config = function()
+            require('_nvim-tree')
+        end
+    }
+
+    use {
+        'nvim-lua/telescope.nvim',
+        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-fzy-native.nvim'},
+        config = function()
+            require('_telescope')
+        end
+    }
+
     use {'nvim-telescope/telescope-project.nvim', requires = {'nvim-lua/telescope.nvim'}}
+
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
     -- use {'junegunn/fzf', dir = '~/.fzf', run = '/Users/juju/.local/share/nvim/site/pack/packer/start/fzf/install --all'}
     use {'junegunn/fzf'}
@@ -274,7 +275,12 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {'tpope/vim-fugitive'}
+    use {
+        'tpope/vim-fugitive',
+        config = function()
+            require('_fugitive')
+        end
+    }
 
     use {'junegunn/gv.vim', {cmd = {'GV', 'GV!', 'GV?'}}}
     vim.cmd [[ nnoremap  <leader>gl :GV<cr>]]
@@ -308,6 +314,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {'gabesoft/vim-ags', {cmd = {'Ags'}}}
+
     -- Comments
     use {
         'terrortylor/nvim-comment',
@@ -328,7 +336,12 @@ return require('packer').startup(function(use)
     }
 
     -- Autopairs
-    use {'windwp/nvim-autopairs'}
+    use {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('_nvim-autopair')
+        end
+    }
 
     -- Theme
     use {
@@ -340,15 +353,15 @@ return require('packer').startup(function(use)
             vim.g.tokyonight_hide_inactive_statusline = true
             ---vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
 
-            -- vim.cmd([[colorscheme tokyonight]])
+            vim.cmd([[colorscheme tokyonight]])
         end
     }
 
     use {
         'navarasu/onedark.nvim',
         config = function()
-            vim.g.onedark_style = 'cool'
-            vim.cmd [[colorscheme onedark]]
+            vim.g.onedark_style = 'cool' -- deep, cool, warm, Default, dark, darker
+            -- vim.cmd [[colorscheme onedark]]
 
         end
     }
@@ -366,9 +379,20 @@ return require('packer').startup(function(use)
     --     requires = {'kyazdani42/nvim-web-devicons', opt = true}
     -- }
 
-    use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}}
+    use {
+        'hoob3rt/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons'},
+        config = function()
+            require('_lualine')
+        end
+    }
 
-    use {'crispgm/nvim-tabline'}
+    use {
+        'crispgm/nvim-tabline',
+        config = function()
+            require('_tabline')
+        end
+    }
 
     use {
         disable = true,
@@ -417,7 +441,12 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {"folke/which-key.nvim"}
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require('_which-key')
+        end
+    }
 
     use {
         'lukas-reineke/indent-blankline.nvim',
