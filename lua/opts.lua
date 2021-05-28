@@ -1,4 +1,4 @@
-local set = vim.o
+local set = vim.opt
 local setg = vim.g
 local home = os.getenv("HOME")
 
@@ -7,7 +7,7 @@ vim.g.loaclleader = "\\"
 
 -- Fuzzy finder: ignore stuff that can't be opened, and generated files
 setg.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
-set.wildignore = vim.o.wildignore .. ',' .. '*.o,*~,*.pyc,*pycache*' -- Ignore compiled files
+set.wildignore:append{"*.o", "*~", "*.pyc", "*pycache*"} -- Ignore compiled files
 set.wildignorecase = true
 set.wildmode = 'full' -- Complete the longest common string,
 set.wildoptions = 'pum' -- show wildmenu as normal autocompleting menu
@@ -70,7 +70,7 @@ set.termguicolors = true
 set.textwidth = 80
 
 -- Always have the clipboard be the same as my regular clipboard
-set.clipboard = vim.o.clipboard .. 'unnamedplus'
+set.clipboard = 'unnamedplus'
 
 -- Keep diffme function state
 vim.cmd('let $diff_me=0')
@@ -105,7 +105,7 @@ set.history = 1000
 
 set.backupskip = '/tmp/*,/private/tmp/*' -- don't back up these
 set.autoread = true -- read files on change
-set.fileformats = set.fileformats .. ',mac'
+set.fileformats:append{'mac'}
 set.binary = true
 set.eol = false
 -- set.t_Co = 16
@@ -122,7 +122,7 @@ set.printoptions = 'header:0,duplex:long,paper:letter'
 set.listchars = 'tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·'
 set.list = false
 
-set.fillchars = 'stlnc:-'
+set.fillchars = {stlnc = '-'}
 
 -- Add ignorance of whitespace to diff
 -- set.diffopt=vim.o.diffopt .. ',iwhite'
@@ -144,7 +144,7 @@ set.showtabline = 2 -- hide tabline
 -- Disable error bells
 set.errorbells = false
 set.visualbell = true
-set.t_vb = ''
+-- set.t_vb = ''
 set.startofline = false -- Dont reset cursor to start of line when moving around
 
 set.ruler = true -- Show the cursor position
@@ -154,10 +154,9 @@ set.scrolloff = 2
 set.sidescrolloff = 5
 
 set.cpo = vim.o.cpo .. 'n' -- Draw color for lines that has number only
-set.display = set.display .. ',lastline'
+set.display:append{'lastline'}
 
 -- set.mousehide = true -- Hide mouse while typing
 
 set.synmaxcol = 500 -- max syntax highlight chars
 set.foldopen = "block,hor,insert,jump,mark,percent,quickfix,search,tag,undo"
-
