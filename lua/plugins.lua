@@ -64,6 +64,13 @@ return require('packer').startup(function(use)
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
     -- }
 
+    use {
+        "steelsojka/headwind.nvim",
+        config = function()
+            require"headwind".setup {}
+        end
+    }
+
     -- HTTP
     use {
         'NTBBloodbath/rest.nvim',
@@ -346,13 +353,14 @@ return require('packer').startup(function(use)
     -- Theme
     use {
         'folke/tokyonight.nvim',
-        config = function()
+        init = function()
             vim.g.tokyonight_style = "storm"
             vim.g.tokyonight_italic_functions = true
             vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
-            vim.g.tokyonight_hide_inactive_statusline = true
+            vim.g.tokyonight_hide_inactive_statusline = false
             ---vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
-
+        end,
+        config = function()
             vim.cmd([[colorscheme tokyonight]])
         end
     }
@@ -456,6 +464,20 @@ return require('packer').startup(function(use)
                     max_file_lines = 1000 -- Do not enable for files with more than 1000 lines, int
                 }
             }
+        end
+    }
+    use {
+        "folke/zen-mode.nvim",
+        config = function()
+            require("zen-mode").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+            vim.cmd [[
+                command! ZenModeToggle :lua require("zen-mode").toggle({ window = { width = .75 }})<cr>
+                nnoremap <leader>zz <cmd>ZenModeToggle<cr>
+            ]]
         end
     }
 

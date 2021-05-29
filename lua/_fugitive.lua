@@ -8,7 +8,7 @@ vim.cmd [[
    " set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
     nnoremap <leader>gs :call FugitiveDetect(expand('%:p')) \| :Gstatus<cr>
     nnoremap <leader>g<leader> :call FugitiveDetect(getcwd()) \| :Gtabedit :<cr>
-    nnoremap <leader>gc  :call FugitiveDetect(getcwd()) \| execute ":Gut commit"<cr>
+    nnoremap <leader>gc  :call FugitiveDetect(getcwd()) \| execute ":Git commit"<cr>
     nnoremap <leader>gp  :call FugitiveDetect(getcwd()) \| execute ":Git pull"<cr>
     nnoremap <leader>gu  :call FugitiveDetect(getcwd()) \| execute ":Git push" \| echo "Pushed :)"<cr>
     nnoremap <leader>gr  :call FugitiveDetect(getcwd()) \| execute ":Gread"<cr>

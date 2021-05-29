@@ -33,8 +33,6 @@ elseif has('win64')
 endif
 
 
-" let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules,vendor}/*" --glob "!*{.jpg,png}" 2> /dev/'.s:null
-" let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!{.git,node_modules,vendor}/*" --glob "!*{.jpg,png}" 2> /dev/'.s:null
 let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules}/*" --glob "!*{.jpg,png}" 2> /dev/'.s:null
 
 command! -bang -nargs=* FZFAg call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!{.git,node_modules,vendor}/*" --color "always" '.shellescape(<q-args>) . ' 2> /dev/'.s:null, 1, <bang>0)
