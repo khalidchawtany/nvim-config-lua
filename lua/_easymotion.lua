@@ -3,7 +3,6 @@ vim.g.EasyMotion_startofline = 0
 vim.g.EasyMotion_force_csapprox = 1
 
 vim.cmd [[
-
    map s         <Plug>(easymotion-prefix)
    map s;        <Plug>(easymotion-s2)
    map ss;       <Plug>(easymotion-sn)

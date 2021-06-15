@@ -19,6 +19,12 @@ Map nox T     <Plug>(clever-f-T)
 Map nox f     <Plug>(clever-f-f)
 Map nox t     <Plug>(clever-f-t)
 
+nnoremap cc 0C
+
+
+nnoremap <leader>fp  :let @+=expand("%:p")<cr>:echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
+nnoremap <leader>fn  :let @+=expand("%:p:t")<cr>:echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
+
 nnoremap <c-w>O            :wincmd o\|tabonly\|BufOnly<cr>
 nnoremap <c-;>wo           :tabonly \| BufOnly<cr>
 

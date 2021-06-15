@@ -42,6 +42,8 @@ let g:indent_blankline_filetype_exclude = ['dashboard', 'help']
 
 let g:dashboard_default_executive ='telescope'
 
+set virtualedit=all
+
 
 autocmd User fugitive
       \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |

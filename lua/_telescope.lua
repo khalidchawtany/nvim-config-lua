@@ -1,4 +1,5 @@
 local vim = vim
+local actions = require('telescope.actions')
 vim.cmd [[
 	nnoremap <c-s><c-p> <cmd>Telescope find_files<cr>
         nnoremap <c-s>pp :execute 'Telescope find_files find_command=fd,'.expand("<cword>")<cr>
@@ -17,7 +18,7 @@ vim.api.nvim_set_keymap('n', '<c-p>gd', ":lua require('telescope.builtin').lsp_d
 -- vim.api.nvim_set_keymap('n', '<c-p>p', ":lua require('telescope.builtin').find_files{search = vim.fn.expand(\"<cword>\") }<CR>",
 --                        {noremap = true, silent = true})
 
-local actions = require('telescope.actions')
+-- in find files avoid normal mode
 
 require('telescope').setup {
     defaults = {
@@ -26,6 +27,7 @@ require('telescope').setup {
                 -- To disable a keymap, put [map] = false
                 -- So, to not map "<C-n>", just put
                 ["<c-x>"] = false,
+                -- ["<esc>"] = actions.close,
 
                 -- Otherwise, just set the mapping to the function that you want it to be.
                 ["<C-i>"] = actions.select_horizontal,

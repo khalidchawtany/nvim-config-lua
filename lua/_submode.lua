@@ -1,25 +1,20 @@
+vim.g.submode_timeout = 0
 vim.cmd [[
 
-   let g:submode_timeout=0
 
-   function WindowResized()
-       if &ft == 'fern'
-           let g:fern#drawer_width =  winwidth(0)
-       endif
-   endfunction
 
    au VimEnter * call BindSubModes()
    function! BindSubModes()
      " Window resize {{{
-       call submode#enter_with('h/l', 'n', '', '<C-w>h', '<C-w><:call WindowResized()<cr>')
-       call submode#enter_with('h/l', 'n', '', '<C-w>l', '<C-w>>:call WindowResized()<cr>')
-       call submode#map('h/l', 'n', '', 'h', '<C-w><:call WindowResized()<cr>')
+       call submode#enter_with('h/l', 'n', '', '<C-w>h', '<C-w><<cr>')
+       call submode#enter_with('h/l', 'n', '', '<C-w>l', '<C-w>><cr>')
+       call submode#map('h/l', 'n', '', 'h', '<C-w><<cr>')
        " call submode#map('h/l', 'n', '', 'l', '<C-w>>')
-       call submode#map('h/l', 'n', '', 'l', '<C-w>>:call WindowResized()<cr>')
-       call submode#enter_with('j/k', 'n', '', '<C-w>j', '<C-w>-:call WindowResized()<cr>')
-       call submode#enter_with('j/k', 'n', '', '<C-w>k', '<C-w>+:call WindowResized()<cr>')
-       call submode#map('j/k', 'n', '', 'j', '<C-w>-:call WindowResized()<cr>')
-       call submode#map('j/k', 'n', '', 'k', '<C-w>+:call WindowResized()<cr>')
+       call submode#map('h/l', 'n', '', 'l', '<C-w>><cr>')
+       call submode#enter_with('j/k', 'n', '', '<C-w>j', '<C-w>-<cr>')
+       call submode#enter_with('j/k', 'n', '', '<C-w>k', '<C-w>+<cr>')
+       call submode#map('j/k', 'n', '', 'j', '<C-w>-<cr>')
+       call submode#map('j/k', 'n', '', 'k', '<C-w>+<cr>')
      "}}} _Window resize
      " horizontal navigation {{{
        call submode#enter_with('H-Scroll', 'n', '', 'zl', 'zl')

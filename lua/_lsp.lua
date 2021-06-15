@@ -118,7 +118,7 @@ require'lspconfig'.phpactor.setup {}
 
 require"lspconfig".efm.setup {
     init_options = {documentFormatting = true},
-    filetypes = {"lua"},
+    filetypes = {"lua", "html"},
     settings = {
         rootMarkers = {".git/"},
         languages = {
@@ -127,7 +127,8 @@ require"lspconfig".efm.setup {
                     formatCommand = "lua-format -i --no-keep-simple-function-one-line --no-break-after-operator --column-limit=150 --break-after-table-lb",
                     formatStdin = true
                 }
-            }
+            },
+            html = {{formatCommand = "prettier --tab-width 2 --stdin-filepath ${INPUT}", formatStdin = true}}
         }
     }
 }

@@ -1,10 +1,34 @@
+function table.removekey(table, key)
+    local element = table[key]
+    table[key] = nil
+    return element
+end
+
+function _G.dump(...)
+    local objects = vim.tbl_map(vim.inspect, {...})
+    print(unpack(objects))
+end
+
 return require('packer').startup(function(use)
     local ouse = use
     use = function(plug)
-        if type(plug) == 'table' and #plug >= 1 and plug['init'] ~= nil then
-            if type(plug['init']) == 'function' then plug['init'] {} end
-            if type(plug['init']) == 'string' then require(plug['init']) end
+        if type(plug) == 'table' and #plug >= 1 then
+            local init = plug['init']
+            if init ~= nil then
+                if type(init) == 'function' then init {} end
+                if type(init) == 'string' then require(init) end
+            end
+
+            local config = plug['config']
+            if config ~= nil then
+                if type(config) == 'string' then
+                    require(config)
+                    table.removekey(plug, 'config')
+                    -- dump(plug)
+                end
+            end
         end
+
         ouse(plug)
     end
 
@@ -58,8 +82,9 @@ return require('packer').startup(function(use)
     }
     -- }
 
-    use {'Lokaltog/vim-easymotion', keys = {'<Plug>(easymotion-', 's'}, init = '_easymotion'}
-    use {'aykamko/vim-easymotion-segments', keys = {'<Plug>(easymotion-'}}
+    use {'Lokaltog/vim-easymotion', init = '_easymotion'}
+
+    use {'aykamko/vim-easymotion-segments', requires = {'Lokaltog/vim-easymotion'}}
 
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
     -- }
@@ -120,6 +145,8 @@ return require('packer').startup(function(use)
     use 'kabouzeid/nvim-lspinstall'
     use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
     use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
+
+    require'navigator'.setup()
 
     use {
         'simrat39/symbols-outline.nvim',
@@ -190,6 +217,8 @@ return require('packer').startup(function(use)
     use {'vim-scripts/UnconditionalPaste', keys = {'<Plug>UnconditionalPaste'}, init = '_unconditional-paste'}
     -- }
 
+    use {'mizlan/iswap.nvim', config = '_iswap'}
+
     -- Snippets
     use {'norcalli/snippets.nvim', init = '_snippets-nvim'}
     use 'hrsh7th/vim-vsnip'
@@ -238,6 +267,16 @@ return require('packer').startup(function(use)
 
     use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}, init = '_nvim-tree'}
 
+    use 'mcchrish/nnn.vim'
+    vim.cmd [[
+        let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
+        let g:nnn#session = 'global'
+
+        let g:nnn#set_default_mappings = 0
+
+        let g:nnn#action = { '<c-t>': 'tab split', '<c-x>': 'split', '<c-v>': 'vsplit' }
+            ]]
+
     use {
         'nvim-lua/telescope.nvim',
         requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-fzy-native.nvim'},
@@ -277,6 +316,16 @@ return require('packer').startup(function(use)
             vim.cmd [[ nnoremap <c-p>o <cmd>Tree<cr> ]]
         end
     }
+
+    use {'justinmk/vim-gtfo', keys = {'gof', 'got', 'goF', 'goT'}}
+    vim.cmd [[
+        let g:gtfo#terminals = { 'mac' : 'iterm' }
+        nnoremap <silent> gof :<c-u>call gtfo#open#file("%:p")<cr>
+        nnoremap <silent> got :<c-u>call gtfo#open#term("%:p:h", "")<cr>
+        nnoremap <silent> goF :<c-u>call gtfo#open#file(getcwd())<cr>
+        nnoremap <silent> goT :<c-u>call gtfo#open#term(getcwd(), "")<cr>
+    ]]
+
     -- augroup BufferTreeAuGroup
     -- au!
     -- au BufWinEnter BufferTree :silent unmap <buffer> j<cr>
@@ -316,13 +365,14 @@ return require('packer').startup(function(use)
 
     -- multiple cursor
     use {
-        'terryma/vim-multiple-cursors',
+        'mg979/vim-visual-multi',
+        branch = 'master',
         config = function()
-            vim.g.multi_cursor_use_default_mapping = 0
-            vim.g.multi_cursor_next_key = '<C-n>'
-            vim.g.multi_cursor_prev_key = '<C-p>'
-            vim.g.multi_cursor_skip_key = '<C-x>'
-            vim.g.multi_cursor_quit_key = '<Esc>'
+            -- vim.g.multi_cursor_use_default_mapping = 0
+            -- vim.g.multi_cursor_next_key = '<C-n>'
+            -- vim.g.multi_cursor_prev_key = '<C-p>'
+            -- vim.g.multi_cursor_skip_key = '<C-x>'
+            -- vim.g.multi_cursor_quit_key = '<Esc>'
         end
     }
 
@@ -380,9 +430,9 @@ return require('packer').startup(function(use)
     --     'glepnir/galaxyline.nvim',
     --     branch = 'main',
     --     -- your statusline
-    --     config = function()
-    --         require '_galaxyline'
-    --     end,
+    --     -- config = function()
+    --     --     require '_galaxyline'
+    --     -- end,
     --     -- some optional icons
     --     requires = {'kyazdani42/nvim-web-devicons', opt = true}
     -- }
@@ -475,8 +525,8 @@ return require('packer').startup(function(use)
                 -- refer to the configuration section below
             }
             vim.cmd [[
-                command! ZenModeToggle :lua require("zen-mode").toggle({ window = { width = .75 }})<cr>
-                nnoremap <leader>zz <cmd>ZenModeToggle<cr>
+                command! ZenModeToggle :lua require("zen-mode").toggle({ window = { width = .70 }})<cr>
+                nnoremap <leader>zn <cmd>ZenModeToggle<cr>
             ]]
         end
     }
@@ -485,6 +535,8 @@ return require('packer').startup(function(use)
         'kdav5758/TrueZen.nvim',
         config = function()
             local true_zen = require("true-zen")
+
+            vim.cmd [[nnoremap <leader>zz <cmd>TZAtaraxis<cr>]]
 
             -- setup for TrueZen.nvim
             true_zen.setup({
@@ -516,8 +568,8 @@ return require('packer').startup(function(use)
                 ataraxis = {
                     ideal_writing_area_width = 0,
                     just_do_it_for_me = false,
-                    left_padding = 40,
-                    right_padding = 40,
+                    left_padding = 30,
+                    right_padding = 0,
                     top_padding = 0,
                     bottom_padding = 0,
                     custome_bg = "",
@@ -560,11 +612,6 @@ return require('packer').startup(function(use)
     -- Global remapping
     ------------------------------
     require('telescope').setup {defaults = {}}
-
-    function _G.dump(...)
-        local objects = vim.tbl_map(vim.inspect, {...})
-        print(unpack(objects))
-    end
 
 end)
 

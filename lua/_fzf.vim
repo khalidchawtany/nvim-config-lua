@@ -47,7 +47,7 @@ nnoremap <silent> <c-p>j :FzfAg <C-R><C-W><CR>
 
 " only show MRU files from within your cwd
 let g:fzf_mru_relative = 1
-nnoremap <c-p><c-u> :FZFMru<cr>
+nnoremap <c-p><c-u> :FzfHistory<cr>
 nnoremap <c-p>u     :execute "FZFMru " expand('<cword>')<cr>
 " to enable found references displayed in fzf
 let g:LanguageClient_selectionUI = 'fzf'
@@ -209,8 +209,9 @@ let g:fzf_action = {
 command! FZFMru call fzf#run({
       \ 'source':  reverse(s:all_files()),
       \ 'sink':    'edit',
-      \ 'options': ' --reverse -m --no-sort -x',
-      \ 'down':    '40%' })
+      \ 'options': '--no-sort -x',
+      \ 'window': { 'width': 0.9, 'height': 0.7 } })
+      " \ 'options': ' --reverse -m --no-sort -x',
 
 function! s:all_files()
   return extend(
