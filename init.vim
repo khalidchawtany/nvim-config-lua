@@ -33,6 +33,7 @@ set termencoding=utf-8
 " 
 lua require('opts')
 source ~/.config/nvim/func.vim
+
 lua require('plugins')
 lua require('_lsp')
 "lua require('_completion-nvim')

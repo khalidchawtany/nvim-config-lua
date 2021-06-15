@@ -1,69 +1,16 @@
-function table.removekey(table, key)
-    local element = table[key]
-    table[key] = nil
-    return element
-end
-
-function _G.dump(...)
-    local objects = vim.tbl_map(vim.inspect, {...})
-    print(unpack(objects))
-end
+package.path = package.path .. ';/Users/juju/.config/nvim/lua'
+local fun = require('functions')
 
 return require('packer').startup(function(use)
-    local ouse = use
-    use = function(plug)
-        if type(plug) == 'table' and #plug >= 1 then
-            local init = plug['init']
-            if init ~= nil then
-                if type(init) == 'function' then init {} end
-                if type(init) == 'string' then
-                    local req = require(init)
-                    if type(req) == 'table' then
-
-                        if type(req.init) == 'function' then req.init() end
-
-                        if type(req.config) == 'function' then plug['config'] = req.config end
-                    end
-                end
-            end
-
-            local config = plug['config']
-            if config ~= nil then
-                if type(config) == 'string' then
-                    require(config)
-                    table.removekey(plug, 'config')
-                    -- dump(plug)
-                end
-            end
-        end
-
-        ouse(plug)
-    end
+    -- setup use() to replace packer_use()
+    fun.setPackerUse(use)
+    use = fun.use
 
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
     -- { Dashboard
-    use {
-        'glepnir/dashboard-nvim',
-        config = function()
-            vim.cmd [[ let g:dashboard_default_executive ='telescope'  ]]
-            -- vim.g.dashboard_custom_section = {
-            --     buffer_list = {
-            --         description = {'? Recently lase session                 SPC b b'},
-            --         command = 'Some Command or function(your funciton name)'
-            --     }}
-            vim.g.dashboard_custom_shortcut = {
-                last_session = 'SPC s l',
-                find_history = 'SPC f h',
-                find_file = 'SPC f f',
-                new_file = 'SPC c n',
-                change_colorscheme = 'SPC t c',
-                find_word = 'SPC f a',
-                book_marks = 'SPC f b'
-            }
-        end
-    }
+    use {'glepnir/dashboard-nvim', init = '_dashboard'}
     -- }
 
     -- { Tutorials and Easymotion
@@ -72,24 +19,7 @@ return require('packer').startup(function(use)
     use {'ggandor/lightspeed.nvim', init = "_lightspeed"}
 
     -- { Hop
-    use {
-        'phaazon/hop.nvim',
-        as = 'hop',
-        config = function()
-            -- you can configure Hop the way you like here; see :h hop-config
-            require'hop'.setup {keys = 'etovxqpdygfblzhckisuran'}
-            -- vim.api.nvim_set_keymap('n', '$', "<cmd>lua require'hop'.hint_words()<cr>", {})
-            vim.cmd [[
-            nnoremap <leader>sw <cmd>HopWord<cr>
-
-            nnoremap <leader>s<leader> <cmd>HopPattern<cr>
-            nnoremap <leader>ss <cmd>HopChar1<cr>
-            nnoremap <leader>sf <cmd>HopChar2<cr>
-
-            nnoremap <leader>sj <cmd>HopLine<cr>
-            ]]
-        end
-    }
+    use {'phaazon/hop.nvim', as = 'hop', init = '_hop'}
     -- }
 
     use {'Lokaltog/vim-easymotion', init = '_easymotion'}
@@ -99,22 +29,10 @@ return require('packer').startup(function(use)
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
     -- }
 
-    use {
-        "steelsojka/headwind.nvim",
-        config = function()
-            require"headwind".setup {}
-        end
-    }
+    use {"steelsojka/headwind.nvim"}
 
     -- HTTP
-    use {
-        'NTBBloodbath/rest.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
-        keys = {'<Plug>RestNvim'},
-        config = function()
-            vim.cmd [[nmap <leader>ht <Plug>RestNvim]]
-        end
-    }
+    use {'NTBBloodbath/rest.nvim', requires = {'nvim-lua/plenary.nvim'}, keys = {'<Plug>RestNvim'}}
 
     -- Utilities
 
@@ -147,19 +65,7 @@ return require('packer').startup(function(use)
 
     use 'gioele/vim-autoswap'
 
-    use {
-        'lyokha/vim-xkbswitch',
-        config = function()
-            if vim.fn.has('mac') then
-                -- using https://github.com/vovkasm/input-source-switcher
-                vim.g.XkbSwitchLib = '/Users/juju/Development/Applications/input-source-switcher/build/libInputSourceSwitcher.dylib'
-            elseif vim.fn.has('win') then
-                vim.g.XkbSwitchLib = 'C:\\Development\\libxkbswitch64.dll'
-                vim.g.XkbSwitchIMappingsTrData = 'C:\\Development\\charmap.txt'
-            end
-            vim.g.XkbSwitchEnabled = 1
-        end
-    }
+    use {'lyokha/vim-xkbswitch', init = '_xkbswitch'}
 
     -- LSP
     use 'neovim/nvim-lspconfig'
@@ -183,29 +89,7 @@ return require('packer').startup(function(use)
     -- { Completion
     use {'nvim-lua/completion-nvim', disable = true}
 
-    use {
-        'hrsh7th/nvim-compe',
-        config = function()
-            require'compe'.setup {
-                enabled = true,
-                autocomplete = true,
-                debug = false,
-                min_length = 1,
-                preselect = 'enable',
-                throttle_time = 80,
-                source_timeout = 200,
-                incomplete_delay = 400,
-                max_abbr_width = 100,
-                max_kind_width = 100,
-                max_menu_width = 100,
-                documentation = true,
-
-                source = {path = true, buffer = true, calc = true, nvim_lsp = true, nvim_lua = true, vsnip = false, ultisnips = true}
-            }
-            vim.cmd [[ highlight link CompeDocumentation NormalFloat ]]
-
-        end
-    }
+    use {'hrsh7th/nvim-compe', init = '_nvim-compe'}
     -- }
 
     -- { miniyank

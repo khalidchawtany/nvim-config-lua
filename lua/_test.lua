@@ -1,12 +1,7 @@
-local M = {}
+local tbl = {'wbthomason/packer.nvim', k = 1}
 
-M.init = function()
-    dump("Init is running ")
-end
+local pluginName = tbl[1]
+local pluginNameSepIndex = string.find(pluginName, '/')
+pluginName = string.sub(pluginName, pluginNameSepIndex + 1)
 
-M.config = function()
-    dump("Config is running")
-
-end
-
-return M
+dump(pluginName)
