@@ -35,7 +35,7 @@ lua require('opts')
 source ~/.config/nvim/func.vim
 
 lua require('plugins')
-lua require('_lsp')
+lua require('configs/lspconfig')
 "lua require('_completion-nvim')
 source ~/.config/nvim/lua/maps.vim
 

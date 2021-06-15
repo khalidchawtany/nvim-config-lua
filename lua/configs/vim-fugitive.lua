@@ -1,4 +1,7 @@
-vim.cmd [[
+local M = {}
+M.init = function()
+
+    vim.cmd [[
    autocmd BufReadPost fugitive://* set bufhidden=delete
 
    " autocmd BufEnter * if &ft=="fugitive" | call feedkeys("o") | endif
@@ -21,3 +24,7 @@ vim.cmd [[
    " nnoremap gdh :diffget //2<CR>
    " nnoremap gdl :diffget //3<CR>
 ]]
+
+end
+
+return M

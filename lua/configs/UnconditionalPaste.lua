@@ -1,4 +1,8 @@
-vim.cmd [[
+local M = {keys = {'<Plug>UnconditionalPaste'}}
+
+M.init = function()
+
+    vim.cmd [[
     Map n gPP  <Plug>UnconditionalPasteGPlusBefore
     Map n gPp  <Plug>UnconditionalPasteGPlusAfter
     Map n gpP  <Plug>UnconditionalPastePlusBefore
@@ -44,3 +48,4 @@ vim.cmd [[
     Map n gcP  <Plug>UnconditionalPasteCharBefore
     Map n gcp  <Plug>UnconditionalPasteCharAfter
     ]]
+end

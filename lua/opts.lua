@@ -5,6 +5,10 @@ local home = os.getenv("HOME")
 vim.g.mapleader = " "
 vim.g.loaclleader = "\\"
 
+-- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Fuzzy finder: ignore stuff that can't be opened, and generated files
 setg.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 set.wildignore:append{"*.o", "*~", "*.pyc", "*pycache*"} -- Ignore compiled files

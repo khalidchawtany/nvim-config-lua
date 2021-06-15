@@ -1,12 +1,16 @@
-local dap = require('dap')
-dap.adapters.php = {type = 'executable', command = 'node', args = {'/Users/juju/.local/share/nvim/debuggers/vscode-php-debug/out/phpDebug.js'}}
+local M = {}
 
-dap.configurations.php = {{type = 'php', request = 'launch', name = 'Listen for Xdebug', server = '127.0.0.1', port = 9003}}
+M.config = function()
 
-vim.fn.sign_define('DapBreakpoint', {text = '🟥', texthl = '', linehl = '', numhl = ''})
-vim.fn.sign_define('DapStopped', {text = '⭐️', texthl = '', linehl = '', numhl = ''})
+    local dap = require('dap')
+    dap.adapters.php = {type = 'executable', command = 'node', args = {'/Users/juju/.local/share/nvim/debuggers/vscode-php-debug/out/phpDebug.js'}}
 
-vim.cmd [[
+    dap.configurations.php = {{type = 'php', request = 'launch', name = 'Listen for Xdebug', server = '127.0.0.1', port = 9003}}
+
+    vim.fn.sign_define('DapBreakpoint', {text = '🟥', texthl = '', linehl = '', numhl = ''})
+    vim.fn.sign_define('DapStopped', {text = '⭐️', texthl = '', linehl = '', numhl = ''})
+
+    vim.cmd [[
     nnoremap <leader>dh :lua require'dap'.toggle_breakpoint()<CR>
     nnoremap <S-k> :lua require'dap'.step_out()<CR>
     nnoremap <S-l> :lua require'dap'.step_into()<CR>
@@ -37,9 +41,12 @@ vim.cmd [[
     nnoremap <leader>dq :lua require("dapui").toggle()<CR>
 ]]
 
-require('telescope').setup()
-require('telescope').load_extension('dap')
-require("dapui").setup()
+    require('telescope').setup()
+    require('telescope').load_extension('dap')
+    require("dapui").setup()
 
-vim.g.dap_virtual_text = true
+    vim.g.dap_virtual_text = true
 
+end
+
+return M

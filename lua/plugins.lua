@@ -9,23 +9,14 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- { Dashboard
-    use {'glepnir/dashboard-nvim', init = '_dashboard'}
-    -- }
+    use {'glepnir/dashboard-nvim'}
 
     -- { Tutorials and Easymotion
     use 'tjdevries/train.nvim'
-
-    use {'ggandor/lightspeed.nvim', init = "_lightspeed"}
-
-    -- { Hop
-    use {'phaazon/hop.nvim', as = 'hop', init = '_hop'}
-    -- }
-
-    use {'Lokaltog/vim-easymotion', init = '_easymotion'}
-
+    use 'ggandor/lightspeed.nvim'
+    use 'phaazon/hop.nvim'
+    use {'Lokaltog/vim-easymotion'}
     use {'aykamko/vim-easymotion-segments', requires = {'Lokaltog/vim-easymotion'}}
-
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
     -- }
 
@@ -35,27 +26,10 @@ return require('packer').startup(function(use)
     use {'NTBBloodbath/rest.nvim', requires = {'nvim-lua/plenary.nvim'}, keys = {'<Plug>RestNvim'}}
 
     -- Utilities
-
-    use {
-        'mfussenegger/nvim-dap',
-        config = function()
-            -- require('_dap')
-        end
-    }
-
-    use 'nvim-telescope/telescope-dap.nvim'
-    use 'theHamsta/nvim-dap-virtual-text'
-    use 'rcarriga/nvim-dap-ui'
-
-    use {'tyru/capture.vim', cmd = {'Capture'}}
-
-    use 'svermeulen/vimpeccable'
-
-    use {'khalidchawtany/vim-submode', init = '_submode'}
-    use "kevinhwang91/nvim-bqf"
-
     use 'kopischke/vim-stay'
-
+    use 'gioele/vim-autoswap'
+    use 'lyokha/vim-xkbswitch'
+    use {'tyru/capture.vim', cmd = {'Capture'}}
     use {
         'tpope/vim-sleuth',
         config = function()
@@ -63,137 +37,61 @@ return require('packer').startup(function(use)
         end
     }
 
-    use 'gioele/vim-autoswap'
+    -- mappings and submodes
+    use 'svermeulen/vimpeccable'
+    use 'khalidchawtany/vim-submode'
 
-    use {'lyokha/vim-xkbswitch', init = '_xkbswitch'}
+    -- debuggers
+    use 'mfussenegger/nvim-dap'
+    use 'nvim-telescope/telescope-dap.nvim'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'rcarriga/nvim-dap-ui'
+
+    use 'kevinhwang91/nvim-bqf'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
-    use {'ray-x/navigator.lua', requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
+    use {'ray-x/navigator.lua'}
     use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
 
-    require'navigator'.setup()
-
-    use {
-        'simrat39/symbols-outline.nvim',
-        -- cmd = {'SymbolsOutline', 'SymbolsOutlineOpen'},
-        init = '_symbols-outline'
-    }
+    use 'simrat39/symbols-outline.nvim'
 
     -- Treesitter
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', init = '_treesitter'}
+    use 'nvim-treesitter/nvim-treesitter'
     use 'nvim-treesitter/nvim-treesitter-refactor'
     use 'nvim-treesitter/nvim-treesitter-textobjects'
 
-    -- { Completion
-    use {'nvim-lua/completion-nvim', disable = true}
+    -- Completion
+    use 'hrsh7th/nvim-compe'
 
-    use {'hrsh7th/nvim-compe', init = '_nvim-compe'}
-    -- }
-
-    -- { miniyank
-    use {
-        'bfredl/nvim-miniyank',
-        config = function()
-
-            vim.g.miniyank_filename = "/Users/" .. vim.fn.expand('$USER') .. "/.local/share/nvim/cache/miniyank.mpack"
-
-            vim.g.miniyank_maxitems = 1000
-
-            vim.cmd [[
-              map p <Plug>(miniyank-autoput)
-              map P <Plug>(miniyank-autoPut)
-              map [p <Plug>(miniyank-cycle)
-
-              map ]p <Plug>(miniyank-startput)
-              map ]P <Plug>(miniyank-startPut)
-
-              map <Leader>mc <Plug>(miniyank-tochar)
-              map <Leader>ml <Plug>(miniyank-toline)
-              map <Leader>mb <Plug>(miniyank-toblock)
-              ]]
-
-        end
-    }
-    -- }
-
-    -- { UnconditionalPaste
-    use {'vim-scripts/UnconditionalPaste', keys = {'<Plug>UnconditionalPaste'}, init = '_unconditional-paste'}
-    -- }
-
-    use {'mizlan/iswap.nvim', config = '_iswap'}
+    -- Clipboard
+    use 'bfredl/nvim-miniyank'
+    use 'vim-scripts/UnconditionalPaste'
 
     -- Snippets
-    use {'norcalli/snippets.nvim', init = '_snippets-nvim'}
+    use 'norcalli/snippets.nvim'
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/vim-vsnip-integ'
 
-    use {
-        'drmingdrmer/xptemplate',
-        -- event = {'VimEnter'},
-        config = function()
-            vim.cmd [[set runtimepath+=/Users/juju/.config/nvim/xpt-personal]]
-            vim.g.xptemplate_key = '<c-\\>'
-            vim.g.xptemplate_nav_next = '<C-j>'
-            vim.g.xptemplate_nav_prev = '<C-k>'
-        end
-    }
-
-    use {
-        'SirVer/ultisnips',
-        -- keys = {'<c-cr>'},
-        -- cmd = {'UltiSnipsEdit'},
-        config = function()
-            -- vim.cmd [[call UltiSnips#FileTypeChanged()]]
-
-            -- vim.cmd [[au VimEnter * au! UltiSnipsFileType]]
-
-            vim.g.UltiSnipsEnableSnipMate = 0
-            vim.g.UltiSnipsExpandTrigger = "<c-cr>"
-            vim.g.UltiSnipsJumpForwardTrigger = "<c-cr>"
-            vim.g.UltiSnipsJumpBackwardTrigger = "<M-cr>"
-
-            vim.g.ultisnips_java_brace_style = "nl"
-            vim.g.Ultisnips_java_brace_style = "nl"
-            vim.g.UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
-            -- vim.g.UltiSnipsSnippetDirectories = [ "/Volumes/Home/.config/nvim/plugged/vim-snippets/UltiSnips"]
-        end
-
-    }
+    use 'drmingdrmer/xptemplate'
+    use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
     -- au filetype php set iskeyword+=$
 
-    use {'junegunn/vim-easy-align', cmd = {'EasyAlign'}, keys = {{'v', '<cr>'}}, init = '_easyalign'}
+    use 'mizlan/iswap.nvim'
+    use 'junegunn/vim-easy-align'
 
     -- File Browser  And Navigation
-
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-
-    use {'tamago324/lir.nvim', requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}, init = '_lir'}
+    use 'tamago324/lir.nvim'
     use {'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'}}
 
-    use {'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}, init = '_nvim-tree'}
+    use 'kyazdani42/nvim-tree.lua'
 
     use 'mcchrish/nnn.vim'
-    vim.cmd [[
-        let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
-        let g:nnn#session = 'global'
 
-        let g:nnn#set_default_mappings = 0
-
-        let g:nnn#action = { '<c-t>': 'tab split', '<c-x>': 'split', '<c-v>': 'vsplit' }
-            ]]
-
-    use {
-        'nvim-lua/telescope.nvim',
-        requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-fzy-native.nvim'},
-        init = '_telescope'
-    }
-
+    use 'nvim-lua/telescope.nvim'
     use {'nvim-telescope/telescope-project.nvim', requires = {'nvim-lua/telescope.nvim'}}
-
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
     -- use {'junegunn/fzf', dir = '~/.fzf', run = '/Users/juju/.local/share/nvim/site/pack/packer/start/fzf/install --all'}
@@ -204,10 +102,9 @@ return require('packer').startup(function(use)
             vim.cmd [[source ~/.config/nvim/lua/_fzf.vim]]
         end
     }
-
     use 'pbogut/fzf-mru.vim'
 
-    use {'el-iot/buffer-tree-explorer', cmd = {'Tree'}, init = '_buffer-tree'}
+    use 'el-iot/buffer-tree-explorer'
 
     use {'justinmk/vim-gtfo', keys = {'gof', 'got', 'goF', 'goT'}}
     vim.cmd [[
@@ -225,29 +122,17 @@ return require('packer').startup(function(use)
     -- augroup END
 
     -- Git
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = {'nvim-lua/plenary.nvim'},
-        config = function()
-            require('gitsigns').setup()
-        end
-    }
+    use 'lewis6991/gitsigns.nvim'
 
-    use {'tpope/vim-fugitive', init = '_fugitive'}
+    use 'tpope/vim-fugitive'
 
-    use {'junegunn/gv.vim', cmd = {'GV'}}
-    vim.cmd [[ nnoremap  <leader>gl :GV<cr>]]
+    use 'junegunn/gv.vim'
 
-    use {'gregsexton/gitv', cmd = {'Gitv'}}
-    vim.cmd [[nnoremap <leader>gv :Gitv<cr>]]
+    use 'gregsexton/gitv'
 
     use 'tpope/vim-unimpaired'
 
-    use {
-        'tpope/vim-abolish',
-        cmd = {'S', 'Subvert', 'Abolish'},
-        keys = {'<Plug>(abolish_coerce_word)', '<Plug>(abolish-coerce)', 'crs', 'crm', 'crc', 'cru', 'cr-', 'cr.', 'cr<space>'}
-    }
+    use 'tpope/vim-abolish'
 
     use 'machakann/vim-sandwich'
 
@@ -271,26 +156,10 @@ return require('packer').startup(function(use)
     use {'gabesoft/vim-ags', cmd = {'Ags'}}
 
     -- Comments
-    use {
-        'terrortylor/nvim-comment',
-        config = function()
-            require('nvim_comment').setup({
-                -- Linters prefer comment and line to have a space in between markers
-                marker_padding = true,
-                -- should comment out empty or whitespace only lines
-                comment_empty = true,
-                -- Should key mappings be created
-                create_mappings = true,
-                -- Normal mode mapping left hand side
-                line_mapping = "<leader>cc",
-                -- Visual/Operator mapping left hand side
-                operator_mapping = "<leader>c"
-            })
-        end
-    }
+    use 'terrortylor/nvim-comment'
 
     -- Autopairs
-    use {'windwp/nvim-autopairs', init = '_nvim-autopair'}
+    use 'windwp/nvim-autopairs'
 
     -- Theme
     use {
@@ -318,25 +187,14 @@ return require('packer').startup(function(use)
 
     use 'drewtempelmeyer/palenight.vim'
 
-    -- use {
-    --     'glepnir/galaxyline.nvim',
-    --     branch = 'main',
-    --     -- your statusline
-    --     -- config = function()
-    --     --     require '_galaxyline'
-    --     -- end,
-    --     -- some optional icons
-    --     requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    -- }
+    use 'hoob3rt/lualine.nvim'
 
-    use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons'}, init = '_lualine'}
-
-    use {'crispgm/nvim-tabline', init = '_tabline'}
+    use 'crispgm/nvim-tabline'
 
     use {
+        'romgrk/barbar.nvim',
         disable = true,
         opt = true,
-        'romgrk/barbar.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
         config = function()
 
@@ -380,21 +238,9 @@ return require('packer').startup(function(use)
         end
     }
 
-    use {"folke/which-key.nvim", init = '_which-key'}
+    use "folke/which-key.nvim"
 
-    use {
-        'lukas-reineke/indent-blankline.nvim',
-        branch = 'lua',
-        config = function()
-            vim.g.indent_blankline_use_treesitter = true
-            vim.g.indent_blankline_show_first_indent_level = false
-            vim.g.indent_blankline_char = '│'
-
-            vim.g.indent_blankline_show_current_context = true
-            -- vim.cmd [[ let g:indent_blankline_show_current_context=v:true ]]
-            vim.g.indent_blankline_context_highlight_list = {'Identifier'}
-        end
-    }
+    use 'lukas-reineke/indent-blankline.nvim'
 
     use {
         'p00f/nvim-ts-rainbow',

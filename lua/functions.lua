@@ -70,6 +70,11 @@ M.use = function(plug)
         if type(plugConfFile) == 'table' then
             if type(plugConfFile.init) == 'function' then plugConfFile.init() end
             if type(plugConfFile.config) == 'function' then plugConfFile['config'] = plugConfFile.config end
+
+            -- override keys in the plug with config files
+            if type(plug) == 'string' then plug = {plug} end
+            for k, v in pairs(plugConfFile) do plug[k] = v end
+
         end
     end
 

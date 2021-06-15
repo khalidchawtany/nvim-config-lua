@@ -1,3 +1,10 @@
+local M = {requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
+
+M.config = function()
+    require'navigator'.setup()
+end
+
+return M
 -- Default keymaps
 -- mode	key	function
 -- n	gr	show reference and context

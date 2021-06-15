@@ -1,5 +1,8 @@
-vim.g.submode_timeout = 0
-vim.cmd [[
+local M = {}
+M.init = function()
+
+    vim.g.submode_timeout = 0
+    vim.cmd [[
 
 
 
@@ -105,3 +108,6 @@ vim.cmd [[
   endfunction
 
 ]]
+end
+
+return M

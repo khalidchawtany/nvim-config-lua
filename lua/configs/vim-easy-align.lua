@@ -1,6 +1,10 @@
--- Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vim.g.easy_align_ignore_comment = 0 -- align comments
-vim.cmd [[
+local M = {cmd = {'EasyAlign'}, keys = {{'v', '<cr>'}}}
+
+M.init = function()
+
+    -- Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+    vim.g.easy_align_ignore_comment = 0 -- align comments
+    vim.cmd [[
         vmap <Enter> <Plug>(EasyAlign)
 
         " Start interactive EasyAlign for a motion/text object (e.g. gaip)
@@ -8,3 +12,6 @@ vim.cmd [[
 
         nmap g<cr> <Plug>(EasyAlign)
       ]]
+end
+
+return M

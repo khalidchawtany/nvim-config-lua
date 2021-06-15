@@ -1,4 +1,4 @@
-local M = {}
+local M = {as = 'hop'}
 M.config = function()
 
     -- you can configure Hop the way you like here; see :h hop-config
