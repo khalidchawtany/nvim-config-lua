@@ -61,8 +61,14 @@ require'lir.bookmark'.setup {
         ['<C-t>'] = b_actions.tabedit,
         ['<C-e>'] = b_actions.open_lir,
         ['B'] = b_actions.open_lir,
-        ['q'] = b_actions.open_lir
-    }
+        ['q'] = b_actions.open_lir,
+        ['<C-Space>'] = function()
+            mark_actions.toggle_mark()
+            vim.cmd('normal! j')
+        end
+    },
+
+    float = {size_percentage = 0.5, winblend = 15, border = false, shadow = false}
 }
 
 -- use visual mode

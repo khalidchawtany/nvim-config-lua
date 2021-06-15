@@ -16,7 +16,15 @@ return require('packer').startup(function(use)
             local init = plug['init']
             if init ~= nil then
                 if type(init) == 'function' then init {} end
-                if type(init) == 'string' then require(init) end
+                if type(init) == 'string' then
+                    local req = require(init)
+                    if type(req) == 'table' then
+
+                        if type(req.init) == 'function' then req.init() end
+
+                        if type(req.config) == 'function' then plug['config'] = req.config end
+                    end
+                end
             end
 
             local config = plug['config']
@@ -60,6 +68,8 @@ return require('packer').startup(function(use)
 
     -- { Tutorials and Easymotion
     use 'tjdevries/train.nvim'
+
+    use {'ggandor/lightspeed.nvim', init = "_lightspeed"}
 
     -- { Hop
     use {
@@ -107,6 +117,17 @@ return require('packer').startup(function(use)
     }
 
     -- Utilities
+
+    use {
+        'mfussenegger/nvim-dap',
+        config = function()
+            -- require('_dap')
+        end
+    }
+
+    use 'nvim-telescope/telescope-dap.nvim'
+    use 'theHamsta/nvim-dap-virtual-text'
+    use 'rcarriga/nvim-dap-ui'
 
     use {'tyru/capture.vim', cmd = {'Capture'}}
 
@@ -262,6 +283,10 @@ return require('packer').startup(function(use)
     use {'junegunn/vim-easy-align', cmd = {'EasyAlign'}, keys = {{'v', '<cr>'}}, init = '_easyalign'}
 
     -- File Browser  And Navigation
+
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
     use {'tamago324/lir.nvim', requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}, init = '_lir'}
     use {'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'}}
 
@@ -298,24 +323,7 @@ return require('packer').startup(function(use)
 
     use 'pbogut/fzf-mru.vim'
 
-    use {
-        'yuki-ycino/fzf-preview.vim',
-        cmd = {
-            'FzfPreviewProjectFiles', 'FzfPreviewGitFiles', 'FzfPreviewDirectoryFiles', 'FzfPreviewGitStatus', 'FzfPreviewBuffers',
-            'FzfPreviewProjectOldFiles', 'FzfPreviewProjectMruFiles', 'FzfPreviewProjectGrep', 'FzfPreviewOldFiles', 'FzfPreviewMruFiles',
-            'FzfPreviewFromResources'
-        }
-
-    }
-
-    use {
-        'el-iot/buffer-tree-explorer',
-        cmd = {'Tree'},
-        config = function()
-            vim.g.buffer_tree_explorer_compress = 1
-            vim.cmd [[ nnoremap <c-p>o <cmd>Tree<cr> ]]
-        end
-    }
+    use {'el-iot/buffer-tree-explorer', cmd = {'Tree'}, init = '_buffer-tree'}
 
     use {'justinmk/vim-gtfo', keys = {'gof', 'got', 'goF', 'goT'}}
     vim.cmd [[
