@@ -45,7 +45,7 @@ function! SetLineSpace(inc)
   exec 'set linespace='. linespace
   call rpcnotify(0, 'Gui', 'Linespace', linespace)
 endfunction
-set linespace=5
+set linespace=14
 call SetLineSpace(0)
 
 

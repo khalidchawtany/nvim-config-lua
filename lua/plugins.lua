@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
     use {'NTBBloodbath/rest.nvim', requires = {'nvim-lua/plenary.nvim'}, keys = {'<Plug>RestNvim'}}
 
     -- Utilities
+    use 'kevinhwang91/nvim-hlslens'
     use 'kopischke/vim-stay'
     use 'gioele/vim-autoswap'
     use 'lyokha/vim-xkbswitch'
@@ -48,6 +49,7 @@ return require('packer').startup(function(use)
     use 'rcarriga/nvim-dap-ui'
 
     use 'kevinhwang91/nvim-bqf'
+    use 'winston0410/mark-radar.nvim'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
@@ -56,6 +58,7 @@ return require('packer').startup(function(use)
     use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
 
     use 'simrat39/symbols-outline.nvim'
+    use 'rmagatti/goto-preview'
 
     -- Treesitter
     use 'nvim-treesitter/nvim-treesitter'
@@ -89,6 +92,9 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-tree.lua'
 
     use 'mcchrish/nnn.vim'
+
+    -- use 'camspiers/snap'
+    use {'camspiers/snap', rocks = {'fzy'}}
 
     use 'nvim-lua/telescope.nvim'
     use {'nvim-telescope/telescope-project.nvim', requires = {'nvim-lua/telescope.nvim'}}
@@ -165,7 +171,7 @@ return require('packer').startup(function(use)
     use {
         'folke/tokyonight.nvim',
         init = function()
-            vim.g.tokyonight_style = "storm"
+            vim.g.tokyonight_style = "knight" -- storm, knight, day
             vim.g.tokyonight_italic_functions = true
             vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
             vim.g.tokyonight_hide_inactive_statusline = false
