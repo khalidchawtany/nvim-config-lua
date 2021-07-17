@@ -1,5 +1,5 @@
 local M = {
-    branch = 'lua',
+    -- branch = 'lua',
     init = function()
         vim.g.indent_blankline_enabled = false
     end,

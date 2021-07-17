@@ -37,16 +37,7 @@ M.config = function()
             ['B'] = require'lir.bookmark.actions'.list,
             ['bb'] = require'lir.bookmark.actions'.add
         },
-        float = {
-            size_percentage = 0.5,
-            winblend = 0,
-            border = true,
-            borderchars = {"╔", "═", "╗", "║", "╝", "═", "╚", "║"}
-
-            -- -- If you want to use `shadow`, set `shadow` to `true`.
-            -- -- Also, if you set shadow to true, the value of `borderchars` will be ignored.
-            -- shadow = false,
-        },
+        float = {winblend = 0},
         hide_cursor = true
     }
 
@@ -69,9 +60,9 @@ M.config = function()
                 mark_actions.toggle_mark()
                 vim.cmd('normal! j')
             end
-        },
+        }
 
-        float = {size_percentage = 0.5, winblend = 15, border = false, shadow = false}
+        -- float = {size_percentage = 0.5, winblend = 15, border = false, shadow = false}
     }
 
 end

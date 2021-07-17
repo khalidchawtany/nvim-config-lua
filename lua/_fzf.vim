@@ -137,8 +137,8 @@ function! GetFunctions()
 endfunction
 nnoremap <silent> <c-p><c-f> <cmd>call GetFunctions()<cr>
 
-nnoremap <silent> <c-p><c-g> <cmd>FzfPreviewGitStatus<cr>
-nnoremap <silent> <c-p>g <cmd>FzfPreviewGitStatus<cr>
+nnoremap <silent> <c-p><c-g> <cmd>FzfGitFiles?<cr>
+nnoremap <silent> <c-p>g <cmd>FzfGitFiles?<cr>
 
 "The last param is <bang>0 to make it fullscreen
 nnoremap <silent> <c-p>p :silent! call fzf#vim#files(getcwd(), {'options': '--reverse -q '.shellescape(expand('<cword>'))}, 1)<cr>

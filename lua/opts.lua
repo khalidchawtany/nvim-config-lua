@@ -11,7 +11,7 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Fuzzy finder: ignore stuff that can't be opened, and generated files
 setg.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
-set.wildignore:append{"*.o", "*~", "*.pyc", "*pycache*"} -- Ignore compiled files
+set.wildignore = {"*.o", "*~", "*.pyc", "*pycache*"} -- Ignore compiled files
 set.wildignorecase = true
 set.wildmode = 'full' -- Complete the longest common string,
 set.wildoptions = 'pum' -- show wildmenu as normal autocompleting menu

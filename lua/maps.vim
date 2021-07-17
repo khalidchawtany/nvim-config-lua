@@ -242,18 +242,11 @@ nnoremap ycd :!mkdir -p %:p:h<CR>
 "Go to alternate file
 nnoremap go <C-^>
 
-
 "toggle tabline
 nnoremap <silent> cot  :execute "set  showtabline=" . (&showtabline+2)%3<cr>
 
-
 "Toggle laststatus (statusline | statusbar)
 nnoremap <silent> co<space> :execute "set laststatus=" . (&laststatus+2)%3<cr>
-
-
-
-
-
 
 "Command-line Mode Key Mappings
 cnoremap <c-a> <home>
@@ -264,5 +257,8 @@ cnoremap <c-h> <left>
 cnoremap <c-l> <right>
 cnoremap <c-g>p <C-\>egetcwd()<CR>
 cnoremap <c-g>f <C-r>=expand("%")<CR>
+
+nnoremap <Leader>s; "vyy:@v<CR>
+vnoremap <Leader>s; "vy:@v<CR>
 
 

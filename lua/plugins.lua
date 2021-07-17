@@ -22,6 +22,10 @@ return require('packer').startup(function(use)
 
     use {"steelsojka/headwind.nvim"}
 
+    use {'vhyrro/neorg'}
+
+    use {'Asheq/close-buffers.vim'}
+
     -- HTTP
     use {'NTBBloodbath/rest.nvim', requires = {'nvim-lua/plenary.nvim'}, keys = {'<Plug>RestNvim'}}
 
@@ -58,6 +62,7 @@ return require('packer').startup(function(use)
     use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
 
     use 'simrat39/symbols-outline.nvim'
+
     use 'rmagatti/goto-preview'
 
     -- Treesitter
@@ -93,8 +98,8 @@ return require('packer').startup(function(use)
 
     use 'mcchrish/nnn.vim'
 
-    -- use 'camspiers/snap'
-    use {'camspiers/snap', rocks = {'fzy'}}
+    use 'camspiers/snap'
+    -- use {'camspiers/snap', rocks = {'fzy'}}
 
     use 'nvim-lua/telescope.nvim'
     use {'nvim-telescope/telescope-project.nvim', requires = {'nvim-lua/telescope.nvim'}}
@@ -135,6 +140,8 @@ return require('packer').startup(function(use)
     use 'junegunn/gv.vim'
 
     use 'gregsexton/gitv'
+
+    use 'sindrets/diffview.nvim'
 
     use 'tpope/vim-unimpaired'
 
@@ -389,3 +396,5 @@ end)
 --   module = string or list      -- Specifies Lua module names for require. When requiring a string which starts
 --                                -- with one of these module names, the plugin will be loaded.
 -- }
+--
+--
