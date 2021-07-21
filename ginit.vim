@@ -115,6 +115,8 @@ if has('mac')
     let $PYTHONPATH="/usr/local/Cellar/llvm/HEAD-f63894b/lib/python2.7/site-packages/lldb:$PYTHONPATH"
 endif
 
+" let $PATH=$PATH.":/Users/juju/.config/nvim_lua/lsp/phpactor/bin"
+
 
 if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
   "***************MUST BE LAST LINE*******

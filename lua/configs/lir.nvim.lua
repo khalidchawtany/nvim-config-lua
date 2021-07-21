@@ -37,7 +37,25 @@ M.config = function()
             ['B'] = require'lir.bookmark.actions'.list,
             ['bb'] = require'lir.bookmark.actions'.add
         },
-        float = {winblend = 0},
+
+        float = {
+            winblend = 0,
+
+            -- You can define a function that returns a table to be passed as the third
+            -- argument of nvim_open_win().
+            win_opts = function()
+                local width = math.floor(vim.o.columns * 0.8)
+                local height = math.floor(vim.o.lines * 0.8)
+                return {
+                    border = require("lir.float.helper").make_border_opts({"+", "─", "+", "│", "+", "─", "+", "│"}, "Normal"),
+                    -- border = require("lir.float.helper").make_border_opts({"", "", "", "", "", "", "", ""}, "Normal"),
+                    width = width,
+                    height = height,
+                    row = 1,
+                    col = math.floor((vim.o.columns - width) / 2)
+                }
+            end
+        },
         hide_cursor = true
     }
 
@@ -62,7 +80,6 @@ M.config = function()
             end
         }
 
-        -- float = {size_percentage = 0.5, winblend = 15, border = false, shadow = false}
     }
 
 end

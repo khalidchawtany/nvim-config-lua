@@ -58,10 +58,13 @@ return require('packer').startup(function(use)
     -- LSP
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
+    use 'alexaandru/nvim-lspupdate'
     use {'ray-x/navigator.lua'}
     use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
 
     use 'simrat39/symbols-outline.nvim'
+    use 'mfussenegger/nvim-ts-hint-textobject'
+    use 'RRethy/nvim-treesitter-textsubjects'
 
     use 'rmagatti/goto-preview'
 
@@ -170,6 +173,7 @@ return require('packer').startup(function(use)
 
     -- Comments
     use 'terrortylor/nvim-comment'
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
 
     -- Autopairs
     use 'windwp/nvim-autopairs'
