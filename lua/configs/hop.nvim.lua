@@ -1,4 +1,4 @@
-local M = {as = 'hop'}
+local M = {as = 'hop', cmd = {'HopWord', 'HopPattern', 'HopChar1', 'HopChar2', 'HopLine'}}
 M.config = function()
 
     -- you can configure Hop the way you like here; see :h hop-config

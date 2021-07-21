@@ -1,8 +1,8 @@
-local M = {}
+local M = {keys = {'<c-p><-0>'}}
 
 local snap = require('snap')
 
-M.init = function()
+M.config = function()
     vim.cmd [[ nnoremap  <silent> <C-p><c-0> :silent! lua require('configs/snap').fzf()<cr> ]]
 end
 

@@ -21,7 +21,7 @@ local function load(modulename)
         end
         errmsg = errmsg .. "\n\tno file '" .. filename .. "' ( Config Loader)"
     end
-    return package.loaders[1](modulename)
+    -- return package.loaders[1](modulename)
     -- return errmsg
 end
 -- _G.myrequire = load

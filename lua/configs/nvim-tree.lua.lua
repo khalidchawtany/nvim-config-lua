@@ -1,6 +1,6 @@
-local M = {requires = {'kyazdani42/nvim-web-devicons'}}
+local M = {requires = {'kyazdani42/nvim-web-devicons'}, cmd = {'NvimTreeToggle', 'NvimTreeRefresh', 'NvimTreeFindFile'}}
 
-M.init = function()
+M.config = function()
 
     vim.g.nvim_tree_show_icons = {git = 1, folders = 1, files = 1}
 
@@ -39,9 +39,6 @@ M.init = function()
 	nnoremap <leader>n :NvimTreeFindFile<CR>
 	highlight NvimTreeFolderIcon guibg=blue
 ]])
-end
-
-M.config = function()
 
     local tree_cb = require'nvim-tree.config'.nvim_tree_callback
     vim.g.nvim_tree_bindings = {

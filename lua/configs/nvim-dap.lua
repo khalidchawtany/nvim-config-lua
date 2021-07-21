@@ -1,4 +1,4 @@
-local M = {}
+local M = {cmd = {'DapLoad'}}
 
 M.config = function()
 

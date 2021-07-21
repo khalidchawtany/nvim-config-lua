@@ -10,22 +10,22 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use {'glepnir/dashboard-nvim'}
+    use 'glepnir/dashboard-nvim'
 
     -- { Tutorials and Easymotion
     use 'tjdevries/train.nvim'
     use 'ggandor/lightspeed.nvim'
     use 'phaazon/hop.nvim'
-    use {'Lokaltog/vim-easymotion'}
+    use 'Lokaltog/vim-easymotion'
     use {'aykamko/vim-easymotion-segments', requires = {'Lokaltog/vim-easymotion'}}
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
     -- }
 
-    use {"steelsojka/headwind.nvim"}
+    use 'steelsojka/headwind.nvim'
 
-    use {'vhyrro/neorg'}
+    use 'vhyrro/neorg'
 
-    use {'Asheq/close-buffers.vim'}
+    use 'Asheq/close-buffers.vim'
 
     -- HTTP
     use {'NTBBloodbath/rest.nvim', requires = {'nvim-lua/plenary.nvim'}, keys = {'<Plug>RestNvim'}}
@@ -60,7 +60,7 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'kabouzeid/nvim-lspinstall'
     use 'alexaandru/nvim-lspupdate'
-    use {'ray-x/navigator.lua'}
+    use 'ray-x/navigator.lua'
     use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
 
     use 'simrat39/symbols-outline.nvim'
