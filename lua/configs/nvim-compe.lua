@@ -1,4 +1,4 @@
-local M = {}
+local M = {event = {'InsertEnter'}}
 M.config = function()
     require'compe'.setup {
         enabled = true,

@@ -1,4 +1,4 @@
-local M = {}
+local M = {even = {'InsertEnter'}}
 
 M.init = function()
 

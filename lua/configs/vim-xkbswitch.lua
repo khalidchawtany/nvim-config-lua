@@ -1,4 +1,4 @@
-local M = {}
+local M = {event = {'InsertEnter'}}
 
 M.init = function()
     if vim.fn.has('mac') then

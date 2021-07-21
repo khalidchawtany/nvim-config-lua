@@ -1,5 +1,4 @@
-local M = {}
--- event = {'VimEnter'},
+local M = {event = {'InsertEnter'}}
 
 M.config = function()
     vim.cmd [[set runtimepath+=/Users/juju/.config/nvim/xpt-personal]]

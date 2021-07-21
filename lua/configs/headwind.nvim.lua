@@ -1,4 +1,4 @@
-local M = {}
+local M = {opt = true}
 
 M.config = function()
     require"headwind".setup {}

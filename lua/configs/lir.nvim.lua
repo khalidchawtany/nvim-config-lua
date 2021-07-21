@@ -1,9 +1,11 @@
-local M = {requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}}
+local M = {requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}, keys = {'-'}}
 
 M.config = function()
     local actions = require 'lir.actions'
     local mark_actions = require 'lir.mark.actions'
     local clipboard_actions = require 'lir.clipboard.actions'
+
+    vim.cmd [[nnoremap - :lua require 'lir.float'.toggle()<CR> ]]
 
     require'lir'.setup {
         show_hidden_files = false,
@@ -98,7 +100,7 @@ M.init = function()
     vim.cmd [[  autocmd Filetype lir :lua LirSettings()]]
     vim.cmd [[augroup END]]
 
-    vim.api.nvim_set_keymap("n", '-', ":lua require 'lir.float'.toggle()<CR>", {noremap = true, silent = true})
+    -- vim.api.nvim_set_keymap("n", '-', ":lua require 'lir.float'.toggle()<CR>", {noremap = true, silent = true})
 
 end
 

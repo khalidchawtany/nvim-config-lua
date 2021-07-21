@@ -21,7 +21,8 @@ local function load(modulename)
         end
         errmsg = errmsg .. "\n\tno file '" .. filename .. "' ( Config Loader)"
     end
-    return errmsg
+    return package.loaders[1](modulename)
+    -- return errmsg
 end
 -- _G.myrequire = load
 table.insert(package.loaders, 2, load) -- this will run before the standard loader, if you want it to
@@ -74,7 +75,6 @@ M.use = function(plug)
             -- override keys in the plug with config files
             if type(plug) == 'string' then plug = {plug} end
             for k, v in pairs(plugConfFile) do plug[k] = v end
-
         end
     end
 
@@ -98,7 +98,6 @@ M.use = function(plug)
             if type(config) == 'string' then
                 require(config)
                 table.removekey(plug, 'config')
-                -- dump(plug)
             end
         end
     end

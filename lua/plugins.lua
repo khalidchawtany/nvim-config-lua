@@ -1,3 +1,4 @@
+vim.opt.shadafile = "NONE"
 package.path = package.path .. ';/Users/juju/.config/nvim/lua'
 local fun = require('functions')
 
@@ -81,9 +82,9 @@ return require('packer').startup(function(use)
     use 'vim-scripts/UnconditionalPaste'
 
     -- Snippets
-    use 'norcalli/snippets.nvim'
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/vim-vsnip-integ'
+    use 'norcalli/snippets.nvim'
 
     use 'drmingdrmer/xptemplate'
     use 'SirVer/ultisnips'
@@ -198,176 +199,24 @@ return require('packer').startup(function(use)
         config = function()
             vim.g.onedark_style = 'cool' -- deep, cool, warm, Default, dark, darker
             -- vim.cmd [[colorscheme onedark]]
-
         end
     }
 
     use 'drewtempelmeyer/palenight.vim'
-
     use 'hoob3rt/lualine.nvim'
-
     use 'crispgm/nvim-tabline'
-
-    use {
-        'romgrk/barbar.nvim',
-        disable = true,
-        opt = true,
-        requires = {'kyazdani42/nvim-web-devicons'},
-        config = function()
-
-            vim.cmd [[
-        nnoremap <silent>    <M-,> :BufferPrevious<CR>
-        nnoremap <silent>    <M-.> :BufferNext<CR>
-
-        nnoremap <silent>    <M-<> :BufferMovePrevious<CR>
-        nnoremap <silent>    <M->> :BufferMoveNext<CR>
-
-        nnoremap <silent>    <M-1> :BufferGoto 1<CR>
-        nnoremap <silent>    <M-2> :BufferGoto 2<CR>
-        nnoremap <silent>    <M-3> :BufferGoto 3<CR>
-        nnoremap <silent>    <M-4> :BufferGoto 4<CR>
-        nnoremap <silent>    <M-5> :BufferGoto 5<CR>
-        nnoremap <silent>    <M-6> :BufferGoto 6<CR>
-        nnoremap <silent>    <M-7> :BufferGoto 7<CR>
-        nnoremap <silent>    <M-8> :BufferGoto 8<CR>
-        nnoremap <silent>    <M-9> :BufferLast<CR>
-
-        nnoremap <silent>    <M-c> :BufferClose<CR>
-
-        " Wipeout buffer
-        "                          :BufferWipeout<CR>
-        " Close commands
-        "                          :BufferCloseAllButCurrent<CR>
-        "                          :BufferCloseBuffersLeft<CR>
-        "                          :BufferCloseBuffersRight<CR>
-
-        " Magic buffer-picking mode
-        nnoremap <silent> <C-s>    :BufferPick<CR>
-
-        " Sort automatically by...
-        nnoremap <silent> <Space>bd :BufferOrderByDirectory<CR>
-        nnoremap <silent> <Space>bl :BufferOrderByLanguage<CR>
-
-        " Other:
-        " :BarbarEnable - enables barbar (enabled by default)
-        " :BarbarDisable - very bad command, should never be used
-        ]]
-        end
-    }
-
-    use "folke/which-key.nvim"
-
+    use 'romgrk/barbar.nvim'
+    use 'folke/which-key.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
-
-    use {
-        'p00f/nvim-ts-rainbow',
-        config = function()
-            require'nvim-treesitter.configs'.setup {
-                rainbow = {
-                    enable = true,
-                    extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-                    max_file_lines = 1000 -- Do not enable for files with more than 1000 lines, int
-                }
-            }
-        end
-    }
-    use {
-        "folke/zen-mode.nvim",
-        config = function()
-            require("zen-mode").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-            vim.cmd [[
-                command! ZenModeToggle :lua require("zen-mode").toggle({ window = { width = .70 }})<cr>
-                nnoremap <leader>zn <cmd>ZenModeToggle<cr>
-            ]]
-        end
-    }
-
-    use {
-        'kdav5758/TrueZen.nvim',
-        config = function()
-            local true_zen = require("true-zen")
-
-            vim.cmd [[nnoremap <leader>zz <cmd>TZAtaraxis<cr>]]
-
-            -- setup for TrueZen.nvim
-            true_zen.setup({
-                true_false_commands = false,
-                cursor_by_mode = false,
-                bottom = {
-                    hidden_laststatus = 0,
-                    hidden_ruler = false,
-                    hidden_showmode = false,
-                    hidden_showcmd = false,
-                    hidden_cmdheight = 1,
-
-                    shown_laststatus = 2,
-                    shown_ruler = true,
-                    shown_showmode = false,
-                    shown_showcmd = false,
-                    shown_cmdheight = 1
-                },
-                top = {hidden_showtabline = 0, shown_showtabline = 2},
-                left = {
-                    hidden_number = false,
-                    hidden_relativenumber = false,
-                    hidden_signcolumn = "no",
-
-                    shown_number = true,
-                    shown_relativenumber = false,
-                    shown_signcolumn = "no"
-                },
-                ataraxis = {
-                    ideal_writing_area_width = 0,
-                    just_do_it_for_me = false,
-                    left_padding = 30,
-                    right_padding = 0,
-                    top_padding = 0,
-                    bottom_padding = 0,
-                    custome_bg = "",
-                    disable_bg_configuration = false,
-                    disable_fillchars_configuration = false,
-                    force_when_plus_one_window = false,
-                    force_hide_statusline = true,
-
-                    hidden_number = false,
-                    hidden_relativenumber = false,
-                    hidden_signcolumn = "no",
-
-                    shown_number = true,
-                    shown_relativenumber = false,
-                    shown_signcolumn = "yes"
-                },
-                focus = {margin_of_error = 5, focus_method = "experimental"},
-                events = {
-                    before_minimalist_mode_shown = false,
-                    before_minimalist_mode_hidden = false,
-                    after_minimalist_mode_shown = false,
-                    after_minimalist_mode_hidden = false
-                },
-                integrations = {
-                    integration_galaxyline = false,
-                    integration_vim_airline = false,
-                    integration_vim_powerline = false,
-                    integration_tmux = false,
-                    integration_express_line = false,
-                    integration_gitgutter = false,
-                    integration_vim_signify = false,
-                    integration_limelight = false,
-                    integration_tzfocus_tzataraxis = false,
-                    integration_gitsigns = false
-                }
-            })
-        end
-    }
+    use 'p00f/nvim-ts-rainbow'
+    use 'folke/zen-mode.nvim'
+    use 'kdav5758/TrueZen.nvim'
 
     -- Global remapping
     ------------------------------
     require('telescope').setup {defaults = {}}
 
+    vim.opt.shadafile = ""
 end)
 
 --  use {

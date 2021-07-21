@@ -34,7 +34,20 @@ set termencoding=utf-8
 lua require('opts')
 source ~/.config/nvim/func.vim
 
-lua require('plugins')
+
+lua <<EOF
+ local async
+ async = vim.loop.new_async(
+    vim.schedule_wrap(
+        function()
+            require('plugins')
+
+            async:close()
+        end
+    )
+)
+async:send()
+EOF
 lua require('configs/lspconfig')
 "lua require('_completion-nvim')
 source ~/.config/nvim/lua/maps.vim

@@ -5,9 +5,13 @@ local home = os.getenv("HOME")
 vim.g.mapleader = " "
 vim.g.loaclleader = "\\"
 
--- disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- disable default plugin
+local disabled_built_ins = {
+    "netrw", "netrwPlugin", "netrwSettings", "netrwFileHandlers", "gzip", "zip", "zipPlugin", "tar", "tarPlugin", "getscript", "getscriptPlugin",
+    "vimball", "vimballPlugin", "2html_plugin", "logipat", "rrhelper", "spellfile_plugin"
+}
+
+for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end
 
 -- Fuzzy finder: ignore stuff that can't be opened, and generated files
 setg.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
