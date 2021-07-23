@@ -1,10 +1,15 @@
-local M = {}
-
-M.init = function()
-
-    -- keep cursor colum when JK motion
-    vim.g.EasyMotion_startofline = 0
-    vim.g.EasyMotion_force_csapprox = 1
+local M = {
+    keys = {
+        '<Plug>(easymotion-prefix)', '<Plug>(easymotion-s2)', '<Plug>(easymotion-sn)', '<Plug>(easymotion-lineforward)',
+        '<Plug>(easymotion-linebackward)', '<Plug>(easymotion-lineanywhere)', '<Plug>(easymotion-bd-f)', '<Plug>(easymotion-bd-t)',
+        '<Plug>(easymotion-bd-w)', '<Plug>(easymotion-bd-W)', '<Plug>(easymotion-bd-e)', '<Plug>(easymotion-bd-E)', '<Plug>(easymotion-bd-jk)',
+        '<Plug>(easymotion-bd-jk)', '<Plug>(easymotion-bd-jk)', '<Plug>(easymotion-bd-n)', '<Plug>(easymotion-jumptoanywhere)',
+        '<Plug>(easymotion-repeat)', '<Plug>(easymotion-eol-bd-jk)', '<Plug>(easymotion-sol-bd-jk)', '<Plug>(easymotion-overwin-f)',
+        '<Plug>(easymotion-overwin-f2)', '<Plug>(easymotion-overwin-w)', '<Plug>(easymotion-overwin-line)', '<Plug>(easymotion-segments-LF)',
+        '<Plug>(easymotion-segments-LB)', '<Plug>(easymotion-segments-RF)', '<Plug>(easymotion-segments-RB)'
+    }
+}
+local setMaps = function()
 
     vim.cmd [[
    map <leader>s         <Plug>(easymotion-prefix)
@@ -26,22 +31,36 @@ M.init = function()
    map <leader>ssl       <Plug>(easymotion-bd-jk)
    map <leader>ssn       <Plug>(easymotion-bd-n)
    map <leader>ssa       <Plug>(easymotion-jumptoanywhere)
-   map <leader>s<cr>       <Plug>(easymotion-repeat)
+   map <leader>s<cr>     <Plug>(easymotion-repeat)
 
-   map <leader>ssL    <Plug>(easymotion-eol-bd-jk)
-   map <leader>ssH    <Plug>(easymotion-sol-bd-jk)
+   map <leader>ssL       <Plug>(easymotion-eol-bd-jk)
+   map <leader>ssH       <Plug>(easymotion-sol-bd-jk)
 
-   map <leader>sSF    <Plug>(easymotion-overwin-f)
-   map <leader>sS;    <Plug>(easymotion-overwin-f2)
-   map <leader>sSW    <Plug>(easymotion-overwin-w)
-   map <leader>sSL    <Plug>(easymotion-overwin-line)
+   map <leader>sSF       <Plug>(easymotion-overwin-f)
+   map <leader>sS;       <Plug>(easymotion-overwin-f2)
+   map <leader>sSW       <Plug>(easymotion-overwin-w)
+   map <leader>sSL       <Plug>(easymotion-overwin-line)
 
-   map <leader>su    <Plug>(easymotion-segments-LF)
-   map <leader>sU    <Plug>(easymotion-segments-LB)
-   map <leader>sc    <Plug>(easymotion-segments-RF)
-   map <leader>sC    <Plug>(easymotion-segments-RB)
+   map <leader>su        <Plug>(easymotion-segments-LF)
+   map <leader>sU        <Plug>(easymotion-segments-LB)
+   map <leader>sc        <Plug>(easymotion-segments-RF)
+   map <leader>sC        <Plug>(easymotion-segments-RB)
 
       ]]
+
+end
+
+M.config = function()
+    setMaps()
+end
+
+M.init = function()
+
+    -- keep cursor colum when JK motion
+    vim.g.EasyMotion_startofline = 0
+    vim.g.EasyMotion_force_csapprox = 1
+
+    setMaps()
 
     --   Default Mapping      | Details
     --   ---------------------|----------------------------------------------

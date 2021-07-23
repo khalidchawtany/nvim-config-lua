@@ -5,7 +5,7 @@ M.config = function()
     local mark_actions = require 'lir.mark.actions'
     local clipboard_actions = require 'lir.clipboard.actions'
 
-    vim.cmd [[nnoremap - :lua require 'lir.float'.toggle()<CR> ]]
+    vim.cmd [[nnoremap - :lua require 'lir.float'.toggle()<CR>]]
 
     require'lir'.setup {
         show_hidden_files = false,

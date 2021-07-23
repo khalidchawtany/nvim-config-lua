@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
     use 'ggandor/lightspeed.nvim'
     use 'phaazon/hop.nvim'
     use 'Lokaltog/vim-easymotion'
-    use {'aykamko/vim-easymotion-segments', requires = {'Lokaltog/vim-easymotion'}}
+    use {'aykamko/vim-easymotion-segments', after = 'vim-easymotion'}
     use {'rhysd/clever-f.vim', keys = {'<Plug>(clever-f-'}, fn = {'clever_f#reset'}}
     -- }
 
@@ -106,7 +106,7 @@ return require('packer').startup(function(use)
     -- use {'camspiers/snap', rocks = {'fzy'}}
 
     use 'nvim-lua/telescope.nvim'
-    use {'nvim-telescope/telescope-project.nvim', requires = {'nvim-lua/telescope.nvim'}}
+    use {'nvim-telescope/telescope-project.nvim', after = "telescope.nvim"}
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
     -- use {'junegunn/fzf', dir = '~/.fzf', run = '/Users/juju/.local/share/nvim/site/pack/packer/start/fzf/install --all'}
@@ -158,17 +158,7 @@ return require('packer').startup(function(use)
     vim.cmd [[xnoremap <leader>ei <cmd>InlineEdit<cr>]]
 
     -- multiple cursor
-    use {
-        'mg979/vim-visual-multi',
-        branch = 'master',
-        config = function()
-            -- vim.g.multi_cursor_use_default_mapping = 0
-            -- vim.g.multi_cursor_next_key = '<C-n>'
-            -- vim.g.multi_cursor_prev_key = '<C-p>'
-            -- vim.g.multi_cursor_skip_key = '<C-x>'
-            -- vim.g.multi_cursor_quit_key = '<Esc>'
-        end
-    }
+    use 'mg979/vim-visual-multi'
 
     use {'gabesoft/vim-ags', cmd = {'Ags'}}
 
@@ -211,6 +201,7 @@ return require('packer').startup(function(use)
     use 'p00f/nvim-ts-rainbow'
     use 'folke/zen-mode.nvim'
     use 'kdav5758/TrueZen.nvim'
+    use 'norcalli/nvim-colorizer.lua'
 
     -- Global remapping
     ------------------------------

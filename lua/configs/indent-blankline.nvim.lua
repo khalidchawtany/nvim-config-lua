@@ -1,5 +1,6 @@
 local M = {
     -- branch = 'lua',
+    event = "BufRead",
     init = function()
         vim.g.indent_blankline_enabled = false
     end,
