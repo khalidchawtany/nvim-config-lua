@@ -112,12 +112,12 @@ require'lspinstall'.post_install_hook = function()
     vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 
-vim.cmd([[ autocmd BufWritePre *.lua lua vim.lsp.buf.formatting() ]])
+-- vim.cmd([[ autocmd BufWritePre *.lua lua vim.lsp.buf.formatting() ]])
 
 require'lspconfig'.phpactor.setup {}
 
 require"lspconfig".efm.setup {
-    init_options = {documentFormatting = true},
+    init_options = {documentFormatting = false},
     filetypes = {"lua", "html"},
     settings = {
         rootMarkers = {".git/"},

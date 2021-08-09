@@ -2,7 +2,7 @@ vim.opt.shadafile = "NONE"
 package.path = package.path .. ';/Users/juju/.config/nvim/lua'
 local fun = require('functions')
 
-return require('packer').startup(function(use)
+require('packer').startup(function(use)
     -- setup use() to replace packer_use()
     fun.setPackerUse(use)
     use = fun.use
@@ -25,13 +25,13 @@ return require('packer').startup(function(use)
 
     use 'vhyrro/neorg'
 
-    use 'Asheq/close-buffers.vim'
+    use 'kazhala/close-buffers.nvim'
 
     -- HTTP
     use {'NTBBloodbath/rest.nvim', requires = {'nvim-lua/plenary.nvim'}, keys = {'<Plug>RestNvim'}}
 
     -- Utilities
-    use 'kevinhwang91/nvim-hlslens'
+    -- use 'kevinhwang91/nvim-hlslens'
     use 'kopischke/vim-stay'
     use 'gioele/vim-autoswap'
     use 'lyokha/vim-xkbswitch'
@@ -90,6 +90,7 @@ return require('packer').startup(function(use)
     use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
     -- au filetype php set iskeyword+=$
+    use 'AllenDang/nvim-expand-expr'
 
     use 'mizlan/iswap.nvim'
     use 'junegunn/vim-easy-align'
@@ -123,12 +124,15 @@ return require('packer').startup(function(use)
 
     use {'justinmk/vim-gtfo', keys = {'gof', 'got', 'goF', 'goT'}}
     vim.cmd [[
-        let g:gtfo#terminals = { 'mac' : 'iterm' }
-        nnoremap <silent> gof :<c-u>call gtfo#open#file("%:p")<cr>
-        nnoremap <silent> got :<c-u>call gtfo#open#term("%:p:h", "")<cr>
-        nnoremap <silent> goF :<c-u>call gtfo#open#file(getcwd())<cr>
-        nnoremap <silent> goT :<c-u>call gtfo#open#term(getcwd(), "")<cr>
+    let g:gtfo#terminals = { 'mac' : 'iterm' }
+    nnoremap <silent> gof :<c-u>call gtfo#open#file("%:p")<cr>
+    nnoremap <silent> got :<c-u>call gtfo#open#term("%:p:h", "")<cr>
+    nnoremap <silent> goF :<c-u>call gtfo#open#file(getcwd())<cr>
+    nnoremap <silent> goT :<c-u>call gtfo#open#term(getcwd(), "")<cr>
     ]]
+
+    use 'vim-ctrlspace/vim-ctrlspace'
+
 
     -- augroup BufferTreeAuGroup
     -- au!
@@ -152,6 +156,8 @@ return require('packer').startup(function(use)
     use 'tpope/vim-abolish'
 
     use 'machakann/vim-sandwich'
+
+    use 'AndrewRadev/splitjoin.vim'
 
     -- InlineEdit
     use {'AndrewRadev/inline_edit.vim', cmd = {'InlineEdit'}}
@@ -194,7 +200,7 @@ return require('packer').startup(function(use)
 
     use 'drewtempelmeyer/palenight.vim'
     use 'hoob3rt/lualine.nvim'
-    use 'crispgm/nvim-tabline'
+    use 'kdheepak/tabline.nvim'
     use 'romgrk/barbar.nvim'
     use 'folke/which-key.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
@@ -210,35 +216,37 @@ return require('packer').startup(function(use)
     vim.opt.shadafile = ""
 end)
 
+table.remove(package.loaders, 2) -- unregister my custom loader.
+
 --  use {
---   'myusername/example',        -- The plugin location string
---   -- The following keys are all optional
---   disable = boolean,           -- Mark a plugin as inactive
---   as = string,                 -- Specifies an alias under which to install the plugin
---   installer = function,        -- Specifies custom installer. See "custom installers" below.
---   updater = function,          -- Specifies custom updater. See "custom installers" below.
---   after = string or list,      -- Specifies plugins to load before this plugin. See "sequencing" below
---   rtp = string,                -- Specifies a subdirectory of the plugin to add to runtimepath.
---   opt = boolean,               -- Manually marks a plugin as optional.
---   branch = string,             -- Specifies a git branch to use
---   tag = string,                -- Specifies a git tag to use
---   commit = string,             -- Specifies a git commit to use
---   lock = boolean,              -- Skip this plugin in updates/syncs
---   run = string or function,    -- Post-update/install hook. See "update/install hooks".
---   requires = string or list,   -- Specifies plugin dependencies. See "dependencies".
---   rocks = string or list,      -- Specifies Luarocks dependencies for the plugin
---   config = string or function, -- Specifies code to run after this plugin is loaded.
---   -- The setup key implies opt = true
---   setup = string or function,  -- Specifies code to run before this plugin is loaded.
---   -- The following keys all imply lazy-loading and imply opt = true
---   cmd = string or list,        -- Specifies commands which load this plugin.
---   ft = string or list,         -- Specifies filetypes which load this plugin.
---   keys = string or list,       -- Specifies maps which load this plugin. See "Keybindings".
---   event = string or list,      -- Specifies autocommand events which load this plugin.
---   fn = string or list          -- Specifies functions which load this plugin.
---   cond = string, function, or list of strings/functions,   -- Specifies a conditional test to load this plugin
---   module = string or list      -- Specifies Lua module names for require. When requiring a string which starts
---                                -- with one of these module names, the plugin will be loaded.
--- }
---
---
+    --   'myusername/example',        -- The plugin location string
+    --   -- The following keys are all optional
+    --   disable = boolean,           -- Mark a plugin as inactive
+    --   as = string,                 -- Specifies an alias under which to install the plugin
+    --   installer = function,        -- Specifies custom installer. See "custom installers" below.
+    --   updater = function,          -- Specifies custom updater. See "custom installers" below.
+    --   after = string or list,      -- Specifies plugins to load before this plugin. See "sequencing" below
+    --   rtp = string,                -- Specifies a subdirectory of the plugin to add to runtimepath.
+    --   opt = boolean,               -- Manually marks a plugin as optional.
+    --   branch = string,             -- Specifies a git branch to use
+    --   tag = string,                -- Specifies a git tag to use
+    --   commit = string,             -- Specifies a git commit to use
+    --   lock = boolean,              -- Skip this plugin in updates/syncs
+    --   run = string or function,    -- Post-update/install hook. See "update/install hooks".
+    --   requires = string or list,   -- Specifies plugin dependencies. See "dependencies".
+    --   rocks = string or list,      -- Specifies Luarocks dependencies for the plugin
+    --   config = string or function, -- Specifies code to run after this plugin is loaded.
+    --   -- The setup key implies opt = true
+    --   setup = string or function,  -- Specifies code to run before this plugin is loaded.
+    --   -- The following keys all imply lazy-loading and imply opt = true
+    --   cmd = string or list,        -- Specifies commands which load this plugin.
+    --   ft = string or list,         -- Specifies filetypes which load this plugin.
+    --   keys = string or list,       -- Specifies maps which load this plugin. See "Keybindings".
+    --   event = string or list,      -- Specifies autocommand events which load this plugin.
+    --   fn = string or list          -- Specifies functions which load this plugin.
+    --   cond = string, function, or list of strings/functions,   -- Specifies a conditional test to load this plugin
+    --   module = string or list      -- Specifies Lua module names for require. When requiring a string which starts
+    --                                -- with one of these module names, the plugin will be loaded.
+    -- }
+    --
+    --

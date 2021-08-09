@@ -1,7 +1,9 @@
 local M = {requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
 
-M.config = function()
-    require'navigator'.setup({lsp = {format_on_save = false}})
+M.init = function()
+    require'navigator'.setup({lsp = {format_on_save = true}})
+
+    vim.cmd [[ LspToggleFmt ]]
 end
 
 return M

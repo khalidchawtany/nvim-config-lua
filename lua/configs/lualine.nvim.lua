@@ -1,6 +1,14 @@
 local M = {requires = {'kyazdani42/nvim-web-devicons'}}
 
-M.config = function()
+M.config = function ()
+    require('lualine').setup( {
+        options = {
+            theme = require 'lualine.themes.tokyonight'
+        },
+    })
+end
+
+M.config2 = function()
 
     -- Eviline config for lualine
     -- Author: shadmansaleh
@@ -223,3 +231,5 @@ M.config = function()
     lualine.setup(config)
 
 end
+
+return M

@@ -12,9 +12,10 @@
 
 hi Title guibg=#afd7ff
 
+
 " Support ligature
 call rpcnotify(0, 'Gui', 'Option', 'RenderLigatures', 1)
-let g:render_ligatures = 1
+let g:render_ligatures = 0
 nnoremap <silent> <leader>o<cr> :let g:render_ligatures =  (g:render_ligatures + 1) % 2 \| call rpcnotify(0, 'Gui', 'Option', 'RenderLigatures', g:render_ligatures)<cr>
 
 let g:gui_fonts = [
