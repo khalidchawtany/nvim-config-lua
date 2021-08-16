@@ -1,4 +1,4 @@
-local M = {requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}, keys = {'-'}}
+local M = {requires = {'kyazdani42/nvim-web-devicons', 'nvim-lua/plenary.nvim'}, module = {'lir'}}
 
 M.config = function()
     local actions = require 'lir.actions'
@@ -100,6 +100,7 @@ M.init = function()
     vim.cmd [[  autocmd Filetype lir :lua LirSettings()]]
     vim.cmd [[augroup END]]
 
+    vim.cmd [[nnoremap - :lua require 'lir.float'.toggle()<CR>]]
     -- vim.api.nvim_set_keymap("n", '-', ":lua require 'lir.float'.toggle()<CR>", {noremap = true, silent = true})
 
 end

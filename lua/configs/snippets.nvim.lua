@@ -6,10 +6,10 @@ M.init = function()
     --
     -- <c-k> will either expand the current snippet at the word or try to jump to
     -- the next position for the snippet.
-    vim.cmd([[ inoremap <c-cr> <cmd>lua return require'snippets'.expand_or_advance(1)<CR> ]])
+    vim.cmd([[ inoremap <D-CR> <cmd>lua return require'snippets'.expand_or_advance(1)<CR> ]])
     -- <c-j> will jump backwards to the previous field.
     -- If you jump before the first field, it will cancel the snippet.
-    vim.cmd([[ inoremap <c-\> <cmd>lua return require'snippets'.advance_snippet(-1)<CR> ]])
+    vim.cmd([[ inoremap <D-Bslash> <cmd>lua return require'snippets'.advance_snippet(-1)<CR> ]])
 
     --  local path = require 'path'
     local format = string.format
