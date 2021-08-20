@@ -1,6 +1,6 @@
-local M = {requires = {'nvim-lua/plenary.nvim'}}
+local M = {requires = {"nvim-lua/plenary.nvim"}}
 
 M.config = function()
-    require('gitsigns').setup()
+  require("gitsigns").setup()
 end
 return M

@@ -44,7 +44,7 @@ require('packer').startup(function(use)
     }
 
     -- mappings and submodes
-    use 'svermeulen/vimpeccable'
+    -- use 'svermeulen/vimpeccable'
     use 'khalidchawtany/vim-submode'
 
     -- debuggers
@@ -97,7 +97,7 @@ require('packer').startup(function(use)
 
     -- File Browser  And Navigation
     use 'tamago324/lir.nvim'
-    use {'tamago324/lir-bookmark.nvim', requires = {'tamago324/lir.nvim'}}
+    use 'tamago324/lir-bookmark.nvim'
 
     use 'kyazdani42/nvim-tree.lua'
 
@@ -175,6 +175,8 @@ require('packer').startup(function(use)
     -- Autopairs
     use 'windwp/nvim-autopairs'
 
+    use 'mhartington/formatter.nvim'
+
     -- Theme
     use {
         'folke/tokyonight.nvim',
@@ -211,12 +213,12 @@ require('packer').startup(function(use)
 
     -- Global remapping
     ------------------------------
-    require('telescope').setup {defaults = {}}
 
-    vim.opt.shadafile = ""
+    -- require('telescope').setup {defaults = {}}
+   table.remove(package.loaders, 2) -- unregister my custom loader.
 end)
 
-table.remove(package.loaders, 2) -- unregister my custom loader.
+-- dump(package.loaders[2]())
 
 --  use {
     --   'myusername/example',        -- The plugin location string

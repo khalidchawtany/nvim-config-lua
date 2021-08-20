@@ -10,7 +10,10 @@ M.config = function()
         -- Normal mode mapping left hand side
         line_mapping = "<leader>cc",
         -- Visual/Operator mapping left hand side
-        operator_mapping = "<leader>c"
+        operator_mapping = "<leader>c",
+        hook = function()
+            require("ts_context_commentstring.internal").update_commentstring()
+        end,
     })
 end
 

@@ -25,6 +25,8 @@ set.wildmenu = true
 set.completeopt = 'menuone,noinsert,noselect'
 set.inccommand = 'nosplit'
 
+set.shadafile = ""
+
 set.showmode = true
 set.cmdheight = 1 -- Height of the command bar
 set.incsearch = true

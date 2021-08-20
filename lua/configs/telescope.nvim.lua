@@ -1,20 +1,29 @@
-local M = {requires = {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-fzy-native.nvim'}}
+local M = {
+    requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-lua/popup.nvim',
+        'nvim-telescope/telescope-fzy-native.nvim'
+    },
+    module={'telescope'},
+    -- cmd = {'Telescope'},
+}
 
 M.init = function()
     vim.cmd [[
-            nnoremap <c-s><c-p> <cmd>Telescope find_files<cr>
-            nnoremap <c-s>pp :execute 'Telescope find_files find_command=fd,'.expand("<cword>")<cr>
-            nnoremap <c-s><c-a> <cmd>Telescope live_grep<cr>
-            nnoremap <c-s>a <cmd>Telescope grep_string<cr>
-            nnoremap <c-s><c-o> <cmd>Telescope buffers<cr>
-            nnoremap <c-s><c-h> <cmd>Telescope help_tags<cr>
-            nnoremap <c-s><c--> <cmd>Telescope lsp_document_symbols<cr>
-            nnoremap <c-s><c-l> <cmd>Telescope current_buffer_fuzzy_find<cr>
+            nnoremap <c-s><c-p>  <cmd>lua require('telescope.builtin').find_files()<cr>
+            nnoremap <c-s>p      <cmd>lua require('telescope.builtin').find_files({find_command = {"fd", vim.fn.expand("<cword>")}})<cr>
+            nnoremap <c-s><c-a>  <cmd>lua require('telescope.builtin').live_grep()<cr>
+            nnoremap <c-s>a      <cmd>lua require('telescope.builtin').grep_string()<cr>
+            nnoremap <c-s><c-o>  <cmd>lua require('telescope.builtin').buffers()<cr>
+            nnoremap <c-s><c-h>  <cmd>lua require('telescope.builtin').help_tags()<cr>
+            nnoremap <c-s><c-->  <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
+            nnoremap <c-s><c-->  <cmd>lua require('telescope.builtin').lsp_document_symbols({search = ":methods:"})<cr>
+            nnoremap <c-s><c-l>  <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
     ]]
 
     vim.api.nvim_set_keymap('n', '<C-p><c-\\>', ":lua require'telescope'.extensions.project.project{}<CR>", {noremap = true, silent = true})
 
-    vim.api.nvim_set_keymap('n', '<c-p>gd', ":lua require('telescope.builtin').lsp_definitions()<CR>", {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<c-s><c-d>', ":lua require('telescope.builtin').lsp_definitions()<CR>", {noremap = true, silent = true})
 
     -- vim.api.nvim_set_keymap('n', '<c-p>p', ":lua require('telescope.builtin').find_files{search = vim.fn.expand(\"<cword>\") }<CR>",
     --                        {noremap = true, silent = true})

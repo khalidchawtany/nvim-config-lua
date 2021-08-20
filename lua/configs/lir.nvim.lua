@@ -27,6 +27,12 @@ M.config = function()
             ['.'] = actions.toggle_show_hidden,
             ['D'] = actions.delete,
 
+            ['<C-d>'] = function ()
+                mark_actions.toggle_mark()
+                clipboard_actions.copy()
+                clipboard_actions.paste()
+            end,
+
             ['<c-space>'] = function()
                 mark_actions.toggle_mark()
                 vim.cmd('normal! j')
