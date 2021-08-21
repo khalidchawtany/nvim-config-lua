@@ -7,7 +7,6 @@ M.init = function()
 end
 
 M.config = function()
-  dump("Config formatter")
   require("formatter").setup(
     {
       logging = false,

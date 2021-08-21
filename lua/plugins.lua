@@ -62,6 +62,7 @@ require('packer').startup(function(use)
     use 'alexaandru/nvim-lspupdate'
     use 'ray-x/navigator.lua'
     use {'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'}}
+    use 'ojroques/nvim-lspfuzzy'
 
     use 'simrat39/symbols-outline.nvim'
     use 'mfussenegger/nvim-ts-hint-textobject'

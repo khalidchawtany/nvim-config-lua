@@ -13,12 +13,17 @@ M.init = function()
             nnoremap <c-s><c-p>  <cmd>lua require('telescope.builtin').find_files()<cr>
             nnoremap <c-s>p      <cmd>lua require('telescope.builtin').find_files({find_command = {"fd", vim.fn.expand("<cword>")}})<cr>
             nnoremap <c-s><c-a>  <cmd>lua require('telescope.builtin').live_grep()<cr>
+            nnoremap <c-s><c-k>  <cmd>lua require('telescope.builtin').live_grep({grep_open_files	= true})<cr>
             nnoremap <c-s>a      <cmd>lua require('telescope.builtin').grep_string()<cr>
             nnoremap <c-s><c-o>  <cmd>lua require('telescope.builtin').buffers()<cr>
             nnoremap <c-s><c-h>  <cmd>lua require('telescope.builtin').help_tags()<cr>
             nnoremap <c-s><c-->  <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
-            nnoremap <c-s><c-->  <cmd>lua require('telescope.builtin').lsp_document_symbols({search = ":methods:"})<cr>
+            nnoremap <c-s>-      <cmd>lua require('telescope.builtin').lsp_document_symbols({default_text = ":method: "})<cr>
             nnoremap <c-s><c-l>  <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
+            nnoremap <c-s><c-u>  <cmd>lua require('telescope.builtin').oldfiles()<cr>
+            nnoremap <c-s>u      <cmd>lua require('telescope.builtin').oldfiles()<cr>
+            nnoremap <c-s>e      <cmd>lua require('telescope.builtin').file_browser()<cr>
+            nnoremap <c-s><c-e>  <cmd>lua require('telescope.builtin').file_browser()<cr>
     ]]
 
     vim.api.nvim_set_keymap('n', '<C-p><c-\\>', ":lua require'telescope'.extensions.project.project{}<CR>", {noremap = true, silent = true})
