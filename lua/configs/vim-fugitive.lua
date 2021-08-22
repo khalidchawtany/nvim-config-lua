@@ -9,7 +9,7 @@ M.init = function()
    autocmd BufNewFile  fugitive://* call PM_SOURCE('vim-fugitive') | let g:NewFugitiveFile=1 | call feedkeys(';<BS>')
 
    " set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-    nnoremap <leader>gs :call FugitiveDetect(expand('%:p')) \| :Gstatus<cr>
+    nnoremap <leader>gs :call FugitiveDetect(expand('%:p')) \| :Git<cr>
     nnoremap <leader>g<leader> :call FugitiveDetect(getcwd()) \| :Gtabedit :<cr>
     nnoremap <leader>gc  :call FugitiveDetect(getcwd()) \| execute ":Git commit"<cr>
     nnoremap <leader>gp  :call FugitiveDetect(getcwd()) \| execute ":Git pull"<cr>

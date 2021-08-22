@@ -17,8 +17,8 @@ M.init = function()
             nnoremap <c-s>a      <cmd>lua require('telescope.builtin').grep_string()<cr>
             nnoremap <c-s><c-o>  <cmd>lua require('telescope.builtin').buffers()<cr>
             nnoremap <c-s><c-h>  <cmd>lua require('telescope.builtin').help_tags()<cr>
-            nnoremap <c-s><c-->  <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
-            nnoremap <c-s>-      <cmd>lua require('telescope.builtin').lsp_document_symbols({default_text = ":method: "})<cr>
+            nnoremap <c-s>-      <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
+            nnoremap <c-s><c-->  <cmd>lua require('telescope.builtin').lsp_document_symbols({default_text = ":method: "})<cr>
             nnoremap <c-s><c-l>  <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
             nnoremap <c-s><c-u>  <cmd>lua require('telescope.builtin').oldfiles()<cr>
             nnoremap <c-s>u      <cmd>lua require('telescope.builtin').oldfiles()<cr>
@@ -84,10 +84,10 @@ M.config = function()
                 horizontal = {mirror = false},
                 vertical = {mirror = false},
                 width = 0.8,
-                height = 0.8,
-                preview_width = 0.5,
+                height = 0.9,
+                preview_width = 0.4,
                 prompt_position = "bottom",
-                preview_cutoff = 120
+                preview_cutoff = 100
             },
             border = {},
             borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
