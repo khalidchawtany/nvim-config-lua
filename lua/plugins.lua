@@ -74,6 +74,11 @@ require("packer").startup(
     use "rhysd/vim-textobj-anyblock"
     use "machakann/vim-textobj-delimited"
     use "thinca/vim-textobj-between"
+    use "saihoooooooo/vim-textobj-space"
+    use "kana/vim-textobj-entire"
+    use "kana/vim-textobj-indent"
+    use "kana/vim-textobj-line"
+    use "junegunn/vim-after-object"
 
     use "rmagatti/goto-preview"
 
@@ -128,6 +133,9 @@ require("packer").startup(
     }
     use "pbogut/fzf-mru.vim"
 
+    use "vijaymarupudi/nvim-fzf"
+    use "ibhagwan/fzf-lua"
+
     use "el-iot/buffer-tree-explorer"
 
     use {"justinmk/vim-gtfo", keys = {"gof", "got", "goF", "goT"}}
@@ -140,6 +148,7 @@ require("packer").startup(
     ]]
 
     use "vim-ctrlspace/vim-ctrlspace"
+    use "samuelsimoes/vim-drawer"
 
     -- augroup BufferTreeAuGroup
     -- au!
@@ -226,6 +235,7 @@ require("packer").startup(
   end
 )
 
+vim.opt.shadafile = ""
 -- dump(package.loaders[2]())
 
 --  use {

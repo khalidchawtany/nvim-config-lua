@@ -49,12 +49,15 @@ endfunction
 set linespace=14
 call SetLineSpace(0)
 
+command! Bigger  :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)+1', '')
+command! Smaller :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)-1', '')
 
-nnoremap <silent> <D-=> :exec 'GuiFont' substitute(fnameescape(&guifont), '\d\+$', '\=submatch(0)+1', '')<cr>
-nnoremap <silent> <D--> :exec 'GuiFont' substitute(fnameescape(&guifont), '\d\+$', '\=submatch(0)-1', '')<cr>
 
-nnoremap <silent> <M-D--> :call SetLineSpace(-1)<cr>
-nnoremap <silent> <M-D-=> :call SetLineSpace(1)<cr>
+nnoremap <silent> <D-=> :Bigger<cr>
+nnoremap <silent> <D--> :Smaller<cr>
+
+nnoremap <silent> <M-D--> :let &linespace = substitute(&linespace, '\d\+$', '\=submatch(0)-1', '')<cr>
+nnoremap <silent> <M-D-=> :let &linespace = substitute(&linespace, '\d\+$', '\=submatch(0)+1', '')<cr>
 
 nnoremap <silent> <c-w>m :call GuiWindowMaximized((g:GuiWindowMaximized + 1) % 2)<cr>
 nnoremap <silent> <c-w>f :call GuiWindowFullScreen((g:GuiWindowFullScreen + 1) % 2)<cr>
@@ -74,22 +77,22 @@ endif
 map <c-6> <c-^>
 
 "Make CMD+V paste from external clipboard
-nnoremap <D-V> <c-\><c-n>"+p
-tnoremap <D-V> <c-\><c-n>"+pi
-cnoremap <D-V> <c-r>+
-vnoremap <D-V> "+p
+nnoremap <D-v> <c-\><c-n>"+p
+tnoremap <D-v> <c-\><c-n>"+pi
+cnoremap <D-v> <c-r>+
+vnoremap <D-v> "+p
 
-nnoremap <D-S> <cmd>w<cr>
+nnoremap <D-s> <cmd>w<cr>
 
-inoremap <D-V> <c-\><c-n>:set paste<cr>"+p:set nopaste<cr>li
-nnoremap <D-P> <c-\><c-n>"+p
-tnoremap <D-P> <c-\><c-n>"+pi
-cnoremap <D-P> <c-r>+
-vnoremap <D-P> "+p
+inoremap <D-v> <c-\><c-n>:set paste<cr>"+p:set nopaste<cr>li
+nnoremap <D-p> <c-\><c-n>"+p
+tnoremap <D-p> <c-\><c-n>"+pi
+cnoremap <D-p> <c-r>+
+vnoremap <D-p> "+p
 inoremap <D-P> <c-\><c-n>:set paste<cr>"+p:set nopaste<cr>li
 
-vnoremap <D-C> "+y
-vnoremap <D-Y> "+y
+vnoremap <D-c> "+y
+vnoremap <D-y> "+y
 " tnoremap <D-v> <C-\><C-N>"+pA
 nnoremap <D-v> <C-\><C-N>"+pA
 vnoremap <D-c> "+y

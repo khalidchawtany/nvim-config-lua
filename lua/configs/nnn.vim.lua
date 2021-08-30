@@ -1,5 +1,12 @@
 local M = {cmd = {'NnnPicker', 'Np'}}
 
+M.init = function ()
+    --nnoremap <silent> =- :exec 'NnnPicker ' . expand('%:p:h')<CR>
+    --nnoremap <silent> =0 :NnnPicker<CR>
+    --vim.g.nnn['command'] = "NNN_COLORS='4321' nnn -d"
+    vim.cmd [[ nnoremap _ <cmd>exec 'NnnPicker ' . expand('%:p:h')<cr> ]]
+end
+
 M.config = function()
     vim.cmd [[
                 let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }

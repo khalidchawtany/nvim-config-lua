@@ -111,8 +111,15 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   imap <silent> <c-k> <c-p>
 
 
-  nnoremap <expr> n (v:searchforward ? 'nzz' : 'Nzz')
-  nnoremap <expr> N (v:searchforward ? 'Nzz' : 'nzz')
+  " nnoremap <expr> n (v:searchforward ? 'nzz' : 'Nzz')
+  " nnoremap <expr> N (v:searchforward ? 'Nzz' : 'nzz')
+  nnoremap <expr> n  'Nn'[v:searchforward]
+  xnoremap <expr> n  'Nn'[v:searchforward]
+  onoremap <expr> n  'Nn'[v:searchforward]
+
+  nnoremap <expr> N  'nN'[v:searchforward]
+  xnoremap <expr> N  'nN'[v:searchforward]
+  onoremap <expr> N  'nN'[v:searchforward]
 
   nnoremap c* *Ncgn
 
@@ -275,17 +282,26 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   "Command-line Mode Key Mappings
   cnoremap <c-a> <home>
   cnoremap <c-e> <end>
-  cnoremap <c-j> <down>
-  cnoremap <c-k> <up>
+  cnoremap <expr> <c-j> wildmenumode() ? "\<c-n>" : "\<down>"
+  cnoremap <expr> <c-k> wildmenumode() ? "\<c-p>" : "\<up>"
   cnoremap <c-h> <left>
   cnoremap <c-l> <right>
   cnoremap <c-g>p <C-\>egetcwd()<CR>
   cnoremap <c-g>f <C-r>=expand("%")<CR>
 
   " source-selection or Vimrc
-  nnoremap <Leader>s; "vyy:@v<CR>
-  vnoremap <Leader>s; "vy:@v<CR>
+  nnoremap <Leader>S; "vyy:@v<CR>
+  vnoremap <Leader>S; "vy:@v<CR>
+  " nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+  " nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
+  " nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+  " nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
+
+  " Correct macros, use it like this <leader>m or "q<leader>m.
+
+  nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+  nnoremap <leader>mc  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
   Map N <leader>tp :e <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
   Map N <leader>to :e ~/org/todo.org<cr>

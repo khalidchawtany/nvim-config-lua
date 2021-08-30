@@ -9,6 +9,7 @@ local M = {
 }
 
 M.init = function()
+  vim.g.textobj_delimited_no_default_key_mappings = true
   vim.cmd [[
     Map vo id <Plug>(textobj-delimited-forward-i)
     Map vo ad <Plug>(textobj-delimited-forward-a)
