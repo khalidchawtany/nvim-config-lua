@@ -120,6 +120,8 @@ require("packer").startup(
     -- use {'camspiers/snap', rocks = {'fzy'}}
 
     use "nvim-lua/telescope.nvim"
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-lua/popup.nvim'
     use {"nvim-telescope/telescope-project.nvim", after = "telescope.nvim"}
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
 

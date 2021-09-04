@@ -31,6 +31,7 @@ local M = {}
 M.cmd = {'DiffviewOpen', 'DiffviewToggleFiles', 'DiffviewToggleFiles', 'DiffviewFocusFiles'}
 
 M.init = function()
+    vim.cmd[[ nnoremap <leader>dd <cmd>DiffviewOpen<cr>]]
 
 end
 
