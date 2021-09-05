@@ -1,4 +1,4 @@
-local M = {}
+local M = {cmd={'ISwap'}}
 M.init = function()
     vim.cmd [[ nnoremap <leader>sa <cmd>ISwap<cr>]]
 end

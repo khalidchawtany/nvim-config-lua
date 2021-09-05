@@ -1,4 +1,6 @@
-local M = {}
+local M = {
+    keys = {'<leader>c', '<leader>cc'}
+}
 M.config = function()
     require('nvim_comment').setup({
         -- Linters prefer comment and line to have a space in between markers

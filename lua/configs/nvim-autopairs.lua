@@ -1,4 +1,6 @@
-local M = {after = "nvim-compe"}
+local M = {
+    event = {'InsertEnter'},
+}
 
 M.config = function()
     require('nvim-autopairs').setup{}
