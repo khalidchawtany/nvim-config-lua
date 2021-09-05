@@ -34,7 +34,7 @@ M.config = function()
     vim.g.nvim_tree_special_files = {'README.md', 'Makefile', 'MAKEFILE'} -- List of filenames that gets highlighted with NvimTreeSpecialFile
 
     vim.cmd([[
-	nnoremap <C-n> :NvimTreeToggle<CR>
+	nnoremap <leader>- :NvimTreeToggle<CR>
 	nnoremap <leader>r :NvimTreeRefresh<CR>
 	nnoremap <leader>n :NvimTreeFindFile<CR>
 	highlight NvimTreeFolderIcon guibg=blue
