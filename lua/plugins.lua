@@ -12,6 +12,7 @@ require("packer").startup(
     use "wbthomason/packer.nvim"
 
     use "glepnir/dashboard-nvim"
+    -- use 'goolord/alpha-nvim'
 
     -- { Tutorials and Easymotion
     use "tjdevries/train.nvim"

@@ -3,6 +3,13 @@ local M = {
 }
 
 M.init = function()
+  vim.cmd [[
+  nnoremap <D-p><D-p> :lua require('fzf-lua').files({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-l> :lua require('fzf-lua').blines({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-o> :lua require('fzf-lua').buffers({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-u> :lua require('fzf-lua').oldfiles({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+
+  ]]
 
   -- buffers  => open buffers
   -- files    => find or fd on a path
@@ -49,15 +56,26 @@ M.init = function()
   -- tags            => project tags
   -- btags           => buffer tags
 
--- :lua require('fzf-lua').files({ cwd = '~/.config' })
--- :lua require('fzf-lua').files({ fzf_layout = 'reverse-list' })
+  -- :lua require('fzf-lua').files({ cwd = '~/.config' })
+  -- :lua require('fzf-lua').files({ fzf_layout = 'reverse-list' })
 end
 
 M.config = function()
-
-require'fzf-lua'.setup {
-  fzf_bin             = 'sk'
-}
+  require "fzf-lua".setup {
+    fzf_bin = "sk",
+    previewers = {
+      builtin = {
+        keymap = {
+          toggle_full = "<c-->", -- toggle full screen
+          toggle_wrap = "<c-=>", -- toggle line wrap
+          toggle_hide = "<c-0>", -- toggle on/off (not yet in use)
+          page_up = "<c-9>", -- preview scroll up
+          page_down = "<c-8>", -- preview scroll down
+          page_reset = "<c-bs>" -- reset scroll to orig pos
+        }
+      }
+    }
+  }
 end
 
 return M

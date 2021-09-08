@@ -86,6 +86,8 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   map  Ặ   <s-cr>
   map  ◊Ú  <C-'><C-;>
 
+  tmap <c-a> <HOME>
+  tmap <c-e> <END>
 
   nnoremap <leader>tl :tabs<cr>
   nnoremap <leader>tn :tabnew<cr>

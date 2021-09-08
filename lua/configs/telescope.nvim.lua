@@ -78,16 +78,16 @@ M.config = function()
             generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
             -- path_display = {},
             winblend = 0,
-            layout_strategy = "horizontal",
+            layout_strategy = "vertical",
             -- layout_defaults = {horizontal = {mirror = false}, vertical = {mirror = false}},
             layout_config = {
                 horizontal = {mirror = false},
                 vertical = {mirror = false},
                 width = 0.8,
                 height = 0.9,
-                preview_width = 0.4,
+                -- preview_width = 0.4,
                 prompt_position = "bottom",
-                preview_cutoff = 100
+                preview_cutoff = 10
             },
             border = {},
             borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
