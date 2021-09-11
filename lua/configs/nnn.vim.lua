@@ -1,4 +1,4 @@
-local M = {cmd = {'NnnPicker', 'Np'}}
+local M = {cmd = {'NnnPicker'}}
 
 M.init = function ()
     --nnoremap <silent> =- :exec 'NnnPicker ' . expand('%:p:h')<CR>

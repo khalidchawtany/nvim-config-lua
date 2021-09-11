@@ -21,6 +21,7 @@ set termencoding=utf-8
 " 
 lua require('opts')
 source ~/.config/nvim/func.vim
+source ~/.config/nvim/lua/laravel.vim
 
 
 lua <<EOF
