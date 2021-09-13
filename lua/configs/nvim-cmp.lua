@@ -13,7 +13,10 @@ M.config = function()
   cmp.setup(
     {
       sources = {
+        {name = "nvim_lsp"},
         {name = "nvim_lua"},
+        {name = "ultisnips"},
+        {name = "path"},
         {
           name = "buffer",
           opts = {
@@ -26,10 +29,7 @@ M.config = function()
               -- return vim.tbl_keys(bufs)
             end
           }
-        },
-        {name = "nvim_lsp"},
-        {name = "path"},
-        {name = "ultisnips"}
+        }
       },
       snippet = {
         expand = function(args)
