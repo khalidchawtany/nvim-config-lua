@@ -8,8 +8,14 @@ local M = {
   }
 }
 
+_G.check_back_space = function()
+  local col = vim.fn.col "." - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s" ~= nil
+end
+
 M.config = function()
   local cmp = require "cmp"
+
   cmp.setup(
     {
       sources = {
@@ -31,6 +37,40 @@ M.config = function()
           }
         }
       },
+      -- formatting = {
+      --   format = function(entry, vim_item)
+      --     vim_item.menu =
+      --       ({
+      --       nvim_lsp = "[LSP]",
+      --       emoji = "[EMO]",
+      --       path = "[PA]",
+      --       calc = "[CALC]",
+      --       vsnip = "[SNIP]",
+      --       buffer = "[BUF]"
+      --     })[entry.source.name]
+      --     return vim_item
+      --   end
+      -- },
+      formatting = {
+        format = function(entry, vim_item)
+          vim_item.menu =
+            ({
+            nvim_lsp = "[L]",
+            emoji = "[E]",
+            path = "[F]",
+            calc = "[C]",
+            vsnip = "[S]",
+            buffer = "[B]"
+          })[entry.source.name]
+          vim_item.dup =
+            ({
+            buffer = 1,
+            path = 1,
+            nvim_lsp = 0
+          })[entry.source.name] or 0
+          return vim_item
+        end
+      },
       snippet = {
         expand = function(args)
           vim.fn["vsnip#anonymous"](args.body)
@@ -47,11 +87,11 @@ M.config = function()
             select = true
           }
         ),
-        ["<Tab>"] = function(fallback)
+        ["<TAB>"] = function(fallback)
           if vim.fn.pumvisible() == 1 then
             vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-n>", true, true, true), "n")
           elseif check_back_space() then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n")
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<TAB>", true, true, true), "n")
           elseif vim.fn["vsnip#available"]() == 1 then
             vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "")
           else
