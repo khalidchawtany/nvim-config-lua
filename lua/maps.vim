@@ -215,10 +215,8 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   nnoremap <c-k><c-d> :silent! call Preserve("normal gg=G")<cr>
 
   " Move visual block
-  vnoremap <c-j> :m '>+1<CR>gv=gv
-  vnoremap <c-k> :m '<-2<CR>gv=gv
-
-
+  vnoremap <D-j> :m '>+1<CR>gv=gv
+  vnoremap <D-k> :m '<-2<CR>gv=gv
 
   " select last matched item
   nnoremap <c-g>/ //e<Enter>v??<Enter>

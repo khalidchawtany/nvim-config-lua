@@ -1,9 +1,9 @@
-local M = {requires = {'ray-x/guihua.lua', run = 'cd lua/fzy && make'}}
+local M = {requires = {"ray-x/guihua.lua", run = "cd lua/fzy && make"}}
 
 M.init = function()
-    require'navigator'.setup({lsp = {format_on_save = true}})
+  require "navigator".setup({default_mapping = true, lsp = {format_on_save = true}})
 
-    vim.cmd [[ LspToggleFmt ]]
+  vim.cmd [[ LspToggleFmt ]]
 end
 
 return M
