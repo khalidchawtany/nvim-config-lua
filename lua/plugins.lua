@@ -220,7 +220,9 @@ require("packer").startup(
     }
 
     use "drewtempelmeyer/palenight.vim"
-    use "hoob3rt/lualine.nvim"
+
+    use 'windwp/windline.nvim'
+    -- use "hoob3rt/lualine.nvim"
     -- use "kdheepak/tabline.nvim"
     use "romgrk/barbar.nvim"
     use "folke/which-key.nvim"

@@ -11,6 +11,10 @@ M.config = function()
     {
       logging = false,
       filetype = {
+        -- typescript = eslint_fmt,
+        -- typescriptreact = eslint_fmt,
+        -- javascript = eslint_fmt,
+        -- javascriptreact = eslint_fmt,
         javascript = {
           -- prettier
           function()
@@ -49,6 +53,17 @@ M.config = function()
               args = {"--assume-filename", vim.api.nvim_buf_get_name(0)},
               stdin = true,
               cwd = vim.fn.expand("%:p:h") -- Run clang-format in cwd of the file.
+            }
+          end
+        },
+        php = {
+          function ()
+            return {
+              -- '/Users/juju/.composer/vendor/bin/phpstan analyze --error-format raw --no-progress'
+              exe = '/Users/juju/.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf',
+              args = {'--stdin-path=' .. vim.api.nvim_buf_get_name(0), '-'},
+              stdin = true,
+              ignore_exitcode = true,
             }
           end
         }
