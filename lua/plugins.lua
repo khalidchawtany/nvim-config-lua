@@ -45,6 +45,8 @@ require("packer").startup(
       end
     }
 
+    use "janko-m/vim-test"
+
     -- mappings and submodes
     -- use 'svermeulen/vimpeccable'
     use "khalidchawtany/vim-submode"
@@ -221,7 +223,7 @@ require("packer").startup(
 
     use "drewtempelmeyer/palenight.vim"
 
-    use 'windwp/windline.nvim'
+    use "windwp/windline.nvim"
     -- use "hoob3rt/lualine.nvim"
     -- use "kdheepak/tabline.nvim"
     use "romgrk/barbar.nvim"
