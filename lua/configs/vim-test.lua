@@ -24,7 +24,9 @@ local mapKeys = function()
     ]]
 end
 
-M.init = mapKeys
-M.config = mapKeys
+M.init = function()
+  vim.cmd [[ let test#strategy = "floaterm"]]
+  mapKeys()
+end
 
 return M

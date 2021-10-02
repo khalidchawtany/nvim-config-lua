@@ -34,6 +34,7 @@ require("packer").startup(
 
     -- Utilities
     -- use 'kevinhwang91/nvim-hlslens'
+    use 'voldikss/vim-floaterm'
     use "kopischke/vim-stay"
     use "gioele/vim-autoswap"
     use "lyokha/vim-xkbswitch"
@@ -68,6 +69,7 @@ require("packer").startup(
     use "ray-x/navigator.lua"
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
     use "ojroques/nvim-lspfuzzy"
+    use 'weilbith/nvim-code-action-menu'
 
     use "simrat39/symbols-outline.nvim"
     use "mfussenegger/nvim-ts-hint-textobject"
