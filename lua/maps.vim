@@ -208,6 +208,7 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   cnoremap <D-v> <C-R>+
   tnoremap <D-v> <C-\><C-N>pi
 
+  cabbrev w; w
 
   vmap > >gv
   vmap < <gv

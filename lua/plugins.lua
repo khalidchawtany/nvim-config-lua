@@ -34,7 +34,7 @@ require("packer").startup(
 
     -- Utilities
     -- use 'kevinhwang91/nvim-hlslens'
-    use 'voldikss/vim-floaterm'
+    use "voldikss/vim-floaterm"
     use "kopischke/vim-stay"
     use "gioele/vim-autoswap"
     use "lyokha/vim-xkbswitch"
@@ -69,7 +69,7 @@ require("packer").startup(
     use "ray-x/navigator.lua"
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
     use "ojroques/nvim-lspfuzzy"
-    use 'weilbith/nvim-code-action-menu'
+    use "weilbith/nvim-code-action-menu"
 
     use "simrat39/symbols-outline.nvim"
     use "mfussenegger/nvim-ts-hint-textobject"
@@ -93,7 +93,9 @@ require("packer").startup(
     use "nvim-treesitter/nvim-treesitter-textobjects"
 
     -- Completion
-    use "hrsh7th/nvim-cmp"
+    -- use "hrsh7th/nvim-cmp"
+    use "ms-jpq/coq_nvim"
+    use {"ms-jpq/coq.artifacts", branch = "artifacts"}
 
     -- Clipboard
     use "bfredl/nvim-miniyank"
