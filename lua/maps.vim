@@ -69,7 +69,7 @@ nnoremap <leader>ww        :w<cr>
 nnoremap <leader>wa        :wall<cr>
 nnoremap <leader>wu        :update<cr>
 
-nnoremap <c-k><c-f> :lua vim.lsp.buf.formatting_seq_sync()<cr>
+nnoremap <c-k><c-d> :lua vim.lsp.buf.formatting_seq_sync()<cr>
 
 nnoremap <leader>ev :e ~/.config/nvim<cr>
 Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
@@ -212,7 +212,7 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   vmap > >gv
   vmap < <gv
 
-  nnoremap <c-k><c-d> :silent! call Preserve("normal gg=G")<cr>
+  nnoremap <c-k><c-=> :silent! call Preserve("normal gg=G")<cr>
 
   " Move visual block
   vnoremap <D-j> :m '>+1<CR>gv=gv
