@@ -34,6 +34,7 @@ require("packer").startup(
 
     -- Utilities
     -- use 'kevinhwang91/nvim-hlslens'
+    use "nathom/filetype.nvim"
     use "voldikss/vim-floaterm"
     use "kopischke/vim-stay"
     use "gioele/vim-autoswap"
@@ -93,9 +94,9 @@ require("packer").startup(
     use "nvim-treesitter/nvim-treesitter-textobjects"
 
     -- Completion
-    -- use "hrsh7th/nvim-cmp"
-    use "ms-jpq/coq_nvim"
-    use {"ms-jpq/coq.artifacts", branch = "artifacts"}
+    use "hrsh7th/nvim-cmp"
+    -- use "ms-jpq/coq_nvim"
+    -- use {"ms-jpq/coq.artifacts", branch = "artifacts"}
 
     -- Clipboard
     use "bfredl/nvim-miniyank"
@@ -121,7 +122,9 @@ require("packer").startup(
 
     use "kyazdani42/nvim-tree.lua"
 
-    use "mcchrish/nnn.vim"
+    -- use "mcchrish/nnn.vim"
+    use "luukvbaal/nnn.nvim"
+    use "Smirnov-O/ts-unit.nvim"
 
     use "camspiers/snap"
     -- use {'camspiers/snap', rocks = {'fzy'}}

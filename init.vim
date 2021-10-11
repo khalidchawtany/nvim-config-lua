@@ -9,6 +9,8 @@ else
 endif
 
 
+let g:did_load_filetypes = 1
+
 
 scriptencoding utf-8
 set encoding=utf-8 nobomb
