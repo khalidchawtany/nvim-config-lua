@@ -4,6 +4,14 @@ local M = {
 }
 
 local mapKeys = function()
+  vim.cmd [[
+  nnoremap <leader>- :lua require 'nvim-tree'.toggle()<cr>
+  nnoremap <leader>r :lua require 'nvim-tree'.refresh()<cr>
+  nnoremap <leader>n :lua require 'nvim-tree'.find_file(true)<cr>
+]]
+end
+
+M.init = function()
   vim.cmd(
     [[
   nnoremap <leader>- :lua require 'nvim-tree'.toggle()<cr>
@@ -12,8 +20,6 @@ local mapKeys = function()
 ]]
   )
 end
-
-M.init = mapKeys
 
 M.config = function()
   vim.g.nvim_tree_show_icons = {git = 1, folders = 1, files = 1}
@@ -146,7 +152,11 @@ M.config = function()
     }
   }
 
-  mapKeys()
+  vim.cmd [[
+  nnoremap <leader>- :lua require 'nvim-tree'.toggle()<cr>
+  nnoremap <leader>r :lua require 'nvim-tree'.refresh()<cr>
+  nnoremap <leader>n :lua require 'nvim-tree'.find_file(true)<cr>
+]]
 end
 
 return M
