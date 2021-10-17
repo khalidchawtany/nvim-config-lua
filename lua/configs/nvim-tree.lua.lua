@@ -3,20 +3,13 @@ local M = {
   module = "nvim-tree"
 }
 
-local mapKeys = function()
-  vim.cmd [[
-  nnoremap <leader>- :lua require 'nvim-tree'.toggle()<cr>
-  nnoremap <leader>r :lua require 'nvim-tree'.refresh()<cr>
-  nnoremap <leader>n :lua require 'nvim-tree'.find_file(true)<cr>
-]]
-end
 
 M.init = function()
   vim.cmd(
     [[
-  nnoremap <leader>- :lua require 'nvim-tree'.toggle()<cr>
-  nnoremap <leader>r :lua require 'nvim-tree'.refresh()<cr>
-  nnoremap <leader>n :lua require 'nvim-tree'.find_file(true)<cr>
+  nnoremap <silent> <leader>- :lua require 'nvim-tree'.toggle()<cr>
+  nnoremap <silent> <leader>r :lua require 'nvim-tree'.refresh()<cr>
+  nnoremap <silent> <leader>n :lua require 'nvim-tree'.find_file(true)<cr>
 ]]
   )
 end
@@ -64,12 +57,12 @@ M.config = function()
     -- hijacks new directory buffers when they are opened.
     update_to_buf_dir = {
       -- enable the feature
-      enable = true,
+      enable = false,
       -- allow to open the tree if it was previously closed
-      auto_open = true
+      auto_open = false
     },
     -- hijack the cursor in the tree to put it at the start of the filename
-    hijack_cursor = false,
+    hijack_cursor = true,
     -- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
     update_cwd = false,
     -- show lsp diagnostics in the signcolumn
@@ -153,9 +146,9 @@ M.config = function()
   }
 
   vim.cmd [[
-  nnoremap <leader>- :lua require 'nvim-tree'.toggle()<cr>
-  nnoremap <leader>r :lua require 'nvim-tree'.refresh()<cr>
-  nnoremap <leader>n :lua require 'nvim-tree'.find_file(true)<cr>
+  nnoremap <silent> <leader>- :lua require 'nvim-tree'.toggle()<cr>
+  nnoremap <silent> <leader>r :lua require 'nvim-tree'.refresh()<cr>
+  nnoremap <silent> <leader>n :lua require 'nvim-tree'.find_file(true)<cr>
 ]]
 end
 
