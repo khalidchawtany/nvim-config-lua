@@ -29,21 +29,12 @@ local function cd_to_path(files)
   end
 end
 
-local mappings = {
-  {"<C-t>", "tabedit"}, -- open file in tab
-  {"<C-s>", "split"}, -- open file in split
-  {"<C-v>", "vsplit"}, -- open file in vertical split
-  {"<C-w>", cd_to_path}, -- cd to file directory
-  {"<C-y>", {copy_to_clipboard, quit = false}}, -- copy file to clipboard
-  {"<S-y>", {copy_to_clipboard, quit = true}}
-} -- coply files to clipboard
-
 M.config = function()
   require("nnn").setup(
     {
       explorer = {
         cmd = "nnn", -- command overrride (-p and -F1 flags are implied, -a flag is invalid!)
-        width = 24, -- width of the vertical split
+        width = 30, -- width of the vertical split
         session = "" -- or global/local/shared
       },
       picker = {
@@ -60,7 +51,12 @@ M.config = function()
       -- replace_netrw = nil -- or explorer/picker
 
       replace_netrw = "picker",
-      mappings = mappings -- table containing mappings, see below
+      mappings = {"<C-t>", "tabedit"}, -- open file in tab
+      {"<C-s>", "split"}, -- open file in split
+      {"<C-v>", "vsplit"}, -- open file in vertical split
+      {"<C-w>", cd_to_path}, -- cd to file directory
+      {"<C-y>", {copy_to_clipboard, quit = false}}, -- copy file to clipboard
+      {"<S-y>", {copy_to_clipboard, quit = true}}
     }
   )
   mapKeys()

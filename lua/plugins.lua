@@ -59,6 +59,8 @@ require("packer").startup(
     use "theHamsta/nvim-dap-virtual-text"
     use "rcarriga/nvim-dap-ui"
 
+    use "mrjones2014/dash.nvim"
+
     use "kevinhwang91/nvim-bqf"
     use "winston0410/mark-radar.nvim"
 
@@ -73,8 +75,12 @@ require("packer").startup(
     use "weilbith/nvim-code-action-menu"
 
     use "simrat39/symbols-outline.nvim"
+
     use "mfussenegger/nvim-ts-hint-textobject"
     use "RRethy/nvim-treesitter-textsubjects"
+    use "Smirnov-O/ts-unit.nvim"
+
+    use "mbbill/undotree"
 
     use "kana/vim-textobj-user"
     use "rhysd/vim-textobj-anyblock"
@@ -124,7 +130,8 @@ require("packer").startup(
 
     -- use "mcchrish/nnn.vim"
     use "luukvbaal/nnn.nvim"
-    use "Smirnov-O/ts-unit.nvim"
+
+    use "chentau/marks.nvim"
 
     use "camspiers/snap"
     -- use {'camspiers/snap', rocks = {'fzy'}}

@@ -109,8 +109,6 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   " inoremap <silent><expr> <C-e>     compe#close('<C-e>')
   " inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
   " inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-  imap <silent> <c-j> <c-n>
-  imap <silent> <c-k> <c-p>
 
 
   " nnoremap <expr> n (v:searchforward ? 'nzz' : 'Nzz')
@@ -162,8 +160,8 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   vnoremap : ;
 
   "Make completion more comfortable
-  inoremap <c-j> <c-n>
-  inoremap <c-k> <c-p>
+  imap <silent> <c-j> <c-n>
+  imap <silent> <c-k> <c-p>
 
   inoremap <C-U> <C-G>u<C-U>
 

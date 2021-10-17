@@ -1,13 +1,28 @@
 local M = {
-  module = "fzf-lua"
+  module = "fzf-lua",
+  cmd = {"FzfLua"}
 }
 
 M.init = function()
   vim.cmd [[
   nnoremap <D-p><D-p> :lua require('fzf-lua').files({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
-  nnoremap <D-p><D-l> :lua require('fzf-lua').blines({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-l> :lua require('fzf-lua').lines({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p>l     :lua require('fzf-lua').blines({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
   nnoremap <D-p><D-o> :lua require('fzf-lua').buffers({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
   nnoremap <D-p><D-u> :lua require('fzf-lua').oldfiles({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-'> :lua require('fzf-lua').marks({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-[> :lua require('fzf-lua').tabs({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-a> :lua require('fzf-lua').live_grep({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-j> :lua require('fzf-lua').live_grep_resume({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-\> :lua require('fzf-lua').grep_curbuf({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p>\ :lua require('fzf-lua').grep_cword({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-g> :lua require('fzf-lua').git_status	({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-c> :lua require('fzf-lua').git_commits	({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p>c :lua require('fzf-lua').git_bcommits	({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-b> :lua require('fzf-lua').git_branches	({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-m> :lua require('fzf-lua').keymaps	({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-r> :lua require('fzf-lua').registers	({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <D-p><D-cr> :lua require('fzf-lua').commands	({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
 
   ]]
 

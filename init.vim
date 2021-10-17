@@ -8,6 +8,10 @@ else
     let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
 endif
 
+" let $NNN_FIFO="/tmp/nnn.fifo"
+
+" let $NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
+
 
 let g:did_load_filetypes = 1
 

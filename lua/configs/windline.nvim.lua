@@ -3,7 +3,7 @@ local M = {}
 M.config = function()
   -- require("windline").setup({tabline = {}})
   require("wlsample.evil_line")
-  require("wlfloatline").setup(
+  -- require("wlfloatline").setup(
     -- {
     --   interval = 300,
     --   ui = {
@@ -19,7 +19,7 @@ M.config = function()
     --     ""
     --   }
     -- }
-  )
+  -- )
 end
 
 return M
