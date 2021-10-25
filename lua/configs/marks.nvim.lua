@@ -1,11 +1,11 @@
-local M = function()
+local M =  {
   -- module = "marks",
-end
+}
 
 M.config = function()
   require "marks".setup {
     signs = true,
-    default_mappings = true
+    default_mappings = false
   }
 end
 
