@@ -1,11 +1,12 @@
 local M = {
   requires = {"nvim-telescope/telescope.nvim"},
   module = "dash",
-  cmd = {"Dash", "DashWord"}
+  cmd = {"Dash", "DashWord"},
+  run = 'make install'
 }
 
 M.init = function()
-  vim.cmd [[ nnoremap f<c-k> :lua require('dash').search(true, '' ) ]]
+  vim.cmd [[ nnoremap f<c-k> :lua require('dash').search(true, vim.fn.expand("<cword>"))<cr> ]]
 end
 
 M.config = function()
@@ -34,7 +35,8 @@ M.config = function()
             javascript = {"javascript", "nodejs"},
             typescript = {"typescript", "javascript", "nodejs"},
             typescriptreact = {"typescript", "javascript", "react"},
-            javascriptreact = {"javascript", "react"}
+            javascriptreact = {"javascript", "react"},
+            php = {"php", "laravel"}
             -- you can also do a string, for example,
             -- bash = 'sh'
           }
