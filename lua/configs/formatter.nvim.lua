@@ -45,6 +45,17 @@ M.config = function()
             }
           end
         },
+        python = {
+          -- python-black
+          -- pip3 install git+git://github.com/psf/black
+          function()
+            return {
+              exe = "black",
+              args = {"--quiet"},
+              stdin = true
+            }
+          end
+        },
         cpp = {
           -- clang-format
           function()
