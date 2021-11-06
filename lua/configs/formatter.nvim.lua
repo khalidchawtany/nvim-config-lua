@@ -52,7 +52,7 @@ M.config = function()
             return {
               exe = "black",
               args = {"--quiet"},
-              stdin = true
+              stdin = false
             }
           end
         },
