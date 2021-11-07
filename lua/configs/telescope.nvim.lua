@@ -88,7 +88,8 @@ M.config = function()
       entry_prefix = "  ",
       initial_mode = "insert",
       selection_strategy = "reset",
-      sorting_strategy = "descending",
+      -- show results from top to bottom
+      sorting_strategy = "ascending", -- "descending",
       file_sorter = require "telescope.sorters".get_fuzzy_file,
       file_ignore_patterns = {},
       generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
@@ -99,13 +100,13 @@ M.config = function()
       layout_config = {
         horizontal = {mirror = false},
         vertical = {
-          mirror = false,
+          mirror = true,
           preview_height = 0.3
         },
         width = 0.8,
         height = 0.95,
         -- preview_width = 0.4,
-        prompt_position = "bottom",
+        prompt_position = "top",
         preview_cutoff = 10
       },
       border = {},
