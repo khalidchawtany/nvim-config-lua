@@ -13,6 +13,8 @@ require("packer").startup(
 
     use "glepnir/dashboard-nvim"
     -- use 'goolord/alpha-nvim'
+    --
+    use "luukvbaal/stabilize.nvim"
 
     -- { Tutorials and Easymotion
     use "tjdevries/train.nvim"
@@ -26,6 +28,7 @@ require("packer").startup(
     use "steelsojka/headwind.nvim"
 
     use "vhyrro/neorg"
+    use "kristijanhusak/orgmode.nvim"
 
     use "kazhala/close-buffers.nvim"
 
@@ -267,7 +270,7 @@ vim.opt.shadafile = ""
 --   installer = function,        -- Specifies custom installer. See "custom installers" below.
 --   updater = function,          -- Specifies custom updater. See "custom installers" below.
 --   after = string or list,      -- Specifies plugins to load before this plugin. See "sequencing" below
---   rtp = string,                -- Specifies a subdirectory of the plugin to add to runtimepath.
+--   rtp = string,                -- Specifies a use flex layout for telescopesubdirectory of the plugin to add to runtimepath.
 --   opt = boolean,               -- Manually marks a plugin as optional.
 --   branch = string,             -- Specifies a git branch to use
 --   tag = string,                -- Specifies a git tag to use
