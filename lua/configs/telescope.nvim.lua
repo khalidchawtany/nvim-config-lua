@@ -95,10 +95,13 @@ M.config = function()
       generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
       -- path_display = {},
       winblend = 0,
-      layout_strategy = "vertical",
+      layout_strategy = "flex",
       -- layout_defaults = {horizontal = {mirror = false}, vertical = {mirror = false}},
       layout_config = {
-        horizontal = {mirror = false},
+        horizontal = {
+          mirror = false,
+          preview_width = 0.5,
+        },
         vertical = {
           mirror = true,
           preview_height = 0.3
