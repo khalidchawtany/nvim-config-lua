@@ -196,6 +196,7 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
 
   nnoremap <leader>e<Tab> :retab<cr>
 
+  nnoremap <leader>e<space> :call StripWhitespace()<cr>
 
   " underline the current line
   nnoremap <leader>u= :t.\|s/./=/g<cr>:nohls<cr>
