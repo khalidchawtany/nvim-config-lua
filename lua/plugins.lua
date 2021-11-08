@@ -107,6 +107,7 @@ require("packer").startup(
 
     -- Completion
     use "hrsh7th/nvim-cmp"
+    use "octaltree/cmp-look"
     -- use "ms-jpq/coq_nvim"
     -- use {"ms-jpq/coq.artifacts", branch = "artifacts"}
 

@@ -35,6 +35,15 @@ M.config = function()
               -- return vim.tbl_keys(bufs)
             end
           }
+        },
+
+        {
+          name = "look",
+          keyword_length = 2,
+          opts = {
+            convert_case = true,
+            loud = true
+          }
         }
       },
       -- formatting = {
