@@ -23,6 +23,7 @@ require("packer").startup(
     use "Lokaltog/vim-easymotion"
     use {"aykamko/vim-easymotion-segments", after = "vim-easymotion"}
     use {"rhysd/clever-f.vim", keys = {"<Plug>(clever-f-"}, fn = {"clever_f#reset"}}
+    use "ripxorip/aerojump.nvim" 
     -- }
 
     use "steelsojka/headwind.nvim"
