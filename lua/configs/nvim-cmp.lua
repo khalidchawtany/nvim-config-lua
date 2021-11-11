@@ -36,7 +36,6 @@ M.config = function()
             end
           }
         },
-
         {
           name = "look",
           keyword_length = 2,
@@ -45,6 +44,10 @@ M.config = function()
             loud = true
           }
         }
+      },
+      experimental = {
+        native_menu = false,
+        ghost_text = true
       },
       -- formatting = {
       --   format = function(entry, vim_item)
@@ -86,11 +89,10 @@ M.config = function()
         end
       },
       mapping = {
-
-        ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}),
+        ["<C-p>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}),
+        ["<Down>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
+        ["<Up>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select}),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
@@ -102,7 +104,7 @@ M.config = function()
           }
         ),
         ["<TAB>"] = function(fallback)
-          if cmp.visible()  then
+          if cmp.visible() then
             cmp.select_next_item()
           elseif check_back_space() then
             vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<TAB>", true, true, true), "n")

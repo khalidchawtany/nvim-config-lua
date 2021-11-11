@@ -24,7 +24,7 @@ set termencoding=utf-8
 " let g:mapleader = "\<space>"
 " let localleader = "\\"
 " let g:loaclleader = "\\"
-" 
+"
 lua require('opts')
 source ~/.config/nvim/func.vim
 source ~/.config/nvim/lua/laravel.vim
@@ -61,3 +61,8 @@ autocmd User fugitive
 
 
 " au BufNew * if stridx(bufname(), 'term://') >=0 | set ft=term  | endif
+
+" highlight text after 100 characters
+highlight! WarnColor ctermbg=darkblue guibg=#E1340F guifg=#111111
+let w:my_colorcol_hi_id = matchadd('WarnColor', '\%101v', 100)
+

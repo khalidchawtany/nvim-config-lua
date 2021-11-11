@@ -16,6 +16,8 @@ require("packer").startup(
     --
     use "luukvbaal/stabilize.nvim"
 
+    use "ntpeters/vim-better-whitespace"
+
     -- { Tutorials and Easymotion
     use "tjdevries/train.nvim"
     use "ggandor/lightspeed.nvim"
