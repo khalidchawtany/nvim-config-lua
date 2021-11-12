@@ -3,6 +3,9 @@ local M = {
 }
 
 M.config = function()
+  vim.cmd [[
+  autocmd WinNew * lua win=vim.api.nvim_get_current_win() vim.defer_fn(function()vim.api.nvim_set_current_win(win) end, 50)
+  ]]
   require("stabilize").setup(
     {
       force = true, -- stabilize window even when current cursor position will be hidden behind new window
