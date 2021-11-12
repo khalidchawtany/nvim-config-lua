@@ -187,6 +187,10 @@ require("packer").startup(
     -- Git
     use "lewis6991/gitsigns.nvim"
 
+    use "ThePrimeagen/git-worktree.nvim"
+
+    use "ThePrimeagen/harpoon"
+
     use "tpope/vim-fugitive"
 
     use "junegunn/gv.vim"
