@@ -191,3 +191,30 @@ command! WipeoutUnmodified call s:wipeout()
 
 command! -nargs=? -complete=buffer -bang BufOnly
       \ :call BufOnly('<args>', '<bang>')
+
+
+
+
+
+" send paragraph under curso to terminal
+function! Exec_on_term(cmd)
+  if a:cmd=="normal"
+    exec "normal \"vyip"
+  else
+    exec "normal gv\"vy"
+  endif
+  let g:floaterm_autoinsert_bu = g:floaterm_autoinsert
+  let g:floaterm_autoinsert = v:false
+  execute ":FloatermNew --title='rest' --autoinsert=0 --autoclose=0 --wintype=vsplit "getreg('v')
+  let g:floaterm_autoinsert = g:floaterm_autoinsert_bu
+endfunction
+
+nnoremap <leader><cr> :call Exec_on_term("normal")<CR>
+vnoremap <leader><cr> :<c-u>call Exec_on_term("visual")<CR>
+
+function InsertRestRequest() abort
+  let text = "icurl \"http://www.mall.local/api/mall/categories/1\" \\ | jq -R '. as $raw | try fromjson catch $raw'0kf\"vi\""
+  call feedkeys(text)
+endfunction
+
+nnoremap <leader>i<cr> :call InsertRestRequest()<cr>

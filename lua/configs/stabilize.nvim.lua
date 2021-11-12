@@ -4,7 +4,7 @@ local M = {
 
 M.config = function()
   vim.cmd [[
-  autocmd WinNew * lua win=vim.api.nvim_get_current_win() vim.defer_fn(function()vim.api.nvim_set_current_win(win) end, 50)
+  autocmd WinNew * lua win=vim.api.nvim_get_current_win() vim.defer_fn(function()vim.api.nvim_set_current_win(win) end, 70)
   ]]
   require("stabilize").setup(
     {

@@ -1,5 +1,6 @@
 local M = {
-  module = {"harpoon"}
+  module = {"harpoon"},
+  requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"}
 }
 
 M.mapKeys = function()
