@@ -44,6 +44,7 @@ require("packer").startup(
     -- use 'kevinhwang91/nvim-hlslens'
     use "nathom/filetype.nvim"
     use "voldikss/vim-floaterm"
+    use "numToStr/FTerm.nvim"
     use "kopischke/vim-stay"
     use "gioele/vim-autoswap"
     use "lyokha/vim-xkbswitch"
