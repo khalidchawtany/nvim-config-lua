@@ -10,20 +10,20 @@ M.init = function()
   map("n", "<C-cr>", '<CMD>lua require("FTerm").toggle()<CR>', opts)
   map("t", "<C-cr>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 
-  vim.cmd[[ nnoremap <leader>gi :lua require('vim-floaterm.gitUi'):toggle() ]]
-end
+  vim.cmd[[
 
-M.gitUi = function()
-  local fterm = require("FTerm")
+    nnoremap <leader>gi :execute "PackerLoad FTerm.nvim" \| lua require("FTerm"):new({ ft = "fterm_gitui", cmd = "gitui", dimensions = {height = 0.9, width = 0.9} }):toggle()<cr>
 
-  return fterm:new(
-    {
-      ft = "fterm_gitui", -- You can also override the default filetype, if you want
-      cmd = "gitui",
-      dimensions = {height = 0.9, width = 0.9}
-    }
-  )
-  -- gitui:toggle()
+    function! FTermStrategy(cmd)
+      PackerLoad FTerm.nvim
+      execute 'lua require("FTerm"):new({ ft = "fterm_gitui", cmd = "' a:cmd '", dimensions = {height = 0.9, width = 0.9} }):toggle()'
+    endfunction
+
+    let g:test#custom_strategies = {'FTerm': function('FTermStrategy')}
+    let g:test#strategy = 'FTerm'
+  ]]
+
+
 end
 
 M.config = function()
