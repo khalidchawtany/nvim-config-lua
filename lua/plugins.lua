@@ -38,7 +38,7 @@ require("packer").startup(
     use "kazhala/close-buffers.nvim"
 
     -- HTTP
-    use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}, keys = {"<Plug>RestNvim"}}
+    use {"khalidchawtany/rest.nvim", requires = {"nvim-lua/plenary.nvim"}, keys = {"<Plug>RestNvim"}}
 
     -- Utilities
     -- use 'kevinhwang91/nvim-hlslens'
@@ -192,6 +192,8 @@ require("packer").startup(
     use "ThePrimeagen/harpoon"
 
     use "tpope/vim-fugitive"
+
+    use "kdheepak/lazygit.nvim"
 
     use "junegunn/gv.vim"
 

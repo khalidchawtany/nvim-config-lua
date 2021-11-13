@@ -25,6 +25,11 @@ M.config = function()
         enabled = true,
         timeout = 150
       },
+      result = {
+        show_url = false,
+        show_http_info = true,
+        show_headers = false,
+      },
       -- Jump to request line on run
       jump_to_request = true
     }
