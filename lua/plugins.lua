@@ -38,7 +38,7 @@ require("packer").startup(
     use "kazhala/close-buffers.nvim"
 
     -- HTTP
-    use {"khalidchawtany/rest.nvim", requires = {"nvim-lua/plenary.nvim"}, keys = {"<Plug>RestNvim"}}
+    use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}, keys = {"<Plug>RestNvim"}}
 
     -- Utilities
     -- use 'kevinhwang91/nvim-hlslens'

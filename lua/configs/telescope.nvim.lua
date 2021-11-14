@@ -24,6 +24,7 @@ M.init = function()
             nnoremap <c-s>u      <cmd>lua require('telescope.builtin').oldfiles()<cr>
             nnoremap <c-s>e      <cmd>lua require('telescope.builtin').file_browser()<cr>
             nnoremap <c-s><c-e>  <cmd>lua require('telescope.builtin').file_browser()<cr>
+            nnoremap <c-s><c-s>  <cmd>lua require('telescope.builtin').file_browser()<cr>
     ]]
 
   vim.api.nvim_set_keymap(
