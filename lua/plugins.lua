@@ -13,7 +13,10 @@ require("packer").startup(
 
     use "glepnir/dashboard-nvim"
     -- use 'goolord/alpha-nvim'
-    --
+
+    use 'VonHeikemen/fine-cmdline.nvim'
+    use 'MunifTanjim/nui.nvim'
+
     use "luukvbaal/stabilize.nvim"
 
     use "ntpeters/vim-better-whitespace"
