@@ -14,8 +14,8 @@ require("packer").startup(
     use "glepnir/dashboard-nvim"
     -- use 'goolord/alpha-nvim'
 
-    use 'VonHeikemen/fine-cmdline.nvim'
-    use 'MunifTanjim/nui.nvim'
+    use "VonHeikemen/fine-cmdline.nvim"
+    use "MunifTanjim/nui.nvim"
 
     use "luukvbaal/stabilize.nvim"
 
@@ -197,6 +197,8 @@ require("packer").startup(
     use "ThePrimeagen/harpoon"
 
     use "tpope/vim-fugitive"
+    use "pwntester/octo.nvim"
+    use "TimUntersberger/neogit"
 
     use "kdheepak/lazygit.nvim"
 

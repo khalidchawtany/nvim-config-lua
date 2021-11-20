@@ -3,13 +3,24 @@ local M = {
   module = "nvim-tree"
 }
 
-
 M.init = function()
   vim.cmd(
     [[
   nnoremap <silent> <leader>- :lua require 'nvim-tree'.toggle()<cr>
   nnoremap <silent> <leader>r :lua require 'nvim-tree'.refresh()<cr>
   nnoremap <silent> <leader>n :lua require 'nvim-tree'.find_file(true)<cr>
+
+  function! UpdateNvimTreeBuffers(timerId) abort
+      lua require('nvim-tree').refresh()
+      lua require('nvim-tree.lib').redraw()
+      lua require('nvim-tree').find_file()
+  endfunction
+
+  augroup nvim_tree_autocmds
+      autocmd!
+      autocmd BufWinEnter * silent! call UpdateNvimTreeBuffers(0)
+      autocmd BufDelete * silent! call timer_start(10, 'UpdateNvimTreeBuffers')
+  augroup END
 ]]
   )
 end
