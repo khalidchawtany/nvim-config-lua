@@ -136,7 +136,8 @@ require("packer").startup(
     use "tamago324/lir.nvim"
     use "tamago324/lir-bookmark.nvim"
 
-    use "kyazdani42/nvim-tree.lua"
+    -- use "kyazdani42/nvim-tree.lua"
+    use "cseickel/nvim-tree.lua"
 
     -- use "mcchrish/nnn.vim"
     use "luukvbaal/nnn.nvim"

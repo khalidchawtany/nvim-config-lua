@@ -62,7 +62,8 @@ M.config = function()
           ["<C-i>"] = actions.select_horizontal,
           ["<C-j>"] = actions.move_selection_next,
           ["<C-k>"] = actions.move_selection_previous,
-          ["<c-space>"] = actions.toggle_selection + actions.move_selection_better
+          ["<c-space>"] = actions.toggle_selection + actions.move_selection_better,
+          ["<C-'>"] = actions.which_key,
 
           -- Add up multiple actions
           -- ["<CR>"] = actions.select_default + actions.center
