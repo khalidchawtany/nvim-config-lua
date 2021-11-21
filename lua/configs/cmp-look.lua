@@ -1,4 +1,5 @@
 local M = {
-  after = "nvim-cmp"
+  after = "nvim-cmp",
+  disable = true,
 }
 return M

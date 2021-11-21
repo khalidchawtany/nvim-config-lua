@@ -18,6 +18,9 @@ M.config = function()
 
   cmp.setup(
     {
+      completion = {
+        autocomplete = false
+      },
       sources = {
         {name = "nvim_lsp"},
         {name = "nvim_lua"},
@@ -36,18 +39,18 @@ M.config = function()
             end
           }
         },
-        {
-          name = "look",
-          keyword_length = 2,
-          opts = {
-            convert_case = true,
-            loud = true
-          }
-        }
+        -- {
+        --   name = "look",
+        --   keyword_length = 4,
+        --   opts = {
+        --     convert_case = true,
+        --     loud = true
+        --   }
+        -- }
       },
       experimental = {
         native_menu = false,
-        ghost_text = true
+        ghost_text = false
       },
       -- formatting = {
       --   format = function(entry, vim_item)
@@ -67,18 +70,20 @@ M.config = function()
         format = function(entry, vim_item)
           vim_item.menu =
             ({
-            nvim_lsp = "[L]",
-            emoji = "[E]",
-            path = "[F]",
-            calc = "[C]",
-            vsnip = "[S]",
-            buffer = "[B]"
+            nvim_lsp = "[LSP]",
+            emoji = "[EMO]",
+            path = "[FILE]",
+            calc = "[CALC]",
+            vsnip = "[SNIP]",
+            luasnip = "[LSNIP]",
+            ultisnips = "[ULTIS]",
+            buffer = "[BUF]",
           })[entry.source.name]
           vim_item.dup =
             ({
             buffer = 1,
             path = 1,
-            nvim_lsp = 0
+            nvim_lsp = 1
           })[entry.source.name] or 0
           return vim_item
         end
