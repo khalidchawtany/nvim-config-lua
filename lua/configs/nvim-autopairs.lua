@@ -1,4 +1,5 @@
 local M = {
+    module = 'nvim-autopairs',
     event = {'InsertEnter'},
 }
 

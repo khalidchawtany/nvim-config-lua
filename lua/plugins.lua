@@ -11,8 +11,8 @@ require("packer").startup(
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
 
-    use "glepnir/dashboard-nvim"
-    -- use 'goolord/alpha-nvim'
+    -- use "glepnir/dashboard-nvim"
+    use 'goolord/alpha-nvim'
 
     use "VonHeikemen/fine-cmdline.nvim"
     use "MunifTanjim/nui.nvim"
@@ -112,10 +112,12 @@ require("packer").startup(
     use "nvim-treesitter/nvim-treesitter-textobjects"
 
     -- Completion
-    use "hrsh7th/nvim-cmp"
-    use "octaltree/cmp-look"
-    -- use "ms-jpq/coq_nvim"
-    -- use {"ms-jpq/coq.artifacts", branch = "artifacts"}
+    -- use "hrsh7th/nvim-cmp"
+    -- use "octaltree/cmp-look"
+    use "ms-jpq/coq_nvim"
+    use {"ms-jpq/coq.artifacts", branch = "artifacts"}
+
+    use "mfussenegger/nvim-treehopper"
 
     -- Clipboard
     use "bfredl/nvim-miniyank"
