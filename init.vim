@@ -43,7 +43,7 @@ lua <<EOF
 )
 async:send()
 EOF
-lua require('configs/lspconfig')
+" lua require('configs/lspconfig')
 "lua require('_completion-nvim')
 source ~/.config/nvim/lua/maps.vim
 

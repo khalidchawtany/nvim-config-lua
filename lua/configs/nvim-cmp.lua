@@ -28,7 +28,7 @@ M.config = function()
         {name = "path"},
         {
           name = "buffer",
-          opts = {
+          option = {
             get_bufnrs = function()
               return vim.api.nvim_list_bufs()
               -- local bufs = {}
@@ -42,7 +42,7 @@ M.config = function()
         -- {
         --   name = "look",
         --   keyword_length = 4,
-        --   opts = {
+        --   option = {
         --     convert_case = true,
         --     loud = true
         --   }
