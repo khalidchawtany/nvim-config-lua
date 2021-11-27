@@ -25,29 +25,16 @@ set termencoding=utf-8
 " let localleader = "\\"
 " let g:loaclleader = "\\"
 "
+lua require('impatient')
 lua require('opts')
 source ~/.config/nvim/func.vim
 source ~/.config/nvim/lua/laravel.vim
-
-
-lua <<EOF
- local async
- async = vim.loop.new_async(
-    vim.schedule_wrap(
-        function()
-            require('plugins')
-
-            async:close()
-        end
-    )
-)
-async:send()
-EOF
+lua require('plugins')
 " lua require('configs/lspconfig')
 "lua require('_completion-nvim')
 source ~/.config/nvim/lua/maps.vim
 
-let g:indent_blankline_filetype_exclude = ['dashboard', 'help']
+let g:indent_blankline_filetype_exclude = ['alpha', 'help']
 
 let g:dashboard_default_executive ='telescope'
 

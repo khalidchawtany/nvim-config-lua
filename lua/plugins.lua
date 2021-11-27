@@ -2,9 +2,21 @@ vim.opt.shadafile = "NONE"
 package.path = package.path .. ";/Users/juju/.config/nvim/lua"
 local fun = require("functions")
 
-require("packer").startup(
+local packer = require("packer")
+packer.init(
+  {
+    -- compile_path = util.join_paths(vim.fn.stdpath('config'), 'plugin', 'packer_compiled.lua'),
+    compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua"
+  }
+)
+
+packer.startup(
   function(use)
-    use 'lewis6991/impatient.nvim'
+
+    use {
+      "lewis6991/impatient.nvim",
+      rocks = "mpack"
+    }
 
     -- setup use() to replace packer_use()
     fun.setPackerUse(use)
@@ -13,8 +25,7 @@ require("packer").startup(
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
 
-    -- use "glepnir/dashboard-nvim"
-    use 'goolord/alpha-nvim'
+    use "goolord/alpha-nvim"
 
     use "VonHeikemen/fine-cmdline.nvim"
     use "MunifTanjim/nui.nvim"
