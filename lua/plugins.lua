@@ -4,6 +4,8 @@ local fun = require("functions")
 
 require("packer").startup(
   function(use)
+    use 'lewis6991/impatient.nvim'
+
     -- setup use() to replace packer_use()
     fun.setPackerUse(use)
     use = fun.use
@@ -78,7 +80,8 @@ require("packer").startup(
 
     -- LSP
     use "neovim/nvim-lspconfig"
-    use "kabouzeid/nvim-lspinstall"
+    use "williamboman/nvim-lsp-installer"
+    -- use "kabouzeid/nvim-lspinstall"
     -- use 'alexaandru/nvim-lspupdate'
     -- use 'williamboman/nvim-lsp-installer'
     use "ray-x/navigator.lua"
