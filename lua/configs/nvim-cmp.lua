@@ -13,13 +13,34 @@ _G.check_back_space = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s" ~= nil
 end
 
+
 M.config = function()
+  vim.cmd[[
+  " gray
+  highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+  " blue
+  highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+  highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
+  " light blue
+  highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+  highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
+  highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
+  " pink
+  highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+  highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
+  " front
+  highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+  highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
+  highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
+  ]]
+
+
   local cmp = require "cmp"
 
   cmp.setup(
     {
       completion = {
-        autocomplete = false
+        autocomplete = true
       },
       sources = {
         {name = "nvim_lsp"},

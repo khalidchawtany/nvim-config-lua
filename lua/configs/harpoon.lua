@@ -6,13 +6,9 @@ local M = {
 M.mapKeys = function()
   vim.cmd [[
   nnoremap <silent> <leader>h<leader>  :lua require("harpoon.ui").toggle_quick_menu()<cr>
+  nnoremap <silent> <leader>hh  :lua require("harpoon.ui").toggle_quick_menu()<cr>
   nnoremap <silent> <leader>ha         :lua require("harpoon.mark").add_file()<cr>
   nnoremap <silent> <leader>hc         :lua require('harpoon.cmd-ui').toggle_quick_menu()<cr>
-
-  nnoremap <silent> <leader>hh         :lua require("harpoon.ui").nav_file(1)<cr>
-  nnoremap <silent> <leader>hj         :lua require("harpoon.ui").nav_file(2)<cr>
-  nnoremap <silent> <leader>hk         :lua require("harpoon.ui").nav_file(3)<cr>
-  nnoremap <silent> <leader>hl         :lua require("harpoon.ui").nav_file(4)<cr>
 
   nnoremap <silent> <leader>h1         :lua require("harpoon.ui").nav_file(1)<cr>
   nnoremap <silent> <leader>h2         :lua require("harpoon.ui").nav_file(2)<cr>

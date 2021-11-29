@@ -92,9 +92,7 @@ packer.startup(
     -- LSP
     use "neovim/nvim-lspconfig"
     use "williamboman/nvim-lsp-installer"
-    -- use "kabouzeid/nvim-lspinstall"
-    -- use 'alexaandru/nvim-lspupdate'
-    -- use 'williamboman/nvim-lsp-installer'
+
     use "ray-x/navigator.lua"
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
     use "ojroques/nvim-lspfuzzy"
