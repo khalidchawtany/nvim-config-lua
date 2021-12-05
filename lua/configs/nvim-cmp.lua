@@ -38,7 +38,7 @@ M.config = function()
   cmp.setup(
     {
       completion = {
-        autocomplete = true
+        -- autocomplete = true
       },
       sources = {
         {name = "nvim_lsp"},
