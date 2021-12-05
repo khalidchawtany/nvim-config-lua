@@ -1,6 +1,7 @@
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
+  :
 
 
 let g:fzf_command_prefix = 'Fzf'
@@ -126,7 +127,7 @@ call Map_FZF  ( "FzfMarks"    , "<c-'>" , ""                                    
 call Map_FZF  ( "FzfMarks"    , "'"     , ""                                                                               , 0  )
 call Map_FZF  ( "FzfWindows"  , "w"     , ""                                                                               , 0  )
 call Map_FZF  ( "FzfHelptags" , "k"     , ""                                                                               , 0  )
-call Map_FZF  ( "FzfHistory" , "h"     , ""                                                                               , 0  )
+" call Map_FZF  ( "FzfHistory" , "h"     , ""                                                                               , 0  )
 
 function! GetFunctions()
   let query = ''

@@ -1,6 +1,6 @@
 local M = {
   module = {"harpoon"},
-  requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"}
+  requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim", "nvim-lua/telescope.nvim"}
 }
 
 M.mapKeys = function()
@@ -20,6 +20,8 @@ M.mapKeys = function()
   nnoremap <silent> <leader>h8         :lua require("harpoon.ui").nav_file(8)<cr>
   nnoremap <silent> <leader>h9         :lua require("harpoon.ui").nav_file(9)<cr>
   nnoremap <silent> <leader>h0         :lua require("harpoon.ui").nav_file(10)<cr>
+  nnoremap <silent> <c-p><c-h>         :Telescope harpoon marks<cr>
+
   ]]
 end
 
@@ -46,6 +48,8 @@ M.config = function()
       -- },
     }
   )
+
+  require("telescope").load_extension('harpoon')
 end
 
 return M

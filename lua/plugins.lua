@@ -12,7 +12,6 @@ packer.init(
 
 packer.startup(
   function(use)
-
     use {
       "lewis6991/impatient.nvim",
       rocks = "mpack"
@@ -30,7 +29,7 @@ packer.startup(
     use "VonHeikemen/fine-cmdline.nvim"
     use "MunifTanjim/nui.nvim"
 
-    use "luukvbaal/stabilize.nvim"
+    -- use "luukvbaal/stabilize.nvim"
 
     use "ntpeters/vim-better-whitespace"
 
@@ -131,6 +130,8 @@ packer.startup(
 
     use "mfussenegger/nvim-treehopper"
 
+    use "mattn/emmet-vim"
+
     -- Clipboard
     use "bfredl/nvim-miniyank"
     use "vim-scripts/UnconditionalPaste"
@@ -159,7 +160,7 @@ packer.startup(
     -- use "mcchrish/nnn.vim"
     use "luukvbaal/nnn.nvim"
 
-    use "chentau/marks.nvim"
+    -- use "chentau/marks.nvim"
 
     use "camspiers/snap"
     -- use {'camspiers/snap', rocks = {'fzy'}}
@@ -240,9 +241,7 @@ packer.startup(
     use {"gabesoft/vim-ags", cmd = {"Ags"}}
 
     -- Comments
-    use "terrortylor/nvim-comment"
-    use "JoosepAlviste/nvim-ts-context-commentstring"
-
+    use "numToStr/Comment.nvim"
     -- Autopairs
     use "windwp/nvim-autopairs"
 

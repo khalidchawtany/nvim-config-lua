@@ -1,6 +1,7 @@
 local M = {
   cmd = {"Octo"},
-  module ="octo"
+  module ="octo",
+  requires={"nvim-lua/telescope.nvim"}
 }
 
 M.setup = function()

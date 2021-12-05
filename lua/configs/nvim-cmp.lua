@@ -13,9 +13,8 @@ _G.check_back_space = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s" ~= nil
 end
 
-
 M.config = function()
-  vim.cmd[[
+  vim.cmd [[
   " gray
   highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
   " blue
@@ -33,7 +32,6 @@ M.config = function()
   highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
   highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
   ]]
-
 
   local cmp = require "cmp"
 
@@ -59,7 +57,7 @@ M.config = function()
               -- return vim.tbl_keys(bufs)
             end
           }
-        },
+        }
         -- {
         --   name = "look",
         --   keyword_length = 4,
@@ -98,7 +96,7 @@ M.config = function()
             vsnip = "[SNIP]",
             luasnip = "[LSNIP]",
             ultisnips = "[ULTIS]",
-            buffer = "[BUF]",
+            buffer = "[BUF]"
           })[entry.source.name]
           vim_item.dup =
             ({
@@ -149,9 +147,9 @@ M.config = function()
   capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
   -- The following example advertise capabilities to `clangd`.
-  require "lspconfig".clangd.setup {
-    capabilities = capabilities
-  }
+  -- require "lspconfig".clangd.setup {
+  --   capabilities = capabilities
+  -- }
 end
 
 return M

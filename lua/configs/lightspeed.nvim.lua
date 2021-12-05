@@ -2,6 +2,7 @@ local M = {}
 
 M.init = function()
     -- dump("Init is running ")
+    vim.cmd [[ nmap s <Plug>Lightspeed_s ]]
 end
 
 M.config = function()
