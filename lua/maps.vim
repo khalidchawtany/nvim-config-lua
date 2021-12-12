@@ -332,3 +332,32 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
 
   xnoremap ]e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionDown"\|normal! gv<cr>
   " snoremap [e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
+
+function! FoldFunction()
+    set foldmethod=manual
+    normal zE
+    if &ft == 'blade'
+        execute "silent! g/<div\\|\<style/normal lma%zf'a"
+        execute "silent! g/columns: \\[\\[/normal 0maf[%zf'a"
+        execute "silent! g/function\\|.edatagrid({\\|{ field:\\|{field:/normal 0maf{%zf'a"
+    endif
+    if &ft == 'php'
+        execute "silent! g/protected \\$fillable = \\[/normal 0f[zf%"
+        execute "silent! g/protected \\$dates = \\[/normal 0f[zf%"
+        execute "silent! g/public function/normal 0maf{%zf'a"
+        execute "silent! g/public static function/normal 0maf{%zf'a"
+        execute "silent! g/protected function/normal 0maf{%zf'a"
+        execute "silent! g/private function/normal 0maf{%zf'a"
+        execute "silent! g/\\/\\*\\*/normal mazf%'a"
+        normal zM
+    endif
+    if &ft == 'go'
+        execute "silent! g/func/normal 0maf{%zf'a"
+        execute "silent! g/type/normal 0maf{%zf'a"
+        execute "silent! g/import/normal 0maf{%zf'a"
+        normal zM
+    endif
+endfunction
+
+Map n <leader>zf  <cmd>call FoldFunction()<cr>
+Map n <leader>zi  <cmd>set fdm=indent<cr><cmd>set fdm=manual<cr>

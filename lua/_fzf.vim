@@ -160,7 +160,7 @@ imap <silent> <c-x><c-\> <plug>(fzf-complete-file)
 "Get all files including git ignore
 nnoremap <c-p><space> <Plug>FzfAllFiles :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
 " nnoremap <silent> <c-p><space> :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
-nnoremap <silent> <c-p><c-space> <cmd>FzfHistory!<cr>
+" nnoremap <silent> <c-p><c-space> <cmd>FzfHistory!<cr>
 
 function! s:get_directories()
   call fzf#run({"source":"ag -l --nocolor -g \"\" | gawk 'NF{NF-=1};1' FS=/ OFS=/ | sort -u | uniq" , "sink":"e"})

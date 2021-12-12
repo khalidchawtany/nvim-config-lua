@@ -4,8 +4,8 @@ local M = {
     "nvim-lua/popup.nvim",
     "nvim-telescope/telescope-fzy-native.nvim"
   },
-  module = {"telescope"}
-  -- cmd = {'Telescope'},
+  module = {"telescope"},
+  cmd = {'Telescope'},
 }
 
 M.init = function()
@@ -22,9 +22,9 @@ M.init = function()
             nnoremap <c-s><c-l>  <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
             nnoremap <c-s><c-u>  <cmd>lua require('telescope.builtin').oldfiles()<cr>
             nnoremap <c-s>u      <cmd>lua require('telescope.builtin').oldfiles()<cr>
-            nnoremap <c-s>e      <cmd>lua require('telescope.builtin').file_browser()<cr>
-            nnoremap <c-s><c-e>  <cmd>lua require('telescope.builtin').file_browser()<cr>
-            nnoremap <c-s><c-s>  <cmd>lua require('telescope.builtin').file_browser()<cr>
+            nnoremap <c-s><c-s>  <cmd>lua require 'telescope'.extensions.file_browser.file_browser()<cr>
+
+ 
     ]]
 
   vim.api.nvim_set_keymap(
@@ -64,6 +64,7 @@ M.config = function()
           ["<C-k>"] = actions.move_selection_previous,
           ["<c-space>"] = actions.toggle_selection + actions.move_selection_better,
           ["<C-'>"] = actions.which_key,
+          ["<C-CR>"] = actions.select_default + actions.center
 
           -- Add up multiple actions
           -- ["<CR>"] = actions.select_default + actions.center
@@ -102,7 +103,7 @@ M.config = function()
       layout_config = {
         horizontal = {
           mirror = false,
-          preview_width = 0.5,
+          preview_width = 0.5
         },
         vertical = {
           mirror = true,
@@ -129,18 +130,26 @@ M.config = function()
 
   require("telescope").setup {
     extensions = {
-      fzy_native = {override_generic_sorter = false, override_file_sorter = true},
+      -- fzy_native = {override_generic_sorter = false, override_file_sorter = true},
       fzf = {
         fuzzy = true, -- false will only do exact matching
         override_generic_sorter = false, -- override the generic sorter
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case" -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
+      },
+      file_browser = {
+        --theme = "ivy",
+        mappings = {
+          ["i"] = {},
+          ["n"] = {}
+        }
       }
     }
   }
-  require("telescope").load_extension("fzy_native")
+  -- require("telescope").load_extension("fzy_native")
   require("telescope").load_extension("fzf")
+  require("telescope").load_extension "file_browser"
 end
 
 return M
