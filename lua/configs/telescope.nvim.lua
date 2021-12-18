@@ -22,14 +22,23 @@ M.init = function()
             nnoremap <c-s><c-l>  <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
             nnoremap <c-s><c-u>  <cmd>lua require('telescope.builtin').oldfiles()<cr>
             nnoremap <c-s>u      <cmd>lua require('telescope.builtin').oldfiles()<cr>
+            nnoremap <c-s><c-g>  <cmd>lua require('telescope.builtin').git_status()<cr>
+            nnoremap <c-s>gs  <cmd>lua require('telescope.builtin').git_stash()<cr>
+            nnoremap <c-s>gb  <cmd>lua require('telescope.builtin').git_branches()<cr>
+            nnoremap <c-s>gC  <cmd>lua require('telescope.builtin').git_commits()<cr>
+            nnoremap <c-s>gc  <cmd>lua require('telescope.builtin').git_bcommits()<cr>
+            nnoremap <c-s>gf  <cmd>lua require('telescope.builtin').git_files()<cr>
             nnoremap <c-s><c-s>  <cmd>lua require 'telescope'.extensions.file_browser.file_browser()<cr>
 
  
     ]]
 
-  vim.api.nvim_set_keymap(
-    "n",
-    "<C-p><c-\\>",
+  vim.api.nvim_set_keymap( "n", "<C-p><c-\\>",
+    ":lua require'telescope'.extensions.project.project{}<CR>",
+    {noremap = true, silent = true}
+  )
+
+  vim.api.nvim_set_keymap( "n", "<C-s><c-\\>",
     ":lua require'telescope'.extensions.project.project{}<CR>",
     {noremap = true, silent = true}
   )

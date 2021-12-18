@@ -44,18 +44,10 @@ M.init = function()
        call submode#map(       'toggle-fold', 'n', 's', '{', ':<C-U>set foldmethod=manual<cr>')
        call submode#map(       'toggle-fold', 'n', 's', 'e', ':<C-U>set foldexpr=nvim_treesitter#foldexpr()<cr>set foldmethod=expr<cr>') "}}} _Toogles FOLD
 
-     ""Toggles FoleMarker
-       "call submode#enter_with('toggle-marker', 'n', '', 'com', ':<C-U>exe "call ToggleFoldMarker()"<cr>')
-       "call submode#leave_with('toggle-marker', 'n', '', '<Esc>')
-       "call submode#map(       'toggle-marker', 'n', '', 'm', ':<C-U>exe "call ToggleFoldMarker()"<cr>')
-       "call submode#map(       'toggle-marker', 'n', '', 'n', ':<C-U>exe "call ToggleFoldMarker()"<cr>')
-       "call submode#map(       'toggle-marker', 'n', '', 'p', ':<C-U>exe "call ToggleFoldMarker()"<cr>')
-
      "Toggles
        call submode#enter_with('toggle-mode', 'n', '', 'coo', ':<C-U>echo ""<cr>')
        call submode#leave_with('toggle-mode', 'n', '', '<Esc>')
        call submode#map(       'toggle-mode', 'n', '', 'f', ':<C-U>exe "call ToggleFoldMethod()"<cr>')
-       call submode#map(       'toggle-mode', 'n', '', '{', ':<C-U>exe "call ToggleFoldMarker()"<cr>')
        call submode#map(       'toggle-mode', 'n', '', 'm', ':<C-U>exe "call ToggleMouseFunction()"<cr>')
        call submode#map(       'toggle-mode', 'n', '', ';', ':<C-U>set showcmd!<cr>')
        call submode#map(       'toggle-mode', 'n', '', ':', ':<C-U>set showcmd!<cr>')
@@ -70,19 +62,6 @@ M.init = function()
        call submode#leave_with('undo/redo', 'n', '', '<Esc>')
        call submode#map('undo/redo', 'n', '', '-', 'g-')
        call submode#map('undo/redo', 'n', '', '+', 'g+')
-
-     "Buffer
-       ""call submode#enter_with('buf', 'n', 's', ']b', ':<C-U>exe "bnext<Bar>hi Normal guibg=red"<cr>')
-       ""call submode#enter_with('buf', 'n', 's', '[b', ':<C-U>exe "bprevious<Bar>hi Normal guibg=red"<cr>')
-       "call submode#enter_with('buf', 'n', 's', ']b', ':<C-U>exe "bnext"<cr>')
-       "call submode#enter_with('buf', 'n', 's', '[b', ':<C-U>exe "bprevious"<cr>')
-       "call submode#map('buf', 'n', 's', ']', ':<C-U>exe "bnext"<cr>')
-       "call submode#map('buf', 'n', 's', 'd', ':<C-U>exe "bdelete"<cr>')
-       "call submode#map('buf', 'n', 's', 'k', ':<C-U>exe "bdelete!"<cr>')
-       "call submode#map('buf', 'n', 's', 'o', ':<C-U>exe "BufOnly"<cr>')
-       "call submode#map('buf', 'n', 's', '[', ':<C-U>exe "bprevious"<cr>')
-       "call submode#map('buf', 'n', 's', 'l', ':<C-U>exe "buffers"<cr>')
-       "autocmd! User buf_leaving :hi Normal guibg=#1B1D1E<cr>
 
      "Jump/Edit
        call submode#enter_with('Jump/Edit', 'n', 's', 'coj', ':<C-U>exe "silent! normal g,zO"<cr>')
