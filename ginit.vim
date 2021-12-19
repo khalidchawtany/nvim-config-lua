@@ -76,26 +76,19 @@ endif
 "Make c-^ consitent between terminal and GUI
 map <c-6> <c-^>
 
+nnoremap <D-s> <cmd>w<cr>
+
 "Make CMD+V paste from external clipboard
+inoremap <D-v> <c-\><c-n>:set paste<cr>"+p:set nopaste<cr>li
 nnoremap <D-v> <c-\><c-n>"+p
 tnoremap <D-v> <c-\><c-n>"+pi
 cnoremap <D-v> <c-r>+
 vnoremap <D-v> "+p
-
-nnoremap <D-s> <cmd>w<cr>
-
 inoremap <D-v> <c-\><c-n>:set paste<cr>"+p:set nopaste<cr>li
-nnoremap <D-p> <c-\><c-n>"+p
-tnoremap <D-p> <c-\><c-n>"+pi
-cnoremap <D-p> <c-r>+
-vnoremap <D-p> "+p
-inoremap <D-P> <c-\><c-n>:set paste<cr>"+p:set nopaste<cr>li
 
 vnoremap <D-c> "+y
 vnoremap <D-y> "+y
 " tnoremap <D-v> <C-\><C-N>"+pA
-nnoremap <D-v> <C-\><C-N>"+pA
-vnoremap <D-c> "+y
 
 "Prevent neovim-qt to map HYPER
 noremap <M-C-D-Space> <nop>
