@@ -25,6 +25,7 @@ packer.startup(
     use "wbthomason/packer.nvim"
 
     use "goolord/alpha-nvim"
+    -- use "startup-nvim/startup.nvim"
 
     use "VonHeikemen/fine-cmdline.nvim"
     use "MunifTanjim/nui.nvim"
@@ -82,6 +83,7 @@ packer.startup(
     use "nvim-telescope/telescope-dap.nvim"
     use "theHamsta/nvim-dap-virtual-text"
     use "rcarriga/nvim-dap-ui"
+    use "folke/todo-comments.nvim"
 
     use "mrjones2014/dash.nvim"
 
@@ -170,7 +172,7 @@ packer.startup(
     use "nvim-lua/popup.nvim"
     use {"nvim-telescope/telescope-project.nvim", after = "telescope.nvim"}
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
-    use {'nvim-telescope/telescope-file-browser.nvim', after = "telescope.nvim"}
+    use {"nvim-telescope/telescope-file-browser.nvim", after = "telescope.nvim"}
 
     -- use {'junegunn/fzf', dir = '~/.fzf', run = '/Users/juju/.local/share/nvim/site/pack/packer/start/fzf/install --all'}
     use "junegunn/fzf"
