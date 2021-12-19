@@ -1,14 +1,14 @@
-local M = {keys = {'<leader>zn'}, cmd = {'ZenModeToggle'}}
+local M = {
+  module = "zen-mode",
+  keys = {"<leader>zn"},
+  cmd = {"ZenModeToggle", "ZenMode"}
+}
 
 M.config = function()
-    require("zen-mode").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-    }
-    vim.cmd [[
+  require("zen-mode").setup {}
+  vim.cmd [[
                 command! ZenModeToggle :lua require("zen-mode").toggle({ window = { width = .70 }})<cr>
-                nnoremap <leader>zn <cmd>ZenModeToggle<cr>
+                nnoremap <leader>zm <cmd>ZenModeToggle<cr>
             ]]
 end
 

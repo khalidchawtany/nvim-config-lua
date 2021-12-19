@@ -280,9 +280,10 @@ packer.startup(
     -- use "kdheepak/tabline.nvim"
     use "romgrk/barbar.nvim"
     use "folke/which-key.nvim"
+    use "folke/zen-mode.nvim"
+    use "folke/twilight.nvim"
     use "lukas-reineke/indent-blankline.nvim"
     use "p00f/nvim-ts-rainbow"
-    use "folke/zen-mode.nvim"
     use "kdav5758/TrueZen.nvim"
     use "norcalli/nvim-colorizer.lua"
 

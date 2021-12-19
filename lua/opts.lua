@@ -138,7 +138,7 @@ vim.cmd('syntax on')
 set.cursorline = false
 
 set.timeout = true
-set.timeoutlen = 400
+set.timeoutlen = 500
 
 set.ttimeout = true
 set.ttimeoutlen = 0
