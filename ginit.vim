@@ -89,6 +89,7 @@ inoremap <D-v> <c-\><c-n>:set paste<cr>"+p:set nopaste<cr>li
 vnoremap <D-c> "+y
 vnoremap <D-y> "+y
 " tnoremap <D-v> <C-\><C-N>"+pA
+" noremap <D-p> <nop>
 
 "Prevent neovim-qt to map HYPER
 noremap <M-C-D-Space> <nop>

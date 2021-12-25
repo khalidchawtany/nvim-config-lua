@@ -1,11 +1,11 @@
 local M = {
-  keys = {"<C-;>,"}
+	keys = {{'i', "<C-;>,"}},
 }
 
 M.mapKeys = function()
   vim.cmd [[
     let g:user_emmet_leader_key='<C-;>'
-    nnoremap <C-;>, nop
+    inoremap <C-;>, nop
   ]]
 end
 

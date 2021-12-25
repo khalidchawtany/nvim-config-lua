@@ -5,11 +5,13 @@ local M = {
     "nvim-telescope/telescope-fzy-native.nvim"
   },
   module = {"telescope"},
-  cmd = {'Telescope'},
+  cmd = {"Telescope"}
 }
 
 M.init = function()
   vim.cmd [[
+            nnoremap <c-s><cr>  <cmd>lua require('telescope.builtin').resume()<cr>
+            nnoremap <c-s><c-cr>  <cmd>lua require('telescope.builtin').resume()<cr>
             nnoremap <c-s><c-p>  <cmd>lua require('telescope.builtin').find_files()<cr>
             nnoremap <c-s>p      <cmd>lua require('telescope.builtin').find_files({find_command = {"fd", vim.fn.expand("<cword>")}})<cr>
             nnoremap <c-s><c-a>  <cmd>lua require('telescope.builtin').live_grep()<cr>
@@ -33,12 +35,16 @@ M.init = function()
  
     ]]
 
-  vim.api.nvim_set_keymap( "n", "<C-p><c-\\>",
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-p><c-\\>",
     ":lua require'telescope'.extensions.project.project{}<CR>",
     {noremap = true, silent = true}
   )
 
-  vim.api.nvim_set_keymap( "n", "<C-s><c-\\>",
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-s><c-\\>",
     ":lua require'telescope'.extensions.project.project{}<CR>",
     {noremap = true, silent = true}
   )
@@ -158,7 +164,23 @@ M.config = function()
   }
   -- require("telescope").load_extension("fzy_native")
   require("telescope").load_extension("fzf")
+
   require("telescope").load_extension "file_browser"
+
+ --  _G.CpMenu = {
+	-- {"Help",
+	--   { "tips", ":help tips" },
+	--   { "cheatsheet", ":help index" },
+	--   { "tutorial", ":help tutor" },
+	--   { "summary", ":help summary" },
+	--   { "quick reference", ":help quickref" },
+	--   { "search help(F1)", ":lua require('telescope.builtin').help_tags()", 1 },
+	-- {"Vim",
+	--   { "current working directory", ":pwd" },
+	--   { "reload vimrc", ":source $MYVIMRC"},
+	-- }
+ --      }
+  -- require('telescope').load_extension('command_palette')
 end
 
 return M
