@@ -10,6 +10,6 @@ M.mapKeys = function()
 end
 
 M.init = M.mapKeys
-M.config = M.mapKeys
+-- M.config = M.mapKeys
 
 return M

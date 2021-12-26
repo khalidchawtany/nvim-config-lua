@@ -124,3 +124,5 @@ if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
     call GuiWindowMaximized(2)
     cd ~/.config/nvim/
 endif
+
+hi NonText guifg=#333355
