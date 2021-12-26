@@ -173,7 +173,7 @@ packer.startup(
     use {"nvim-telescope/telescope-project.nvim", after = "telescope.nvim"}
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
     use {"nvim-telescope/telescope-file-browser.nvim", after = "telescope.nvim"}
-    -- use "telescope-command-palette.nvim"
+    use "LinArcX/telescope-command-palette.nvim"
 
     -- use {'junegunn/fzf', dir = '~/.fzf', run = '/Users/juju/.local/share/nvim/site/pack/packer/start/fzf/install --all'}
     use "junegunn/fzf"

@@ -165,22 +165,8 @@ M.config = function()
   -- require("telescope").load_extension("fzy_native")
   require("telescope").load_extension("fzf")
 
-  require("telescope").load_extension "file_browser"
+  -- require("telescope").load_extension "file_browser"
 
- --  _G.CpMenu = {
-	-- {"Help",
-	--   { "tips", ":help tips" },
-	--   { "cheatsheet", ":help index" },
-	--   { "tutorial", ":help tutor" },
-	--   { "summary", ":help summary" },
-	--   { "quick reference", ":help quickref" },
-	--   { "search help(F1)", ":lua require('telescope.builtin').help_tags()", 1 },
-	-- {"Vim",
-	--   { "current working directory", ":pwd" },
-	--   { "reload vimrc", ":source $MYVIMRC"},
-	-- }
- --      }
-  -- require('telescope').load_extension('command_palette')
 end
 
 return M
