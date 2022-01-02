@@ -11,6 +11,33 @@ M.config = function()
     {
       logging = false,
       filetype = {
+        typescriptreact = {
+          function()
+            return {
+              exe = "prettier",
+              args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+              stdin = true
+            }
+          end
+        },
+        typescript = {
+          prettier = function()
+            return {
+              exe = "prettier",
+              args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+              stdin = true
+            }
+          end
+        },
+        javascriptreact = {
+          prettier = function()
+            return {
+              exe = "prettier",
+              args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+              stdin = true
+            }
+          end
+        },
         -- typescript = eslint_fmt,
         -- typescriptreact = eslint_fmt,
         -- javascript = eslint_fmt,
@@ -68,13 +95,13 @@ M.config = function()
           end
         },
         php = {
-          function ()
+          function()
             return {
               -- '/Users/juju/.composer/vendor/bin/phpstan analyze --error-format raw --no-progress'
-              exe = '/Users/juju/.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf',
-              args = {'--stdin-path=' .. vim.api.nvim_buf_get_name(0), '-'},
+              exe = "/Users/juju/.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf",
+              args = {"--stdin-path=" .. vim.api.nvim_buf_get_name(0), "-"},
               stdin = true,
-              ignore_exitcode = true,
+              ignore_exitcode = true
             }
           end
         }

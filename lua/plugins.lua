@@ -158,6 +158,7 @@ packer.startup(
 
     -- use "kyazdani42/nvim-tree.lua"
     use "cseickel/nvim-tree.lua"
+    use "nvim-neo-tree/neo-tree.nvim"
 
     -- use "mcchrish/nnn.vim"
     use "luukvbaal/nnn.nvim"
