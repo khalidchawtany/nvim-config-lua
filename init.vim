@@ -13,7 +13,10 @@ endif
 " let $NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
 
 
-let g:did_load_filetypes = 1
+" let g:did_load_filetypes = 1
+
+let g:did_load_filetypes = 0
+let g:do_filetype_lua = 1
 
 
 scriptencoding utf-8

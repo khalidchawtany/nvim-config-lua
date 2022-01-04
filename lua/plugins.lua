@@ -58,7 +58,7 @@ packer.startup(
 
     -- Utilities
     -- use 'kevinhwang91/nvim-hlslens'
-    use "nathom/filetype.nvim"
+    -- use "nathom/filetype.nvim"
     use "voldikss/vim-floaterm"
     use "numToStr/FTerm.nvim"
     use "kopischke/vim-stay"
