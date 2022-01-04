@@ -185,7 +185,7 @@ packer.startup(
     use {"nvim-telescope/telescope-file-browser.nvim", after = "telescope.nvim"}
     use "LinArcX/telescope-command-palette.nvim"
 
-    use "nvim-telescope/telescope-z.nvim"
+    -- use "nvim-telescope/telescope-z.nvim"
 
     -- YAML
     use "cuducos/yaml.nvim"
