@@ -5,7 +5,8 @@ local M = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "quangnguyen30192/cmp-nvim-ultisnips"
-  }
+  },
+   event = "InsertEnter",
 }
 
 _G.check_back_space = function()

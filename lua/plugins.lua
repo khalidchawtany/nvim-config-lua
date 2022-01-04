@@ -91,7 +91,12 @@ packer.startup(
     use "winston0410/mark-radar.nvim"
 
     -- LSP
-    use "neovim/nvim-lspconfig"
+    use {
+      "neovim/nvim-lspconfig",
+      after = {"nvim-cmp"},
+      event = {"BufRead", "BufNewFile", "InsertEnter"}
+    }
+
     use "williamboman/nvim-lsp-installer"
 
     use "ray-x/navigator.lua"
@@ -127,6 +132,10 @@ packer.startup(
     -- Completion
     use "hrsh7th/nvim-cmp"
     -- use "octaltree/cmp-look"
+    use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
+    use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
+    use {"hrsh7th/cmp-path", after = "nvim-cmp"}
+    use {"quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp"}
     -- use "ms-jpq/coq_nvim"
     -- use {"ms-jpq/coq.artifacts", branch = "artifacts"}
 
@@ -175,6 +184,17 @@ packer.startup(
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
     use {"nvim-telescope/telescope-file-browser.nvim", after = "telescope.nvim"}
     use "LinArcX/telescope-command-palette.nvim"
+
+    use "nvim-telescope/telescope-z.nvim"
+
+    -- YAML
+    use "cuducos/yaml.nvim"
+	
+		-- npm, yarn, pnpm
+		use "vuki656/package-info.nvim"
+
+		-- crates RUST
+		use "saecki/crates.nvim"
 
     -- use {'junegunn/fzf', dir = '~/.fzf', run = '/Users/juju/.local/share/nvim/site/pack/packer/start/fzf/install --all'}
     use "junegunn/fzf"
