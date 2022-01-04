@@ -264,6 +264,9 @@ packer.startup(
     use "mg979/vim-visual-multi"
 
     use {"gabesoft/vim-ags", cmd = {"Ags"}}
+    vim.cmd[[ 
+      autocmd BufNewFile,BufRead,BufEnter *.agsv set filetype=agsv
+    ]]
 
     -- Comments
     use "numToStr/Comment.nvim"
