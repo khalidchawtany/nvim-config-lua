@@ -1,7 +1,8 @@
 local M = {
   branch = "main",
   requires = {"MunifTanjim/nui.nvim"},
-  module = "neo-tree"
+  module = "neo-tree",
+  cmd = {"NeoTreeReveal", "NeoTreeFocus"}
 }
 
 M.mapKeys = function()

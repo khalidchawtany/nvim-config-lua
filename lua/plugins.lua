@@ -275,6 +275,8 @@ packer.startup(
 
     use "mhartington/formatter.nvim"
 
+    use "anuvyklack/pretty-fold.nvim"
+
     -- Theme
     use {
       "folke/tokyonight.nvim",
