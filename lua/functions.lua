@@ -61,7 +61,7 @@ M.use = function(plug)
     if (type(plug) == 'string') then pluginName = plug end
 
     -- get the plugin name part
-    local pluginNameSepIndex = string.find(pluginName, '/')
+    local pluginNameSepIndex = string.find(pluginName, "/[^/]*$")
     pluginName = 'configs/' .. string.sub(pluginName, pluginNameSepIndex + 1)
     -- dump(pluginName)
 
