@@ -57,7 +57,7 @@ packer.startup(
     use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}, keys = {"<Plug>RestNvim"}}
 
     -- Utilities
-    -- use 'kevinhwang91/nvim-hlslens'
+    use 'kevinhwang91/nvim-hlslens'
     -- use "nathom/filetype.nvim"
     use "voldikss/vim-floaterm"
     use "numToStr/FTerm.nvim"
@@ -96,6 +96,8 @@ packer.startup(
       after = {"nvim-cmp"},
       event = {"BufRead", "BufNewFile", "InsertEnter"}
     }
+
+    use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
     use "williamboman/nvim-lsp-installer"
 
@@ -189,12 +191,12 @@ packer.startup(
 
     -- YAML
     use "cuducos/yaml.nvim"
-	
-		-- npm, yarn, pnpm
-		use "vuki656/package-info.nvim"
 
-		-- crates RUST
-		use "saecki/crates.nvim"
+    -- npm, yarn, pnpm
+    use "vuki656/package-info.nvim"
+
+    -- crates RUST
+    use "saecki/crates.nvim"
 
     -- use {'junegunn/fzf', dir = '~/.fzf', run = '/Users/juju/.local/share/nvim/site/pack/packer/start/fzf/install --all'}
     use "junegunn/fzf"
@@ -264,7 +266,7 @@ packer.startup(
     use "mg979/vim-visual-multi"
 
     use {"gabesoft/vim-ags", cmd = {"Ags"}}
-    vim.cmd[[ 
+    vim.cmd [[ 
       autocmd BufNewFile,BufRead,BufEnter *.agsv set filetype=agsv
     ]]
 
@@ -276,6 +278,8 @@ packer.startup(
     use "mhartington/formatter.nvim"
 
     use "anuvyklack/pretty-fold.nvim"
+
+		use "petertriho/nvim-scrollbar"
 
     -- Theme
     use {

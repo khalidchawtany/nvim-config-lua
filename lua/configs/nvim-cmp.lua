@@ -4,9 +4,17 @@ local M = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
-    "quangnguyen30192/cmp-nvim-ultisnips"
+    {
+      "quangnguyen30192/cmp-nvim-ultisnips",
+      config = function()
+        -- optional call to setup (see customization section)
+        require("cmp_nvim_ultisnips").setup {}
+      end
+      -- If you want to enable filetype detection based on treesitter:
+      -- requires = { "nvim-treesitter/nvim-treesitter" },
+    }
   },
-   event = "InsertEnter",
+  event = "InsertEnter"
 }
 
 _G.check_back_space = function()
@@ -38,9 +46,7 @@ M.config = function()
 
   cmp.setup(
     {
-      completion = {
-        -- autocomplete = true
-      },
+      completion = {},
       sources = {
         {name = "nvim_lsp"},
         {name = "nvim_lua"},
