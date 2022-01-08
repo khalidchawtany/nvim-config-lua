@@ -1,3 +1,6 @@
+
+au bufnewfile,bufread *.blade.php set filetype=blade
+
 function! FindGitDirOrRoot()
   let curdir = expand('%:p:h')
   let bufname = bufname()

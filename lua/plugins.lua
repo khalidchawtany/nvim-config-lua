@@ -97,7 +97,7 @@ packer.startup(
       event = {"BufRead", "BufNewFile", "InsertEnter"}
     }
 
-    use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+    -- use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
     use "williamboman/nvim-lsp-installer"
 
@@ -188,6 +188,9 @@ packer.startup(
     use "LinArcX/telescope-command-palette.nvim"
 
     -- use "nvim-telescope/telescope-z.nvim"
+
+    -- Blade
+    use "xsbeats/vim-blade"
 
     -- YAML
     use "cuducos/yaml.nvim"

@@ -94,6 +94,15 @@ M.config = function()
             }
           end
         },
+        blade = {
+          function()
+            return {
+              exe = "blade-formatter",
+              args = {"--write", "--stdin", "--indent-size=2", '--wrap-line-length=100', vim.api.nvim_buf_get_name(0)},
+              stdin = true
+            }
+          end
+        },
         php = {
           function()
             return {
