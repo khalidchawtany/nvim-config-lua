@@ -2,9 +2,9 @@ local M = {}
 
 M.config = function()
   vim.cmd [[
-    augroup scrollbar_search_hide
+  augroup scrollbar_search_hide
       autocmd!
-      autocmd CmdlineLeave : lua require('scrollbar').search_handler.hide()
+      autocmd CmdlineLeave : lua require('scrollbar.handlers.search').handler.hide()
     augroup END
 ]]
 

@@ -83,6 +83,10 @@ M.config = function()
       --     opts.root_dir = function() ... end
       -- end
 
+      if server.name == "efm" then
+
+      end
+
       -- for lua
       if server.name == "sumneko_lua" then
         -- only apply these settings for the "sumneko_lua" server

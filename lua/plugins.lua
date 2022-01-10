@@ -145,6 +145,10 @@ packer.startup(
 
     use "mattn/emmet-vim"
 
+
+    -- show context of the cursor usging virtual_text
+    use "haringsrob/nvim_context_vt"
+
     -- Clipboard
     use "bfredl/nvim-miniyank"
     use "vim-scripts/UnconditionalPaste"

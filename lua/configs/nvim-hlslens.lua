@@ -17,7 +17,7 @@ M.config = function()
   require("hlslens").setup(
     {
       build_position_cb = function(plist, bufnr, changedtick, pattern)
-        require("scrollbar").search_handler.show(plist.start_pos)
+        require("scrollbar.handlers.search").handler.show(plist.start_pos)
       end
     }
   )
