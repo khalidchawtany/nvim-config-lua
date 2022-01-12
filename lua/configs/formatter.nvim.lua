@@ -98,7 +98,7 @@ M.config = function()
           function()
             return {
               exe = "blade-formatter",
-              args = {"--write", "--stdin", "--indent-size=2", '--wrap-line-length=100', vim.api.nvim_buf_get_name(0)},
+              args = {"--write", "--stdin", "--indent-size=4", '--wrap-line-length=100', vim.api.nvim_buf_get_name(0)},
               stdin = true
             }
           end

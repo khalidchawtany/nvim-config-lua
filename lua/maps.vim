@@ -272,6 +272,10 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   "Open current directory in Finder
   "nnoremap gof :silent !open .<cr>
 
+	" allow replacing word under cursor
+	nnoremap grW :%s/<c-r>=expand('<cWORD>')<cr>//g<left><left>
+	nnoremap grw :%s/<c-r>=expand('<cword>')<cr>//g<left><left>
+
   nnoremap ycd :!mkdir -p %:p:h<CR>
 
   "Go to alternate file

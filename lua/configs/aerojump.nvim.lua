@@ -1,6 +1,11 @@
 local M = {
   run = {":UpdateRemotePlugins"},
-  keys = {"<Plug>(AerojumpSpace)", "<Plug>(AerojumpBolt)", "<Plug>(AerojumpFromCursorBolt)", "<Plug>(AerojumpDefault)"}
+	keys = {
+		"<Plug>(AerojumpSpace)",
+		"<Plug>(AerojumpBolt)",
+		"<Plug>(AerojumpFromCursorBolt)",
+		"<Plug>(AerojumpDefault)",
+	}
 }
 
 M.setMaps = function()

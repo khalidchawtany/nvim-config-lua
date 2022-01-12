@@ -58,7 +58,7 @@ packer.startup(
 
     -- Utilities
     use 'kevinhwang91/nvim-hlslens'
-    -- use "nathom/filetype.nvim"
+    use "nathom/filetype.nvim"
     use "voldikss/vim-floaterm"
     use "numToStr/FTerm.nvim"
     use "kopischke/vim-stay"
@@ -273,9 +273,7 @@ packer.startup(
     use "mg979/vim-visual-multi"
 
     use {"gabesoft/vim-ags", cmd = {"Ags"}}
-    vim.cmd [[ 
-      autocmd BufNewFile,BufRead,BufEnter *.agsv set filetype=agsv
-    ]]
+    -- vim.cmd [[ autocmd BufNewFile,BufRead,BufEnter *.agsv set filetype=agsv ]]
 
     -- Comments
     use "numToStr/Comment.nvim"
