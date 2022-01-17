@@ -114,6 +114,7 @@ packer.startup(
 
     use "mbbill/undotree"
 
+
     use "kana/vim-textobj-user"
     use "rhysd/vim-textobj-anyblock"
     use "machakann/vim-textobj-delimited"
@@ -174,6 +175,8 @@ packer.startup(
     -- use "kyazdani42/nvim-tree.lua"
     use "cseickel/nvim-tree.lua"
     use "nvim-neo-tree/neo-tree.nvim"
+
+    use "sidebar-nvim/sidebar.nvim"
 
     -- use "mcchrish/nnn.vim"
     use "luukvbaal/nnn.nvim"
