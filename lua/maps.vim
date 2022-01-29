@@ -126,6 +126,8 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
 
   nnoremap c* *Ncgn
 
+  nnoremap g. /\V<C-r>"<CR>cgn<C-a><Esc>
+
   nnoremap <nowait> <Leader><Leader> <c-^>
 
   vnoremap <c-d> "dyo<esc>"dp
@@ -196,6 +198,7 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
 
 
   nnoremap <leader>e<cr> :e ++ff=dos<cr>
+  nnoremap <leader>en    <cmd>enew<cr>
 
   nnoremap <silent> <leader>e<Tab>  :set expandtab \| set tabstop=2 \| set shiftwidth=2 \|retab!<cr>
  

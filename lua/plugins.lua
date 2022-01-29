@@ -42,6 +42,7 @@ packer.startup(
     use {"aykamko/vim-easymotion-segments", after = "vim-easymotion"}
     use {"rhysd/clever-f.vim", keys = {"<Plug>(clever-f-"}, fn = {"clever_f#reset"}}
     use "ripxorip/aerojump.nvim"
+    use "rlane/pounce.nvim"
     -- }
 
     use "pechorin/any-jump.vim"
@@ -175,6 +176,7 @@ packer.startup(
     -- use "kyazdani42/nvim-tree.lua"
     use "cseickel/nvim-tree.lua"
     use "nvim-neo-tree/neo-tree.nvim"
+    use "elihunter173/dirbuf.nvim"
 
     use "sidebar-nvim/sidebar.nvim"
 
@@ -195,6 +197,9 @@ packer.startup(
     use "LinArcX/telescope-command-palette.nvim"
 
     -- use "nvim-telescope/telescope-z.nvim"
+
+    --Documentation 
+    use "danymat/neogen"
 
     -- Blade
     use "xsbeats/vim-blade"
