@@ -1,4 +1,6 @@
-local M = {}
+local M = {
+		keys = {"<Plug>Lightspeed_s"}
+}
 
 M.init = function()
     -- dump("Init is running ")

@@ -6,7 +6,6 @@ local M = {
 
 M.mapKeys = function()
   -- :Neogen func|class|type|...
-
   local opts = {noremap = true, silent = true}
 
   vim.api.nvim_set_keymap("n", "<Leader>dgd", ":lua require('neogen').generate()<CR>", opts)

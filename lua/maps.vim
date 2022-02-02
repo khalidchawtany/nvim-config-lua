@@ -354,6 +354,7 @@ function! FoldFunction()
         execute "silent! g/protected \\$dates = \\[/normal 0f[zf%"
         execute "silent! g/public function/normal 0maf{%zf'a"
         execute "silent! g/public static function/normal 0maf{%zf'a"
+        execute "silent! g/private static function/normal 0maf{%zf'a"
         execute "silent! g/protected function/normal 0maf{%zf'a"
         execute "silent! g/private function/normal 0maf{%zf'a"
         execute "silent! g/\\/\\*\\*/normal mazf%'a"

@@ -202,7 +202,7 @@ packer.startup(
     use "danymat/neogen"
 
     -- Blade
-    use "xsbeats/vim-blade"
+    use {"xsbeats/vim-blade", ft="blade"}
 
     -- YAML
     use "cuducos/yaml.nvim"

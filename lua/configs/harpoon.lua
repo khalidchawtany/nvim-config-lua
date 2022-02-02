@@ -21,6 +21,7 @@ M.mapKeys = function()
   nnoremap <silent> <leader>h9         :lua require("harpoon.ui").nav_file(9)<cr>
   nnoremap <silent> <leader>h0         :lua require("harpoon.ui").nav_file(10)<cr>
   nnoremap <silent> <c-s><c-space>     :Telescope harpoon marks<cr>
+  nnoremap <silent> <c-space><c-space> :Telescope harpoon marks<cr>
 
   ]]
 end

@@ -3,7 +3,7 @@ local M = {}
 -- If a context expected is not shown you can try to use :lua require 'nvim_context_vt'.showDebug() to get current and parent node info.
 --
 M.init = function()
-  vim.cmd [[hi CustomContextVt guifg=#363f69 gui=italic]]
+  vim.cmd [[au ColorScheme * hi CustomContextVt guifg=#363f69 gui=italic]]
 end
 
 M.config = function()
