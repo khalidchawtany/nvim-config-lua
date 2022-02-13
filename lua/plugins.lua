@@ -196,6 +196,7 @@ packer.startup(
     use "nvim-lua/popup.nvim"
     use {"nvim-telescope/telescope-project.nvim", after = "telescope.nvim"}
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+    use "natecraddock/telescope-zf-native.nvim"
     use {"nvim-telescope/telescope-file-browser.nvim", after = "telescope.nvim"}
     use "LinArcX/telescope-command-palette.nvim"
 

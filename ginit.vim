@@ -115,6 +115,8 @@ endif
 
 " let $PATH=$PATH.":/Users/juju/.config/nvim_lua/lsp/phpactor/bin"
 
+let $PATH=$PATH.":/Users/juju/Development/Libraries/zf/zig-out/bin/"
+
 
 if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
   "***************MUST BE LAST LINE*******
