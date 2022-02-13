@@ -22,9 +22,9 @@ M.config = function()
       -- You can also use this to filter out node types.
       custom_text_handler = function(node, ts_utils)
         -- If you return `nil`, no virtual text will be displayed.
-        if node:type() == "function" then
-          return nil
-        end
+        -- if node:type() == "function" then
+        --   return nil
+        -- end
 
         -- This is the standard text
         return "--> " .. ts_utils.get_node_text(node)[1]

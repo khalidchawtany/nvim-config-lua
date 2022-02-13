@@ -84,6 +84,7 @@ packer.startup(
     use "nvim-telescope/telescope-dap.nvim"
     use "theHamsta/nvim-dap-virtual-text"
     use "rcarriga/nvim-dap-ui"
+
     use "folke/todo-comments.nvim"
 
     use "mrjones2014/dash.nvim"
@@ -166,6 +167,8 @@ packer.startup(
     -- au filetype php set iskeyword+=$
     use "AllenDang/nvim-expand-expr"
 
+    use "hoschi/yode-nvim"
+
     use "mizlan/iswap.nvim"
     use "junegunn/vim-easy-align"
 
@@ -239,6 +242,7 @@ packer.startup(
 
     use "vim-ctrlspace/vim-ctrlspace"
     use "samuelsimoes/vim-drawer"
+    use "tpope/vim-projectionist"
 
     -- augroup BufferTreeAuGroup
     -- au!

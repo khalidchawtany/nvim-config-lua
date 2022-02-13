@@ -24,7 +24,8 @@ M.init = M.mapKeys
 
 M.config = function()
   -- M.mapKeys()
-  require("sidebar-nvim").setup({
+  require("sidebar-nvim").setup(
+    {
       disable_default_keybindings = 0,
       bindings = {
         ["q"] = function()
@@ -36,7 +37,7 @@ M.config = function()
       initial_width = 35,
       hide_statusline = false,
       update_interval = 1000,
-      sections = {"datetime", "git", "diagnostics", "todos", "buffers", "files"},
+      sections = {"datetime", "buffers", "diagnostics", "git", "todos", "files"},
       section_separator = "-----",
       containers = {
         attach_shell = "/bin/sh",
