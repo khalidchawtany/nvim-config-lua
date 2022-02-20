@@ -14,7 +14,7 @@ M.config = function()
       highlight = "CustomContextVt",
       -- Disable virtual text for given filetypes
       -- Default is an empty table
-      -- disable_ft = {"typescript"},
+      disable_ft = {"org"},
       -- How many lines required after starting position to show virtual text
       -- Default is 1 (equals two lines total)
       min_rows = 1,

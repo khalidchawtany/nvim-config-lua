@@ -83,6 +83,8 @@ set.clipboard = 'unnamedplus'
 -- Keep diffme function state
 vim.cmd('let $diff_me=0')
 
+set.diffopt:append { 'algorithm:patience' }
+
 -- set.grepprg = 'ag\\ --nogroup\\ --nocolor'
 set.grepprg = "rg --smart-case --vimgrep --block-buffered"
 set.formatoptions = 'jcroql' -- -=t
@@ -127,7 +129,8 @@ set.modelines = 4
 
 set.printoptions = 'header:0,duplex:long,paper:letter'
 
-set.listchars = 'tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·'
+set.listchars = 'tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·,lead:…'
+--,space:…
 set.list = false
 
 set.fillchars = {stlnc = '-'}

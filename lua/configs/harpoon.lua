@@ -36,8 +36,15 @@ M.config = function()
         save_on_toggle = false,
         save_on_change = true,
         enter_on_sendcmd = false,
-        excluded_filetypes = {"harpoon"}
-      }
+        excluded_filetypes = {"harpoon"},
+	-- set marks specific to each git branch inside git repository
+	mark_branch = true,
+      },
+
+
+    menu = {
+        width = vim.api.nvim_win_get_width(0) - 4,
+    }
       -- ... your other configs ...
       -- projects = {
       -- ["$HOME/personal/vim-with-me/server"] = {

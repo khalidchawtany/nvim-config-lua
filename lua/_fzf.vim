@@ -200,7 +200,6 @@ endfunction
 let g:fzf_action = {
       \ 'ctrl-q': function('s:build_quickfix_list'),
       \ 'ctrl-l': function('s:build_location_list'),
-      \ 'ctrl-m': 'e!',
       \ 'ctrl-t': 'tabedit!',
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
