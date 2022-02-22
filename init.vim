@@ -31,13 +31,14 @@ set termencoding=utf-8
 lua require('impatient')
 lua require('opts')
 source ~/.config/nvim/func.vim
-source ~/.config/nvim/lua/laravel.vim
 lua require('plugins')
 lua require('packer_compiled')
 lua require('maps')
 " lua require('configs/lspconfig')
 "lua require('_completion-nvim')
 source ~/.config/nvim/lua/maps.vim
+
+au bufnewfile,bufread *.blade.php set filetype=blade
 
 let g:indent_blankline_filetype_exclude = ['alpha', 'help']
 

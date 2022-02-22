@@ -23,7 +23,18 @@ _G.PROJECTS_MAPS = {
       desciption = "Views (LRVL)",
       keys = "<leader>lv",
       paths = {{"resources", "views"}}
-    }
+    },
+    {
+      desciption = "Routes (LRVL)",
+      keys = "<leader>lw",
+      paths = {{"routes"}}
+    },
+    {
+      desciption = "Requests (LRVL)",
+      keys = "<leader>lr",
+      paths = {{"app", "Http", "Requests"}}
+    },
+
   },
   ignite = {
     {
