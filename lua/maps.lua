@@ -33,8 +33,7 @@ _G.PROJECTS_MAPS = {
       desciption = "Requests (LRVL)",
       keys = "<leader>lr",
       paths = {{"app", "Http", "Requests"}}
-    },
-
+    }
   },
   ignite = {
     {
@@ -84,11 +83,15 @@ function MapProjectKeys()
   -- get the project_type specific maps
   local project_maps = PROJECTS_MAPS[project_type]
 
-  if project_maps == nil or APPLIED_PROJECT_MAPS == project_type then
+  if project_maps == nil then
     return ""
   end
 
-  APPLIED_PROJECT_MAPS = project_type
+  -- if APPLIED_PROJECT_MAPS == project_type then
+  --   return nil
+  -- else
+  --   APPLIED_PROJECT_MAPS = project_type
+  -- end
 
   for _, i in pairs(project_maps) do
     -- get the paths for each map entry
@@ -119,7 +122,7 @@ function MapProjectKeys()
       "n",
       i.keys,
       function()
-        require("telescope.builtin").find_files(opts)
+        require("telescope.builtin").find_files(table.copy(opts))
       end
     )
   end
