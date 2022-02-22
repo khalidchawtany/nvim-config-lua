@@ -20,16 +20,41 @@ _G.PROJECTS_MAPS = {
       paths = {{"app", "Http", "Controllers"}}
     },
     {
-      desciption = "Controllers (LRVL)",
+      desciption = "Views (LRVL)",
       keys = "<leader>lv",
       paths = {{"resources", "views"}}
     }
   },
   ignite = {
     {
-      desciption = "Components folder (IGN)",
+      desciption = "Components (IGN)",
       keys = "<leader>lc",
       paths = {{"app", "components"}}
+    },
+    {
+      desciption = "Screens (IGN)",
+      keys = "<leader>ls",
+      paths = {{"app", "screens"}}
+    },
+    {
+      desciption = "Models (IGN)",
+      keys = "<leader>lm",
+      paths = {{"app", "models"}}
+    },
+    {
+      desciption = "API (IGN)",
+      keys = "<leader>la",
+      paths = {{"app", "services", "api"}}
+    },
+    {
+      desciption = "DB (IGN)",
+      keys = "<leader>ld",
+      paths = {{"app", "services", "database"}}
+    },
+    {
+      desciption = "Navigator (IGN)",
+      keys = "<leader>ln",
+      paths = {{"app", "navigators"}}
     }
   }
 }
