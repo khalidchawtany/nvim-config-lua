@@ -20,6 +20,12 @@ _G.PROJECTS_MAPS = {
       paths = {{"app", "Http", "Controllers"}}
     },
     {
+      desciption = "Models (LRVL)",
+      keys = "<leader>la",
+      paths = {{"app"}},
+      fd_opts = {"-d", "1", "-g", "*.php"}
+    },
+    {
       desciption = "Views (LRVL)",
       keys = "<leader>lv",
       paths = {{"resources", "views"}}
