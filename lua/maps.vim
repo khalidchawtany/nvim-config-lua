@@ -200,7 +200,7 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   nnoremap <leader>e<cr> :e ++ff=dos<cr>
   nnoremap <leader>en    <cmd>enew<cr>
 
-  nnoremap <silent> <leader>e<Tab>  :set expandtab \| set tabstop=2 \| set shiftwidth=2 \|retab!<cr>
+  nnoremap <silent> <leader>e<Tab>  :set expandtab \| retab!<cr>
  
 
   nnoremap <leader>e<space> :call StripWhitespace()<cr>

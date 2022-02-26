@@ -26,6 +26,18 @@ _G.PROJECTS_MAPS = {
       fd_opts = {"-d", "1", "-g", "*.php"}
     },
     {
+      desciption = "App (LRVL)",
+      keys = "<leader>lA",
+      paths = {{"app"}},
+      fd_opts = {"-g", "*.php"}
+    },
+    {
+      desciption = "Migrations (LRVL)",
+      keys = "<leader>lm",
+      paths = {{"database", "migrations"}},
+      fd_opts = {"-d", "1", "-g", "*.php"}
+    },
+    {
       desciption = "Views (LRVL)",
       keys = "<leader>lv",
       paths = {{"resources", "views"}}
@@ -108,10 +120,18 @@ function MapProjectKeys()
     end
 
     local opts = {
-      search_dirs = i_paths,
+      -- search_dirs = i_paths, -- moved downwards to allow --strip-cwd-prefix
       find_command = {"fd", "--type", "f"}
       -- opts["cwd"] = i_paths
     }
+
+		-- if search paths is a single entry then strip cwd prefix unless strictly prohibbited
+    if table.length(i_paths) < 2 then
+      opts["cwd"] = i_paths[1]
+      table.insert(opts.find_command, "--strip-cwd-prefix")
+    else
+      opts["search_dirs"] = i_paths
+    end
 
     if i["desciption"] ~= nil then
       opts["prompt_title"] = i.desciption
@@ -122,6 +142,8 @@ function MapProjectKeys()
         table.insert(opts.find_command, v)
       end
     end
+
+    -- dump(opts)
 
     -- map the entry
     vim.keymap.set(

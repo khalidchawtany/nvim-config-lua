@@ -11,8 +11,10 @@ M.mapKeys = function()
   vim.api.nvim_set_keymap("n", "<Leader>dgd", ":lua require('neogen').generate()<CR>", opts)
   vim.api.nvim_set_keymap("n", "<Leader>dgg", ":lua require('neogen').generate()<CR>", opts)
   vim.api.nvim_set_keymap("n", "<Leader>dgc", ":lua require('neogen').generate({ type = 'class' })<CR>", opts)
-  vim.api.nvim_set_keymap("n", "<leader>dgn", ":lua require('neogen').jump_next()<CR>", opts)
-  vim.api.nvim_set_keymap("n", "<leader>dgp", ":lua require('neogen').jump_prev()<CR>", opts)
+
+  vim.api.nvim_set_keymap("i", "<C-l>", "<C-G>u<cmd>lua require('neogen').jump_next<CR>", opts)
+  vim.api.nvim_set_keymap("i", "<C-h>", "<C-G>u<cmd>lua require('neogen').jump_prev<CR>", opts)
+
 end
 
 M.init = M.mapKeys
@@ -22,3 +24,5 @@ M.config = function()
     enabled = true
   }
 end
+
+return M

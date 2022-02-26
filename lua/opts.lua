@@ -116,7 +116,7 @@ set.history = 1000
 set.backupskip = '/tmp/*,/private/tmp/*' -- don't back up these
 set.autoread = true -- read files on change
 set.fileformats:append{'mac'}
-set.binary = true
+-- set.binary = true -- forces noexpandtab
 set.eol = false
 -- set.t_Co = 16
 set.tabpagemax = 50
@@ -131,7 +131,7 @@ set.printoptions = 'header:0,duplex:long,paper:letter'
 
 set.listchars = 'tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·,lead:…'
 --,space:…
-set.list = false
+set.list = true
 
 set.fillchars = {stlnc = '-'}
 

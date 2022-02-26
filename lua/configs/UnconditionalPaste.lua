@@ -1,7 +1,7 @@
 local M = {
     keys = {
-        'gPP', 'gPp', 'gpP', 'gpp', 'gUP', 'gUp', 'guP', 'gup', 'gQP', 'gQp', 'gqP', 'gqp', 'gQBP', 'gQBp', 'gqbP', 'gqbp', 'gBP', 'gBp', 'gsP',
-        'g]p', 'g[p', 'g[P', 'g]P', 'g>P', 'g>p', 'gsp', 'g#P', 'g#p', 'g,P', 'g,p', 'gbP', 'gbp', 'glP', 'glp', 'gcP', 'gcp', 'g,"P', 'g,"p',
+        'gPP', 'gPp', 'gpP', 'gpp', 'gUP', 'gUp', 'guP', 'gup', 'gQP', 'gQp', 'gqP', 'gqp', 'gQBP', 'gQBp', 'gqbP', 'gqbp', 'gBP', 'gBp', 'g<Space>P',
+        'g]p', 'g[p', 'g[P', 'g]P', 'g>P', 'g>p', 'g<Space>p', 'g#P', 'g#p', 'g,P', 'g,p', 'gbP', 'gbp', 'glP', 'glp', 'gcP', 'gcp', 'g,"P', 'g,"p',
         'g,\'P', 'g,\'p'
     }
     --  'g\\[\\[P', 'g\\[\\[p', 'g\\]\\]P', 'g\\]\\]p'
@@ -28,8 +28,8 @@ M.config = function()
     Map n gqbp    <Plug>UnconditionalPasteDelimitedAfter
     Map n gBP     <Plug>UnconditionalPasteJaggedBefore
     Map n gBp     <Plug>UnconditionalPasteJaggedAfter
-    Map n gsP     <Plug>UnconditionalPasteSpacedBefore
-    Map n gsp     <Plug>UnconditionalPasteSpacedAfter
+    Map n g<Space>P     <Plug>UnconditionalPasteSpacedBefore
+    Map n g<Space>p     <Plug>UnconditionalPasteSpacedAfter
     Map n g#P     <Plug>UnconditionalPasteCommentedBefore
     Map n g#p     <Plug>UnconditionalPasteCommentedAfter
     Map n g>P     <Plug>UnconditionalPasteShiftedBefore

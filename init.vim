@@ -59,5 +59,7 @@ autocmd User fugitive
 highlight! WarnColor ctermbg=darkblue guibg=#E1340F guifg=#111111
 let w:my_colorcol_hi_id = matchadd('WarnColor', '\%101v', 100)
 
+highlight Whitespace guifg=#30334B
+
 
 " au WinEnter * if(&ft=='httpResult') | execute "normal gg/^$\n{\zs" | endif

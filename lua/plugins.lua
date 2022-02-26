@@ -66,12 +66,6 @@ packer.startup(
     use "gioele/vim-autoswap"
     use "lyokha/vim-xkbswitch"
     use {"tyru/capture.vim", cmd = {"Capture"}}
-    use {
-      "tpope/vim-sleuth",
-      config = function()
-        vim.g.sleuth_automatic = 1
-      end
-    }
 
     use "janko-m/vim-test"
 

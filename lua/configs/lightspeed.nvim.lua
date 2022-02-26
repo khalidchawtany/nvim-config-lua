@@ -4,7 +4,7 @@ local M = {
 
 M.init = function()
     -- dump("Init is running ")
-    vim.cmd [[ nmap s <Plug>Lightspeed_s ]]
+    vim.cmd [[nmap s <Plug>Lightspeed_omni_s]]
 end
 
 M.config = function()
@@ -15,6 +15,9 @@ M.config = function()
         gighlight_unique_chars = false,
         match_only_the_start_of_same_char_seqs = true,
         limit_ft_matches = 5,
+
+        -- jump_to_unique_chars = false,
+        -- safe_labels = {}
     }
 end
 

@@ -4,6 +4,14 @@ function table.removekey(table, key)
   return element
 end
 
+function table.length(t)
+  local count = 0
+  for _ in pairs(t) do
+    count = count + 1
+  end
+  return count
+end
+
 function table.copy(t)
   local t2 = {}
   for k, v in pairs(t) do
