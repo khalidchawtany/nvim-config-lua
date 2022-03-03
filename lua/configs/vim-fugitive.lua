@@ -14,6 +14,7 @@ M.init = function()
     nnoremap <leader>gc  :call FugitiveDetect(getcwd()) \| execute ":Git commit"<cr>
     nnoremap <leader>gp  :call FugitiveDetect(getcwd()) \| execute ":Git pull"<cr>
     nnoremap <leader>gu  :call FugitiveDetect(getcwd()) \| execute ":Git push" \| echo "Pushed :)"<cr>
+    nnoremap <leader>gU  :call FugitiveDetect(getcwd()) \| execute ":Git push --force" \| echo "Pushed :)"<cr>
     nnoremap <leader>gr  :call FugitiveDetect(getcwd()) \| execute ":Gread"<cr>
     nnoremap <leader>gw  :call FugitiveDetect(getcwd()) \| execute ":Gwrite"<cr>
     nnoremap <leader>gdv :call FugitiveDetect(getcwd()) \| execute ":Gvdiff"<cr>
