@@ -61,6 +61,31 @@ M.init = function()
 end
 
 M.config = function()
+  local open_in_nvim_tree = function(prompt_bufnr)
+    local action_state = require "telescope.actions.state"
+    local Path = require "plenary.path"
+    local actions = require "telescope.actions"
+
+    local entry = action_state.get_selected_entry()[1]
+    local entry_path = Path:new(entry):parent():absolute()
+    actions._close(prompt_bufnr, true)
+    entry_path = Path:new(entry):parent():absolute()
+    entry_path = entry_path:gsub("\\", "\\\\")
+    -- dump(entry_path)
+
+    -- vim.cmd("e " .. entry_path)
+    -- vim.cmd("NvimTreeFindFile " .. entry_path)
+
+    -- file_name = nil
+    -- for s in string.gmatch(entry, "[^/]+") do
+    --   file_name = s
+    -- end
+    --
+    -- dump("file_name: " .. file_name)
+    --
+    -- vim.cmd("/" .. file_name)
+  end
+
   -- in find files avoid normal mode
 
   local actions = require("telescope.actions")
@@ -72,6 +97,7 @@ M.config = function()
           -- So, to not map "<C-n>", just put
           ["<c-x>"] = false,
           -- ["<esc>"] = actions.close,
+          ["<c-s>"] = open_in_nvim_tree,
 
           -- Otherwise, just set the mapping to the function that you want it to be.
           ["<C-i>"] = actions.select_horizontal,
@@ -88,7 +114,8 @@ M.config = function()
           -- ["<CR>"] = actions.select_default + actions.center + my_cool_custom_action,
         },
         n = {
-          ["<esc>"] = actions.close
+          ["<esc>"] = actions.close,
+          ["<c-s>"] = open_in_nvim_tree,
           -- ["<C-i>"] = my_cool_custom_action,
         }
       },
@@ -121,7 +148,7 @@ M.config = function()
           preview_width = 0.5
         },
         vertical = {
-          mirror = true,
+          mirror = false,
           preview_height = 0.3
         },
         width = 0.8,
@@ -161,7 +188,6 @@ M.config = function()
         }
       }
     },
-
     ["zf-native"] = {
       -- options for sorting file-like items
       file = {

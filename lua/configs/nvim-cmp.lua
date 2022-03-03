@@ -120,34 +120,34 @@ M.config = function()
         end
       },
       mapping = {
-        ["<C-n>"] = cmp.mapping(
-          function(fallback)
-            if require("neogen").jumpable() then
-              require("neogen").jump_next()
-            else
-              fallback()
-            end
-          end,
-          {
-            "i",
-            "s"
-          }
-        ),
-        ["<C-p>"] = cmp.mapping(
-          function(fallback)
-            if require("neogen").jumpable(true) then
-              require("neogen").jump_prev()
-            else
-              fallback()
-            end
-          end,
-          {
-            "i",
-            "s"
-          }
-        ),
-        -- ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}),
-        -- ["<C-p>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}),
+        -- ["<C-n>"] = cmp.mapping(
+        --   function(fallback)
+        --     if require("neogen").jumpable() then
+        --       require("neogen").jump_next()
+        --     else
+        --       fallback()
+        --     end
+        --   end,
+        --   {
+        --     "i",
+        --     "s"
+        --   }
+        -- ),
+        -- ["<C-p>"] = cmp.mapping(
+        --   function(fallback)
+        --     if require("neogen").jumpable(true) then
+        --       require("neogen").jump_prev()
+        --     else
+        --       fallback()
+        --     end
+        --   end,
+        --   {
+        --     "i",
+        --     "s"
+        --   }
+        -- ),
+        ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}),
+        ["<C-p>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}),
         ["<Down>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
         ["<Up>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select}),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
