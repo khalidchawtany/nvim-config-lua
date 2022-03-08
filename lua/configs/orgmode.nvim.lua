@@ -3,6 +3,7 @@ local M = {
 }
 
 M.init = function()
+  require('orgmode').setup_ts_grammar()
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
   parser_config.org = {
     install_info = {

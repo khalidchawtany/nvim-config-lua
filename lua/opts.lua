@@ -131,7 +131,7 @@ set.printoptions = 'header:0,duplex:long,paper:letter'
 
 set.listchars = 'tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·,lead:…'
 --,space:…
-set.list = true
+set.list = false
 
 set.fillchars = {stlnc = '-'}
 

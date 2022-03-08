@@ -10,8 +10,8 @@ local M = {
 
 M.init = function()
   vim.cmd [[
-            nnoremap <c-s><cr>  <cmd>lua require('telescope.builtin').resume()<cr>
-            nnoremap <c-s><c-cr>  <cmd>lua require('telescope.builtin').resume()<cr>
+            nnoremap <c-s><cr>   <cmd>lua require('telescope.builtin').resume()<cr>
+            nnoremap <c-s><c-cr> <cmd>lua require('telescope.builtin').resume()<cr>
             nnoremap <c-s><c-p>  <cmd>lua require('telescope.builtin').find_files()<cr>
             nnoremap <c-s>p      <cmd>lua require('telescope.builtin').find_files({find_command = {"fd", vim.fn.expand("<cword>")}})<cr>
             nnoremap <c-s><c-a>  <cmd>lua require('telescope.builtin').live_grep()<cr>
@@ -25,13 +25,13 @@ M.init = function()
             nnoremap <c-s><c-u>  <cmd>lua require('telescope.builtin').oldfiles()<cr>
             nnoremap <c-s>u      <cmd>lua require('telescope.builtin').oldfiles()<cr>
             nnoremap <c-s><c-g>  <cmd>lua require('telescope.builtin').git_status()<cr>
-            nnoremap <c-s>gs  <cmd>lua require('telescope.builtin').git_stash()<cr>
-            nnoremap <c-s>gb  <cmd>lua require('telescope.builtin').git_branches()<cr>
-            nnoremap <c-s>gC  <cmd>lua require('telescope.builtin').git_commits()<cr>
-            nnoremap <c-s>gc  <cmd>lua require('telescope.builtin').git_bcommits()<cr>
-            nnoremap <c-s>gf  <cmd>lua require('telescope.builtin').git_files()<cr>
+            nnoremap <c-s>gg      <cmd>lua require('telescope.builtin').git_status()<cr>
+            nnoremap <c-s>gs     <cmd>lua require('telescope.builtin').git_stash()<cr>
+            nnoremap <c-s>gb     <cmd>lua require('telescope.builtin').git_branches()<cr>
+            nnoremap <c-s>gC     <cmd>lua require('telescope.builtin').git_commits()<cr>
+            nnoremap <c-s>gc     <cmd>lua require('telescope.builtin').git_bcommits()<cr>
+            nnoremap <c-s>gf     <cmd>lua require('telescope.builtin').git_files()<cr>
             nnoremap <c-s><c-s>  <cmd>lua require 'telescope'.extensions.file_browser.file_browser()<cr>
-
  
     ]]
 
@@ -105,7 +105,8 @@ M.config = function()
           ["<C-k>"] = actions.move_selection_previous,
           ["<c-space>"] = actions.toggle_selection + actions.move_selection_better,
           ["<C-'>"] = actions.which_key,
-          ["<C-CR>"] = actions.select_default + actions.center
+          ["<C-CR>"] = actions.select_default + actions.center,
+          ["<C-c>"] = actions.close,
 
           -- Add up multiple actions
           -- ["<CR>"] = actions.select_default + actions.center
@@ -116,6 +117,7 @@ M.config = function()
         n = {
           ["<esc>"] = actions.close,
           ["<c-s>"] = open_in_nvim_tree,
+          ["<C-c>"] = actions.close,
           -- ["<C-i>"] = my_cool_custom_action,
         }
       },
