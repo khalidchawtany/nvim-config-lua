@@ -22,6 +22,15 @@ _G.check_back_space = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s" ~= nil
 end
 
+_G.has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+_G.feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 M.config = function()
   vim.cmd [[
   " gray
@@ -146,8 +155,38 @@ M.config = function()
         --     "s"
         --   }
         -- ),
-        ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}),
-        ["<C-p>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}),
+        -- ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}),
+        ["<C-n>"] = cmp.mapping(
+          function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif vim.fn["vsnip#available"](1) == 1 then
+              feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+              return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), "m", true)
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+            end
+          end,
+          {"i", "s"}
+        ),
+        -- ["<C-p>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert}),
+        ["<C-p>"] = cmp.mapping(
+          function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+              feedkey("<Plug>(vsnip-jump-prev)", "")
+            elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+              return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_backward)"), "m", true)
+            else
+              fallback()
+            end
+          end,
+          {"i", "s"}
+        ),
         ["<Down>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
         ["<Up>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select}),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -186,5 +225,7 @@ M.config = function()
   --   capabilities = capabilities
   -- }
 end
+
+--M.config()
 
 return M
