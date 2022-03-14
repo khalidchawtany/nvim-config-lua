@@ -3,8 +3,12 @@ local M = {
   cmd = {"FzfLua"}
 }
 
+ 
 M.init = function()
   vim.cmd [[
+
+  nnoremap <silent><D-p>-  :lua require('fzf-lua').lsp_document_symbols({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
+  nnoremap <silent><D-p><D-->  :lua require('fzf-lua').lsp_document_symbols({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
   nnoremap <silent><D-p><D-p>  :lua require('fzf-lua').files({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
   nnoremap <silent><D-p><D-l>  :lua require('fzf-lua').lines({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>
   nnoremap <silent><D-p>l      :lua require('fzf-lua').blines({  preview_layout='vertical', preview_vertical="down", fzf_layout="reverse", preview_border="noborder" })<cr>

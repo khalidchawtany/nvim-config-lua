@@ -102,6 +102,7 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
 
   inoremap <D-v> <c-r>+
   nnoremap <D-v> "+p
+  nnoremap <D-p> <NOP>
   "Use <Tab> and <S-Tab> to navigate through popup menu
 
   inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
