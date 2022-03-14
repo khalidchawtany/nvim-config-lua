@@ -3,6 +3,9 @@ local M = {
 }
 
 M.init = function()
+end
+
+M.config = function()
   require('orgmode').setup_ts_grammar()
   local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
   parser_config.org = {
@@ -13,9 +16,6 @@ M.init = function()
     },
     filetype = "org"
   }
-end
-
-M.config = function()
   require("orgmode").setup {}
 end
 return M

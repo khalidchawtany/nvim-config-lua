@@ -81,17 +81,17 @@ packer.startup(
 
     use "folke/todo-comments.nvim"
 
-    use "mrjones2014/dash.nvim"
+    -- use "mrjones2014/dash.nvim"
 
     use "kevinhwang91/nvim-bqf"
     use "winston0410/mark-radar.nvim"
 
     -- LSP
-    use {
-      "neovim/nvim-lspconfig",
-      after = {"nvim-cmp"},
-      event = {"BufRead", "BufNewFile", "InsertEnter"}
-    }
+    -- use {
+    --   "neovim/nvim-lspconfig",
+    --   after = {"nvim-cmp"},
+    --   event = {"BufRead", "BufNewFile", "InsertEnter"}
+    -- }
 
     -- use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
@@ -106,7 +106,6 @@ packer.startup(
 
     use "mfussenegger/nvim-ts-hint-textobject"
     use "RRethy/nvim-treesitter-textsubjects"
-    use "Smirnov-O/ts-unit.nvim"
 
     use "mbbill/undotree"
 
@@ -153,7 +152,7 @@ packer.startup(
     -- Snippets
     use "hrsh7th/vim-vsnip"
     use "hrsh7th/vim-vsnip-integ"
-    use "norcalli/snippets.nvim"
+    -- use "norcalli/snippets.nvim"
 
     use "drmingdrmer/xptemplate"
     use "SirVer/ultisnips"

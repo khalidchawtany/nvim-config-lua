@@ -1,5 +1,5 @@
 local M = {}
-M.init = function()
+M.config = function()
 
     vim.g.submode_timeout = 0
     vim.cmd [[
