@@ -11,7 +11,12 @@ _G.PROJECTS_MAPS = {
       paths = {{"plugins"}},
       prompt = "controllers",
       fd_opts = {"--full-path", "-g", "**/controllers/*.php"}
-    }
+    },
+    {
+      desciption = "Themes (IGN)",
+      keys = "<leader>lt",
+      paths = {{"themes"}}
+    },
   },
   laravel = {
     {

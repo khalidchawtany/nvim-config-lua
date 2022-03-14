@@ -20,7 +20,7 @@ M.config = function()
     space_char_blankline = " ",
     highlight_list = {"Identifier"},
     space_char_highlight_list = {},
-    indent_level = 5,
+    indent_level = 10,
     -- max_indent_increase = 1
   }
 end
