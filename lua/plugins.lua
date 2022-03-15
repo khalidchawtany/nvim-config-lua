@@ -58,7 +58,7 @@ packer.startup(
     use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}, keys = {"<Plug>RestNvim"}}
 
     -- Utilities
-    use 'kevinhwang91/nvim-hlslens'
+    use "kevinhwang91/nvim-hlslens"
     use "nathom/filetype.nvim"
     use "voldikss/vim-floaterm"
     use "numToStr/FTerm.nvim"
@@ -109,7 +109,6 @@ packer.startup(
 
     use "mbbill/undotree"
 
-
     use "kana/vim-textobj-user"
     use "rhysd/vim-textobj-anyblock"
     use "machakann/vim-textobj-delimited"
@@ -140,7 +139,6 @@ packer.startup(
     use "mfussenegger/nvim-treehopper"
 
     use "mattn/emmet-vim"
-
 
     -- show context of the cursor usging virtual_text
     use "haringsrob/nvim_context_vt"
@@ -195,11 +193,11 @@ packer.startup(
 
     -- use "nvim-telescope/telescope-z.nvim"
 
-    --Documentation 
+    --Documentation
     use "danymat/neogen"
 
     -- Blade
-    use {"xsbeats/vim-blade", ft="blade"}
+    use {"xsbeats/vim-blade", ft = "blade"}
 
     -- YAML
     use "cuducos/yaml.nvim"
@@ -290,7 +288,7 @@ packer.startup(
 
     use "anuvyklack/pretty-fold.nvim"
 
-		use "petertriho/nvim-scrollbar"
+    use "petertriho/nvim-scrollbar"
 
     -- Theme
     use {
@@ -306,6 +304,8 @@ packer.startup(
         vim.cmd([[colorscheme tokyonight]])
       end
     }
+
+    use "mvpopuk/inspired-github.vim"
 
     use {
       "navarasu/onedark.nvim",

@@ -4,6 +4,7 @@ local M = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
+    "SirVer/ultisnips",
     {
       "quangnguyen30192/cmp-nvim-ultisnips",
       config = function()
@@ -162,8 +163,8 @@ M.config = function()
               cmp.select_next_item()
             elseif vim.fn["vsnip#available"](1) == 1 then
               feedkey("<Plug>(vsnip-expand-or-jump)", "")
-            elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-              return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), "m", true)
+            -- elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+            --   return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), "m", true)
             elseif has_words_before() then
               cmp.complete()
             else
@@ -179,8 +180,8 @@ M.config = function()
               cmp.select_prev_item()
             elseif vim.fn["vsnip#jumpable"](-1) == 1 then
               feedkey("<Plug>(vsnip-jump-prev)", "")
-            elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-              return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_backward)"), "m", true)
+            -- elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+            --   return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_backward)"), "m", true)
             else
               fallback()
             end
