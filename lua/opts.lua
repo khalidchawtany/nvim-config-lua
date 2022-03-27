@@ -135,6 +135,16 @@ set.list = false
 
 set.fillchars = {stlnc = '-'}
 
+vim.opt.fillchars = {
+  horiz     = '━',
+  horizup   = '┻',
+  horizdown = '┳',
+  vert      = '┃',
+  vertleft  = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
+}
+
 -- Add ignorance of whitespace to diff
 -- set.diffopt=vim.o.diffopt .. ',iwhite'
 vim.cmd('syntax on')

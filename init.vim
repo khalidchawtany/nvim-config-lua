@@ -61,6 +61,8 @@ let w:my_colorcol_hi_id = matchadd('WarnColor', '\%101v', 100)
 
 highlight Whitespace guifg=#30334B
 
+hi WinSeparator guifg=#3758A6
+
 set laststatus=3
 
 " au WinEnter * if(&ft=='httpResult') | execute "normal gg/^$\n{\zs" | endif

@@ -67,6 +67,8 @@ packer.startup(
     use "lyokha/vim-xkbswitch"
     use {"tyru/capture.vim", cmd = {"Capture"}}
 
+    use "github/copilot.vim"
+
     use "janko-m/vim-test"
 
     -- mappings and submodes
@@ -133,6 +135,7 @@ packer.startup(
     use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = "nvim-cmp"}
+    use { 'hrsh7th/cmp-copilot' }
     -- use "ms-jpq/coq_nvim"
     -- use {"ms-jpq/coq.artifacts", branch = "artifacts"}
 
