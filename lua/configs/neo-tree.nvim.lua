@@ -11,7 +11,14 @@ local M = {
 
 M.mapKeys = function()
   -- vim.cmd([[nnoremap \- :lua require("neo-tree").show()<cr>]])
-  vim.cmd [[nnoremap \- <cmd>Neotree position=float<cr>]]
+  vim.cmd [[
+  nnoremap \- <cmd>Neotree right reveal<cr>
+  nnoremap <space>- <cmd>Neotree left reveal<cr>
+  nnoremap - <cmd>Neotree float reveal<cr>
+  nnoremap \g <cmd>Neotree float git_status<cr>
+  nnoremap \b <cmd>Neotree float buffers<cr>
+  ]]
+  -- nnoremap \- <cmd>Neotree position=float<cr>]]
 end
 
 M.init = M.mapKeys

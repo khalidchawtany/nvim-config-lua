@@ -6,9 +6,9 @@ local M = {
 M.init = function()
   vim.cmd(
     [[
-  nnoremap <silent> <leader>- :lua require 'nvim-tree'.toggle()<cr>
-  nnoremap <silent> <leader>r :lua require 'nvim-tree'.refresh()<cr>
-  nnoremap <silent> <leader>nn :lua require 'nvim-tree'.find_file(true)<cr>
+  " nnoremap <silent> <leader>- :lua require 'nvim-tree'.toggle()<cr>
+  " nnoremap <silent> <leader>r :lua require 'nvim-tree'.refresh()<cr>
+  " nnoremap <silent> <leader>nn :lua require 'nvim-tree'.find_file(true)<cr>
 
   " function! UpdateNvimTreeBuffers(timerId) abort
   "     lua require('nvim-tree').refresh()

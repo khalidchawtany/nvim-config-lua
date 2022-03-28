@@ -100,6 +100,8 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   nnoremap <leader>tm0 :tabmove 0<cr>
 
 
+
+  nnoremap <D-d><D-d> "xyy"xp
   inoremap <D-v> <c-r>+
   nnoremap <D-v> "+p
   nnoremap <D-p> <NOP>
