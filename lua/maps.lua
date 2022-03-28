@@ -6,11 +6,74 @@ _G.APPLIED_PROJECT_MAPS = nil
 _G.PROJECTS_MAPS = {
   october = {
     {
-      desciption = "Controllers (LRVL)",
-      keys = "<leader>lp",
+      desciption = "M-Lang (OCT)",
+      keys = "<leader>ll",
+      paths = {{"plugins"}},
+      prompt = "lang",
+      fd_opts = {"--full-path", "-g", "**/lox/**/lang/**/*.php"}
+    },
+    {
+      desciption = "M-Yaml (OCT)",
+      keys = "<leader>ly",
+      paths = {{"plugins"}},
+      prompt = "yaml",
+      fd_opts = {"--full-path", "-g", "**/lox/**/*.yaml"}
+    },
+    {
+      desciption = "M-Migrations (OCT)",
+      keys = "<leader>lm",
+      paths = {{"plugins"}},
+      prompt = "migrations",
+      fd_opts = {"--full-path", "-g", "**/lox/**/updates/*"}
+    },
+    {
+      desciption = "Controllers PHP (OCT)",
+      keys = "<leader>lC",
       paths = {{"plugins"}},
       prompt = "controllers",
       fd_opts = {"--full-path", "-g", "**/controllers/*.php"}
+    },
+    {
+      desciption = "M-Controllers PHP (OCT)",
+      keys = "<leader>lc",
+      paths = {{"plugins"}},
+      prompt = "controllers",
+      fd_opts = {"--full-path", "-g", "**/lox/**/controllers/*.php"}
+    },
+    {
+      desciption = "Controllers (OCT)",
+      keys = "<leader>lC",
+      paths = {{"plugins"}},
+      prompt = "controllers",
+      fd_opts = {"--full-path", "-g", "**/controllers/**"}
+    },
+    {
+      desciption = "M-Controllers (OCT)",
+      keys = "<leader>lk",
+      paths = {{"plugins"}},
+      prompt = "controllers",
+      fd_opts = {"--full-path", "-g", "**/lox/**/controllers/**"}
+    },
+    {
+      desciption = "M-Models (OCT)",
+      keys = "<leader>la",
+      paths = {{"plugins"}},
+      prompt = "models",
+      fd_opts = {"--full-path", "-g", "**/lox/**/models/*.php"}
+    },
+    {
+      desciption = "Models (OCT)",
+      keys = "<leader>lA",
+      paths = {{"plugins"}},
+      prompt = "models",
+      fd_opts = {"--full-path", "-g", "**/models/*.php"}
+    },
+    {
+      desciption = "Lox (OCT)",
+      keys = "<leader>l<leader>",
+      paths = {{"plugins"}},
+      prompt = "all",
+      fd_opts = {"--full-path", "-g", "**/lox/**/*"}
     },
     {
       desciption = "Themes (IGN)",
