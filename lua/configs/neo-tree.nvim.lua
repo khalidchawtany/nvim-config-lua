@@ -5,13 +5,10 @@ local M = {
     "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim"
   },
-  module = "neo-tree",
-  cmd = {"Neotree"},
-  event = "BufWinEnter"
 }
 
-M.mapKeys = function()
-  -- vim.cmd([[nnoremap \- :lua require("neo-tree").show()<cr>]])
+M.config = function()
+  require("neo-tree").setup()
   vim.cmd [[
   nnoremap \- <cmd>Neotree right reveal<cr>
   nnoremap <space>- <cmd>Neotree left reveal<cr>
@@ -19,16 +16,6 @@ M.mapKeys = function()
   nnoremap \g <cmd>Neotree float git_status<cr>
   nnoremap \b <cmd>Neotree float buffers<cr>
   ]]
-  -- nnoremap \- <cmd>Neotree position=float<cr>]]
-end
-
-M.init = M.mapKeys
-
-M.config = function()
-  vim.g.neo_tree_remove_legacy_commands = 1
-
-  require("neo-tree").setup()
-  M.mapKeys()
 end
 
 return M

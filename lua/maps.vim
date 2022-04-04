@@ -71,7 +71,7 @@ nnoremap <leader>wu        :update<cr>
 
 nnoremap <c-k><c-d> :lua vim.lsp.buf.formatting_seq_sync()<cr>
 
-nnoremap <leader>ev :PackerLoad lir.nvim<cr>:e ~/.config/nvim<cr>
+nnoremap <leader>ev :e ~/.config/nvim<cr>
 Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
 
 

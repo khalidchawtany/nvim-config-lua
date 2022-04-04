@@ -8,7 +8,6 @@ M.config = function()
   --     skip_filetypes = {
   --       "TelescopePrompt",
   --       "NvimTree",
-  --       "lir",
   --       "term",
   --       ""
   --     }
