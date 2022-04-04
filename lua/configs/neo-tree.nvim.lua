@@ -6,7 +6,8 @@ local M = {
     "MunifTanjim/nui.nvim"
   },
   module = "neo-tree",
-  cmd = {"Neotree"}
+  cmd = {"Neotree"},
+  event = "BufWinEnter"
 }
 
 M.mapKeys = function()

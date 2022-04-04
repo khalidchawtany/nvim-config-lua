@@ -166,12 +166,8 @@ packer.startup(
     use "mizlan/iswap.nvim"
     use "junegunn/vim-easy-align"
 
-    -- File Browser  And Navigation
-    use "tamago324/lir.nvim"
-    use "tamago324/lir-bookmark.nvim"
 
     -- use "kyazdani42/nvim-tree.lua"
-    use "cseickel/nvim-tree.lua"
     use "nvim-neo-tree/neo-tree.nvim"
     use "elihunter173/dirbuf.nvim"
 
