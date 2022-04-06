@@ -8,7 +8,6 @@ local M = {
 }
 
 M.config = function()
-  require("neo-tree").setup()
   vim.cmd [[
   nnoremap \- <cmd>Neotree right reveal<cr>
   nnoremap <space>- <cmd>Neotree left reveal<cr>
@@ -16,6 +15,7 @@ M.config = function()
   nnoremap \g <cmd>Neotree float git_status<cr>
   nnoremap \b <cmd>Neotree float buffers<cr>
   ]]
+  require("neo-tree").setup()
 end
 
 return M
