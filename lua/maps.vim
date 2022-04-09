@@ -45,6 +45,9 @@ Map nox t     <Plug>(clever-f-t)
 nnoremap cc 0C
 
 
+" open diff view of the commit hash
+nnoremap <leader>dcc :DiffviewOpen <C-r>=expand('<cword>')<cr>..<C-r>=expand('<cword>')<cr>^<cr>
+
 nnoremap <leader>fp  :let @+=expand("%:p")<cr>:echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
 nnoremap <leader>fn  :let @+=expand("%:p:t")<cr>:echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
 
