@@ -16,19 +16,19 @@ M.init = function()
   vim.g.sandwich_no_default_key_mappings = true
   vim.cmd [[
   " add
-  silent! nmap <unique> Sa <Plug>(sandwich-add)
-  silent! xmap <unique> Sa <Plug>(sandwich-add)
-  silent! omap <unique> Sa <Plug>(sandwich-add)
+  silent! nmap <unique> <leader>sa <Plug>(sandwich-add)
+  silent! xmap <unique> <leader>sa <Plug>(sandwich-add)
+  silent! omap <unique> <leader>sa <Plug>(sandwich-add)
 
   " delete
-  silent! nmap <unique> Sd <Plug>(sandwich-delete)
-  silent! xmap <unique> Sd <Plug>(sandwich-delete)
-  silent! nmap <unique> Sdb <Plug>(sandwich-delete-auto)
+  silent! nmap <unique> <leader>Sd <Plug>(sandwich-delete)
+  silent! xmap <unique> <leader>Sd <Plug>(sandwich-delete)
+  silent! nmap <unique> <leader>Sdb <Plug>(sandwich-delete-auto)
 
   " replace
-  silent! nmap <unique> Sr <Plug>(sandwich-replace)
-  silent! xmap <unique> Sr <Plug>(sandwich-replace)
-  silent! nmap <unique> Srb <Plug>(sandwich-replace-auto)
+  silent! nmap <unique> <leader>Sr <Plug>(sandwich-replace)
+  silent! xmap <unique> <leader>Sr <Plug>(sandwich-replace)
+  silent! nmap <unique> <leader>Srb <Plug>(sandwich-replace-auto)
 
   " auto
   silent! omap <unique> ia <Plug>(textobj-sandwich-auto-i)

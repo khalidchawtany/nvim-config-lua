@@ -13,6 +13,7 @@ endif
 " let $NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
 
 
+let g:neo_tree_remove_legacy_commands=1
 let g:did_load_filetypes = 1
 
 " let g:did_load_filetypes = 0

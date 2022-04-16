@@ -35,14 +35,17 @@ packer.startup(
     use "ntpeters/vim-better-whitespace"
 
     -- { Tutorials and Easymotion
-    use "tjdevries/train.nvim"
-    use "ggandor/lightspeed.nvim"
-    use "phaazon/hop.nvim"
-    use "Lokaltog/vim-easymotion"
-    use {"aykamko/vim-easymotion-segments", after = "vim-easymotion"}
-    use {"rhysd/clever-f.vim", keys = {"<Plug>(clever-f-"}, fn = {"clever_f#reset"}}
-    use "rlane/pounce.nvim"
+    -- use "tjdevries/train.nvim"
+    -- use "ggandor/lightspeed.nvim"
+    -- use "phaazon/hop.nvim"
+    -- use "Lokaltog/vim-easymotion"
+    -- use {"aykamko/vim-easymotion-segments", after = "vim-easymotion"}
+    -- use {"rhysd/clever-f.vim", keys = {"<Plug>(clever-f-"}, fn = {"clever_f#reset"}}
+    -- use "rlane/pounce.nvim"
     use "ripxorip/aerojump.nvim"
+
+    use "ggandor/leap.nvim"
+
     -- }
 
     use "pechorin/any-jump.vim"
