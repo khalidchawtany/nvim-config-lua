@@ -11,6 +11,15 @@ M.config = function()
     {
       logging = false,
       filetype = {
+        vue = {
+          function()
+            return {
+              exe = "prettier",
+              args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--parser", "vue", "--no-semi", "--single-quote"},
+              stdin = true
+            }
+          end
+        },
         typescriptreact = {
           function()
             return {
