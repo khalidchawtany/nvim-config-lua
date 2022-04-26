@@ -5,7 +5,7 @@ local M = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "SirVer/ultisnips",
-    "hrsh7th/cmp-cmdline",
+    -- "hrsh7th/cmp-cmdline",
     -- "hrsh7th/cmp-copilot",
     "zbirenbaum/copilot-cmp",
     {
@@ -221,71 +221,67 @@ M.config = function()
     }
   )
 
-  require "cmp".setup.cmdline(
-    ":",
-    {
-      sources = {
-        {name = "cmdline"}
-      },
-      mapping = cmp.mapping.preset.cmdline(
-        {
-          ["<C-j>"] = {
-            c = function(fallback)
-              local cmp = require("cmp")
-              if cmp.visible() then
-                cmp.select_next_item()
-              else
-                fallback()
-              end
-            end
-          },
-          ["<C-k>"] = {
-            c = function(fallback)
-              local cmp = require("cmp")
-              if cmp.visible() then
-                cmp.select_prev_item()
-              else
-                fallback()
-              end
-            end
-          }
-        }
-      ) -- This line
-    }
-  )
-
-  require "cmp".setup.cmdline(
-    "/",
-    {
-      sources = {
-        {name = "buffer"}
-      },
-      mapping = cmp.mapping.preset.cmdline(
-        {
-          ["<C-j>"] = {
-            c = function(fallback)
-              local cmp = require("cmp")
-              if cmp.visible() then
-                cmp.select_next_item()
-              else
-                fallback()
-              end
-            end
-          },
-          ["<C-k>"] = {
-            c = function(fallback)
-              local cmp = require("cmp")
-              if cmp.visible() then
-                cmp.select_prev_item()
-              else
-                fallback()
-              end
-            end
-          }
-        }
-      ) -- This line
-    }
-  )
+  -- require "cmp".setup.cmdline(
+  --   ":",
+  --   {
+  --     sources = {
+  --       {name = "cmdline"}
+  --     },
+  --     mapping = cmp.mapping.preset.cmdline(
+  --       {
+  --         ["<C-j>"] = {
+  --           c = function(fallback)
+  --             if cmp.visible() then
+  --               cmp.select_next_item()
+  --             else
+  --               fallback()
+  --             end
+  --           end
+  --         },
+  --         ["<C-k>"] = {
+  --           c = function(fallback)
+  --             if cmp.visible() then
+  --               cmp.select_prev_item()
+  --             else
+  --               fallback()
+  --             end
+  --           end
+  --         }
+  --       }
+  --     ) -- This line
+  --   }
+  -- )
+  --
+  -- require "cmp".setup.cmdline(
+  --   "/",
+  --   {
+  --     sources = {
+  --       {name = "buffer"}
+  --     },
+  --     mapping = cmp.mapping.preset.cmdline(
+  --       {
+  --         ["<C-j>"] = {
+  --           c = function(fallback)
+  --             if cmp.visible() then
+  --               cmp.select_next_item()
+  --             else
+  --               fallback()
+  --             end
+  --           end
+  --         },
+  --         ["<C-k>"] = {
+  --           c = function(fallback)
+  --             if cmp.visible() then
+  --               cmp.select_prev_item()
+  --             else
+  --               fallback()
+  --             end
+  --           end
+  --         }
+  --       }
+  --     ) -- This line
+  --   }
+  -- )
 
   vim.cmd [[cnoremap <c-j> <c-n>
   cnoremap <c-k> <c-p>]]
