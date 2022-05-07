@@ -5,7 +5,6 @@ local M = {
     "nvim-telescope/telescope-fzy-native.nvim"
   },
   module = {"telescope"},
-  cmd = {"Telescope"}
 }
 
 M.init = function()
