@@ -37,8 +37,8 @@ M.config = function()
         save_on_change = true,
         enter_on_sendcmd = false,
         excluded_filetypes = {"harpoon"},
-	-- set marks specific to each git branch inside git repository
-	mark_branch = true,
+        -- set marks specific to each git branch inside git repository
+        mark_branch = false,
       },
 
 

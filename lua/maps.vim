@@ -120,13 +120,13 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   " inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 
-  " nnoremap <expr> n (v:searchforward ? 'nzz' : 'Nzz')
-  " nnoremap <expr> N (v:searchforward ? 'Nzz' : 'nzz')
-  nnoremap <expr> n  'Nn'[v:searchforward]
+  " nnoremap <expr> n  'Nn'[v:searchforward]
+  nnoremap <expr> n (v:searchforward ? 'nzz' : 'Nzz')
   xnoremap <expr> n  'Nn'[v:searchforward]
   onoremap <expr> n  'Nn'[v:searchforward]
 
-  nnoremap <expr> N  'nN'[v:searchforward]
+  nnoremap <expr> N (v:searchforward ? 'Nzz' : 'nzz')
+  " nnoremap <expr> N  'nN'[v:searchforward]
   xnoremap <expr> N  'nN'[v:searchforward]
   onoremap <expr> N  'nN'[v:searchforward]
 
