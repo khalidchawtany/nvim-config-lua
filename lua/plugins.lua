@@ -289,8 +289,6 @@ packer.startup(
 
     use "mhartington/formatter.nvim"
 
-    use "anuvyklack/pretty-fold.nvim"
-
     use "petertriho/nvim-scrollbar"
 
     -- Theme
