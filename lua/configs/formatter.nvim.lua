@@ -127,6 +127,15 @@ M.config = function()
             }
           end
         },
+        html = {
+          function()
+            return {
+              exe = "prettier",
+              args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--double-quote"},
+              stdin = true
+            }
+          end
+        },
         blade = {
           function()
             return {

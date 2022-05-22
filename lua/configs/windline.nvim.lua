@@ -13,6 +13,37 @@ M.config = function()
   --     }
   --   }
   -- )
+  
+  -- Add winbar
+  -- local windline = require("windline")
+  -- local winbar = {
+  --   filetypes = {"winbar"},
+  --   active = {
+  --     {" "},
+  --     {"%="},
+  --     {
+  --       function(bufnr)
+  --         local bufname = vim.api.nvim_buf_get_name(bufnr)
+  --         local path = vim.fn.fnamemodify(bufname, ":~:.")
+  --         return path
+  --       end,
+  --       {"white", "InactiveBg"} 
+  --     }
+  --   },
+  --   inactive = {
+  --     {" ", {"white", "InactiveBg"}},
+  --     {"%="},
+  --     {
+  --       function(bufnr)
+  --         local bufname = vim.api.nvim_buf_get_name(bufnr)
+  --         local path = vim.fn.fnamemodify(bufname, ":~:.")
+  --         return path
+  --       end,
+  --       {"white", "InactiveBg"}
+  --     }
+  --   }
+  -- }
+  -- windline.add_status(winbar)
 end
 
 return M

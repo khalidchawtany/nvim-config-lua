@@ -1,14 +1,3 @@
-" let NVIM_QT_RUNTIME_PATH="./Contents/Resources/runtime"
-
-"GuiFont! Source Code Pro for PowerLine:h18
- " set guifont=Operator\ Mono\ Lig:h18
- " set guifont=OperatorMonoLig\ Nerd\ Font:h18
- " GuiFont! OperatorMonoLig Nerd Font:h18
- " GuiFont! Fira Code:h20
- GuiFont! FiraCode Nerd Font:h18
-" set guifont=OperatorMono\ Nerd\ Font:h18
-" set guifont=PT\ Mono:h20
-" set guifont=RobotoMono\ Nerd\ Font:h19
 
 hi Title guibg=#afd7ff
 
@@ -132,6 +121,20 @@ if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
     GuiPopupmenu 0
     call GuiWindowMaximized(2)
     cd ~/.config/nvim/
+
+
+
+" let NVIM_QT_RUNTIME_PATH="./Contents/Resources/runtime"
+
+"GuiFont! Source Code Pro for PowerLine:h18
+ " set guifont=Operator\ Mono\ Lig:h18
+ " set guifont=OperatorMonoLig\ Nerd\ Font:h18
+ " GuiFont! OperatorMonoLig Nerd Font:h18
+ " GuiFont! Fira Code:h20
+ GuiFont! FiraCode Nerd Font:h18
+" set guifont=OperatorMono\ Nerd\ Font:h18
+" set guifont=PT\ Mono:h20
+" set guifont=RobotoMono\ Nerd\ Font:h19
 endif
 
 hi NonText guifg=#333355
