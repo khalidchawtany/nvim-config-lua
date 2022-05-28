@@ -2,9 +2,12 @@
 local M = {}
 
 M.winbar_filetype_exclude = {
+  "neo-tree",
+  "fugitive",
+  "gitcommit",
+  "dashboard",
   "help",
   "startify",
-  "dashboard",
   "packer",
   "neogitstatus",
   "NvimTree",

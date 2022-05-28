@@ -90,7 +90,18 @@ M.config = function()
       },
       experimental = {
         native_menu = false,
-        ghost_text = false
+        ghost_text = true
+      },
+      window = {
+        -- documentation = "native",
+        documentation = {
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+          winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
+        },
+        completion = {
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+          winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
+        },
       },
       -- formatting = {
       --   format = function(entry, vim_item)
