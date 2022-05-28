@@ -290,6 +290,7 @@ packer.startup(
     use "mhartington/formatter.nvim"
 
     use "petertriho/nvim-scrollbar"
+    use "SmiteshP/nvim-gps"
 
     -- Theme
     use {
