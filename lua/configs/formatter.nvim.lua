@@ -136,6 +136,15 @@ M.config = function()
             }
           end
         },
+        htm = {
+          function()
+            return {
+              exe = "prettier",
+              args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), '--plugin', '/Users/juju/.config/yarn/global/node_modules/prettier-plugin-twig-melody' , "--double-quote"},
+              stdin = true
+            }
+          end
+        },
         blade = {
           function()
             return {

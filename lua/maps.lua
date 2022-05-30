@@ -27,6 +27,27 @@ _G.PROJECTS_MAPS = {
       fd_opts = {"--full-path", "-g", "**/lox/**/updates/*"}
     },
     {
+      desciption = "M-Componenets (OCT)",
+      keys = "<leader>lo",
+      paths = {{"plugins"}},
+      prompt = "components",
+      fd_opts = {"--full-path", "-g", "**/lox/**/components/*.php"}
+    },
+    {
+      desciption = "M-Componenets (OCT)",
+      keys = "<leader>lO",
+      paths = {{"plugins"}},
+      prompt = "components",
+      fd_opts = {"--full-path", "-g", "**/lox/**/components/**"}
+    },
+    {
+      desciption = "M-Pages (OCT)",
+      keys = "<leader>lp",
+      paths = {{"themes"}},
+      prompt = "pages",
+      fd_opts = {"--full-path", "-g", "**/pages/**"}
+    },
+    {
       desciption = "Controllers PHP (OCT)",
       keys = "<leader>lC",
       paths = {{"plugins"}},
