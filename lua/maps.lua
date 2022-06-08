@@ -28,14 +28,14 @@ _G.PROJECTS_MAPS = {
     },
     {
       desciption = "M-Componenets (OCT)",
-      keys = "<leader>lo",
+      keys = "<leader>loo",
       paths = {{"plugins"}},
       prompt = "components",
       fd_opts = {"--full-path", "-g", "**/lox/**/components/*.php"}
     },
     {
       desciption = "M-Componenets (OCT)",
-      keys = "<leader>lO",
+      keys = "<leader>lo",
       paths = {{"plugins"}},
       prompt = "components",
       fd_opts = {"--full-path", "-g", "**/lox/**/components/**"}
