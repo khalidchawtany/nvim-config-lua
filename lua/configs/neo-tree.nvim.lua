@@ -11,8 +11,8 @@ M.config = function()
   vim.cmd [[
   nnoremap \- <cmd>Neotree right reveal<cr>
   nnoremap <space>- <cmd>Neotree left reveal<cr>
-  nnoremap <c--> :Neotree float dir=<c-r>=expand('%:h')<cr><cr>
-  nnoremap - <cmd>Neotree float reveal<cr>
+  nnoremap - :Neotree float reveal dir=<c-r>=expand('%:h')<cr><cr>
+  nnoremap <c--> <cmd>Neotree float reveal<cr>
   nnoremap \g <cmd>Neotree float git_status<cr>
   nnoremap \b <cmd>Neotree float buffers<cr>
   ]]
@@ -20,8 +20,8 @@ M.config = function()
   require("neo-tree").setup(
     {
       filesystem = {
-        -- bind_to_cwd = true,
-        -- follow_current_file = true,
+        bind_to_cwd = false,
+        follow_current_file = false,
         filtered_items = {
           visible = true, -- when true, they will just be displayed differently than normal items
           hide_dotfiles = true,

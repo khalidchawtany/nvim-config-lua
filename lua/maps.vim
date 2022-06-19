@@ -347,10 +347,14 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   xnoremap ]e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionDown"\|normal! gv<cr>
   " snoremap [e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
 
-function! FoldFunction()
+function! FoldFunction(option)
     set foldmethod=manual
     normal zE
     if &ft == 'blade'
+      if a:option == 'editor'
+        execute "silent! g/editor: {/normal lma%zf'a"
+        return
+      endif
         execute "silent! g/<div\\|\<style/normal lma%zf'a"
         execute "silent! g/columns: \\[\\[/normal 0maf[%zf'a"
         execute "silent! g/function\\|.edatagrid({\\|{ field:\\|{field:/normal 0maf{%zf'a"
@@ -374,5 +378,6 @@ function! FoldFunction()
     endif
 endfunction
 
-Map n <leader>zf  <cmd>call FoldFunction()<cr>
+Map n <leader>zff  <cmd>call FoldFunction()<cr>
+Map n <leader>zfe  <cmd>call FoldFunction('editor')<cr>
 Map n <leader>zi  <cmd>set fdm=indent<cr><cmd>set fdm=manual<cr>

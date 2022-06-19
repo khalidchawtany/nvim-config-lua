@@ -67,5 +67,36 @@ highlight Whitespace guifg=#30334B
 hi WinSeparator guifg=#3758A6
 
 set laststatus=3
+set cmdheight=0
 
-" au WinEnter * if(&ft=='httpResult') | execute "normal gg/^$\n{\zs" | endif
+
+
+
+
+if exists('g:neovide')
+
+  source ~/.config/nvim/ginit.vim
+
+  let g:neovide_input_use_logo=v:true
+  let g:neovide_remember_window_size = v:true
+
+  let g:neovide_cursor_trail_length=0
+  let g:neovide_cursor_animation_length=0
+  set guifont=FiraCode\ Nerd\ Font:h18
+
+
+  "Map CMD-# to tabs
+  for i in [1,2,3,4,5,6,7,8,9]
+    execute "nnoremap <silent> <D-" . i . ">            :tabnext " . i . "<cr>"
+    execute "vnoremap <silent> <D-" . i . ">       <c-u>:tabnext " . i . "<cr>"
+    execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n>:tabnext " . i . "<cr>"
+  endfor
+
+  let i = 0
+  execute "nnoremap <silent> <D-" . i . ">            :tabnext 10<cr>"
+  execute "vnoremap <silent> <D-" . i . ">       <c-u>:tabnext 10<cr>"
+  execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n>:tabnext 10<cr>"
+
+  " au WinEnter * if(&ft=='httpResult') | execute "normal gg/^$\n{\zs" | endif
+endif
+
