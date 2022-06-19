@@ -55,7 +55,8 @@ nnoremap <c-w>O            :wincmd o\|tabonly\|BufOnly<cr>
 nnoremap <c-;>wo           :tabonly \| BufOnly<cr>
 
 nnoremap <c-;>wa           :BufOnly -1<cr>
-nmap     <c-;>ww           <Plug>BW
+nnoremap  <c-;>ww          :bwipeout!<cr>
+nnoremap  <c-;><c-;>ww     :bwipeout!<cr>
 nnoremap <silent> <c-;>wu  :silent! WipeoutUnmodified<cr>
 nnoremap <c-;><c-;>wa      :tabonly \| BufOnly \| bufdo execute ":bw!"<cr>
 
