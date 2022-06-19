@@ -35,8 +35,8 @@ function! SetLineSpace(inc)
   exec 'set linespace='. linespace
   call rpcnotify(0, 'Gui', 'Linespace', linespace)
 endfunction
-set linespace=5
-call SetLineSpace(0)
+set linespace=10
+call SetLineSpace(10)
 
 command! Bigger  :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)+1', '')
 command! Smaller :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)-1', '')
@@ -131,7 +131,7 @@ if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
  " set guifont=OperatorMonoLig\ Nerd\ Font:h18
  " GuiFont! OperatorMonoLig Nerd Font:h18
  " GuiFont! Fira Code:h20
- GuiFont! FiraCode Nerd Font:h18
+ GuiFont! FiraCode Nerd Font Mine:h18
 " set guifont=OperatorMono\ Nerd\ Font:h18
 " set guifont=PT\ Mono:h20
 " set guifont=RobotoMono\ Nerd\ Font:h19

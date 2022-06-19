@@ -14,6 +14,7 @@ M.winbar_filetype_exclude = {
   "Trouble",
   "alpha",
   "lir",
+  "fzf",
   "Outline",
   "spectre_panel",
   "toggleterm"

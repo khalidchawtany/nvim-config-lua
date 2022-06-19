@@ -66,7 +66,7 @@ set.whichwrap = 'b,s,h,l,<,>,[,]'
 
 -- Foldinf
 set.foldmethod = 'manual'
-set.foldcolumn = '1'
+set.foldcolumn = '2'
 set.foldlevel = 0
 set.modelines = 1
 set.foldlevelstart = 2
@@ -133,7 +133,8 @@ set.listchars = 'tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail
 --,space:…
 set.list = false
 
-set.fillchars = {stlnc = '-'}
+set.fillchars = 'stlnc:-,foldsep:┊,foldopen:,foldclose:,vert:│'
+ -- 
 
 -- vim.opt.fillchars = {
 --   horiz     = '━',
