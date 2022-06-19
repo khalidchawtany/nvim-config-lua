@@ -289,6 +289,9 @@ packer.startup(
 
     use "mhartington/formatter.nvim"
 
+
+    use 'kevinhwang91/nvim-ufo'
+
     use "petertriho/nvim-scrollbar"
     use "SmiteshP/nvim-gps"
 
