@@ -161,7 +161,7 @@ set.title = true -- Show the filename in the window titlebar
 
 set.virtualedit = "all"
 set.mouse = ''
-set.showtabline = 2 -- hide tabline
+set.showtabline = 1 -- hide tabline
 
 -- Disable error bells
 set.errorbells = false

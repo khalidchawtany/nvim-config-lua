@@ -22,6 +22,11 @@ map ≠ <M-+>
 map ‘ <M-]>
 map “ <M-[>
 
+
+map ≥ <M-\>>
+map ≤ <M-\<>
+
+
 nnoremap <silent> <c-h> <c-w><c-h>
 nnoremap <silent> <c-j> <c-w><c-j>
 nnoremap <silent> <c-k> <c-w><c-k>
@@ -33,7 +38,7 @@ nnoremap <c-w>M <C-w>_<C-w><Bar>
 nnoremap <silent><nowait> <BS> :syntax sync minlines=1000<cr>:nohlsearch \| echo "" \|redraw! \| diffupdate \| normal \<Plug>(FastFoldUpdate) <cr>
 
 
-nnoremap <c-s><space> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+nnoremap <c-s>c :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
@@ -251,7 +256,8 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   "current buffer file dir
   nnoremap cdf :lcd %:p:h<cr>:pwd<cr>
   nnoremap cd. :lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr>:pwd<cr>
-
+  nnoremap cdh :lcd <c-r>=expand('%:h')."/.."<cr><cr>:pwd<cr>
+  nnoremap cdk :lcd <c-r>=getcwd()."/.."<cr><cr>:pwd<cr>
 
   nnoremap cdp :lcd <c-r>=GetPluginPath()<cr><cr>:pwd<cr>
 

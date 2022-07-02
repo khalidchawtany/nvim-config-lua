@@ -4,7 +4,7 @@ local M = {
     "MunifTanjim/nui.nvim",
     "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
     "MunifTanjim/nui.nvim"
-  }
+  },
 }
 
 M.config = function()
@@ -44,7 +44,5 @@ M.config = function()
     }
   )
 end
-
-M.config()
 
 return M

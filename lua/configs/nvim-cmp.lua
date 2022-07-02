@@ -7,7 +7,7 @@ local M = {
     "SirVer/ultisnips",
     -- "hrsh7th/cmp-cmdline",
     -- "hrsh7th/cmp-copilot",
-    "zbirenbaum/copilot-cmp",
+    -- "zbirenbaum/copilot-cmp",
     {
       "quangnguyen30192/cmp-nvim-ultisnips",
       config = function()
@@ -61,7 +61,7 @@ M.config = function()
     {
       completion = {},
       sources = {
-        {name = "copilot", group_index = 2},
+        -- {name = "copilot", group_index = 2},
         {name = "nvim_lsp"},
         {name = "nvim_lua"},
         {name = "ultisnips"},

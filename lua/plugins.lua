@@ -70,9 +70,9 @@ packer.startup(
     use "lyokha/vim-xkbswitch"
     use {"tyru/capture.vim", cmd = {"Capture"}}
 
-    use "github/copilot.vim"
+    -- use "github/copilot.vim"
     -- use {"hrsh7th/cmp-copilot"}
-    use "zbirenbaum/copilot.lua"
+    -- use "zbirenbaum/copilot.lua"
     -- use "zbirenbaum/copilot-cmp"
 
     use "janko-m/vim-test"
@@ -322,10 +322,12 @@ packer.startup(
 
     use "drewtempelmeyer/palenight.vim"
 
+    use "tiagovla/scope.nvim" -- this is to scope buffers to tabs only
     use "windwp/windline.nvim"
     -- use "hoob3rt/lualine.nvim"
     -- use "kdheepak/tabline.nvim"
     use "romgrk/barbar.nvim"
+
     use "folke/which-key.nvim"
     use "folke/zen-mode.nvim"
     use "folke/twilight.nvim"
