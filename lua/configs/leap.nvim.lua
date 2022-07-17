@@ -8,16 +8,17 @@ M.config = function()
     -- safe_labels = { . . . },
     -- labels = { . . . },
     -- These keys are captured directly by the plugin at runtime.
-    special_keys = {
-      repeat_search = "<enter>",
-      next_match = "<enter>",
-      prev_match = "<tab>",
-      next_group = "<space>",
-      prev_group = "<tab>",
-      eol = "<space>"
-    }
+   -- special_keys = {
+    --   repeat_search = "<enter>",
+    --   next_match = "<enter>",
+    --   prev_match = "<tab>",
+    --   next_group = "<space>",
+    --   prev_group = "<tab>",
+    --   eol = "<space>"
+    -- }
   }
-  require("leap").set_default_keymaps()
+  require('leap').set_default_keymaps()
+
 end
 
 return M

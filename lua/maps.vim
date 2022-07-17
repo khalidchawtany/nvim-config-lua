@@ -35,17 +35,18 @@ nnoremap <silent> <c-l> <c-w><c-l>
 " Maximize current split
 nnoremap <c-w>M <C-w>_<C-w><Bar>
 
-nnoremap <silent><nowait> <BS> :syntax sync minlines=1000<cr>:nohlsearch \| echo "" \|redraw! \| diffupdate \| normal \<Plug>(FastFoldUpdate) <cr>
+nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr>:nohlsearch \| echo "" \|redraw! \| diffupdate<cr>
+" nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr>:nohlsearch \| echo "" \|redraw! \| diffupdate \| normal \<Plug>(FastFoldUpdate) <cr>
 
 
 nnoremap <c-s>c :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" Map nox F     <Plug>(clever-f-F)
-" Map nox T     <Plug>(clever-f-T)
-" Map nox f     <Plug>(clever-f-f)
-" Map nox t     <Plug>(clever-f-t)
+Map nox F     <Plug>(clever-f-F)
+Map nox T     <Plug>(clever-f-T)
+Map nox f     <Plug>(clever-f-f)
+Map nox t     <Plug>(clever-f-t)
 
 nnoremap cc 0C
 
@@ -53,35 +54,35 @@ nnoremap cc 0C
 " open diff view of the commit hash
 nnoremap <leader>dcc :DiffviewOpen <C-r>=expand('<cword>')<cr>..<C-r>=expand('<cword>')<cr>^<cr>
 
-nnoremap <leader>fp  :let @+=expand("%:p")<cr>:echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
-nnoremap <leader>fn  :let @+=expand("%:p:t")<cr>:echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
+nnoremap <leader>fp  <cmd>let @+=expand("%:p")<cr>:echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
+nnoremap <leader>fn  <cmd>let @+=expand("%:p:t")<cr>:echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
 
-nnoremap <c-w>O            :wincmd o\|tabonly\|BufOnly<cr>
-nnoremap <c-;>wo           :tabonly \| BufOnly<cr>
+nnoremap <c-w>O            <cmd>wincmd o\|tabonly\|BufOnly<cr>
+nnoremap <c-;>wo           <cmd>tabonly \| BufOnly<cr>
 
-nnoremap <c-;>wa           :BufOnly -1<cr>
-nnoremap  <c-;>ww          :bwipeout!<cr>
-nnoremap  <c-;><c-;>ww     :bwipeout!<cr>
-nnoremap <silent> <c-;>wu  :silent! WipeoutUnmodified<cr>
-nnoremap <c-;><c-;>wa      :tabonly \| BufOnly \| bufdo execute ":bw!"<cr>
+nnoremap <c-;>wa           <cmd>BufOnly -1<cr>
+nnoremap  <c-;>ww          <cmd>bwipeout!<cr>
+nnoremap  <c-;><c-;>ww     <cmd>bwipeout!<cr>
+nnoremap <silent> <c-;>wu  <cmd>silent! WipeoutUnmodified<cr>
+nnoremap <c-;><c-;>wa      <cmd>tabonly \| BufOnly \| bufdo execute ":bw!"<cr>
 
 
 
-nnoremap <leader>t<space>  :tabonly<cr>
-nnoremap <leader>q<space>  :tabclose<cr>
-nnoremap <leader>qq        :q<cr>
-nnoremap <leader>qa        :qall<cr>
-nnoremap <leader>qQ        :qall!<cr>
+nnoremap <leader>t<space>  <cmd>tabonly<cr>
+nnoremap <leader>q<space>  <cmd>tabclose<cr>
+nnoremap <leader>qq        <cmd>q<cr>
+nnoremap <leader>qa        <cmd>qall<cr>
+nnoremap <leader>qQ        <cmd>qall!<cr>
 
-nnoremap <leader>wq        :wq<cr>
-nnoremap <leader>ww        :w<cr>
-nnoremap <leader>wa        :wall<cr>
-nnoremap <leader>wu        :update<cr>
+nnoremap <leader>wq        <cmd>wq<cr>
+nnoremap <leader>ww        <cmd>w<cr>
+nnoremap <leader>wa        <cmd>wall<cr>
+nnoremap <leader>wu        <cmd>update<cr>
 
-nnoremap <c-k><c-d> :lua vim.lsp.buf.formatting_seq_sync()<cr>
+nnoremap <c-k><c-d> <cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>
 
-nnoremap <leader>ev :e ~/.config/nvim<cr>
-Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
+nnoremap <leader>ev <cmd>e ~/.config/nvim<cr>
+Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
 
 
   "Shift-Enter is like ]<space>
@@ -101,12 +102,12 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   imap <c-a> <HOME>
   imap <c-e> <END>
 
-  nnoremap <leader>tl :tabs<cr>
-  nnoremap <leader>tn :tabnew<cr>
-  nnoremap <leader>td :tab split<cr>
-  nnoremap <leader>tt :tabnew \| e term://zsh<cr>
+  nnoremap <leader>tl <cmd>tabs<cr>
+  nnoremap <leader>tn <cmd>tabnew<cr>
+  nnoremap <leader>td <cmd>tab split<cr>
+  nnoremap <leader>tt <cmd>tabnew \| e term://zsh<cr>
   nnoremap <leader>th :tab help<space>
-  nnoremap <leader>tm0 :tabmove 0<cr>
+  nnoremap <leader>tm0 <cmd>tabmove 0<cr>
 
 
 
@@ -184,22 +185,22 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
 
   " Close all folds except this
   nnoremap z<Space> zMzv
-  nnoremap z0 :set foldlevel=0<cr>
-  nnoremap z1 :set foldlevel=1<cr>
-  nnoremap z2 :set foldlevel=2<cr>
-  nnoremap z3 :set foldlevel=3<cr>
-  nnoremap z4 :set foldlevel=4<cr>
-  nnoremap z5 :set foldlevel=5<cr>
-  nnoremap z6 :set foldlevel=6<cr>
-  nnoremap z7 :set foldlevel=7<cr>
-  nnoremap z8 :set foldlevel=8<cr>
-  nnoremap z9 :set foldlevel=9<cr>
+  nnoremap z0 <cmd>set foldlevel=99<cr>
+  nnoremap z1 <cmd>set foldlevel=1<cr>
+  nnoremap z2 <cmd>set foldlevel=2<cr>
+  nnoremap z3 <cmd>set foldlevel=3<cr>
+  nnoremap z4 <cmd>set foldlevel=4<cr>
+  nnoremap z5 <cmd>set foldlevel=5<cr>
+  nnoremap z6 <cmd>set foldlevel=6<cr>
+  nnoremap z7 <cmd>set foldlevel=7<cr>
+  nnoremap z8 <cmd>set foldlevel=8<cr>
+  nnoremap z9 <cmd>set foldlevel=9<cr>
 
 
   tnoremap <c-o> <c-\><c-n>
 
   " Put empty line around (requires UnImpaired)
-  nnoremap \<Space> :normal [ ] <cr>
+  nnoremap \<Space> <cmd>normal [ ] <cr>
 
   " Suck from below/above
   nnoremap <C-g>j i<Esc>+y$ddgi<c-r>0<Esc>
@@ -209,18 +210,18 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   inoremap <C-u> <esc>mzgUiw`za
 
 
-  nnoremap <leader>e<cr> :e ++ff=dos<cr>
+  nnoremap <leader>e<cr> <cmd>e ++ff=dos<cr>
   nnoremap <leader>en    <cmd>enew<cr>
 
-  nnoremap <silent> <leader>e<Tab>  :set expandtab \| retab!<cr>
+  nnoremap <silent> <leader>e<Tab>  <cmd>set expandtab \| retab!<cr>
  
 
-  nnoremap <leader>e<space> :call StripWhitespace()<cr>
+  nnoremap <leader>e<space> <cmd>call StripWhitespace()<cr>
 
   " underline the current line
-  nnoremap <leader>u= :t.\|s/./=/g<cr>:nohls<cr>
-  nnoremap <leader>u- :t.\|s/./-/g<cr>:nohls<cr>
-  nnoremap <leader>u~ :t.\|s/./\\~/g<cr>:nohls<cr>
+  nnoremap <leader>u= <cmd>t.\|s/./=/g<cr><cmd>nohls<cr>
+  nnoremap <leader>u- <cmd>t.\|s/./-/g<cr><cmd>nohls<cr>
+  nnoremap <leader>u~ <cmd>t.\|s/./\\~/g<cr><cmd>nohls<cr>
 
 
   cnoremap <D-v> <C-R>+
@@ -231,11 +232,11 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   vmap > >gv
   vmap < <gv
 
-  nnoremap <c-k><c-=> :silent! call Preserve("normal gg=G")<cr>
+  nnoremap <c-k><c-=> :<cmd>silent! call Preserve("normal gg=G")<cr>
 
   " Move visual block
-  vnoremap <D-j> :m '>+1<CR>gv=gv
-  vnoremap <D-k> :m '<-2<CR>gv=gv
+  vnoremap <D-j> <cmd>m '>+1<CR>gv=gv
+  vnoremap <D-k> <cmd>m '<-2<CR>gv=gv
 
   " select last matched item
   nnoremap <c-g>/ //e<Enter>v??<Enter>
@@ -254,12 +255,12 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
 
   "CD into:
   "current buffer file dir
-  nnoremap cdf :lcd %:p:h<cr>:pwd<cr>
-  nnoremap cd. :lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr>:pwd<cr>
-  nnoremap cdh :lcd <c-r>=expand('%:h')."/.."<cr><cr>:pwd<cr>
-  nnoremap cdk :lcd <c-r>=getcwd()."/.."<cr><cr>:pwd<cr>
+  nnoremap cdf <cmd>lcd %:p:h<cr>:pwd<cr>
+  nnoremap cd. <cmd>lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr>:pwd<cr>
+  nnoremap cdh <cmd>lcd <c-r>=expand('%:h')."/.."<cr><cr>:pwd<cr>
+  nnoremap cdk <cmd>lcd <c-r>=getcwd()."/.."<cr><cr>:pwd<cr>
 
-  nnoremap cdp :lcd <c-r>=GetPluginPath()<cr><cr>:pwd<cr>
+  nnoremap cdp <cmd>lcd <c-r>=GetPluginPath()<cr><cr>:pwd<cr>
 
   fun! GetPluginPath()
     let dirs = split(expand('%:p'), '/')
@@ -278,30 +279,30 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
 
 
   "current working dir
-  nnoremap cdc :lcd <c-r>=expand("%:h")<cr>/
+  nnoremap cdc <cmd>lcd <c-r>=expand("%:h")<cr>/
   "git dir ROOT
-  nnoremap cdg :lcd <c-r>=FindGitDirOrRoot()<cr><cr>
+  nnoremap cdg <cmd>lcd <c-r>=FindGitDirOrRoot()<cr><cr>
 
-  nnoremap cdd :lcd /Volumes/Home/.config/nvim/dein/repos/github.com/<cr>
-  nnoremap cdv :lcd /Volumes/Home/.config/nvim/<cr>
+  nnoremap cdd <cmd>lcd /Volumes/Home/.config/nvim/dein/repos/github.com/<cr>
+  nnoremap cdv <cmd>lcd /Volumes/Home/.config/nvim/<cr>
 
   "Open current directory in Finder
-  "nnoremap gof :silent !open .<cr>
+  "nnoremap gof <cmd>silent !open .<cr>
 
 	" allow replacing word under cursor
-	nnoremap grW :%s/<c-r>=expand('<cWORD>')<cr>//g<left><left>
-	nnoremap grw :%s/<c-r>=expand('<cword>')<cr>//g<left><left>
+	nnoremap grW <cmd>%s/<c-r>=expand('<cWORD>')<cr>//g<left><left>
+	nnoremap grw <cmd>%s/<c-r>=expand('<cword>')<cr>//g<left><left>
 
-  nnoremap ycd :!mkdir -p %:p:h<CR>
+  nnoremap ycd <cmd>!mkdir -p %:p:h<CR>
 
   "Go to alternate file
   nnoremap go <C-^>
 
   "toggle tabline
-  nnoremap <silent> cot  :execute "set  showtabline=" . (&showtabline+2)%3<cr>
+  nnoremap <silent> cot  <cmd>execute "set  showtabline=" . (&showtabline+2)%3<cr>
 
   "Toggle laststatus (statusline | statusbar)
-  nnoremap <silent> co<space> :execute "set laststatus=" . (&laststatus+2)%3<cr>
+  nnoremap <silent> co<space> <cmd>execute "set laststatus=" . (&laststatus+2)%3<cr>
 
   "Command-line Mode Key Mappings
   cnoremap <c-a> <home>
@@ -324,17 +325,17 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
 
   " Correct macros, use it like this <leader>m or "q<leader>m.
 
-  nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
-  nnoremap <leader>mc  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+  nnoremap <leader>m  <cmd><c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+  nnoremap <leader>mc  <cmd><c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
-  Map N <leader>tp :e <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
-  Map N <leader>to :e ~/org/todo.org<cr>
+  Map N <leader>tp <cmd>e <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
+  Map N <leader>to <cmd>e ~/org/todo.org<cr>
   Map N <leader>Tp :tabe <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
-  Map N <leader>To :tabe ~/org/todo.org<cr>
+  Map N <leader>To <cmd>tabe ~/org/todo.org<cr>
 
-  Map N <leader>e<BS> :e! \| echo "changes discarded"<cr>
+  Map N <leader>e<BS> :<cmd>! \| echo "changes discarded"<cr>
 
-  nnoremap  coq :QFix<cr>
+  nnoremap  coq <cmd>QFix<cr>
   command! QFix call QFixToggle()
   function! QFixToggle()
     for i in range(1, winnr('$'))
@@ -348,10 +349,10 @@ Map N <leader>eg    :if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| 
   endfunction
 
 
-  xnoremap [e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
+  xnoremap [e  <cmd><C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
   " snoremap [e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
 
-  xnoremap ]e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionDown"\|normal! gv<cr>
+  xnoremap ]e  <cmd><C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionDown"\|normal! gv<cr>
   " snoremap [e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
 
 function! FoldFunction(option)
@@ -385,6 +386,6 @@ function! FoldFunction(option)
     endif
 endfunction
 
-Map n <leader>zff  <cmd>call FoldFunction()<cr>
+Map n <leader>zff  <cmd>call FoldFunction('')<cr>
 Map n <leader>zfe  <cmd>call FoldFunction('editor')<cr>
 Map n <leader>zi  <cmd>set fdm=indent<cr><cmd>set fdm=manual<cr>

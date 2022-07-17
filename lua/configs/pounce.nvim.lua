@@ -7,6 +7,7 @@ local M = {
 
 M.mapKeys = function()
   vim.cmd [[
+	nmap <leader>P <cmd>PounceRepeat<CR>
 	nmap <leader>p <cmd>Pounce<CR>
 	vmap <leader>p <cmd>Pounce<CR>
 	omap <leader>P <cmd>Pounce<CR>
@@ -19,7 +20,9 @@ M.config = function()
   M.mapKeys()
   require "pounce".setup {
     accept_keys = "JFKDLSAHGNUVRBYTMICEOXWPQZ",
-    debug = false
+    accept_best_key = "<enter>",
+    multi_window = true,
+    debug = false,
   }
 end
 

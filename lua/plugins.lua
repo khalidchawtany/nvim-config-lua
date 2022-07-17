@@ -34,21 +34,6 @@ packer.startup(
 
     use "ntpeters/vim-better-whitespace"
 
-    -- { Tutorials and Easymotion
-    -- use "tjdevries/train.nvim"
-    -- use "ggandor/lightspeed.nvim"
-    -- use "phaazon/hop.nvim"
-    -- use "Lokaltog/vim-easymotion"
-    -- use {"aykamko/vim-easymotion-segments", after = "vim-easymotion"}
-    -- use {"rhysd/clever-f.vim", keys = {"<Plug>(clever-f-"}, fn = {"clever_f#reset"}}
-    -- use "rlane/pounce.nvim"
-    use "ripxorip/aerojump.nvim"
-
-    use "ggandor/leap.nvim"
-
-    -- }
-
-    use "pechorin/any-jump.vim"
 
     use "steelsojka/headwind.nvim"
 
@@ -268,7 +253,9 @@ packer.startup(
 
     use "tpope/vim-abolish"
 
-    use "machakann/vim-sandwich"
+    -- use "machakann/vim-sandwich"
+
+    use "kylechui/nvim-surround"
 
     use "AndrewRadev/splitjoin.vim"
 
@@ -335,6 +322,24 @@ packer.startup(
     use "p00f/nvim-ts-rainbow"
     use "kdav5758/TrueZen.nvim"
     use "norcalli/nvim-colorizer.lua"
+
+
+    use "pechorin/any-jump.vim"
+
+    -- { Tutorials and Easymotion
+    -- use "tjdevries/train.nvim"
+    -- use "ggandor/lightspeed.nvim"
+    use "phaazon/hop.nvim"
+    use "ggandor/leap.nvim"
+    use "rlane/pounce.nvim"
+    -- use "Lokaltog/vim-easymotion"
+    -- use {"aykamko/vim-easymotion-segments", after = "vim-easymotion"}
+    use {"rhysd/clever-f.vim", keys = {"<Plug>(clever-f-"}, fn = {"clever_f#reset"}}
+    use "ripxorip/aerojump.nvim"
+    -- }
+
+
+
 
     -- Global remapping
     ------------------------------

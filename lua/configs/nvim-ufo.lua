@@ -4,6 +4,7 @@ local M = {
 }
 
 M.config = function()
+  return;
   -- option 2: nvim lsp as LSP client
   -- tell the sever the capability of foldingRange
   local capabilities = vim.lsp.protocol.make_client_capabilities()
