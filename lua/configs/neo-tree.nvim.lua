@@ -34,14 +34,14 @@ require("neo-tree").setup(
           ["-"] = function(state)
             local node = state.tree:get_node()
 
-            if state.path == node.path then
+            if state.path == node.path or state.path == node:get_parent_id() then
+              require "neo-tree.ui.renderer".focus_node(state, node:get_parent_id())
               state.commands["navigate_up"](state)
               return
             end
 
             require "neo-tree.ui.renderer".focus_node(state, node:get_parent_id())
             state.commands["toggle_directory"](state)
-
           end,
           ["."] = "set_root",
           ["O"] = "close_all_nodes",
