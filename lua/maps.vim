@@ -255,12 +255,12 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
 
   "CD into:
   "current buffer file dir
-  nnoremap cdf <cmd>lcd %:p:h<cr>:pwd<cr>
-  nnoremap cd. <cmd>lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr>:pwd<cr>
-  nnoremap cdh <cmd>lcd <c-r>=expand('%:h')."/.."<cr><cr>:pwd<cr>
-  nnoremap cdk <cmd>lcd <c-r>=getcwd()."/.."<cr><cr>:pwd<cr>
+  nnoremap cdf :lcd %:p:h<cr>:pwd<cr>
+  nnoremap cd. :lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr>:pwd<cr>
+  nnoremap cdh :lcd <c-r>=expand('%:h')."/.."<cr><cr>:pwd<cr>
+  nnoremap cdk :lcd <c-r>=getcwd()."/.."<cr><cr>:pwd<cr>
 
-  nnoremap cdp <cmd>lcd <c-r>=GetPluginPath()<cr><cr>:pwd<cr>
+  nnoremap cdp :lcd <c-r>=GetPluginPath()<cr><cr>:pwd<cr>
 
   fun! GetPluginPath()
     let dirs = split(expand('%:p'), '/')
@@ -279,30 +279,30 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
 
 
   "current working dir
-  nnoremap cdc <cmd>lcd <c-r>=expand("%:h")<cr>/
+  nnoremap cdc :lcd <c-r>=expand("%:h")<cr>/
   "git dir ROOT
-  nnoremap cdg <cmd>lcd <c-r>=FindGitDirOrRoot()<cr><cr>
+  nnoremap cdg :lcd <c-r>=FindGitDirOrRoot()<cr><cr>
 
-  nnoremap cdd <cmd>lcd /Volumes/Home/.config/nvim/dein/repos/github.com/<cr>
-  nnoremap cdv <cmd>lcd /Volumes/Home/.config/nvim/<cr>
+  nnoremap cdd :lcd /Volumes/Home/.config/nvim/dein/repos/github.com/<cr>
+  nnoremap cdv :lcd /Volumes/Home/.config/nvim/<cr>
 
   "Open current directory in Finder
   "nnoremap gof <cmd>silent !open .<cr>
 
 	" allow replacing word under cursor
-	nnoremap grW <cmd>%s/<c-r>=expand('<cWORD>')<cr>//g<left><left>
-	nnoremap grw <cmd>%s/<c-r>=expand('<cword>')<cr>//g<left><left>
+	nnoremap grW :%s/<c-r>=expand('<cWORD>')<cr>//g<left><left>
+	nnoremap grw :%s/<c-r>=expand('<cword>')<cr>//g<left><left>
 
-  nnoremap ycd <cmd>!mkdir -p %:p:h<CR>
+  nnoremap ycd :!mkdir -p %:p:h<CR>
 
   "Go to alternate file
   nnoremap go <C-^>
 
   "toggle tabline
-  nnoremap <silent> cot  <cmd>execute "set  showtabline=" . (&showtabline+2)%3<cr>
+  nnoremap <silent> cot  :execute "set  showtabline=" . (&showtabline+2)%3<cr>
 
   "Toggle laststatus (statusline | statusbar)
-  nnoremap <silent> co<space> <cmd>execute "set laststatus=" . (&laststatus+2)%3<cr>
+  nnoremap <silent> co<space> :execute "set laststatus=" . (&laststatus+2)%3<cr>
 
   "Command-line Mode Key Mappings
   cnoremap <c-a> <home>
@@ -325,15 +325,15 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
 
   " Correct macros, use it like this <leader>m or "q<leader>m.
 
-  nnoremap <leader>m  <cmd><c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
-  nnoremap <leader>mc  <cmd><c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+  nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+  nnoremap <leader>mc  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
-  Map N <leader>tp <cmd>e <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
-  Map N <leader>to <cmd>e ~/org/todo.org<cr>
+  Map N <leader>tp :e <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
+  Map N <leader>to :e ~/org/todo.org<cr>
   Map N <leader>Tp :tabe <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
-  Map N <leader>To <cmd>tabe ~/org/todo.org<cr>
+  Map N <leader>To :tabe ~/org/todo.org<cr>
 
-  Map N <leader>e<BS> :<cmd>! \| echo "changes discarded"<cr>
+  Map N <leader>e<BS> :! \| echo "changes discarded"<cr>
 
   nnoremap  coq <cmd>QFix<cr>
   command! QFix call QFixToggle()

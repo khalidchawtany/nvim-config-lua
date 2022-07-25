@@ -124,7 +124,7 @@ if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
  " set guifont=OperatorMonoLig\ Nerd\ Font:h18
  " GuiFont! OperatorMonoLig Nerd Font:h18
  " GuiFont! Fira Code:h20
- GuiFont! FiraCode Nerd Font Mine:h18
+ GuiFont! FiaCode Nerd Font Mine:h18
 " set guifont=OperatorMono\ Nerd\ Font:h18
 " set guifont=PT\ Mono:h20
 " set guifont=RobotoMono\ Nerd\ Font:h19

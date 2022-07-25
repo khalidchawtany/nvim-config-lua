@@ -14,11 +14,6 @@ endif
 
 
 let g:neo_tree_remove_legacy_commands=1
-let g:did_load_filetypes = 1
-
-" let g:did_load_filetypes = 0
-" let g:do_filetype_lua = 1
-
 
 scriptencoding utf-8
 set encoding=utf-8 nobomb

@@ -3,6 +3,9 @@ local M = {
 }
 
 M.config = function()
-  require("lsp_lines").register_lsp_virtual_lines()
+  vim.diagnostic.config({
+    virtual_text = false,
+  })
+  require("lsp_lines").setup()
 end
 return M

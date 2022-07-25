@@ -86,7 +86,7 @@ packer.startup(
     --   event = {"BufRead", "BufNewFile", "InsertEnter"}
     -- }
 
-    -- use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+    use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
     use "williamboman/nvim-lsp-installer"
 
@@ -94,6 +94,7 @@ packer.startup(
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
     use "ojroques/nvim-lspfuzzy"
     use "weilbith/nvim-code-action-menu"
+
 
     use "simrat39/symbols-outline.nvim"
 

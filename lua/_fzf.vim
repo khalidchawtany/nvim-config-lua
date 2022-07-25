@@ -49,7 +49,7 @@ nnoremap <silent> <c-p>j :FzfAg <C-R><C-W><CR>
 " only show MRU files from within your cwd
 let g:fzf_mru_relative = 1
 nnoremap <c-p><c-u> :FzfHistory<cr>
-nnoremap <c-p>u     :execute "FZFMru " expand('<cword>')<cr>
+nnoremap <c-p>u     :FZFMru<cr>
 " to enable found references displayed in fzf
 let g:LanguageClient_selectionUI = 'fzf'
 
