@@ -83,6 +83,13 @@ _G.PROJECTS_MAPS = {
       fd_opts = {"--full-path", "-g", "**/lox/**/models/*.php"}
     },
     {
+      desciption = "M-Models (OCT)",
+      keys = "<leader>ln",
+      paths = {{"plugins"}},
+      prompt = "models",
+      fd_opts = {"--full-path", "-g", "**/lox/**/models/*/*"}
+    },
+    {
       desciption = "Models (OCT)",
       keys = "<leader>lA",
       paths = {{"plugins"}},
