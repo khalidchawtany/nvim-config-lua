@@ -34,7 +34,6 @@ packer.startup(
 
     use "ntpeters/vim-better-whitespace"
 
-
     use "steelsojka/headwind.nvim"
 
     use "vhyrro/neorg"
@@ -80,21 +79,21 @@ packer.startup(
     use "winston0410/mark-radar.nvim"
 
     -- LSP
-    -- use {
-    --   "neovim/nvim-lspconfig",
-    --   after = {"nvim-cmp"},
-    --   event = {"BufRead", "BufNewFile", "InsertEnter"}
-    -- }
+    -- use "williamboman/nvim-lsp-installer"
+    use {
+      "neovim/nvim-lspconfig"
+      -- after = {"nvim-cmp"},
+      -- event = {"BufRead", "BufNewFile", "InsertEnter"}
+    }
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
 
     use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-
-    use "williamboman/nvim-lsp-installer"
 
     use "ray-x/navigator.lua"
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
     use "ojroques/nvim-lspfuzzy"
     use "weilbith/nvim-code-action-menu"
-
 
     use "simrat39/symbols-outline.nvim"
 
@@ -277,8 +276,7 @@ packer.startup(
 
     use "mhartington/formatter.nvim"
 
-
-    use 'kevinhwang91/nvim-ufo'
+    use "kevinhwang91/nvim-ufo"
 
     use "petertriho/nvim-scrollbar"
     use "SmiteshP/nvim-gps"
@@ -324,7 +322,6 @@ packer.startup(
     use "kdav5758/TrueZen.nvim"
     use "norcalli/nvim-colorizer.lua"
 
-
     use "pechorin/any-jump.vim"
 
     -- { Tutorials and Easymotion
@@ -338,9 +335,6 @@ packer.startup(
     use {"rhysd/clever-f.vim", keys = {"<Plug>(clever-f-"}, fn = {"clever_f#reset"}}
     use "ripxorip/aerojump.nvim"
     -- }
-
-
-
 
     -- Global remapping
     ------------------------------
