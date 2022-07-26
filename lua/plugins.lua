@@ -73,7 +73,7 @@ packer.startup(
 
     use "folke/todo-comments.nvim"
 
-    -- use "mrjones2014/dash.nvim"
+    use "mrjones2014/dash.nvim"
 
     use "kevinhwang91/nvim-bqf"
     use "winston0410/mark-radar.nvim"
