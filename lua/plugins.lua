@@ -311,8 +311,8 @@ packer.startup(
     use "drewtempelmeyer/palenight.vim"
 
     use "tiagovla/scope.nvim" -- this is to scope buffers to tabs only
-    use "windwp/windline.nvim"
-    -- use "hoob3rt/lualine.nvim"
+    -- use "windwp/windline.nvim"
+    use "hoob3rt/lualine.nvim"
     -- use "kdheepak/tabline.nvim"
     use "romgrk/barbar.nvim"
     use 'ldelossa/buffertag'

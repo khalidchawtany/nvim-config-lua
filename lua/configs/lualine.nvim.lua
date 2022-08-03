@@ -1,16 +1,14 @@
-local M = {requires = {'kyazdani42/nvim-web-devicons'}}
-
-M.config1 = function ()
-    require('lualine').setup( {
-        options = {
-            theme = require 'lualine.themes.tokyonight'
-        },
-    })
-end
+local M = {
+  requires = {"kyazdani42/nvim-web-devicons", opt = true}
+}
 
 M.config = function()
-
--- Eviline conf for lualine
+  -- require('lualine').setup( {
+  --     options = {
+  --         theme = require 'lualine.themes.tokyonight'
+  --     },
+  -- })
+-- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
 local lualine = require('lualine')
@@ -45,20 +43,20 @@ local conditions = {
   end,
 }
 
--- conf
-local conf = {
+-- Config
+local config = {
   options = {
     -- Disable sections and component separators
     component_separators = '',
     section_separators = '',
-    -- theme = require 'lualine.themes.tokyonight'
-    theme = {
-      -- We are going to use lualine_c an lualine_x as left and
-      -- right section. Both are highlighted by c theme .  So we
-      -- are just setting default looks o statusline
-      normal = { c = { fg = colors.fg, bg = colors.bg } },
-      inactive = { c = { fg = colors.fg, bg = colors.bg } },
-    },
+    theme = require 'lualine.themes.tokyonight'
+    -- theme = {
+    --   -- We are going to use lualine_c an lualine_x as left and
+    --   -- right section. Both are highlighted by c theme .  So we
+    --   -- are just setting default looks o statusline
+    --   normal = { c = { fg = colors.fg, bg = colors.bg } },
+    --   inactive = { c = { fg = colors.fg, bg = colors.bg } },
+    -- },
   },
   sections = {
     -- these are to remove the defaults
@@ -83,12 +81,12 @@ local conf = {
 
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
-  table.insert(conf.sections.lualine_c, component)
+  table.insert(config.sections.lualine_c, component)
 end
 
 -- Inserts a component in lualine_x ot right section
 local function ins_right(component)
-  table.insert(conf.sections.lualine_x, component)
+  table.insert(config.sections.lualine_x, component)
 end
 
 ins_left {
@@ -178,7 +176,7 @@ ins_left {
       return msg
     end
     for _, client in ipairs(clients) do
-      local filetypes = client.conf.filetypes
+      local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
         return client.name
       end
@@ -208,6 +206,7 @@ ins_right {
   'branch',
   icon = '',
   color = { fg = colors.violet, gui = 'bold' },
+  require('nomodoro').status,
 }
 
 ins_right {
@@ -231,7 +230,7 @@ ins_right {
 }
 
 -- Now don't forget to initialize lualine
-lualine.setup(conf)
+lualine.setup(config)
 end
 
 return M
