@@ -21,6 +21,7 @@ M.init = function()
             nnoremap <c-s>-      <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
             nnoremap <c-s><c-->  <cmd>lua require('telescope.builtin').lsp_document_symbols({default_text = "method "})<cr>
             nnoremap <c-s><c-l>  <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
+            nnoremap <c-s>l  <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
             nnoremap <c-s><c-u>  <cmd>lua require('telescope.builtin').oldfiles()<cr>
             nnoremap <c-s>u      <cmd>lua require('telescope.builtin').oldfiles()<cr>
             nnoremap <c-s><c-g>  <cmd>lua require('telescope.builtin').git_status()<cr>

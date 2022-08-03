@@ -12,10 +12,10 @@ packer.init(
 
 packer.startup(
   function(use)
-    use {
-      "lewis6991/impatient.nvim",
-      rocks = "mpack"
-    }
+   use {
+     "lewis6991/impatient.nvim",
+     rocks = "mpack"
+   }
 
     -- setup use() to replace packer_use()
     fun.setPackerUse(use)
@@ -29,6 +29,8 @@ packer.startup(
 
     use "VonHeikemen/fine-cmdline.nvim"
     use "MunifTanjim/nui.nvim"
+    
+    use 'dbinagi/nomodoro'
 
     -- use "luukvbaal/stabilize.nvim"
 
@@ -313,6 +315,7 @@ packer.startup(
     -- use "hoob3rt/lualine.nvim"
     -- use "kdheepak/tabline.nvim"
     use "romgrk/barbar.nvim"
+    use 'ldelossa/buffertag'
 
     use "folke/which-key.nvim"
     use "folke/zen-mode.nvim"
