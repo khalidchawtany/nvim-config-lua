@@ -1,5 +1,9 @@
 local M = {}
 
+M.init = function()
+  require('leap').set_default_keymaps()
+end
+
 M.config = function()
   require("leap").setup {
     case_insensitive = true,
@@ -17,8 +21,11 @@ M.config = function()
     --   eol = "<space>"
     -- }
   }
-  require('leap').set_default_keymaps()
-
+   -- vim.api.nvim_create_autocmd("VimEnter", {
+   --    pattern = "*",
+   --    callback = function()
+    --   end,
+    -- })
 end
 
 return M

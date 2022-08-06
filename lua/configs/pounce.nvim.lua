@@ -7,10 +7,10 @@ local M = {
 
 M.mapKeys = function()
   vim.cmd [[
-	nmap <leader>P <cmd>PounceRepeat<CR>
-	nmap <leader>p <cmd>Pounce<CR>
-	vmap <leader>p <cmd>Pounce<CR>
-	omap <leader>P <cmd>Pounce<CR>
+	nmap <c-s>F <cmd>PounceRepeat<CR>
+	nmap <c-s>f <cmd>Pounce<CR>
+	vmap <c-s>f <cmd>Pounce<CR>
+	omap <c-s>f <cmd>Pounce<CR>
   ]]
 end
 
