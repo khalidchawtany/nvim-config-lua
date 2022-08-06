@@ -7,13 +7,33 @@ M.init = function()
   local map = vim.api.nvim_set_keymap
   local opts = {noremap = true, silent = true}
 
-  map("n", "<C-cr>", '<CMD>lua require("FTerm").toggle()<CR>', opts)
-  map("t", "<C-cr>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+  map("n", "<C-cr><C-cr>", '<CMD>lua require("FTerm").toggle()<CR>', opts)
+  map("t", "<C-cr><C-cr>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 
-  vim.cmd[[
 
-    nnoremap <leader>gi :execute "PackerLoad FTerm.nvim" \| lua require("FTerm"):new({ ft = "fterm_gitui", cmd = "gitui", dimensions = {height = 0.9, width = 0.9} }):toggle()<cr>
+  local server = nil
+  -- Use this to toggle gitui in a floating terminal
+  vim.keymap.set( {"n", "t"}, "<C-cr><C-s>", function()
+      if server == nil then
+        server = require("FTerm"):new({ft = "terminal", dimensions = {height = 0.9, width = 0.9}})
+      end
+      server:toggle()
+    end,
+    {desc='Toggle Long Terminal'}
+  )
 
+  local gitui = nil
+  -- Use this to toggle gitui in a floating terminal
+  vim.keymap.set( "n", "<C-cr><C-g>", function()
+      if gitui == nil then
+        gitui = require("FTerm"):new({ft = "fterm_gitui", cmd = "gitui", dimensions = {height = 0.9, width = 0.9}})
+      end
+      gitui:toggle()
+    end,
+    {desc='Git UI'}
+  )
+
+  vim.cmd [[
     function! FTermStrategy(cmd)
       PackerLoad FTerm.nvim
       execute 'lua require("FTerm"):new({ ft = "fterm_gitui", cmd = "' a:cmd '", dimensions = {height = 0.9, width = 0.9} }):toggle()'
@@ -22,8 +42,6 @@ M.init = function()
     let g:test#custom_strategies = {'FTerm': function('FTermStrategy')}
     let g:test#strategy = 'FTerm'
   ]]
-
-
 end
 
 M.config = function()
