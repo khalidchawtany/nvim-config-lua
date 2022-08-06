@@ -2,7 +2,9 @@ local M = {}
 
 M.config = function()
   -- require("windline").setup({tabline = {}})
-  require("wlsample.evil_line")
+  -- require("wlsample.evil_line")
+  require("user.windline")
+  -- table.insert(require("windline").default_line.active, 1, {text=require('nomodoro').status, name="nomodoro"})
   -- require("wlfloatline").setup(
   --   {
   --     skip_filetypes = {

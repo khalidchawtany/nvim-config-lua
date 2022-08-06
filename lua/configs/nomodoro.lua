@@ -1,4 +1,5 @@
 local M = {
+  module = "nomodoro",
   cmd = {
     "NomoWork",
     "NomoBreak",
