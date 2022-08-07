@@ -38,8 +38,11 @@ endfunction
 set linespace=10
 call SetLineSpace(10)
 
-command! Bigger  :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)+1', '')
-command! Smaller :let &guifont = substitute(&guifont, '\d\+$', '\=submatch(0)-1', '')
+" command! Bigger  :let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)+1', '')
+" command! Smaller :let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)-1', '')
+
+command! Bigger  :exec "GuiFont!" substitute(&guifont, '\d\+', '\=submatch(0)+1', '')
+command! Smaller  :exec "GuiFont!" substitute(&guifont, '\d\+', '\=submatch(0)-1', '')
 
 
 nnoremap <silent> <D-=> :Bigger<cr>
@@ -98,14 +101,13 @@ execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n>:tabnext 10<cr>"
 
 "Fix the lldb path
 " ln -s /usr/local/Cellar/llvm/HEAD-f63894b/lib/liblldb.4.0.0.dylib /usr/local/Cellar/llvm/HEAD-f63894b/lib/python2.7/site-packages/_lldb.so
-if has('mac')
-    let $PYTHONPATH="/usr/local/Cellar/llvm/HEAD-f63894b/lib/python2.7/site-packages/lldb:$PYTHONPATH"
-endif
+" if has('mac')
+"     let $PYTHONPATH="/usr/local/Cellar/llvm/HEAD-f63894b/lib/python2.7/site-packages/lldb:$PYTHONPATH"
+" endif
 
 " let $PATH=$PATH.":/Users/juju/.config/nvim_lua/lsp/phpactor/bin"
 
 let $PATH=$PATH.":/Users/juju/Development/Libraries/zf/zig-out/bin/"
-
 
 if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
   "***************MUST BE LAST LINE*******
@@ -114,20 +116,11 @@ if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
     GuiPopupmenu 0
     call GuiWindowMaximized(2)
     cd ~/.config/nvim/
-
-
-
 " let NVIM_QT_RUNTIME_PATH="./Contents/Resources/runtime"
 
-"GuiFont! Source Code Pro for PowerLine:h18
- " set guifont=Operator\ Mono\ Lig:h18
- " set guifont=OperatorMonoLig\ Nerd\ Font:h18
- " GuiFont! OperatorMonoLig Nerd Font:h18
- " GuiFont! Fira Code:h20
- GuiFont! FiaCode Nerd Font Mine:h18
-" set guifont=OperatorMono\ Nerd\ Font:h18
-" set guifont=PT\ Mono:h20
-" set guifont=RobotoMono\ Nerd\ Font:h19
+ " GuiFont! FiaCode Nerd Font Mine:h18
+ GuiFont! OperatorMonoLig Nerd Font:h18
+
 endif
 
 hi NonText guifg=#333355
