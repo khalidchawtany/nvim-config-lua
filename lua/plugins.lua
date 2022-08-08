@@ -261,6 +261,8 @@ packer.startup(
 
     use "AndrewRadev/splitjoin.vim"
 
+    use "glepnir/mcc.nvim" 
+
     -- InlineEdit
     use {"AndrewRadev/inline_edit.vim", cmd = {"InlineEdit"}}
     vim.cmd [[xnoremap <leader>ei <cmd>InlineEdit<cr>]]

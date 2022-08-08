@@ -18,7 +18,8 @@ M.winbar_filetype_exclude = {
   "fzf",
   "Outline",
   "spectre_panel",
-  "toggleterm"
+  "toggleterm",
+  "terminal"
 }
 
 local get_filename = function()
