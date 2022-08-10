@@ -183,6 +183,8 @@ packer.startup(
 
     -- use "nvim-telescope/telescope-z.nvim"
 
+    use "gbrlsnchs/winpick.nvim"
+
     --Documentation
     use "danymat/neogen"
 
