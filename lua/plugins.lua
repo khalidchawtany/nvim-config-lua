@@ -61,6 +61,7 @@ packer.startup(
     -- use "zbirenbaum/copilot.lua"
     -- use "zbirenbaum/copilot-cmp"
 
+    use "tpope/vim-dispatch"
     use "janko-m/vim-test"
 
     -- mappings and submodes
@@ -184,6 +185,8 @@ packer.startup(
     -- use "nvim-telescope/telescope-z.nvim"
 
     use "gbrlsnchs/winpick.nvim"
+
+    use "charludo/projectmgr.nvim"
 
     --Documentation
     use "danymat/neogen"

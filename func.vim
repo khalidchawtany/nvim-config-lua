@@ -31,7 +31,7 @@ endfunction"}}}
 
 
 function! FindGitDirOrRoot()
-  return system('git rev-parse --show-toplevel 2> /dev/' . v:null)[:-2]
+  return system("git rev-parse --show-toplevel | tr -d '\\n'")
 endfunction
 
 command! -nargs=* Map call Map(<f-args>)

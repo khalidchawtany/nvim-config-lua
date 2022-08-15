@@ -28,7 +28,7 @@ lua require('impatient')
 lua require('opts')
 source ~/.config/nvim/func.vim
 lua require('plugins')
-" lua require("user.winbar")
+lua require("user.winbar")
 lua require("user.autocommands")
 lua require('packer_compiled')
 lua require('maps')
