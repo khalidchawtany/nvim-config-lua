@@ -33,17 +33,17 @@ M.init = function()
     {desc='Git UI'}
   )
 
-  vim.cmd [[
-    function! FTermStrategy(cmd)
-      PackerLoad FTerm.nvim
-      execute 'lua require("FTerm"):new({ ft = "fterm_gitui", cmd = "' a:cmd '", dimensions = {height = 0.9, width = 0.9} }):toggle()'
-    endfunction
-
-    let g:test#custom_strategies = {'FTerm': function('FTermStrategy')}
-    let g:test#strategy = 'FTerm'
-  ]]
-end
-
+--   vim.cmd [[
+--     function! FTermStrategy(cmd)
+--       PackerLoad FTerm.nvim
+--       execute 'lua require("FTerm"):new({ ft = "fterm_gitui", cmd = "' a:cmd '", dimensions = {height = 0.9, width = 0.9} }):toggle()'
+--     endfunction
+--
+--     let g:test#custom_strategies = {'FTerm': function('FTermStrategy')}
+--     let g:test#strategy = 'FTerm'
+--   ]]
+-- end
+--
 M.config = function()
   require "FTerm".setup(
     {

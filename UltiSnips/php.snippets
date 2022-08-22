@@ -507,8 +507,14 @@ snippet "(\S.*);dump" "var_dump postfix code" br
 var_dump(`!p snip.rv = match.group(1)`);
 endsnippet
 
-snippet "(\S.*);dd" "dd() postfix code" br
-var_dump(`!p snip.rv = match.group(1)`);
+# snippet "(\S.*);dd" "dd() postfix code" br
+# var_dump(`!p snip.rv = match.group(1)`);
+# endsnippet
+
+snippet "(\S.*)(=\S.*;)dd" "dd() postfix code" br
+`!p snip.rv = match.group(1)``!p snip.rv = match.group(2)`
+dd(`!p snip.rv = match.group(1)`);
+endsnippet
 
 snippet "(\S.*);die" "die postfix code" br
 die(`!p snip.rv = match.group(1)`);

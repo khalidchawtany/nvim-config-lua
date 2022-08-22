@@ -1,7 +1,14 @@
 local M = {event = "BufRead"}
 
 M.config = function()
-    require("plugins.others").colorizer()
+  require('colorizer').setup({
+    '*';
+    -- An example
+    '!css';
+    '!html';
+    '!tsx';
+    '!dart';
+  })
 end
 
 return M

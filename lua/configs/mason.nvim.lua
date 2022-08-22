@@ -67,6 +67,11 @@ M.config = function()
       buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
+    if client.server_capabilities.colorProvider then
+      -- Attach document colour support
+      require("document-color").buf_attach(bufnr)
+    end
+
     -- Set autocommands conditional on server_capabilities
     if client.server_capabilities.document_highlight then
       vim.api.nvim_exec(
@@ -81,6 +86,21 @@ M.config = function()
       )
     end
   end
+
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+  -- You are now capable!
+  capabilities.textDocument.colorProvider = {
+    dynamicRegistration = true
+  }
+
+  -- Lsp servers that support documentColor
+  require("lspconfig").tailwindcss.setup(
+    {
+      on_attach = on_attach,
+      capabilities = capabilities
+    }
+  )
 
   require("mason-lspconfig").setup_handlers {
     -- The first entry (without a key) will be the default handler

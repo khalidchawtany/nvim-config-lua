@@ -49,7 +49,6 @@ packer.startup(
     -- Utilities
     use "kevinhwang91/nvim-hlslens"
     use "nathom/filetype.nvim"
-    use "voldikss/vim-floaterm"
     use "numToStr/FTerm.nvim"
     use "kopischke/vim-stay"
     use "gioele/vim-autoswap"
@@ -74,7 +73,8 @@ packer.startup(
     use "theHamsta/nvim-dap-virtual-text"
     use "rcarriga/nvim-dap-ui"
 
-    use "folke/todo-comments.nvim"
+    -- use "folke/todo-comments.nvim"
+    use "B4mbus/todo-comments.nvim"
 
     use "mrjones2014/dash.nvim"
 
@@ -331,6 +331,8 @@ packer.startup(
     use "p00f/nvim-ts-rainbow"
     use "kdav5758/TrueZen.nvim"
     use "norcalli/nvim-colorizer.lua"
+
+    use "mrshmllow/document-color.nvim"
 
     use "pechorin/any-jump.vim"
 

@@ -48,8 +48,9 @@ command! Smaller  :exec "GuiFont!" substitute(&guifont, '\d\+', '\=submatch(0)-1
 nnoremap <silent> <D-=> :Bigger<cr>
 nnoremap <silent> <D--> :Smaller<cr>
 
-nnoremap <silent> <M-D--> :let &linespace = substitute(&linespace, '\d\+$', '\=submatch(0)-1', '')<cr>
-nnoremap <silent> <M-D-=> :let &linespace = substitute(&linespace, '\d\+$', '\=submatch(0)+1', '')<cr>
+ nnoremap <silent> <M-D--> :let &linespace = substitute(&linespace, '\d\+$', '\=submatch(0)-1', '')<cr>:execute "GuiLinespace " substitute(&linespace, '\d\+$', '\=submatch(0)-1', '')<cr>
+ nnoremap <silent> <M-D-=> :let &linespace = substitute(&linespace, '\d\+$', '\=submatch(0)+1', '')<cr>:execute "GuiLine" substitute(&linespace, '\d\+$', '\=submatch(0)+1', '')<cr>
+
 
 nnoremap <silent> <c-w>m :call GuiWindowMaximized((g:GuiWindowMaximized + 1) % 2)<cr>
 nnoremap <silent> <c-w>f :call GuiWindowFullScreen((g:GuiWindowFullScreen + 1) % 2)<cr>
