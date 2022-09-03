@@ -89,15 +89,15 @@ noremap <M-C-D-Space> <nop>
 noremap <M-C-D-S-Space> <nop>
 "Map CMD-# to tabs
 for i in [1,2,3,4,5,6,7,8,9]
-  execute "nnoremap <silent> <D-" . i . ">            :tabnext " . i . "<cr>"
-  execute "vnoremap <silent> <D-" . i . ">       <c-u>:tabnext " . i . "<cr>"
-  execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n>:tabnext " . i . "<cr>"
+  execute "nnoremap <silent> <D-" . i . ">            <cmd>tabnext " . i . "<cr>"
+  execute "vnoremap <silent> <D-" . i . ">       <c-u><cmd>tabnext " . i . "<cr>"
+  execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n><cmd>tabnext " . i . "<cr>"
 endfor
 
 let i = 0
-execute "nnoremap <silent> <D-" . i . ">            :tabnext 10<cr>"
-execute "vnoremap <silent> <D-" . i . ">       <c-u>:tabnext 10<cr>"
-execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n>:tabnext 10<cr>"
+execute "nnoremap <silent> <D-" . i . ">            <cmd>tabnext 10<cr>"
+execute "vnoremap <silent> <D-" . i . ">       <c-u><cmd>tabnext 10<cr>"
+execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n><cmd>tabnext 10<cr>"
 
 
 "Fix the lldb path

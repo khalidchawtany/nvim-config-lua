@@ -264,6 +264,8 @@ packer.startup(
 
     use "kylechui/nvim-surround"
 
+    use 'echasnovski/mini.nvim'
+
     use "AndrewRadev/splitjoin.vim"
 
     use "glepnir/mcc.nvim" 
