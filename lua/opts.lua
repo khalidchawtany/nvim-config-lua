@@ -26,7 +26,8 @@ set.completeopt = 'menuone,noinsert,noselect'
 set.inccommand = 'nosplit'
 
 set.showmode = true
-set.cmdheight = 0 -- Height of the command bar
+set.cmdheight = 1 -- Height of the command bar
+set.laststatus = 3  -- make the status bar global
 set.incsearch = true
 set.showmatch = true
 

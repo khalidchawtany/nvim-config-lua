@@ -62,7 +62,6 @@ highlight Whitespace guifg=#30334B
 hi WinSeparator guifg=#3758A6
 
 set laststatus=3
-set cmdheight=0
 
 
 

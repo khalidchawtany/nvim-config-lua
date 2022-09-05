@@ -12,10 +12,10 @@ packer.init(
 
 packer.startup(
   function(use)
-   use {
-     "lewis6991/impatient.nvim",
-     rocks = "mpack"
-   }
+    use {
+      "lewis6991/impatient.nvim",
+      rocks = "mpack"
+    }
 
     -- setup use() to replace packer_use()
     fun.setPackerUse(use)
@@ -29,8 +29,6 @@ packer.startup(
 
     use "VonHeikemen/fine-cmdline.nvim"
     use "MunifTanjim/nui.nvim"
-    
-    use 'dbinagi/nomodoro'
 
     -- use "luukvbaal/stabilize.nvim"
 
@@ -40,6 +38,8 @@ packer.startup(
 
     use "vhyrro/neorg"
     use "kristijanhusak/orgmode.nvim"
+    use "phaazon/mind.nvim"
+    use "dbinagi/nomodoro"
 
     use "kazhala/close-buffers.nvim"
 
@@ -264,11 +264,11 @@ packer.startup(
 
     use "kylechui/nvim-surround"
 
-    use 'echasnovski/mini.nvim'
+    use "echasnovski/mini.nvim"
 
     use "AndrewRadev/splitjoin.vim"
 
-    use "glepnir/mcc.nvim" 
+    use "glepnir/mcc.nvim"
 
     -- InlineEdit
     use {"AndrewRadev/inline_edit.vim", cmd = {"InlineEdit"}}
@@ -324,7 +324,7 @@ packer.startup(
     -- use "hoob3rt/lualine.nvim"
     -- use "kdheepak/tabline.nvim"
     use "romgrk/barbar.nvim"
-    use 'ldelossa/buffertag'
+    use "ldelossa/buffertag"
 
     use "folke/which-key.nvim"
     use "folke/zen-mode.nvim"
