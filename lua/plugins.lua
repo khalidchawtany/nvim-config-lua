@@ -289,6 +289,7 @@ packer.startup(
     use "windwp/nvim-autopairs"
 
     use "mhartington/formatter.nvim"
+    use "jose-elias-alvarez/null-ls.nvim"
 
     use "kevinhwang91/nvim-ufo"
 
