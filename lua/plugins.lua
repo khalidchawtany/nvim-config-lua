@@ -266,6 +266,9 @@ packer.startup(
 
     use "echasnovski/mini.nvim"
 
+    use "rmagatti/auto-session"
+    use "rmagatti/session-lens" -- telescope for auto-session
+
     use "AndrewRadev/splitjoin.vim"
 
     use "glepnir/mcc.nvim"

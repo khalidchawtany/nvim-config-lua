@@ -174,7 +174,11 @@ $table->timestamps();
 $0
 endsnippet
 
-snippet foreign "migration foreign"
+snippet mfori "migration foreignId"
+$table->foreignId('$1_id')${2:->nullable()}->constrained();
+endsnippet
+
+snippet mfor "migration foreign"
 $table->unsignedInteger('${1:name}');
 $table->foreign('$1')
 	->references('$2')

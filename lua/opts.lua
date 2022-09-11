@@ -26,7 +26,7 @@ set.completeopt = 'menuone,noinsert,noselect'
 set.inccommand = 'nosplit'
 
 set.showmode = true
-set.cmdheight = 1 -- Height of the command bar
+set.cmdheight = 0 -- Height of the command bar
 set.laststatus = 3  -- make the status bar global
 set.incsearch = true
 set.showmatch = true
@@ -136,6 +136,8 @@ set.listchars = 'tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail
 set.list = false
 
 set.fillchars = 'stlnc:-,foldsep:┊,foldopen:,foldclose:,vert:│'
+
+set.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
  -- 
 
 -- vim.opt.fillchars = {
