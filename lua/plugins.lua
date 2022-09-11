@@ -290,6 +290,7 @@ packer.startup(
 
     use "mhartington/formatter.nvim"
     use "jose-elias-alvarez/null-ls.nvim"
+    use "jayp0521/mason-null-ls.nvim"
 
     use "kevinhwang91/nvim-ufo"
 

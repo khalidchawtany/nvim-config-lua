@@ -79,7 +79,7 @@ nnoremap <leader>ww        <cmd>w<cr>
 nnoremap <leader>wa        <cmd>wall<cr>
 nnoremap <leader>wu        <cmd>update<cr>
 
-nnoremap <c-k><c-d> <cmd>lua vim.lsp.buf.formatting_seq_sync()<cr>
+nnoremap <c-k><c-d> <cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>
 
 nnoremap <leader>ev <cmd>e ~/.config/nvim<cr>
 Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
