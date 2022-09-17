@@ -73,8 +73,24 @@ if exists('g:neovide')
   let g:neovide_input_use_logo=v:true
   let g:neovide_remember_window_size = v:true
 
-  let g:neovide_cursor_trail_length=0
-  let g:neovide_cursor_animation_length=0
+  let g:neovide_cursor_trail_length=5
+
+  let g:neovide_cursor_animation_length=0.05
+
+  let g:neovide_cursor_antialiasing=v:true
+
+  let g:neovide_cursor_unfocused_outline_width=0.125
+
+  let g:neovide_cursor_vfx_mode = "railgun"
+  let g:neovide_cursor_vfx_opacity=100.0
+  let g:neovide_cursor_vfx_particle_lifetime=1.2
+  let g:neovide_cursor_vfx_particle_density=7.0
+  let g:neovide_cursor_vfx_particle_speed=10.0
+  let g:neovide_cursor_vfx_particle_phase=1.5
+  let g:neovide_cursor_vfx_particle_curl=1.0
+
+
+
   set guifont=FiraCode\ Nerd\ Font:h18
 
 
@@ -89,6 +105,26 @@ if exists('g:neovide')
   execute "nnoremap <silent> <D-" . i . ">            :tabnext 10<cr>"
   execute "vnoremap <silent> <D-" . i . ">       <c-u>:tabnext 10<cr>"
   execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n>:tabnext 10<cr>"
+
+
+  " g:neovide_transparency should be 0 if you want to unify transparency of content and title bar.
+  " let g:neovide_transparency=0.0
+  " let g:transparency = 0.8
+  " let g:neovide_background_color = '#0f1117'.printf('%x', float2nr(255 * g:transparency))
+
+
+  let g:neovide_floating_blur_amount_x = 2.0
+  let g:neovide_floating_blur_amount_y = 2.0
+
+
+  let g:neovide_scroll_animation_length = 0.15
+
+
+  let g:neovide_hide_mouse_when_typing = v:false
+
+
+  let g:neovide_input_macos_alt_is_meta=v:false
+
 
   " au WinEnter * if(&ft=='httpResult') | execute "normal gg/^$\n{\zs" | endif
 endif

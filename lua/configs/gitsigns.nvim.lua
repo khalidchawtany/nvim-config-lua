@@ -13,8 +13,11 @@ M.config = function()
         end
 
         -- Navigation
-        map("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr = true})
-        map("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr = true})
+        -- map("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr = true})
+        -- map("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr = true})
+
+       map("n", "]c", "<cmd>Gitsigns next_hunk<CR>", {noremap = true})
+       map("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", {noremap = true})
 
         -- Actions
         map({"n", "v"}, "<leader>hs", ":Gitsigns stage_hunk<CR>")

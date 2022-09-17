@@ -69,7 +69,7 @@ endif
 "Make c-^ consitent between terminal and GUI
 map <c-6> <c-^>
 
-nnoremap <D-s> <cmd>w<cr>
+nnoremap <D-s> <cmd>silent! w<cr>
 
 "Make CMD+V paste from external clipboard
 inoremap <D-v> <c-\><c-n>:set paste<cr>"+p:set nopaste<cr>li

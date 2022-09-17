@@ -98,10 +98,7 @@ packer.startup(
     use "ojroques/nvim-lspfuzzy"
     use "weilbith/nvim-code-action-menu"
 
-    use "simrat39/symbols-outline.nvim"
 
-    use "mfussenegger/nvim-ts-hint-textobject"
-    use "RRethy/nvim-treesitter-textsubjects"
 
     use "mbbill/undotree"
 
@@ -121,6 +118,12 @@ packer.startup(
     use "nvim-treesitter/nvim-treesitter"
     use "nvim-treesitter/nvim-treesitter-refactor"
     use "nvim-treesitter/nvim-treesitter-textobjects"
+
+    use "mfussenegger/nvim-ts-hint-textobject"
+    use "RRethy/nvim-treesitter-textsubjects"
+    use "glepnir/coman.nvim" -- comments and annotation
+
+    use "simrat39/symbols-outline.nvim"
 
     -- Completion
     use "hrsh7th/nvim-cmp"
@@ -266,8 +269,9 @@ packer.startup(
 
     use "echasnovski/mini.nvim"
 
-    use "rmagatti/auto-session"
-    use "rmagatti/session-lens" -- telescope for auto-session
+    use "jedrzejboczar/possession.nvim"
+    -- use "rmagatti/auto-session"
+    -- use "rmagatti/session-lens" -- telescope for auto-session
 
     use "AndrewRadev/splitjoin.vim"
 
@@ -281,7 +285,7 @@ packer.startup(
     use "mg979/vim-visual-multi"
 
     use {"gabesoft/vim-ags", cmd = {"Ags"}}
-    -- vim.cmd [[ autocmd BufNewFile,BufRead,BufEnter *.agsv set filetype=agsv ]]
+    use "gabrielpoca/replacer.nvim"
 
     -- Comments
     use "numToStr/Comment.nvim"
@@ -295,6 +299,7 @@ packer.startup(
     use "kevinhwang91/nvim-ufo"
 
     use "petertriho/nvim-scrollbar"
+    use "lewis6991/satellite.nvim"
     use "SmiteshP/nvim-gps"
 
     -- Theme
@@ -337,9 +342,12 @@ packer.startup(
     use "lukas-reineke/indent-blankline.nvim"
     use "p00f/nvim-ts-rainbow"
     use "kdav5758/TrueZen.nvim"
-    use "norcalli/nvim-colorizer.lua"
+    use "NvChad/nvim-colorizer.lua"
 
     use "mrshmllow/document-color.nvim"
+
+
+    use "uga-rosa/ccc.nvim"
 
     use "pechorin/any-jump.vim"
 

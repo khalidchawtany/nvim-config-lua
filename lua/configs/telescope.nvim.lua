@@ -4,7 +4,7 @@ local M = {
     "nvim-lua/popup.nvim",
     "nvim-telescope/telescope-fzy-native.nvim"
   },
-  module = {"telescope"},
+  module = {"telescope"}
 }
 
 M.init = function()
@@ -40,6 +40,17 @@ M.init = function()
     "<C-p><c-\\>",
     ":lua require'telescope'.extensions.project.project{}<CR>",
     {noremap = true, silent = true}
+  )
+
+  vim.keymap.set(
+    "n",
+    "<leader>ho",
+    function()
+      require("telescope.builtin").live_grep(
+        {cwd = "~/Projects/PHP/OctoberCMSDocs", prompt_title = "Search OctoberCMS Docs"}
+      )
+    end,
+    {desc = "OctoberCMS Docs"}
   )
 
   vim.api.nvim_set_keymap(
@@ -98,7 +109,6 @@ M.config = function()
           ["<c-x>"] = false,
           -- ["<esc>"] = actions.close,
           ["<c-s>"] = open_in_nvim_tree,
-
           -- Otherwise, just set the mapping to the function that you want it to be.
           ["<C-i>"] = actions.select_horizontal,
           ["<C-j>"] = actions.move_selection_next,
@@ -106,7 +116,7 @@ M.config = function()
           ["<c-space>"] = actions.toggle_selection + actions.move_selection_better,
           ["<C-'>"] = actions.which_key,
           ["<C-CR>"] = actions.select_default + actions.center,
-          ["<C-c>"] = actions.close,
+          ["<C-c>"] = actions.close
 
           -- Add up multiple actions
           -- ["<CR>"] = actions.select_default + actions.center
@@ -117,7 +127,7 @@ M.config = function()
         n = {
           ["<esc>"] = actions.close,
           ["<c-s>"] = open_in_nvim_tree,
-          ["<C-c>"] = actions.close,
+          ["<C-c>"] = actions.close
           -- ["<C-i>"] = my_cool_custom_action,
         }
       },

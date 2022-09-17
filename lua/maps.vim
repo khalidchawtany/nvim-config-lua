@@ -75,9 +75,11 @@ nnoremap <leader>qa        <cmd>qall<cr>
 nnoremap <leader>qQ        <cmd>qall!<cr>
 
 nnoremap <leader>wq        <cmd>wq<cr>
-nnoremap <leader>ww        <cmd>w<cr>
+nnoremap <silent> <leader>ww  <cmd>silent! w<cr>
 nnoremap <leader>wa        <cmd>wall<cr>
 nnoremap <leader>wu        <cmd>update<cr>
+
+inoremap ;w <cmd>silent! w<cr>
 
 nnoremap <c-k><c-d> <cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>
 

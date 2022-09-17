@@ -9,12 +9,13 @@ local M = {
 
 M.config = function()
   vim.cmd [[
-  nnoremap \- <cmd>Neotree right reveal<cr>
-  nnoremap <space>- <cmd>Neotree left reveal<cr>
-  nnoremap - :Neotree float reveal dir=<c-r>=expand('%:h')<cr><cr>
-  nnoremap <c--> <cmd>Neotree float reveal<cr>
-  nnoremap \g <cmd>Neotree float git_status<cr>
-  nnoremap \b <cmd>Neotree float buffers<cr>
+  nnoremap <silent> -- :Neotree float reveal dir=<c-r>=expand('%:h')<cr><cr>
+  nnoremap <silent> -r <cmd>Neotree right reveal<cr>
+  nnoremap <silent> -l <cmd>Neotree left reveal<cr>
+  nnoremap <silent> -f <cmd>Neotree float reveal<cr>
+  nnoremap <silent> -g <cmd>Neotree float git_status<cr>
+  nnoremap <silent> -b <cmd>Neotree float buffers<cr>
+  nnoremap <silent> -<space> <cmd>Neotree float buffers<cr>
   ]]
 
 require("neo-tree").setup(
