@@ -9,7 +9,7 @@ local M = {
 
 M.config = function()
   vim.cmd [[
-  nnoremap <silent> -- :Neotree float reveal dir=<c-r>=expand('%:h')<cr><cr>
+  nnoremap <silent> -- :Neotree float reveal dir=<c-r>=expand('%:h')<cr> reveal_force_cwd<cr>
   nnoremap <silent> -r <cmd>Neotree right reveal<cr>
   nnoremap <silent> -l <cmd>Neotree left reveal<cr>
   nnoremap <silent> -f <cmd>Neotree float reveal<cr>
