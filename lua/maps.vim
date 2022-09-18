@@ -83,7 +83,7 @@ inoremap ;w <cmd>silent! w<cr>
 
 nnoremap <c-k><c-d> <cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>
 
-nnoremap <leader>ev <cmd>e ~/.config/nvim<cr>
+nnoremap <silent> <leader>ev <cmd>e ~/.config/nvim<cr>
 Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
 
 

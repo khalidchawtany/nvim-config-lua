@@ -53,36 +53,6 @@ M.config = function()
         }
       }
     },
-    textobjects = {
-      -- syntax-aware textobjects
-      enable = true,
-      disable = {},
-      keymaps = {
-        ["iL"] = {
-          -- you can define your own textobjects directly here
-          python = "(function_definition) @function",
-          cpp = "(function_definition) @function",
-          c = "(function_definition) @function",
-          java = "(method_declaration) @function"
-        },
-        -- or you use the queries from supported languages with textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["aC"] = "@class.outer",
-        ["iC"] = "@class.inner",
-        ["ac"] = "@conditional.outer",
-        ["ic"] = "@conditional.inner",
-        ["ae"] = "@block.outer",
-        ["ie"] = "@block.inner",
-        ["al"] = "@loop.outer",
-        ["il"] = "@loop.inner",
-        ["is"] = "@statement.inner",
-        ["as"] = "@statement.outer",
-        ["ad"] = "@comment.outer",
-        ["am"] = "@call.outer",
-        ["im"] = "@call.inner"
-      }
-    },
     -- ensure_installed = "all" -- one of "all", "language", or a list of languages
     ensure_installed = {"http"}
   }

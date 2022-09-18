@@ -118,9 +118,9 @@ packer.startup(
     use "nvim-treesitter/nvim-treesitter"
     use "nvim-treesitter/nvim-treesitter-refactor"
     use "nvim-treesitter/nvim-treesitter-textobjects"
-
     use "mfussenegger/nvim-ts-hint-textobject"
     use "RRethy/nvim-treesitter-textsubjects"
+
     use "glepnir/coman.nvim" -- comments and annotation
 
     use "simrat39/symbols-outline.nvim"
@@ -337,6 +337,9 @@ packer.startup(
     use "ldelossa/buffertag"
 
     use "folke/which-key.nvim"
+
+    -- use "anuvyklack/hydra.nvim"
+
     use "folke/zen-mode.nvim"
     use "folke/twilight.nvim"
     use "lukas-reineke/indent-blankline.nvim"

@@ -14,10 +14,24 @@ _G.PROJECTS_MAPS = {
     },
     {
       desciption = "M-Yaml (OCT)",
-      keys = "<leader>ly",
+      keys = "<leader>lyy",
       paths = {{"plugins"}},
       prompt = "yaml",
       fd_opts = {"--full-path", "-g", "**/lox/**/*.yaml"}
+    },
+    {
+      desciption = "M-Yaml - Controller (OCT)",
+      keys = "<leader>lyc",
+      paths = {{"plugins"}},
+      prompt = "yaml",
+      fd_opts = {"--full-path", "-g", "**/lox/**/controllers/*/*.yaml"}
+    },
+    {
+      desciption = "M-Yaml - Models (OCT)",
+      keys = "<leader>lya",
+      paths = {{"plugins"}},
+      prompt = "yaml",
+      fd_opts = {"--full-path", "-g", "**/lox/**/models/*/*.yaml"}
     },
     {
       desciption = "M-Migrations (OCT)",

@@ -48,8 +48,8 @@ nnoremap <silent> <c-p>j :FzfAg <C-R><C-W><CR>
 
 " only show MRU files from within your cwd
 let g:fzf_mru_relative = 1
-nnoremap <c-p><c-u> :FzfHistory<cr>
-nnoremap <c-p>u     :FZFMru<cr>
+nnoremap <silent> <c-p><c-u> :FzfHistory<cr>
+nnoremap <silent> <c-p>u     :FZFMru<cr>
 " to enable found references displayed in fzf
 let g:LanguageClient_selectionUI = 'fzf'
 
@@ -158,7 +158,7 @@ imap <silent> <c-x><c-i> <plug>(fzf-complete-buffer-line)
 imap <silent> <c-x><c-\> <plug>(fzf-complete-file)
 
 "Get all files including git ignore
-nnoremap <c-p><space> <Plug>FzfAllFiles :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
+nnoremap <silent> <c-p><space> <Plug>FzfAllFiles :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
 " nnoremap <silent> <c-p><space> :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
 " nnoremap <silent> <c-p><c-space> <cmd>FzfHistory!<cr>
 
@@ -259,7 +259,7 @@ command! FzfTabs :call fzf#run({
       \   'options': " --preview-window right:50%  --preview 'echo {}'  --bind ?:toggle-preview",
       \ })
 
-nnoremap <c-p><c-i> <plug>FzfTabs :FzfTabs<cr>
+nnoremap <silent> <c-p><c-i> <plug>FzfTabs :FzfTabs<cr>
 
 "}}} _Tabs
 
