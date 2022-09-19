@@ -65,6 +65,9 @@ hi WinSeparator guifg=#3758A6
 
 
 
+if exists('g:goneovim')
+  set linespace=10
+endif
 
 if exists('g:neovide')
 
@@ -73,7 +76,7 @@ if exists('g:neovide')
 
   let g:neovide_input_use_logo=v:true
 
-  let g:neovide_remember_window_size = v:true
+  " let g:neovide_remember_window_size = v:true
 
   let g:neovide_cursor_trail_length=5
 

@@ -90,6 +90,13 @@ _G.PROJECTS_MAPS = {
       fd_opts = {"--full-path", "-g", "**/lox/**/controllers/**"}
     },
     {
+      desciption = "M-Classes (OCT)",
+      keys = "<leader>lu",
+      paths = {{"plugins"}},
+      prompt = "Classes (Util)",
+      fd_opts = {"--full-path", "-g", "**/lox/**/classes/**"}
+    },
+    {
       desciption = "M-Models (OCT)",
       keys = "<leader>la",
       paths = {{"plugins"}},

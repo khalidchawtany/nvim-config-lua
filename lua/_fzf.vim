@@ -158,7 +158,7 @@ imap <silent> <c-x><c-i> <plug>(fzf-complete-buffer-line)
 imap <silent> <c-x><c-\> <plug>(fzf-complete-file)
 
 "Get all files including git ignore
-nnoremap <silent> <c-p><space> <Plug>FzfAllFiles :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
+nnoremap <silent> <c-p><space> :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
 " nnoremap <silent> <c-p><space> :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
 " nnoremap <silent> <c-p><c-space> <cmd>FzfHistory!<cr>
 
