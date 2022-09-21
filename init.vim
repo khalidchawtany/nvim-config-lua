@@ -73,6 +73,7 @@ if exists('g:neovide')
 
   source ~/.config/nvim/ginit.vim
   set noincsearch
+  set mouse=
 
   let g:neovide_input_use_logo=v:true
 

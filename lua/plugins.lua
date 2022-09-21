@@ -73,6 +73,9 @@ packer.startup(
     use "theHamsta/nvim-dap-virtual-text"
     use "rcarriga/nvim-dap-ui"
 
+
+    use "andrewferrier/debugprint.nvim"
+
     -- use "folke/todo-comments.nvim"
     use "B4mbus/todo-comments.nvim"
 
@@ -181,6 +184,7 @@ packer.startup(
     use "nvim-lua/popup.nvim"
     use {"nvim-telescope/telescope-project.nvim", after = "telescope.nvim"}
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+    use {"nvim-telescope/telescope-live-grep-args.nvim", after="telescope.nvim"}
     use "natecraddock/telescope-zf-native.nvim"
     use {"nvim-telescope/telescope-file-browser.nvim", after = "telescope.nvim"}
     use "LinArcX/telescope-command-palette.nvim"

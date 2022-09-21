@@ -38,6 +38,13 @@ let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.gi
 
 command! -bang -nargs=* FZFAg call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!{.git,node_modules,vendor}/*" --color "always" '.shellescape(<q-args>) . ' 2> /dev/'.s:null, 1, <bang>0)
 
+command! -bang -nargs=* FzfHelpOctober call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --color=always --smart-case --glob "!{.git,node_modules,vendor}/*" --glob  "!**/lang/*" --glob "!**/{ru,zh-cn}/*" '.shellescape(<q-args>) . ' ~/Development/Libraries/october', 1,fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+command! -bang -nargs=* FzfHelpTic call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --color=always --smart-case --glob "!{.git,node_modules,vendor}/*" --glob  "!**/lang/*" --glob "!**/{ru,zh-cn}/*" '.shellescape(<q-args>) . ' ~/Projects/PHP/tic/plugins/lox/tic/', 1,fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+" nnoremap <silent> <leader>hoo <cmd>FzfHelpOctober<cr>
+" nnoremap <silent> <leader>hot <cmd>FzfHelpTic<cr>
+
 
 command! -bang -nargs=* Rg2 call fzf#vim#grep("rg --column --no-ignore --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nnoremap <silent> <c-p><c-a> :Rg2 <CR>

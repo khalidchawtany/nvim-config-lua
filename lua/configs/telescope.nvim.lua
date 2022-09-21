@@ -2,7 +2,8 @@ local M = {
   requires = {
     "nvim-lua/plenary.nvim",
     "nvim-lua/popup.nvim",
-    "nvim-telescope/telescope-fzy-native.nvim"
+    "nvim-telescope/telescope-fzy-native.nvim",
+    "nvim-telescope/telescope-live-grep-args.nvim"
   },
   module = {"telescope"}
 }
@@ -42,17 +43,6 @@ M.init = function()
     {noremap = true, silent = true}
   )
 
-  vim.keymap.set(
-    "n",
-    "<leader>ho",
-    function()
-      require("telescope.builtin").live_grep(
-        {cwd = "~/Projects/PHP/OctoberCMSDocs", prompt_title = "Search OctoberCMS Docs"}
-      )
-    end,
-    {desc = "OctoberCMS Docs"}
-  )
-
   vim.api.nvim_set_keymap(
     "n",
     "<C-s><c-\\>",
@@ -65,6 +55,67 @@ M.init = function()
     "<c-s><c-d>",
     ":lua require('telescope.builtin').lsp_definitions()<CR>",
     {noremap = true, silent = true}
+  )
+
+  vim.keymap.set(
+    "n",
+    "<c-s><c-j>",
+    function()
+      require("telescope").extensions.live_grep_raw.live_grep_args(
+        {
+          prompt_title = "Live Grep (raw)",
+        }
+      )
+    end,
+    {desc = "Telescope live_grep_raw"}
+  )
+
+  vim.keymap.set(
+    "n",
+    "<leader>hoo",
+    function()
+      require("telescope.builtin").live_grep(
+        {
+          cwd = "~/Development/Libraries/october",
+          prompt_title = "OctoberCMS Docs",
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--glob","!*lang"
+          }
+        }
+      )
+    end,
+    {desc = "Telescope (OctoberCMS Docs)"}
+  )
+
+  vim.keymap.set(
+    "n",
+    "<leader>hot",
+    function()
+      require("telescope.builtin").live_grep(
+        {
+          cwd = "~/Projects/PHP/tic/plugins/lox/tic/",
+          prompt_title = "OctoberCMS TIC",
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--glob","!*lang"
+          }
+        }
+      )
+    end,
+    {desc = "Telescope (OctoberCMS TIC)"}
   )
 
   -- vim.api.nvim_set_keymap('n', '<c-p>p', ":lua require('telescope.builtin').find_files{search = vim.fn.expand(\"<cword>\") }<CR>",
@@ -192,38 +243,52 @@ M.config = function()
         case_mode = "smart_case" -- or "ignore_case" or "respect_case"
         -- the default case_mode is "smart_case"
       },
+      live_grep_args = {
+        -- auto_quoting = true, -- enable/disable auto-quoting
+        -- override default mappings
+        -- default_mappings = {},
+        mappings = {
+          -- extend mappings
+          i = {
+            ["<C-'>"] = require("telescope-live-grep-args.actions").quote_prompt()
+            -- ["<C-;>"] = require("telescope-live-grep-args.actions").actions.quote_prompt({postfix = " --iglob "}),
+            -- ["<C-\\>"] = require("telescope-live-grep-args.actions").actions.actions.quote_prompt({postfix = " -t"})
+          }
+        }
+      },
       file_browser = {
         --theme = "ivy",
         mappings = {
           ["i"] = {},
           ["n"] = {}
         }
-      }
-    },
-    ["zf-native"] = {
-      -- options for sorting file-like items
-      file = {
-        -- override default telescope file sorter
-        enable = true,
-        -- highlight matching text in results
-        highlight_results = true,
-        -- enable zf filename match priority
-        match_filename = true
       },
-      -- options for sorting all other items
-      generic = {
-        -- override default telescope generic item sorter
-        enable = false,
-        -- highlight matching text in results
-        highlight_results = true,
-        -- disable zf filename match priority
-        match_filename = false
+      ["zf-native"] = {
+        -- options for sorting file-like items
+        file = {
+          -- override default telescope file sorter
+          enable = true,
+          -- highlight matching text in results
+          highlight_results = true,
+          -- enable zf filename match priority
+          match_filename = true
+        },
+        -- options for sorting all other items
+        generic = {
+          -- override default telescope generic item sorter
+          enable = false,
+          -- highlight matching text in results
+          highlight_results = true,
+          -- disable zf filename match priority
+          match_filename = false
+        }
       }
     }
   }
   -- require("telescope").load_extension("fzy_native")
   require("telescope").load_extension("fzf")
   require("telescope").load_extension("zf-native")
+  require("telescope").load_extension("live_grep_args")
 
   -- require("telescope").load_extension "file_browser"
 end
