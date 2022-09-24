@@ -61,6 +61,20 @@ highlight Whitespace guifg=#30334B
 
 hi WinSeparator guifg=#3758A6
 
+" Other configuration
+if exists('g:nvui')
+  source ~/.config/nvim/ginit.vim
+  " Configure nvui
+  NvuiCmdFontFamily Jetbrains Mono
+  NvuiCmdFontSize 25.0
+  NvuiScrollAnimationDuration 0.2
+  set guifont=FiraCode\ Nerd\ Font:h18
+  " NvuiCmdTopPos 0.4
+  NvuiCmdCenterYPos 0.3
+  NvuiCmdCenterYPos 0.3
+  NvuiCmdPadding 10
+endif
+
 
 
 
@@ -73,6 +87,7 @@ if exists('g:neovide')
 
   source ~/.config/nvim/ginit.vim
   set noincsearch
+  " set noinccommand
   set mouse=
 
   let g:neovide_input_use_logo=v:true

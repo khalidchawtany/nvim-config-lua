@@ -43,6 +43,9 @@ packer.startup(
 
     use "kazhala/close-buffers.nvim"
 
+    -- twig
+    use "gbprod/tree-sitter-twig"
+
     -- HTTP
     use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}, keys = {"<Plug>RestNvim"}}
 
@@ -76,8 +79,7 @@ packer.startup(
 
     use "andrewferrier/debugprint.nvim"
 
-    -- use "folke/todo-comments.nvim"
-    use "B4mbus/todo-comments.nvim"
+    use "folke/todo-comments.nvim"
 
     use "mrjones2014/dash.nvim"
 

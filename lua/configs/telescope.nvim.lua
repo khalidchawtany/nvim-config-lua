@@ -63,7 +63,7 @@ M.init = function()
     function()
       require("telescope").extensions.live_grep_raw.live_grep_args(
         {
-          prompt_title = "Live Grep (raw)",
+          prompt_title = "Live Grep (raw)"
         }
       )
     end,
@@ -86,7 +86,12 @@ M.init = function()
             "--line-number",
             "--column",
             "--smart-case",
-            "--glob","!*lang"
+            "--glob",
+            "!*lang",
+            "--glob",
+            "!*.min.js",
+            "--glob",
+            "!*/ru/*"
           }
         }
       )
@@ -110,7 +115,10 @@ M.init = function()
             "--line-number",
             "--column",
             "--smart-case",
-            "--glob","!*lang"
+            "--glob",
+            "!*lang",
+            "--glob",
+            "!*.min.js"
           }
         }
       )
@@ -246,11 +254,15 @@ M.config = function()
       live_grep_args = {
         -- auto_quoting = true, -- enable/disable auto-quoting
         -- override default mappings
-        -- default_mappings = {},
+        default_mappings = {
+          i = {
+            ["<C-'>"] = require("telescope-live-grep-args.actions").quote_prompt() -- k for kwote :D - q is already taken
+          }
+        },
         mappings = {
           -- extend mappings
           i = {
-            ["<C-'>"] = require("telescope-live-grep-args.actions").quote_prompt()
+            ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt() -- k for kwote :D - q is already taken
             -- ["<C-;>"] = require("telescope-live-grep-args.actions").actions.quote_prompt({postfix = " --iglob "}),
             -- ["<C-\\>"] = require("telescope-live-grep-args.actions").actions.actions.quote_prompt({postfix = " -t"})
           }
