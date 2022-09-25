@@ -238,7 +238,8 @@ packer.startup(
 
     use "vim-ctrlspace/vim-ctrlspace"
     use "samuelsimoes/vim-drawer"
-    use "tpope/vim-projectionist"
+    -- use "tpope/vim-projectionist"
+    use { "otavioschwanck/telescope-alternate" } -- alternative to vim-projectionist
 
     -- augroup BufferTreeAuGroup
     -- au!
