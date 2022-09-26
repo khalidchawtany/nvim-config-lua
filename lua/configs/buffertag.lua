@@ -1,4 +1,6 @@
-local M = {}
+local M = {
+  event = "BufEnter"
+}
 
 M.config = function()
  require('buffertag').setup()

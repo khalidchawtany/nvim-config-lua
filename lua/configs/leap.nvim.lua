@@ -1,4 +1,6 @@
-local M = {}
+local M = {
+  keys ={"<Plug>(leap-"}
+}
 
 M.init = function()
   -- require("leap").set_default_keymaps()

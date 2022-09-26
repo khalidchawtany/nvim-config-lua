@@ -86,7 +86,7 @@ endif
 if exists('g:neovide')
 
   source ~/.config/nvim/ginit.vim
-  set noincsearch
+  " set noincsearch
   " set noinccommand
   set mouse=
 
@@ -131,12 +131,14 @@ if exists('g:neovide')
 
 
 
-  set guifont=FiraCode\ Nerd\ Font:h18
+  " set guifont=FiraCode\ Nerd\ Font:h18
+ set guifont=FiraCode\ Nerd\ Font\ TALL:h18
+
 
 lua << EOF
   vim.g.gui_font_default_size = 18
   vim.g.gui_font_size = vim.g.gui_font_default_size
-  vim.g.gui_font_face = "FiraCode Nerd Font"
+  vim.g.gui_font_face = "FiraCode Nerd Font TALL"
 
   RefreshGuiFont = function()
   vim.opt.guifont = string.format("%s:h%s",vim.g.gui_font_face, vim.g.gui_font_size)
