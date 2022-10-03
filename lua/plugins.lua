@@ -149,7 +149,8 @@ packer.startup(
     use "haringsrob/nvim_context_vt"
 
     -- Clipboard
-    use "bfredl/nvim-miniyank"
+    -- use "bfredl/nvim-miniyank"
+    use "AckslD/nvim-neoclip.lua"
     use "vim-scripts/UnconditionalPaste"
 
     -- Snippets

@@ -37,7 +37,7 @@ end
 
 M.init = function()
   vim.keymap.set( "n", "<c-s><c-w>", selectWin , {desc='Piack window'})
-  vim.keymap.set( "n", "<c-s><c-y>", copyBufferPath , {desc='Piack window'})
+  -- vim.keymap.set( "n", "<c-s><c-y>", copyBufferPath , {desc='Piack window'})
 end
 
 M.config = function()
