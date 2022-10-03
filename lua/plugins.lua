@@ -27,6 +27,7 @@ packer.startup(
     use "goolord/alpha-nvim"
     -- use "startup-nvim/startup.nvim"
 
+    -- use "folke/noice.nvim"
     use "VonHeikemen/fine-cmdline.nvim"
     use "MunifTanjim/nui.nvim"
 
@@ -186,7 +187,6 @@ packer.startup(
     use "nvim-lua/popup.nvim"
     use {"nvim-telescope/telescope-project.nvim", after = "telescope.nvim"}
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
-    use {"nvim-telescope/telescope-live-grep-args.nvim", after="telescope.nvim"}
     use "natecraddock/telescope-zf-native.nvim"
     use {"nvim-telescope/telescope-file-browser.nvim", after = "telescope.nvim"}
     use "LinArcX/telescope-command-palette.nvim"

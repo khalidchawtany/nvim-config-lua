@@ -175,7 +175,8 @@ M.config = function()
           ["<c-space>"] = actions.toggle_selection + actions.move_selection_better,
           ["<C-'>"] = actions.which_key,
           ["<C-CR>"] = actions.select_default + actions.center,
-          ["<C-c>"] = actions.close
+          ["<C-c>"] = actions.close,
+          ["<C-p>"] = require("telescope.actions.layout").toggle_preview
 
           -- Add up multiple actions
           -- ["<CR>"] = actions.select_default + actions.center
@@ -306,3 +307,4 @@ M.config = function()
 end
 
 return M
+
