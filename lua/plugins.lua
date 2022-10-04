@@ -1,4 +1,5 @@
 vim.opt.shadafile = "NONE"
+vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 package.path = package.path .. ";/Users/juju/.config/nvim/lua"
 local fun = require("functions")
 
@@ -14,7 +15,7 @@ packer.startup(
   function(use)
     use {
       "lewis6991/impatient.nvim",
-      rocks = "mpack"
+      -- rocks = "mpack"
     }
 
     -- setup use() to replace packer_use()
@@ -27,7 +28,7 @@ packer.startup(
     use "goolord/alpha-nvim"
     -- use "startup-nvim/startup.nvim"
 
-    -- use "folke/noice.nvim"
+    use "folke/noice.nvim"
     use "VonHeikemen/fine-cmdline.nvim"
     use "MunifTanjim/nui.nvim"
 

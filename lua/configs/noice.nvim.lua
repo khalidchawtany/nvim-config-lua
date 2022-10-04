@@ -9,6 +9,6 @@ local M = {
 M.init = function()
 end
 M.config = function()
-   require("noice").setup()
+  -- require("noice").setup()
 end
 return M
