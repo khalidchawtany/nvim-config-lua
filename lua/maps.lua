@@ -139,7 +139,7 @@ _G.PROJECTS_MAPS = {
     {
       desciption = "Models (LRVL)",
       keys = "<leader>la",
-      paths = {{"app"}},
+      paths = {{"app"}, { "app", "Models"}},
       fd_opts = {"-d", "1", "-g", "*.php"}
     },
     {
@@ -207,6 +207,7 @@ _G.PROJECTS_MAPS = {
 function MapProjectKeys()
   local project_type = ""
   local pwd = vim.loop.cwd()
+  -- dump(pwd)
 
   project_type = path:new(pwd .. os_sep .. "ignite"):exists() and "ignite" or project_type
   project_type = path:new(pwd .. os_sep .. "composer.json"):exists() and "laravel" or project_type
