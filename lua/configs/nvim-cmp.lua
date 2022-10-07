@@ -1,4 +1,5 @@
 local M = {
+  module = "cmp",
   requires = {
     "hrsh7th/vim-vsnip",
     "hrsh7th/cmp-buffer",
