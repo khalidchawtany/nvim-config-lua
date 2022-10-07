@@ -24,6 +24,7 @@ set.pumheight = 15
 set.wildmenu = true
 set.completeopt = 'menuone,noinsert,noselect'
 set.inccommand = 'nosplit'
+set.splitkeep = "topline" -- topline, screen, cursor
 
 set.showmode = true
 set.cmdheight = 0 -- Height of the command bar
