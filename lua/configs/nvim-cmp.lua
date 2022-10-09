@@ -6,6 +6,7 @@ local M = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "SirVer/ultisnips",
+    "lukas-reineke/cmp-rg",
     -- "hrsh7th/cmp-cmdline",
     -- "hrsh7th/cmp-copilot",
     -- "zbirenbaum/copilot-cmp",
@@ -79,7 +80,12 @@ M.config = function()
               -- return vim.tbl_keys(bufs)
             end
           }
-        }
+        },
+        {
+            name = "rg",
+            -- Try it when you feel cmp performance is poor
+             -- keyword_length = 3
+        },
         -- {
         --   name = "look",
         --   keyword_length = 4,
@@ -129,7 +135,8 @@ M.config = function()
             vsnip = "[SNIP]",
             luasnip = "[LSNIP]",
             ultisnips = "[ULTIS]",
-            buffer = "[BUF]"
+            buffer = "[BUF]",
+            rg = "[RG]"
           })[entry.source.name]
           vim_item.dup =
             ({

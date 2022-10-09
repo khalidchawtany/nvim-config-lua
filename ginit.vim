@@ -35,8 +35,8 @@ function! SetLineSpace(inc)
   exec 'set linespace='. linespace
   call rpcnotify(0, 'Gui', 'Linespace', linespace)
 endfunction
-set linespace=3
-call SetLineSpace(3)
+set linespace=1
+call SetLineSpace(1)
 
 " command! Bigger  :let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)+1', '')
 " command! Smaller :let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)-1', '')

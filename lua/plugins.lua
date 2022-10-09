@@ -14,7 +14,7 @@ packer.init(
 packer.startup(
   function(use)
     use {
-      "lewis6991/impatient.nvim",
+      "lewis6991/impatient.nvim"
       -- rocks = "mpack"
     }
 
@@ -78,7 +78,6 @@ packer.startup(
     use "theHamsta/nvim-dap-virtual-text"
     use "rcarriga/nvim-dap-ui"
 
-
     use "andrewferrier/debugprint.nvim"
 
     use "folke/todo-comments.nvim"
@@ -104,8 +103,6 @@ packer.startup(
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
     use "ojroques/nvim-lspfuzzy"
     use "weilbith/nvim-code-action-menu"
-
-
 
     use "mbbill/undotree"
 
@@ -192,6 +189,7 @@ packer.startup(
     use "natecraddock/telescope-zf-native.nvim"
     use {"nvim-telescope/telescope-file-browser.nvim", after = "telescope.nvim"}
     use "LinArcX/telescope-command-palette.nvim"
+    use "LukasPietzschmann/telescope-tabs"
 
     -- use "nvim-telescope/telescope-z.nvim"
 
@@ -241,7 +239,7 @@ packer.startup(
     use "vim-ctrlspace/vim-ctrlspace"
     use "samuelsimoes/vim-drawer"
     -- use "tpope/vim-projectionist"
-    use { "otavioschwanck/telescope-alternate" } -- alternative to vim-projectionist
+    use {"otavioschwanck/telescope-alternate"} -- alternative to vim-projectionist
 
     -- augroup BufferTreeAuGroup
     -- au!
@@ -314,35 +312,21 @@ packer.startup(
     -- Theme
     use {
       "folke/tokyonight.nvim",
-      init = function()
+      config = function()
         vim.g.tokyonight_style = "knight" -- storm, knight, day
         vim.g.tokyonight_italic_functions = true
         vim.g.tokyonight_sidebars = {"qf", "vista_kind", "terminal", "packer"}
         vim.g.tokyonight_hide_inactive_statusline = false
         ---vim.g.tokyonight_colors = {hint = "orange", error = "#ff0000"}
-      end,
-      config = function()
         vim.cmd([[colorscheme tokyonight]])
       end
     }
 
-    use "mvpopuk/inspired-github.vim"
-
-    use {
-      "navarasu/onedark.nvim",
-      config = function()
-        vim.g.onedark_style = "cool" -- deep, cool, warm, Default, dark, darker
-        -- vim.cmd [[colorscheme onedark]]
-      end
-    }
-
-    use "drewtempelmeyer/palenight.vim"
 
     use "tiagovla/scope.nvim" -- this is to scope buffers to tabs only
     use "windwp/windline.nvim"
     -- use "hoob3rt/lualine.nvim"
     -- use "kdheepak/tabline.nvim"
-    use "romgrk/barbar.nvim"
     use "ldelossa/buffertag"
 
     use "folke/which-key.nvim"
@@ -350,15 +334,16 @@ packer.startup(
     -- use "anuvyklack/hydra.nvim"
 
     use "folke/zen-mode.nvim"
-    use "folke/twilight.nvim"
-    use "lukas-reineke/indent-blankline.nvim"
-    use "p00f/nvim-ts-rainbow"
     use "kdav5758/TrueZen.nvim"
+
+    use "folke/twilight.nvim"
+
+    use "lukas-reineke/indent-blankline.nvim"
+
+    use "p00f/nvim-ts-rainbow"
+
+    -- all of these are colorizers
     use "NvChad/nvim-colorizer.lua"
-
-    use "mrshmllow/document-color.nvim"
-
-
     use "uga-rosa/ccc.nvim"
 
     use "pechorin/any-jump.vim"

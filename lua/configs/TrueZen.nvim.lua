@@ -1,4 +1,7 @@
-local M = {keys = {'<leader>zz'}}
+local M = {
+  keys = {'<leader>zz'},
+  cmd = {"TZAtaraxis", "TZFocus", "TZMinimalist", "TZNarrow"}
+}
 
 M.config = function()
     local true_zen = require("true-zen")

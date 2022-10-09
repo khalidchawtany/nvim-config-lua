@@ -69,7 +69,8 @@ M.config = function()
 
     if client.server_capabilities.colorProvider then
       -- Attach document colour support
-      require("document-color").buf_attach(bufnr)
+      -- TODO: we need to attach the nvim-colorizer
+      -- require("document-color").buf_attach(bufnr)
     end
 
     -- Set autocommands conditional on server_capabilities
