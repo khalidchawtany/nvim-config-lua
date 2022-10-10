@@ -15,6 +15,7 @@ M.config = function()
   nnoremap <silent> -f <cmd>Neotree float reveal<cr>
   nnoremap <silent> -g <cmd>Neotree float git_status<cr>
   nnoremap <silent> -b <cmd>Neotree float buffers<cr>
+  nnoremap <silent> -0 :Neotree float dir=<c-r>=FindGitDirOrRoot()<cr><cr>
   nnoremap <silent> -<space> <cmd>Neotree float buffers<cr>
   ]]
 
@@ -28,9 +29,17 @@ require("neo-tree").setup(
         hide_dotfiles = true,
         hide_gitignored = true
       },
+      commands = {
+        navigate_to_root = function(state)
+          local fs = require("neo-tree.sources.filesystem")
+          local root_path = vim.api.nvim_call_function('FindGitDirOrRoot', {})
+          fs._navigate_internal(state, root_path, nil, nil, false)
+        end,
+      },
       window = {
         mappings = {
           ["<bs>"] = "navigate_up",
+          ["0"] = "navigate_to_root",
           ["_"] = "navigate_up",
           ["-"] = function(state)
             local node = state.tree:get_node()
