@@ -322,6 +322,7 @@ packer.startup(
       end
     }
 
+    use "smjonas/live-command.nvim"
 
     use "tiagovla/scope.nvim" -- this is to scope buffers to tabs only
     use "windwp/windline.nvim"
