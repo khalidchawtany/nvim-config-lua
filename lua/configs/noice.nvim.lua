@@ -1,18 +1,18 @@
 local M = {
-  -- event = "VimEnter",
+  event = "VimEnter",
   requires = {
     { "MunifTanjim/nui.nvim" },
     { "rcarriga/nvim-notify" },
     { "hrsh7th/nvim-cmp" }
   },
-  cmd = { "Noice" }
+  -- cmd = { "Noice" }
 }
 M.init = function()
 end
 M.config = function()
   require("noice").setup(
     {
-      throttle = 1000, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+      -- throttle = 100, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
       hacks = {
         -- due to https://github.com/neovim/neovim/issues/20416
         -- messages are resent during a redraw. Noice detects this in most cases, but

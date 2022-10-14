@@ -35,7 +35,7 @@ nnoremap <silent> <c-l> <c-w><c-l>
 " Maximize current split
 nnoremap <c-w>M <C-w>_<C-w><Bar>
 
-nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>echo ""<cr><cmd>diffupdate<cr><cmd>redraw!<cr>
+nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>echo ""<cr><cmd>lua require('notify').dismiss()<cr><cmd>diffupdate<cr><cmd>redraw!<cr>
 " nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr>:nohlsearch \| echo "" \|redraw! \| diffupdate \| normal \<Plug>(FastFoldUpdate) <cr>
 
 
