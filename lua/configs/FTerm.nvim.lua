@@ -42,8 +42,8 @@ M.init = function()
 --     let g:test#custom_strategies = {'FTerm': function('FTermStrategy')}
 --     let g:test#strategy = 'FTerm'
 --   ]]
--- end
---
+end
+
 M.config = function()
   require "FTerm".setup(
     {

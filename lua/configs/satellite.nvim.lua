@@ -1,4 +1,5 @@
 local M = {
+  cmd = {"SatelliteEnable", "SatelliteDissable", "SatelliteRefresh"},
   config = function()
     require("satellite").setup()
     -- require("satellite").setup {

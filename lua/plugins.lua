@@ -53,7 +53,8 @@ packer.startup(
 
     -- Utilities
     use "kevinhwang91/nvim-hlslens"
-    use "nathom/filetype.nvim"
+    -- this is builtin now
+    -- use "nathom/filetype.nvim"
     use "numToStr/FTerm.nvim"
     use "kopischke/vim-stay"
     use "gioele/vim-autoswap"
@@ -125,7 +126,6 @@ packer.startup(
     use "mfussenegger/nvim-ts-hint-textobject"
     use "RRethy/nvim-treesitter-textsubjects"
 
-    use "glepnir/coman.nvim" -- comments and annotation
 
     use "simrat39/symbols-outline.nvim"
 
@@ -162,8 +162,6 @@ packer.startup(
     -- au filetype php set iskeyword+=$
     use "AllenDang/nvim-expand-expr"
 
-    use "hoschi/yode-nvim"
-
     use "mizlan/iswap.nvim"
     use "junegunn/vim-easy-align"
 
@@ -171,6 +169,7 @@ packer.startup(
     use "nvim-neo-tree/neo-tree.nvim"
     use "elihunter173/dirbuf.nvim"
 
+    -- generic sidebar
     use "sidebar-nvim/sidebar.nvim"
 
     -- use "mcchrish/nnn.vim"
@@ -193,12 +192,12 @@ packer.startup(
 
     -- use "nvim-telescope/telescope-z.nvim"
 
+    -- <c-s><c-w> select windows
     use "gbrlsnchs/winpick.nvim"
 
+    -- TODO: remove
     use "charludo/projectmgr.nvim"
 
-    --Documentation
-    use "danymat/neogen"
 
     -- Blade
     use {"xsbeats/vim-blade", ft = "blade"}
@@ -239,6 +238,7 @@ packer.startup(
     use "vim-ctrlspace/vim-ctrlspace"
     use "samuelsimoes/vim-drawer"
     -- use "tpope/vim-projectionist"
+    -- <c-f><c-f>
     use {"otavioschwanck/telescope-alternate"} -- alternative to vim-projectionist
 
     -- augroup BufferTreeAuGroup
@@ -282,6 +282,7 @@ packer.startup(
 
     use "AndrewRadev/splitjoin.vim"
 
+    -- auto type  -> when typing - in php
     use "glepnir/mcc.nvim"
 
     -- InlineEdit
@@ -291,11 +292,19 @@ packer.startup(
     -- multiple cursor
     use "mg979/vim-visual-multi"
 
+    -- make commands previewable
+    use "smjonas/live-command.nvim"
+
     use {"gabesoft/vim-ags", cmd = {"Ags"}}
+    -- make quickfix window editable
     use "gabrielpoca/replacer.nvim"
 
     -- Comments
     use "numToStr/Comment.nvim"
+    --
+    use "glepnir/coman.nvim" -- comments and annotation
+    use "danymat/neogen"     -- Documentation and annotation
+
     -- Autopairs
     use "windwp/nvim-autopairs"
 
@@ -303,11 +312,12 @@ packer.startup(
     use "jose-elias-alvarez/null-ls.nvim"
     use "jayp0521/mason-null-ls.nvim"
 
+    -- nice folds
     use "kevinhwang91/nvim-ufo"
 
-    use "petertriho/nvim-scrollbar"
-    use "lewis6991/satellite.nvim"
-    use "SmiteshP/nvim-gps"
+    -- use "petertriho/nvim-scrollbar"
+    use "lewis6991/satellite.nvim" -- decorated scrollbar with signs and more
+    use "SmiteshP/nvim-gps"        -- allow to get context and put in winbar to the left or virtual text
 
     -- Theme
     use {
@@ -322,30 +332,33 @@ packer.startup(
       end
     }
 
-    use "smjonas/live-command.nvim"
-
     use "tiagovla/scope.nvim" -- this is to scope buffers to tabs only
     use "windwp/windline.nvim"
     -- use "hoob3rt/lualine.nvim"
     -- use "kdheepak/tabline.nvim"
-    use "ldelossa/buffertag"
+    use "ldelossa/buffertag"   -- put a tag on each windo with the file name
 
     use "folke/which-key.nvim"
 
     -- use "anuvyklack/hydra.nvim"
 
+    -- Put part of your code in a floating window for reference
+    use "hoschi/yode-nvim"
+    -- Zen Mode plugins
     use "folke/zen-mode.nvim"
     use "kdav5758/TrueZen.nvim"
 
+    -- dims inactive portions of your code
     use "folke/twilight.nvim"
 
     use "lukas-reineke/indent-blankline.nvim"
 
+    -- make parenthese pairs distinguishable
     use "p00f/nvim-ts-rainbow"
 
     -- all of these are colorizers
     use "NvChad/nvim-colorizer.lua"
-    use "uga-rosa/ccc.nvim"
+    use "uga-rosa/ccc.nvim" -- colizer and color picker
 
     use "pechorin/any-jump.vim"
 

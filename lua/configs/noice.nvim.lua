@@ -1,11 +1,11 @@
 local M = {
   -- event = "VimEnter",
   requires = {
-    {"MunifTanjim/nui.nvim"},
-    {"rcarriga/nvim-notify"},
-    {"hrsh7th/nvim-cmp"}
+    { "MunifTanjim/nui.nvim" },
+    { "rcarriga/nvim-notify" },
+    { "hrsh7th/nvim-cmp" }
   },
-  cmd = {"Noice"}
+  cmd = { "Noice" }
 }
 M.init = function()
 end
@@ -13,6 +13,14 @@ M.config = function()
   require("noice").setup(
     {
       throttle = 1000, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+      hacks = {
+        -- due to https://github.com/neovim/neovim/issues/20416
+        -- messages are resent during a redraw. Noice detects this in most cases, but
+        -- some plugins (mostly vim plugns), can still cause loops.
+        -- When a loop is detected, Noice exits.
+        -- Enable this option to simply skip duplicate messages instead.
+        skip_duplicate_messages = true,
+      },
       routes = {
         -- Don't show not found message
         {
@@ -34,10 +42,10 @@ M.config = function()
             kind = "",
             find = "written"
           },
-          opts = {skip = true}
+          opts = { skip = true }
         },
 
--- Use a Classic Bottom Cmdline for Search
+        -- Use a Classic Bottom Cmdline for Search
         {
           filter = {
             event = "cmdline",
@@ -58,7 +66,7 @@ M.config = function()
           },
           border = {
             style = "none",
-            padding = {1, 2}
+            padding = { 1, 2 }
           },
           filter_options = {},
           win_options = {
@@ -77,10 +85,10 @@ M.config = function()
           },
           border = {
             style = "rounded",
-            padding = {0, 1}
+            padding = { 0, 1 }
           },
           win_options = {
-            winhighlight = {Normal = "Normal", FloatBorder = "DiagnosticInfo"}
+            winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" }
           }
         }
       }

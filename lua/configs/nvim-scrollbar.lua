@@ -1,4 +1,6 @@
-local M = {}
+local M = {
+  module = 'scrollbar',
+}
 
 M.config = function()
   vim.cmd [[
