@@ -1,5 +1,6 @@
 local M = {
-  keys ={"<Plug>(leap-"}
+  keys = { "<Plug>(leap-" },
+  module = "leap"
 }
 
 M.init = function()
@@ -7,24 +8,24 @@ M.init = function()
 
   for _, _1_ in ipairs(
     {
-      {"n", "s", "<Plug>(leap-forward)"},
-      {"n", "S", "<Plug>(leap-backward)"},
-      {"x", "s", "<Plug>(leap-forward)"},
-      {"x", "S", "<Plug>(leap-backward)"},
-      {"o", "z", "<Plug>(leap-forward)"},
-      {"o", "Z", "<Plug>(leap-backward)"},
-      {"o", "x", "<Plug>(leap-forward-x)"},
-      {"o", "X", "<Plug>(leap-backward-x)"},
-      {"n", "gs", "<Plug>(leap-cross-window)"},
-      {"x", "gs", "<Plug>(leap-cross-window)"},
-      {"o", "gs", "<Plug>(leap-cross-window)"}
+      { "n", "s", "<Plug>(leap-forward)" },
+      { "n", "S", "<Plug>(leap-backward)" },
+      { "x", "s", "<Plug>(leap-forward)" },
+      { "x", "S", "<Plug>(leap-backward)" },
+      { "o", "z", "<Plug>(leap-forward)" },
+      { "o", "Z", "<Plug>(leap-backward)" },
+      { "o", "x", "<Plug>(leap-forward-x)" },
+      { "o", "X", "<Plug>(leap-backward-x)" },
+      { "n", "gs", "<Plug>(leap-cross-window)" },
+      { "x", "gs", "<Plug>(leap-cross-window)" },
+      { "o", "gs", "<Plug>(leap-cross-window)" }
     }
   ) do
     local _each_2_ = _1_
     local mode = _each_2_[1]
     local lhs = _each_2_[2]
     local rhs = _each_2_[3]
-    vim.keymap.set(mode, lhs, rhs, {silent = true})
+    vim.keymap.set(mode, lhs, rhs, { silent = true })
   end
 end
 
