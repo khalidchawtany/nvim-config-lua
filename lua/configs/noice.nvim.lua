@@ -1,11 +1,11 @@
 local M = {
-  event = "VimEnter",
+  -- event = "VimEnter",
   requires = {
-    { "MunifTanjim/nui.nvim" },
-    { "rcarriga/nvim-notify" },
-    { "hrsh7th/nvim-cmp" }
+    {"MunifTanjim/nui.nvim"},
+    {"rcarriga/nvim-notify"},
+    {"hrsh7th/nvim-cmp"}
   },
-  -- cmd = { "Noice" }
+  cmd = {"Noice"}
 }
 M.init = function()
 end
@@ -19,32 +19,34 @@ M.config = function()
         -- some plugins (mostly vim plugns), can still cause loops.
         -- When a loop is detected, Noice exits.
         -- Enable this option to simply skip duplicate messages instead.
-        skip_duplicate_messages = true,
+        skip_duplicate_messages = true
       },
       routes = {
         -- Don't show not found message
         {
+          view = "mini",
           filter = {
-            find = "Pattern not found:",
+            find = "Pattern not found:"
           },
-          opts = { skip = true },
+          opts = {skip = false}
         },
         {
+          view = "mini",
           filter = {
-            find = "search hit %a+, continuing at %a+",
+            find = "search hit %a+, continuing at %a+"
           },
-          opts = { skip = true },
+          opts = {skip = false}
         },
         -- Don't show written messages
         {
+          view = "mini",
           filter = {
             event = "msg_show",
             kind = "",
             find = "written"
           },
-          opts = { skip = true }
+          opts = {skip = false}
         },
-
         -- Use a Classic Bottom Cmdline for Search
         {
           filter = {
@@ -55,6 +57,9 @@ M.config = function()
         }
       },
       views = {
+        mini = {
+          timeout = 1000 -- 1 second
+        },
         cmdline_popup = {
           position = {
             row = 2,
@@ -66,7 +71,7 @@ M.config = function()
           },
           border = {
             style = "none",
-            padding = { 1, 2 }
+            padding = {1, 2}
           },
           filter_options = {},
           win_options = {
@@ -85,10 +90,10 @@ M.config = function()
           },
           border = {
             style = "rounded",
-            padding = { 0, 1 }
+            padding = {0, 1}
           },
           win_options = {
-            winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" }
+            winhighlight = {Normal = "Normal", FloatBorder = "DiagnosticInfo"}
           }
         }
       }

@@ -52,7 +52,7 @@ packer.startup(
     use {"NTBBloodbath/rest.nvim", requires = {"nvim-lua/plenary.nvim"}, keys = {"<Plug>RestNvim"}}
 
     -- Utilities
-    use "kevinhwang91/nvim-hlslens"
+    -- use "kevinhwang91/nvim-hlslens" -- adds an index as virtual text for search results
     -- this is builtin now
     -- use "nathom/filetype.nvim"
     use "numToStr/FTerm.nvim"
