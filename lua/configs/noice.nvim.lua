@@ -2,7 +2,7 @@ local M = {
   -- event = "VimEnter",
   requires = {
     {"MunifTanjim/nui.nvim"},
-    {"rcarriga/nvim-notify"},
+    -- {"rcarriga/nvim-notify"},
     {"hrsh7th/nvim-cmp"}
   },
   cmd = {"Noice"}
@@ -73,7 +73,7 @@ M.config = function()
             style = "none",
             padding = {1, 2}
           },
-          filter_options = {},
+          -- filter_options = {},
           win_options = {
             winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder"
           }

@@ -6,7 +6,15 @@ local M = {
 }
 
 M.mapKeys = function()
-  vim.api.nvim_set_keymap("n", "<leader>;", ':lua require("fine-cmdline").open()<CR>', {noremap = true, silent = true, nowait=true})
+
+  vim.keymap.set(
+    "n",
+    "<leader>;",
+    function()
+      require("fine-cmdline").open()
+    end,
+    {desc = "fine-cmdline"}
+  )
 
   -- if vim.fn.exists('g:neovide') then
   --   vim.api.nvim_set_keymap("n", ";", '<cmd>lua require("fine-cmdline").open()<CR>', {noremap = true})
@@ -21,7 +29,7 @@ M.config = function()
       cmdline = {
         enable_keymaps = true,
         smart_history = true,
-        prompt = ' '
+        prompt = " "
       },
       popup = {
         position = {
