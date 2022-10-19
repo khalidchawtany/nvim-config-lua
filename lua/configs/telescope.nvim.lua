@@ -61,13 +61,13 @@ M.init = function()
     "n",
     "<c-s><c-j>",
     function()
-      require("telescope").extensions.live_grep_raw.live_grep_args(
+      require("telescope").extensions.live_grep_args.live_grep_args(
         {
-          prompt_title = "Live Grep (raw)"
+          prompt_title = "Live Grep (Args)"
         }
       )
     end,
-    {desc = "Telescope live_grep_raw"}
+    {desc = "Telescope live_grep_args"}
   )
 
   vim.keymap.set(
@@ -263,7 +263,7 @@ M.config = function()
         mappings = {
           -- extend mappings
           i = {
-            ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt() -- k for kwote :D - q is already taken
+            ["<C-'>"] = require("telescope-live-grep-args.actions").quote_prompt() -- k for kwote :D - q is already taken
             -- ["<C-;>"] = require("telescope-live-grep-args.actions").actions.quote_prompt({postfix = " --iglob "}),
             -- ["<C-\\>"] = require("telescope-live-grep-args.actions").actions.actions.quote_prompt({postfix = " -t"})
           }

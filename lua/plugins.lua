@@ -189,6 +189,7 @@ packer.startup(
     use {"nvim-telescope/telescope-file-browser.nvim", after = "telescope.nvim"}
     use "LinArcX/telescope-command-palette.nvim"
     use "LukasPietzschmann/telescope-tabs"
+    use "princejoogie/dir-telescope.nvim"
 
     -- use "nvim-telescope/telescope-z.nvim"
 
