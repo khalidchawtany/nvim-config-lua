@@ -150,7 +150,7 @@ M.config = function()
             return {
               exe = "blade-formatter",
               -- args = {"--write", "--stdin", "--indent-size=4", "--wrap-line-length=100", vim.api.nvim_buf_get_name(0)},
-              args = { "--indent-size=4", "--wrap-line-length=100", vim.api.nvim_buf_get_name(0)},
+              args = { "--indent-size=2", "--wrap-line-length=100", vim.api.nvim_buf_get_name(0)},
               stdin = true
             }
           end
@@ -161,7 +161,7 @@ M.config = function()
               -- '/Users/juju/.composer/vendor/bin/phpstan analyze --error-format raw --no-progress'
               exe = 'PATH="/usr/local/opt/php@8.1/bin:$PATH" /Users/juju/.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf',
               -- args = {"-", "--standard=PSR12 --stdin-path=" .. vim.api.nvim_buf_get_name(0), "-"},
-              args = {"--standard=PSR12", vim.api.nvim_buf_get_name(0)},
+              args = {"--standard=PSR12", vim.api.nvim_buf_get_name(0) , "--tab-width=2"},
               stdin = true,
               ignore_exitcode = true
             }
