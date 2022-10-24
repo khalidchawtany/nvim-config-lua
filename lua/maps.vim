@@ -54,15 +54,15 @@ nnoremap cc 0C
 " open diff view of the commit hash
 nnoremap <leader>dcc :DiffviewOpen <C-r>=expand('<cword>')<cr>..<C-r>=expand('<cword>')<cr>^<cr>
 
-nnoremap <leader>fp  <cmd>let @+=expand("%:p")<cr>:echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
-nnoremap <leader>fn  <cmd>let @+=expand("%:p:t")<cr>:echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
+nnoremap <leader>fp  <cmd>let @+=expand("%:p")<cr><cmd>echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
+nnoremap <leader>fn  <cmd>let @+=expand("%:p:t")<cr><cmd>echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
 
 nnoremap <c-w>O            <cmd>wincmd o\|tabonly\|BufOnly<cr>
 nnoremap <c-;>wo           <cmd>tabonly \| BufOnly<cr>
 
 nnoremap <c-;>wa           <cmd>BufOnly -1<cr>
-nnoremap  <c-;>ww          <cmd>bwipeout!<cr>
-nnoremap  <c-;><c-;>ww     <cmd>bwipeout!<cr>
+nnoremap <c-;>ww           <cmd>bwipeout!<cr>
+nnoremap <c-;><c-;>ww      <cmd>bwipeout!<cr>
 nnoremap <silent> <c-;>wu  <cmd>silent! WipeoutUnmodified<cr>
 nnoremap <c-;><c-;>wa      <cmd>tabonly \| BufOnly \| bufdo execute ":bw!"<cr>
 
@@ -86,6 +86,7 @@ nnoremap <c-k><c-d> <cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>
 nnoremap <silent> <leader>eV <cmd>e ~/.config/nvim/<cr>
 nnoremap <silent> <leader>ev <cmd>e ~/.config/nvim/init.vim<cr>
 nnoremap <silent> <leader>ep <cmd>e ~/.config/nvim/lua/plugins.lua<cr>
+nnoremap <silent> <leader>el <cmd>e ~/.config/nvim/lua<cr>
 nnoremap <silent> <leader>ec <cmd>e ~/.config/nvim/lua/configs/<cr>
 Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
 
@@ -219,7 +220,7 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
   nnoremap <leader>en    <cmd>enew<cr>
 
   nnoremap <silent> <leader>e<Tab>  <cmd>set expandtab \| retab!<cr>
- 
+
 
   nnoremap <leader>e<space> <cmd>call StripWhitespace()<cr>
 
@@ -237,7 +238,7 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
   vmap > >gv
   vmap < <gv
 
-  nnoremap <c-k><c-=> :<cmd>silent! call Preserve("normal gg=G")<cr>
+  nnoremap <silent> <c-k><c-=> <cmd>silent! call Preserve("normal gg=G")<cr>
 
   " Move visual block
   vnoremap <D-j> <cmd>m '>+1<CR>gv=gv
@@ -260,12 +261,24 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
 
   "CD into:
   "current buffer file dir
-  nnoremap cdf :lcd %:p:h<cr>:pwd<cr>
-  nnoremap cd. :lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr>:pwd<cr>
-  nnoremap cdh :lcd <c-r>=expand('%:h')."/.."<cr><cr>:pwd<cr>
-  nnoremap cdk :lcd <c-r>=getcwd()."/.."<cr><cr>:pwd<cr>
+  nnoremap cdf <cmd>lcd %:p:h<cr><cmd>pwd<cr>
+  " nnoremap cd. :lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr><cmd>pwd<cr>
+  nnoremap cd. <cmd>execute "lcd " . fnamemodify(expand('%:h'), ':h')<cr><cmd>pwd<cr>
 
-  nnoremap cdp :lcd <c-r>=GetPluginPath()<cr><cr>:pwd<cr>
+  nnoremap cdh <cmd>execute "lcd " . expand('%:h') . "/.."<cr><cmd>pwd<cr>
+  nnoremap cdk <cmd>execute "lcd " . getcwd() . "/.."<cr><cmd>pwd<cr>
+
+  nnoremap cdp <cmd>execute "lcd ". GetPluginPath()<cr><cmd>pwd<cr>
+
+
+  "current working dir
+  nnoremap cdc <cmd>execute"lcd ". expand("%:h")<cr>
+  "git dir ROOT
+  nnoremap cdg <cmd>execute "lcd " . FindGitDirOrRoot()<cr><cr>
+
+  nnoremap cdd <cmd> execute "lcd /Volumes/Home/.local/share/nvim/"<cr>
+  nnoremap cdv <cmd> execute "lcd /Volumes/Home/.config/nvim/"<cr>
+
 
   fun! GetPluginPath()
     let dirs = split(expand('%:p'), '/')
@@ -277,120 +290,113 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
 
     let path = '/'.join(dirs[:idx + 2], '/')
     return path
-  endf
+    endf
 
 
 
 
 
-  "current working dir
-  nnoremap cdc :lcd <c-r>=expand("%:h")<cr>/
-  "git dir ROOT
-  nnoremap cdg :lcd <c-r>=FindGitDirOrRoot()<cr><cr>
 
-  nnoremap cdd :lcd /Volumes/Home/.config/nvim/dein/repos/github.com/<cr>
-  nnoremap cdv :lcd /Volumes/Home/.config/nvim/<cr>
+    "Open current directory in Finder
+    "nnoremap gof <cmd>silent !open .<cr>
 
-  "Open current directory in Finder
-  "nnoremap gof <cmd>silent !open .<cr>
+    " allow replacing word under cursor
+    nnoremap grW :%s/<c-r>=expand('<cWORD>')<cr>//g<left><left>
+    nnoremap grw :%s/<c-r>=expand('<cword>')<cr>//g<left><left>
 
-	" allow replacing word under cursor
-	nnoremap grW :%s/<c-r>=expand('<cWORD>')<cr>//g<left><left>
-	nnoremap grw :%s/<c-r>=expand('<cword>')<cr>//g<left><left>
+    nnoremap ycd :!mkdir -p %:p:h<CR>
 
-  nnoremap ycd :!mkdir -p %:p:h<CR>
+    "Go to alternate file
+    nnoremap go <C-^>
 
-  "Go to alternate file
-  nnoremap go <C-^>
+    "toggle tabline
+    nnoremap <silent> cot  :execute "set  showtabline=" . (&showtabline+2)%3<cr>
 
-  "toggle tabline
-  nnoremap <silent> cot  :execute "set  showtabline=" . (&showtabline+2)%3<cr>
+    "Toggle laststatus (statusline | statusbar)
+    nnoremap <silent> co<space> :execute "set laststatus=" . (&laststatus+2)%3<cr>
 
-  "Toggle laststatus (statusline | statusbar)
-  nnoremap <silent> co<space> :execute "set laststatus=" . (&laststatus+2)%3<cr>
+    "Command-line Mode Key Mappings
+    cnoremap <c-a> <home>
+    cnoremap <c-e> <end>
+    cnoremap <expr> <c-j> wildmenumode() ? "\<c-n>" : "\<down>"
+    cnoremap <expr> <c-k> wildmenumode() ? "\<c-p>" : "\<up>"
+    cnoremap <c-h> <left>
+    cnoremap <c-l> <right>
+    cnoremap <c-g>p <C-\>egetcwd()<CR>
+    cnoremap <c-g>f <C-r>=expand("%")<CR>
 
-  "Command-line Mode Key Mappings
-  cnoremap <c-a> <home>
-  cnoremap <c-e> <end>
-  cnoremap <expr> <c-j> wildmenumode() ? "\<c-n>" : "\<down>"
-  cnoremap <expr> <c-k> wildmenumode() ? "\<c-p>" : "\<up>"
-  cnoremap <c-h> <left>
-  cnoremap <c-l> <right>
-  cnoremap <c-g>p <C-\>egetcwd()<CR>
-  cnoremap <c-g>f <C-r>=expand("%")<CR>
-
-  " source-selection or Vimrc
-  nnoremap <Leader>S; "vyy:@v<CR>
-  vnoremap <Leader>S; "vy:@v<CR>
-  " nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
-  " nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
-  " nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
-  " nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
+    " source-selection or Vimrc
+    nnoremap <Leader>S; "vyy:@v<CR>
+    vnoremap <Leader>S; "vy:@v<CR>
+    " nnoremap [e  :<c-u>execute 'move -1-'. v:count1<cr>
+    " nnoremap ]e  :<c-u>execute 'move +'. v:count1<cr>
+    " nnoremap [<space>  :<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[
+    " nnoremap ]<space>  :<c-u>put =repeat(nr2char(10), v:count1)<cr>
 
 
-  " Correct macros, use it like this <leader>m or "q<leader>m.
+    " Correct macros, use it like this <leader>m or "q<leader>m.
 
-  nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
-  nnoremap <leader>mc  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+    nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+    nnoremap <leader>mc  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
-  Map N <leader>tp :e <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
-  Map N <leader>to :e ~/org/todo.org<cr>
-  Map N <leader>Tp :tabe <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
-  Map N <leader>To :tabe ~/org/todo.org<cr>
+    Map N <leader>tp :e <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
+    Map N <leader>to :e ~/org/todo.org<cr>
+    Map N <leader>Tp :tabe <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
+    Map N <leader>To :tabe ~/org/todo.org<cr>
 
-  Map N <leader>e<BS> :! \| echo "changes discarded"<cr>
+    Map N <leader>e<BS> :! \| echo "changes discarded"<cr>
 
-  nnoremap  coq <cmd>QFix<cr>
-  command! QFix call QFixToggle()
-  function! QFixToggle()
-    for i in range(1, winnr('$'))
-      let bnum = winbufnr(i)
-      if getbufvar(bnum, '&buftype') == 'quickfix'
-        cclose
-        return
-      endif
-    endfor
-    copen
-  endfunction
+    nnoremap  coq <cmd>QFix<cr>
+    command! QFix call QFixToggle()
+    function! QFixToggle()
+      for i in range(1, winnr('$'))
+        let bnum = winbufnr(i)
+        if getbufvar(bnum, '&buftype') == 'quickfix'
+          cclose
+          return
+        endif
+      endfor
+      copen
+    endfunction
 
 
-  xnoremap [e  <cmd><C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
-  " snoremap [e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
+    xnoremap [e  <cmd><C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
+    " snoremap [e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
 
-  xnoremap ]e  <cmd><C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionDown"\|normal! gv<cr>
-  " snoremap [e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
+    xnoremap ]e  <cmd><C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionDown"\|normal! gv<cr>
+    " snoremap [e  :<C-U>execute ":'<,'>normal \<Plug>unimpairedMoveSelectionUp"\|normal! gv<cr>
 
-function! FoldFunction(option)
-    set foldmethod=manual
-    normal zE
-    if &ft == 'blade'
-      if a:option == 'editor'
-        execute "silent! g/editor: {/normal lma%zf'a"
-        return
-      endif
+    function! FoldFunction(option)
+      set foldmethod=manual
+      normal zE
+      if &ft == 'blade'
+        if a:option == 'editor'
+          execute "silent! g/editor: {/normal lma%zf'a"
+          return
+        endif
         execute "silent! g/<div\\|\<style/normal lma%zf'a"
         execute "silent! g/columns: \\[\\[/normal 0maf[%zf'a"
         execute "silent! g/function\\|.edatagrid({\\|{ field:\\|{field:/normal 0maf{%zf'a"
-    endif
-    if &ft == 'php'
-        execute "silent! g/protected \\$fillable = \\[/normal 0f[zf%"
-        execute "silent! g/protected \\$dates = \\[/normal 0f[zf%"
-        execute "silent! g/public function/normal 0maf{%zf'a"
-        execute "silent! g/public static function/normal 0maf{%zf'a"
-        execute "silent! g/private static function/normal 0maf{%zf'a"
-        execute "silent! g/protected function/normal 0maf{%zf'a"
-        execute "silent! g/private function/normal 0maf{%zf'a"
-        execute "silent! g/\\/\\*\\*/normal mazf%'a"
-        normal zM
-    endif
-    if &ft == 'go'
-        execute "silent! g/func/normal 0maf{%zf'a"
-        execute "silent! g/type/normal 0maf{%zf'a"
-        execute "silent! g/import/normal 0maf{%zf'a"
-        normal zM
-    endif
-endfunction
+        endif
+        if &ft == 'php'
+          execute "silent! g/protected \\$fillable = \\[/normal 0f[zf%"
+          execute "silent! g/protected \\$dates = \\[/normal 0f[zf%"
+          execute "silent! g/public function/normal 0maf{%zf'a"
+          execute "silent! g/public static function/normal 0maf{%zf'a"
+          execute "silent! g/private static function/normal 0maf{%zf'a"
+          execute "silent! g/protected function/normal 0maf{%zf'a"
+          execute "silent! g/private function/normal 0maf{%zf'a"
+          execute "silent! g/\\/\\*\\*/normal mazf%'a"
+          normal zM
+        endif
+        if &ft == 'go'
+          execute "silent! g/func/normal 0maf{%zf'a"
+          execute "silent! g/type/normal 0maf{%zf'a"
+          execute "silent! g/import/normal 0maf{%zf'a"
+          normal zM
+        endif
+      endfunction
 
-Map n <leader>zff  <cmd>call FoldFunction('')<cr>
-Map n <leader>zfe  <cmd>call FoldFunction('editor')<cr>
-Map n <leader>zi  <cmd>set fdm=indent<cr><cmd>set fdm=manual<cr>
+      Map n <leader>zff  <cmd>call FoldFunction('')<cr>
+      Map n <leader>zfe  <cmd>call FoldFunction('editor')<cr>
+      Map n <leader>zi  <cmd>set fdm=indent<cr><cmd>set fdm=manual<cr>
