@@ -127,8 +127,6 @@ packer.startup(
     use "RRethy/nvim-treesitter-textsubjects"
 
 
-    use "simrat39/symbols-outline.nvim"
-
     -- Completion
     use "hrsh7th/nvim-cmp"
     -- use "octaltree/cmp-look"
@@ -319,6 +317,9 @@ packer.startup(
     -- use "petertriho/nvim-scrollbar"
     use "lewis6991/satellite.nvim" -- decorated scrollbar with signs and more
     use "SmiteshP/nvim-gps"        -- allow to get context and put in winbar to the left or virtual text
+    
+    use "simrat39/symbols-outline.nvim"
+    use "gorbit99/codewindow.nvim"
 
     -- Theme
     use {
