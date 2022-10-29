@@ -370,6 +370,7 @@ packer.startup(
     use "phaazon/hop.nvim"
     use "ggandor/leap.nvim"
     use "ggandor/leap-ast.nvim"
+    use "ggandor/leap-spooky.nvim"
     use "rlane/pounce.nvim"
     -- use "Lokaltog/vim-easymotion"
     -- use {"aykamko/vim-easymotion-segments", after = "vim-easymotion"}

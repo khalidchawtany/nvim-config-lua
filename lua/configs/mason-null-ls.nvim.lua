@@ -25,8 +25,8 @@ M.config = function()
       },
       -- if set to true this will check each tool for updates. If updates
       -- are available the tool will be updated. This setting does not
-    c  -- affect :MasonNullLsUpdate or :MasonNullLsInstall.
-      -- Default: false
+      -- affect :MasonNullLsUpdate or :MasonNullLsInstall.
+    -- Default: false
       auto_update = false,
       -- if set to true, the tool will check null-ls for the available sources,
       -- and then install the dependency(ies) if available in mason.

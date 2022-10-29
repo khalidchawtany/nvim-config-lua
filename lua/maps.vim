@@ -261,6 +261,8 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
 
   "CD into:
   "current buffer file dir
+
+  " nnoremap cdf :lcd %:p:h<cr>:pwd<cr>
   nnoremap cdf <cmd>lcd %:p:h<cr><cmd>pwd<cr>
   " nnoremap cd. :lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr><cmd>pwd<cr>
   nnoremap cd. <cmd>execute "lcd " . fnamemodify(expand('%:h'), ':h')<cr><cmd>pwd<cr>

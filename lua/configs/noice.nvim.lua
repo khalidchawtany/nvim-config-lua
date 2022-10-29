@@ -10,7 +10,77 @@ local M = {
 M.init = function()
 end
 M.config = function()
-  require("noice").setup()
+  vim.cmd [[ hi! link NoiceCmdlinePopupBorder NormalFloat ]]
+  require("noice").setup(
+    {
+      cmdline = {
+        format = {
+          cmdline = {icon = ">"},
+          search_down = {icon = "🔍⌄"},
+          search_up = {icon = "🔍⌃"},
+          filter = {icon = "$"},
+          lua = {icon = "☾"},
+          help = {icon = "?"}
+        }
+      },
+      -- views = {
+      --   cmdline_popup = {
+      --     position = {
+      --       row = "20%",
+      --       col = "50%"
+      --     },
+      --     border = {
+      --       style = "none",
+      --       padding = {1, 2}
+      --     },
+      --     filter_options = {},
+      --     buf_options = {},
+      --     win_options = {
+      --       winhighlight = {Normal = "NormalFloat", FloatBorder = "NoiceCmdlinePopupBorder"}
+      --     }
+      --   },
+      --
+      -- },
+      views = {
+        cmdline_popup = {
+          position = {
+            row = 5,
+            col = "50%"
+          },
+          size = {
+            width = 60,
+            height = "auto"
+          }
+        },
+        popupmenu = {
+          relative = "editor",
+          position = {
+            row = 8,
+            col = "50%"
+          },
+          size = {
+            width = 60,
+            height = 10
+          },
+          border = {
+            style = "rounded",
+            padding = {0, 1}
+          },
+          win_options = {
+            winhighlight = {Normal = "NormalFloat", FloatBorder = "NormalFloat"}
+          }
+        }
+      },
+      popupmenu = {
+        enabled = true, -- enables the Noice popupmenu UI
+        ---@type 'nui'|'cmp'
+        backend = "nui", -- backend to use to show regular cmdline completions
+        ---@type NoicePopupmenuItemKind|false
+        -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
+        kind_icons = {} -- set to `false` to disable icons
+      }
+    }
+  )
 end
 return M
 
