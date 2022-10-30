@@ -374,7 +374,8 @@ packer.startup(
     use "rlane/pounce.nvim"
     -- use "Lokaltog/vim-easymotion"
     -- use {"aykamko/vim-easymotion-segments", after = "vim-easymotion"}
-    use {"rhysd/clever-f.vim", keys = {"<Plug>(clever-f-"}, fn = {"clever_f#reset"}}
+    -- use {"rhysd/clever-f.vim", keys = {"<Plug>(clever-f-"}, fn = {"clever_f#reset"}}
+    use "ggandor/flit.nvim"
     use "ripxorip/aerojump.nvim"
     -- }
 
