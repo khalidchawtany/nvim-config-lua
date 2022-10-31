@@ -43,10 +43,10 @@ nnoremap <c-s>c <cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") 
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-Map nox F     <Plug>(clever-f-F)
-Map nox T     <Plug>(clever-f-T)
-Map nox f     <Plug>(clever-f-f)
-Map nox t     <Plug>(clever-f-t)
+" Map nox F     <Plug>(clever-f-F)
+" Map nox T     <Plug>(clever-f-T)
+" Map nox f     <Plug>(clever-f-f)
+" Map nox t     <Plug>(clever-f-t)
 
 nnoremap cc 0C
 
