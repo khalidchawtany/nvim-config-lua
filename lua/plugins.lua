@@ -126,7 +126,6 @@ packer.startup(
     use "mfussenegger/nvim-ts-hint-textobject"
     use "RRethy/nvim-treesitter-textsubjects"
 
-
     -- Completion
     use "hrsh7th/nvim-cmp"
     -- use "octaltree/cmp-look"
@@ -141,8 +140,6 @@ packer.startup(
 
     use "mattn/emmet-vim"
 
-    -- show context of the cursor usging virtual_text
-    use "haringsrob/nvim_context_vt"
 
     -- Clipboard
     -- use "bfredl/nvim-miniyank"
@@ -196,7 +193,6 @@ packer.startup(
 
     -- TODO: remove
     use "charludo/projectmgr.nvim"
-
 
     -- Blade
     use {"xsbeats/vim-blade", ft = "blade"}
@@ -302,7 +298,7 @@ packer.startup(
     use "numToStr/Comment.nvim"
     --
     use "glepnir/coman.nvim" -- comments and annotation
-    use "danymat/neogen"     -- Documentation and annotation
+    use "danymat/neogen" -- Documentation and annotation
 
     -- Autopairs
     use "windwp/nvim-autopairs"
@@ -316,8 +312,11 @@ packer.startup(
 
     -- use "petertriho/nvim-scrollbar"
     use "lewis6991/satellite.nvim" -- decorated scrollbar with signs and more
-    use "SmiteshP/nvim-gps"        -- allow to get context and put in winbar to the left or virtual text
-    
+    use "SmiteshP/nvim-gps" -- allow to get context and put in winbar to the left or virtual text
+
+    -- show context of the cursor usging virtual_text
+    use "haringsrob/nvim_context_vt"
+
     use "simrat39/symbols-outline.nvim"
     use "gorbit99/codewindow.nvim"
 
@@ -334,11 +333,35 @@ packer.startup(
       end
     }
 
+    use {
+      "catppuccin/nvim",
+      config = function()
+        require("catppuccin").setup {
+          flavour = "mocha",
+          color_overrides = {
+            mocha = {
+              -- base = "#000000"
+            }
+          },
+          integrations = {
+            neotree = true
+          },
+          highlight_overrides = {
+            mocha = function(mocha)
+              return {
+                -- NvimTreeNormal = {bg = mocha.none}
+              }
+            end
+          }
+        }
+      end
+    }
+
     use "tiagovla/scope.nvim" -- this is to scope buffers to tabs only
     use "windwp/windline.nvim"
     -- use "hoob3rt/lualine.nvim"
     -- use "kdheepak/tabline.nvim"
-    use "ldelossa/buffertag"   -- put a tag on each windo with the file name
+    use "ldelossa/buffertag" -- put a tag on each windo with the file name
 
     use "folke/which-key.nvim"
 
