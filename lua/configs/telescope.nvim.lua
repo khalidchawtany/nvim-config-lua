@@ -302,7 +302,7 @@ M.config = function()
   require("telescope").load_extension("fzf")
   require("telescope").load_extension("zf-native")
   require("telescope").load_extension("live_grep_args")
-  require('telescope').load_extension('neoclip')
+  -- require('telescope').load_extension('neoclip')
 
   -- require("telescope").load_extension "file_browser"
 end

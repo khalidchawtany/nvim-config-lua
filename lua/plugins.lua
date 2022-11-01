@@ -140,11 +140,11 @@ packer.startup(
 
     use "mattn/emmet-vim"
 
-
     -- Clipboard
     -- use "bfredl/nvim-miniyank"
-    use "AckslD/nvim-neoclip.lua"
+    -- use "AckslD/nvim-neoclip.lua"
     use "vim-scripts/UnconditionalPaste"
+    use "svermeulen/vim-yoink"
 
     -- Snippets
     use "hrsh7th/vim-vsnip"
@@ -287,6 +287,8 @@ packer.startup(
     -- multiple cursor
     use "mg979/vim-visual-multi"
 
+    use "otavioschwanck/cool-substitute.nvim"
+
     -- make commands previewable
     use "smjonas/live-command.nvim"
 
@@ -339,18 +341,14 @@ packer.startup(
         require("catppuccin").setup {
           flavour = "mocha",
           color_overrides = {
-            mocha = {
-              -- base = "#000000"
-            }
+            mocha = {}
           },
           integrations = {
             neotree = true
           },
           highlight_overrides = {
             mocha = function(mocha)
-              return {
-                -- NvimTreeNormal = {bg = mocha.none}
-              }
+              return {}
             end
           }
         }
