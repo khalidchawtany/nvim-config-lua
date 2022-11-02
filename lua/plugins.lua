@@ -249,6 +249,8 @@ packer.startup(
 
     use "ThePrimeagen/harpoon"
 
+    use "cbochs/portal.nvim" -- show jump-list in floating window
+
     use "tpope/vim-fugitive"
     use "pwntester/octo.nvim"
     use "TimUntersberger/neogit"
