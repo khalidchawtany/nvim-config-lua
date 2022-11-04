@@ -1,23 +1,29 @@
 local M = {
-  module = "portal",
+  module = "portal"
 }
 
 M.init = function()
+  for _,keys in pairs({"s<c-o>", "<c-s>o"}) do
+    vim.keymap.set(
+      "n",
+      keys,
+      function()
+        require("portal").jump_backward()
+      end,
+      {desc = "Portal (JumpBackward)"}
+    )
+  end
 
-  vim.keymap.set( "n", "s<c-o>",
-    function()
-      require("portal").jump_backward()
-    end,
-    {desc = "Portal (JumpBackward)"}
-  )
-
-  vim.keymap.set( "n", "s<c-i>",
-    function()
-      require("portal").jump_forward()
-    end,
-    {desc = "Portal (JumpForward)"}
-  )
-
+  for _, keys in pairs({"s<c-i>", "<c-s>i"}) do
+    vim.keymap.set(
+      "n",
+      keys,
+      function()
+        require("portal").jump_forward()
+      end,
+      {desc = "Portal (JumpForward)"}
+    )
+  end
 end
 
 M.config = function()
