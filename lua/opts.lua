@@ -155,7 +155,9 @@ set.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,term
 -- }
 
 -- Add ignorance of whitespace to diff
--- set.diffopt=vim.o.diffopt .. ',iwhite'
+vim.opt.diffopt:append('iwhite')
+vim.opt.diffopt:append('linematch:60')
+
 vim.cmd('syntax on')
 set.cursorline = false
 
