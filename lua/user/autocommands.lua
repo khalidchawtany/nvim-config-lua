@@ -11,7 +11,10 @@ local setUpWinbarAutoCmd = function()
   )
 end
 
-setUpWinbarAutoCmd()
+
+-- if not vim.fn.has('gui_vimr') then
+  setUpWinbarAutoCmd()
+-- end
 
 vim.keymap.set(
   "n",

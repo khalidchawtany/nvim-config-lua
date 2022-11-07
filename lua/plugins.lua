@@ -337,6 +337,8 @@ packer.startup(
       end
     }
 
+    use "Yazeed1s/oh-lucy.nvim"
+
     use {
       "catppuccin/nvim",
       config = function()

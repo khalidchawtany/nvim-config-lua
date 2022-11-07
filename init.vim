@@ -12,6 +12,9 @@ endif
 
 " let $NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
 
+" let &gu='%s%=%{v:redraw_relnum?v:redraw_relnum:v:redraw_lnum} │ '
+
+nnoremap <leader>ee :e ~/Projects/PHP/filament/resources/views/components/header/header.blade.php<cr>
 
 let g:neo_tree_remove_legacy_commands=1
 

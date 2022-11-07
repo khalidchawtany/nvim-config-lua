@@ -346,6 +346,7 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
     Map N <leader>Tp :tabe <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
     Map N <leader>To :tabe ~/org/todo.org<cr>
 
+" tohtml runtime! syntax/2html.vim
     Map N <leader>e<BS> :! \| echo "changes discarded"<cr>
 
     nnoremap  coq <cmd>QFix<cr>
