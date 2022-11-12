@@ -7,6 +7,11 @@ local M = {
   }
 }
 
+M.init = function()
+  vim.g.neo_tree_remove_legacy_commands = 1
+ -- let g:neo_tree_remove_legacy_commands=1
+end
+
 M.config = function()
   vim.cmd [[
   nnoremap <silent> -- :Neotree float reveal dir=<c-r>=expand('%:h')<cr> reveal_force_cwd<cr>

@@ -342,6 +342,22 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
 
     nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
     nnoremap <leader>mc  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+ 
+
+
+  "Map CMD-# to tabs
+  for i in [1,2,3,4,5,6,7,8,9]
+    execute "nnoremap <silent> <D-" . i . ">            :tabnext " . i . "<cr>"
+    execute "vnoremap <silent> <D-" . i . ">       <c-u>:tabnext " . i . "<cr>"
+    execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n>:tabnext " . i . "<cr>"
+  endfor
+
+  let i = 0
+  execute "nnoremap <silent> <D-" . i . ">            :tabnext 10<cr>"
+  execute "vnoremap <silent> <D-" . i . ">       <c-u>:tabnext 10<cr>"
+  execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n>:tabnext 10<cr>"
+
+
 
     Map N <leader>tp :e <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
     Map N <leader>to :e ~/org/todo.org<cr>

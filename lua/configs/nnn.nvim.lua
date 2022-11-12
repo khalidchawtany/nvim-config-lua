@@ -2,6 +2,9 @@ local M = {
   module = "nnn"
 }
 
+--- let $NNN_FIFO="/tmp/nnn.fifo"
+--- let $NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
+
 local mapKeys = function()
   vim.cmd [[
   tnoremap f<C-n> <cmd>lua require("nnn").toggle("explorer")<CR>

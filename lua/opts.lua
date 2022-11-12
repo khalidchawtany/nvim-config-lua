@@ -68,7 +68,7 @@ set.whichwrap = 'b,s,h,l,<,>,[,]'
 
 -- Foldinf
 -- set.foldmethod = 'manual'
-set.foldcolumn = '1'
+-- set.foldcolumn = '1'
 set.foldlevel = 1
 vim.wo.foldlevel = 1
 set.modelines = 1

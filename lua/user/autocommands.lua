@@ -11,9 +11,8 @@ local setUpWinbarAutoCmd = function()
   )
 end
 
-
 -- if not vim.fn.has('gui_vimr') then
-  setUpWinbarAutoCmd()
+setUpWinbarAutoCmd()
 -- end
 
 vim.keymap.set(
@@ -45,3 +44,10 @@ vim.api.nvim_create_autocmd(
     end
   }
 )
+
+vim.cmd [[
+autocmd User fugitive
+      \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+      \   nnoremap <buffer> .. :edit %:h<CR> |
+      \ endif
+ ]]

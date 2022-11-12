@@ -8,7 +8,8 @@ let g:render_ligatures = 0
 nnoremap <silent> <leader>o<cr> :let g:render_ligatures =  (g:render_ligatures + 1) % 2 \| call rpcnotify(0, 'Gui', 'Option', 'RenderLigatures', g:render_ligatures)<cr>
 
 let g:gui_fonts = [
-      \ 'PT\ Mono:17',
+      \ 'FiraCode\ Nerd\ Font:h18',
+      \ 'Fira\ Code:h18',
       \ 'Operator\ Mono\ Lig:h17',
       \ 'RobotoMono\ Nerd\ Font:h18',
       \ 'Monaco:h17',
@@ -24,10 +25,14 @@ function! ToggleFont(dir)
   echo g:gui_fonts[g:current_gui_font_index]
 endfunction
 
+
+nnoremap yof :set guifont=Fira\ Code<cr>
+nnoremap yoF :set guifont=FiraCode\ Nerd\ Font<cr>
+
 command! NextFont call ToggleFont(1)
 command! PrevFont call ToggleFont(-1)
-nnoremap c]f :<c-u>NextFont<cr>
-nnoremap c[f :<c-u>PrevFont<cr>
+nnoremap y]f :<c-u>NextFont<cr>
+nnoremap y[f :<c-u>PrevFont<cr>
 
 
 function! SetLineSpace(inc)
@@ -35,8 +40,8 @@ function! SetLineSpace(inc)
   exec 'set linespace='. linespace
   call rpcnotify(0, 'Gui', 'Linespace', linespace)
 endfunction
-set linespace=0
-call SetLineSpace(0)
+set linespace=13
+call SetLineSpace(13)
 
 " command! Bigger  :let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)+1', '')
 " command! Smaller :let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)-1', '')
