@@ -51,6 +51,8 @@ nnoremap <c-s>c <cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") 
 nnoremap cc 0C
 
 
+nnoremap <leader>ee :e ~/.config/nvim/lua/functions.lua<cr>
+
 " open diff view of the commit hash
 nnoremap <leader>dcc :DiffviewOpen <C-r>=expand('<cword>')<cr>..<C-r>=expand('<cword>')<cr>^<cr>
 

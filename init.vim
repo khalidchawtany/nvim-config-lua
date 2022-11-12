@@ -1,20 +1,13 @@
-if empty($TMUX)
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-else
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-endif
 
 " let $NNN_FIFO="/tmp/nnn.fifo"
 
 " let $NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
 
-" let &gu='%s%=%{v:redraw_relnum?v:redraw_relnum:v:redraw_lnum} │ '
+let &stc=' %{v:redraw_wrap?"":v:redraw_lnum}%=│  '
+set foldcolumn=0
+set signcolumn=no
+" let &stc='%s%=%{v:redraw_relnum?v:redraw_relnum:v:redraw_lnum} │ '
 
-nnoremap <leader>ee :e ~/Projects/PHP/filament/resources/views/components/header/header.blade.php<cr>
 
 let g:neo_tree_remove_legacy_commands=1
 

@@ -69,11 +69,55 @@ table.insert(package.loaders, 2, load) -- this will run before the standard load
 --  Custom Packer Use Function  --
 ----------------------------------
 
-local M = {}
+local M = {
+  -- enabledPluginRange = nil,
+  -- disabled = {from = 105, to = 105},
+  -- disabled = {except = {1,2,3,4,5,105}},
+  -- disabled = {only = {105}},
+  index = 0
+}
+
 M.setPackerUse = function(use)
   M.packer_use = use
 end
+
+M.exclude = function(pluginName) 
+
+  if (M.disabled == nil) then
+    return false
+  end
+
+  M.index = M.index + 1
+  -- disable by range
+  -- disabled = {from = 105, to = 105},
+  if (M.disabled.from and M.disabled.to) then
+    if (M.index >= M.disabled.from and M.index <= M.disabled.to) then
+      return true
+    end
+  end
+
+  -- disable except what is in the whitelist dictionary
+  -- disabled = {except = {105}},
+  if (M.disabled.except) then
+    if (not vim.tbl_contains(M.disabled.except, M.index)) then
+      return true
+    end
+  end
+
+  -- disable only whta is in the dictionary
+  -- disabled = {only = {105}},
+  if (M.disabled.only) then
+    if (vim.tbl_contains(M.disabled.only, M.index)) then
+      _G.dump("Disabled : " .. pluginName)
+      return true
+    end
+  end
+
+  return false
+end
+
 M.use = function(plug)
+
   -- load plugin configs from the config dir
   local pluginName = ""
   if (type(plug) == "table") then
@@ -82,6 +126,12 @@ M.use = function(plug)
   if (type(plug) == "string") then
     pluginName = plug
   end
+
+  if (M.exclude(pluginName)) then
+    return
+  end
+
+
 
   -- get the plugin name part
   local pluginNameSepIndex = string.find(pluginName, "/[^/]*$")

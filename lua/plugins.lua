@@ -97,6 +97,7 @@ packer.startup(
     }
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
+    use "jayp0521/mason-null-ls.nvim"
 
     use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
@@ -309,7 +310,6 @@ packer.startup(
 
     use "mhartington/formatter.nvim"
     use "jose-elias-alvarez/null-ls.nvim"
-    use "jayp0521/mason-null-ls.nvim"
 
     -- nice folds
     use "kevinhwang91/nvim-ufo"
