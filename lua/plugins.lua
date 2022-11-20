@@ -298,6 +298,7 @@ packer.startup(
     use {"gabesoft/vim-ags", cmd = {"Ags"}}
     -- make quickfix window editable
     use "gabrielpoca/replacer.nvim"
+    use "cshuaimin/ssr.nvim"
 
     -- Comments
     use "numToStr/Comment.nvim"

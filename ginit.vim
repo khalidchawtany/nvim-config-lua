@@ -2,6 +2,7 @@
 hi Title guibg=#afd7ff
 
 
+
 " Support ligature
 call rpcnotify(0, 'Gui', 'Option', 'RenderLigatures', 0)
 let g:render_ligatures = 0
@@ -40,8 +41,8 @@ function! SetLineSpace(inc)
   exec 'set linespace='. linespace
   call rpcnotify(0, 'Gui', 'Linespace', linespace)
 endfunction
-set linespace=13
-call SetLineSpace(13)
+set linespace=8
+" call SetLineSpace(0)
 
 " command! Bigger  :let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)+1', '')
 " command! Smaller :let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)-1', '')
@@ -120,8 +121,9 @@ if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
   "Start neovim-qt as maximized borderless.
     GuiTabline 0
     GuiPopupmenu 0
-    call GuiWindowMaximized(2)
+    " call GuiWindowMaximized(2)
     cd ~/.config/nvim/
+    GuiAdaptiveColor v:true
 " let NVIM_QT_RUNTIME_PATH="./Contents/Resources/runtime"
 
  " GuiFont! FiaCode Nerd Font Mine:h18

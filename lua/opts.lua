@@ -55,9 +55,9 @@ set.wrap = true
 set.expandtab = true
 set.smarttab = true
 set.shiftround = true
-set.tabstop = 2
-set.shiftwidth = 2
-set.softtabstop = 2
+set.tabstop = 4
+set.shiftwidth = 4
+set.softtabstop = 4
 
 -- Make it so that long lines wrap smartly
 set.breakindent = true

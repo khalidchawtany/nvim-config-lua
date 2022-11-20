@@ -1,8 +1,14 @@
-
-let &stc=' %{v:redraw_wrap?"":v:redraw_lnum}%=⎥  '
-set foldcolumn=0
-set signcolumn=no
+" set stc=%C%s%=%{v:redraw_wrap?'':v:redraw_lnum}⎥\ \ 
+" set stc=%{&nu?v:redraw_lnum:''}%=%{&rnu?'\ '.v:redraw_relnum:''}│
+" let &stc='%{v:redraw_wrap?"":v:redraw_lnum}%=⎥  '
+" set statuscolumn=%@SignCb@%s%C%=%T%@NumCb@%r⎥%T\ \ 
+" set stc=%C%s%=%{v:redraw_wrap?'':v:redraw_lnum}⎥\ \ 
+set stc=%=%{v:redraw_wrap?'':v:redraw_lnum}⎥%s%C\ \ 
+set foldcolumn=auto:2
+set signcolumn=auto:2
 set virtualedit=all
+
+set background=dark
 
 scriptencoding utf-8
 set encoding=utf-8 nobomb
