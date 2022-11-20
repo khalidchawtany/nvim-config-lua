@@ -1,3 +1,8 @@
+
+string.startswith = function(self, str)
+    return self:find("^" .. str) ~= nil
+end
+
 function table.removekey(table, key)
   local element = table[key]
   table[key] = nil
