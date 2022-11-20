@@ -171,7 +171,7 @@ basic.lsp_name = {
             }
         end
         return {
-            { b_components.cache_file_type({icon = true}), 'magenta' },
+            { b_components.cache_file_type({ icon = true }), 'magenta' },
         }
     end,
 }
@@ -185,10 +185,10 @@ basic.nomodoro = {
     },
     width = breakpoint_width,
     text = function(bufnr)
-      if packer_plugins["nomodoro"] and packer_plugins["nomodoro"].loaded then
-        return require('nomodoro').status()
-      end
-      return ""
+        if packer_plugins["nomodoro"] and packer_plugins["nomodoro"].loaded then
+            return require('nomodoro').status()
+        end
+        return ""
     end,
 }
 
@@ -231,3 +231,28 @@ windline.setup({
         explorer,
     },
 })
+
+
+local function reset_windline_bg()
+
+    -- get set colors
+    local highlights = vim.api.nvim__get_hl_defs(0)
+
+    -- remove empty names
+    vim.tbl_filter(
+        function(key)
+            return type(key) == "string" and #key > 0
+        end,
+        highlights
+    )
+
+    for name, highlight in pairs(highlights) do
+        if type(name) == "string" and #name > 0 then
+            if (name:startswith('WL')) then
+                vim.cmd('hi ' .. name .. ' guibg=#111827')
+            end
+        end
+    end
+end
+
+-- reset_windline_bg()
