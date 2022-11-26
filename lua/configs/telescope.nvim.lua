@@ -10,6 +10,26 @@ local M = {
 
 M.init = function()
   vim.cmd [[
+            nnoremap <c-s><leader>p   <cmd>lua require('telescope.builtin').pickers()<cr>
+            nnoremap <c-s><leader>s   <cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>
+            nnoremap <c-s><leader>p   <cmd>lua require('telescope.builtin').pickers()<cr>
+            nnoremap <c-s><leader>t   <cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>
+            nnoremap <c-s><leader>e   <cmd>lua require('telescope.builtin').diagnostics()<cr>
+            nnoremap <c-s><leader>i   <cmd>lua require('telescope.builtin').lsp_incoming_calls()<cr>
+            nnoremap <c-s><leader>o   <cmd>lua require('telescope.builtin').lsp_outgoing_calls()<cr>
+            nnoremap <c-s><leader>r   <cmd>lua require('telescope.builtin').lsp_references()<cr>
+
+            nnoremap <leader><c-s>p   <cmd>lua require('telescope.builtin').pickers()<cr>
+            nnoremap <leader><c-s>s   <cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>
+            nnoremap <leader><c-s>p   <cmd>lua require('telescope.builtin').pickers()<cr>
+            nnoremap <leader><c-s>t   <cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>
+            nnoremap <leader><c-s>e   <cmd>lua require('telescope.builtin').diagnostics()<cr>
+            nnoremap <leader><c-s>i   <cmd>lua require('telescope.builtin').lsp_incoming_calls()<cr>
+            nnoremap <leader><c-s>o   <cmd>lua require('telescope.builtin').lsp_outgoing_calls()<cr>
+            nnoremap <leader><c-s>r   <cmd>lua require('telescope.builtin').lsp_references()<cr>
+
+
+            nnoremap <c-s>r      <cmd>lua require('telescope.builtin').reloader()<cr>
             nnoremap <c-s><cr>   <cmd>lua require('telescope.builtin').resume()<cr>
             nnoremap <c-s><c-cr> <cmd>lua require('telescope.builtin').resume()<cr>
             nnoremap <c-s><c-p>  <cmd>lua require('telescope.builtin').find_files()<cr>
@@ -32,7 +52,7 @@ M.init = function()
             nnoremap <c-s>gC     <cmd>lua require('telescope.builtin').git_commits()<cr>
             nnoremap <c-s>gc     <cmd>lua require('telescope.builtin').git_bcommits()<cr>
             nnoremap <c-s>gf     <cmd>lua require('telescope.builtin').git_files()<cr>
-            nnoremap <c-s><c-s>  <cmd>lua require 'telescope'.extensions.file_browser.file_browser()<cr>
+            nnoremap <c-s>f  <cmd>lua require 'telescope'.extensions.file_browser.file_browser()<cr>
  
     ]]
 

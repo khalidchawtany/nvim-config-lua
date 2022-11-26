@@ -65,6 +65,7 @@ packer.startup(
     -- use {"hrsh7th/cmp-copilot"}
     -- use "zbirenbaum/copilot.lua"
     -- use "zbirenbaum/copilot-cmp"
+    use "tpope/vim-characterize" -- this show the unicode code for the character under cursor using ga mapping
 
     use "tpope/vim-dispatch"
     use "janko-m/vim-test"
@@ -101,6 +102,7 @@ packer.startup(
 
     use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
+    use "dnlhc/glance.nvim"
     use "ray-x/navigator.lua"
     use {"glepnir/lspsaga.nvim", requires = {"neovim/nvim-lspconfig"}}
     use "ojroques/nvim-lspfuzzy"
@@ -158,6 +160,7 @@ packer.startup(
     -- au filetype php set iskeyword+=$
     use "AllenDang/nvim-expand-expr"
 
+    use "Wansmer/sibling-swap.nvim"
     use "mizlan/iswap.nvim"
     use "junegunn/vim-easy-align"
 

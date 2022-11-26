@@ -3,7 +3,7 @@
 " let &stc='%{v:redraw_wrap?"":v:redraw_lnum}%=⎥  '
 " set statuscolumn=%@SignCb@%s%C%=%T%@NumCb@%r⎥%T\ \ 
 " set stc=%C%s%=%{v:redraw_wrap?'':v:redraw_lnum}⎥\ \ 
-set stc=%=%{v:redraw_wrap?'':v:redraw_lnum}⎥%s%C\ \ 
+set stc=%=%{v:wrap?'':v:relnum}⎥%s%C\ \ 
 set foldcolumn=auto:2
 set signcolumn=auto:2
 set virtualedit=all
