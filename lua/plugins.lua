@@ -27,6 +27,7 @@ packer.startup(
 
     use "goolord/alpha-nvim"
     -- use "startup-nvim/startup.nvim"
+    use "Eandrju/cellular-automaton.nvim"
 
     use "folke/noice.nvim"
     use "VonHeikemen/fine-cmdline.nvim"
