@@ -61,11 +61,14 @@ packer.startup(
     use "gioele/vim-autoswap"
     use "lyokha/vim-xkbswitch"
     use {"tyru/capture.vim", cmd = {"Capture"}}
+    use "tamton-aquib/stuff.nvim"
 
+    use "aduros/ai.vim"
+    use "jackMort/ChatGPT.nvim"
     -- use "github/copilot.vim"
     -- use {"hrsh7th/cmp-copilot"}
-    -- use "zbirenbaum/copilot.lua"
-    -- use "zbirenbaum/copilot-cmp"
+    use "zbirenbaum/copilot.lua"
+    use "zbirenbaum/copilot-cmp"
     use "tpope/vim-characterize" -- this show the unicode code for the character under cursor using ga mapping
 
     use "tpope/vim-dispatch"
@@ -167,6 +170,7 @@ packer.startup(
 
     -- use "kyazdani42/nvim-tree.lua"
     use "nvim-neo-tree/neo-tree.nvim"
+    use "miversen33/netman.nvim" -- allow ftp and docker
     use "elihunter173/dirbuf.nvim"
 
     -- generic sidebar

@@ -26,6 +26,12 @@ M.config = function()
 
 require("neo-tree").setup(
   {
+   sources = {
+        "filesystem", -- Neotree filesystem source
+        "buffers", -- Neotree filesystem source
+        "git_status", -- Neotree filesystem source
+        "netman.ui.neo-tree", -- The one you really care about 😉
+    },
     filesystem = {
       bind_to_cwd = false,
       follow_current_file = false,
