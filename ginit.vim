@@ -1,7 +1,7 @@
 
 hi Title guibg=#afd7ff
-
-
+ *
+ *
 
 " Support ligature
 call rpcnotify(0, 'Gui', 'Option', 'RenderLigatures', 0)
