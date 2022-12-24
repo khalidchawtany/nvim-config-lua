@@ -1,6 +1,15 @@
+function LoadAllPlugins()
+  local unloaded = ""
+  for k, v in pairs(_G.packer_plugins) do
+    if v.loaded == false then
+      unloaded = unloaded .. " " .. k
+    end
+  end
+  require("packer").loader(unloaded)
+end
 
 string.startswith = function(self, str)
-    return self:find("^" .. str) ~= nil
+  return self:find("^" .. str) ~= nil
 end
 
 function table.removekey(table, key)
@@ -86,8 +95,7 @@ M.setPackerUse = function(use)
   M.packer_use = use
 end
 
-M.exclude = function(pluginName) 
-
+M.exclude = function(pluginName)
   if (M.disabled == nil) then
     return false
   end
@@ -122,7 +130,6 @@ M.exclude = function(pluginName)
 end
 
 M.use = function(plug)
-
   -- load plugin configs from the config dir
   local pluginName = ""
   if (type(plug) == "table") then
@@ -135,8 +142,6 @@ M.use = function(plug)
   if (M.exclude(pluginName)) then
     return
   end
-
-
 
   -- get the plugin name part
   local pluginNameSepIndex = string.find(pluginName, "/[^/]*$")

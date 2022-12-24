@@ -6,7 +6,7 @@ local M = {
 M.init = function()
   vim.keymap.set(
     "n",
-    "<c-s><c-t>",
+    "<c-s><c-r>",
     function()
       require("telescope-undo")()
     end,

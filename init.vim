@@ -4,8 +4,8 @@
 " set statuscolumn=%@SignCb@%s%C%=%T%@NumCb@%r⎥%T\ \ 
 " set stc=%C%s%=%{v:redraw_wrap?'':v:redraw_lnum}⎥\ \ 
 set stc=\ %=%{v:wrap?'':v:relnum}\ ⎥%s%C\ \ \  
-set foldcolumn=auto:2
-set signcolumn=auto:2
+set foldcolumn=auto:1
+set signcolumn=auto:1
 set virtualedit=all
 
 set background=dark
