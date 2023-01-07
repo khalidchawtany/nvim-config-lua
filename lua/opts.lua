@@ -133,7 +133,7 @@ set.secure = true
 set.modeline = true
 set.modelines = 4
 
-set.printoptions = 'header:0,duplex:long,paper:letter'
+-- set.printoptions = 'header:0,duplex:long,paper:letter'
 
 set.listchars = 'tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·,lead:…'
 --,space:…
@@ -142,7 +142,7 @@ set.list = false
 set.fillchars = 'stlnc:-,foldsep:┊,foldopen:,foldclose:,vert:│'
 
 set.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
- -- 
+ --
 
 -- vim.opt.fillchars = {
 --   horiz     = '━',

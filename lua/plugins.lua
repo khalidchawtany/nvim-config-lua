@@ -288,6 +288,7 @@ packer.startup(
     -- use "rmagatti/session-lens" -- telescope for auto-session
 
     use "AndrewRadev/splitjoin.vim"
+	use "ckolkey/ts-node-action"
 
     -- auto type  -> when typing - in php
     use "glepnir/mcc.nvim"
