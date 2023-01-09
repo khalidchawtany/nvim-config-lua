@@ -1,0 +1,60 @@
+{
+  "pager": {
+    "prefix": "pager",
+    "description": "Pager in Laravel",
+    "body": "{!! \\$${1:models}->render() !!\\}"
+  },
+  "formmodel": {
+    "prefix": "formmodel",
+    "description": "Open a form model",
+    "body": [
+      "{!! Form::model(\\$${1:model}, array('${2:Controller@action}', 'method'=>'${3:METHOD_PATCH}', 'class'=>'form-horizontal', 'role'=>'form')) !!\\}",
+      "$0"
+    ]
+  },
+  "formclose": {
+    "prefix": "formclose",
+    "description": "Close a foorm",
+    "body": "{!! Form::close() !!\\}"
+  },
+  "formsubmit": {
+    "prefix": "formsubmit",
+    "description": "Submit button",
+    "body": [
+      "{!! Form::open(['method'=>'DELETE', 'route' => ['${1:DESTROY_ROUTE}', \\$${2:ROUTE_ID}->id]]) !!\\}",
+      "  <div class=\"form-group no-margin\">",
+      "    {!! Form::button('<span class=\"fa fa-remove\"></span>', ['type'=>'submit','class'=>'btn btn-danger no-vertical-padding']) !!\\}",
+      "  </div>",
+      "{!! Form::close() !!\\}",
+      "$0"
+    ]
+  },
+  "panetite": {
+    "prefix": "panetite",
+    "description": "Pane Title for Laravel Bootstrap",
+    "body": [
+      "@section('pane-title')",
+      "\t<div class=\"row\">",
+      "\t\t<span class=\"h4 col-xs-6\">${1:Title}</span>",
+      "\t\t<div class=\"col-xs-6 col-sm-6 \">",
+      "\t\t\t{!! link_to_route('admin.${2:route}.create', 'Add New ${3:Story}', null, ['class'=>'btn btn-primary btn-success pull-right'])  !!\\}",
+      "\t\t</div>",
+      "\t</div>",
+      "@endsection"
+    ]
+  },
+  "@p": {
+    "prefix": "@p",
+    "description": "Blace: @php",
+    "body": [
+      "@php",
+      "\t$0",
+      "@endphp"
+    ]
+  },
+  "_": {
+    "prefix": "_",
+    "description": "locale",
+    "body": "{{ __('$0') \\}\\}"
+  }
+}

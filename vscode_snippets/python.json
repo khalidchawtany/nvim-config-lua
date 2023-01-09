@@ -1,0 +1,10 @@
+{
+  "ifmain": {
+    "prefix": "ifmain",
+    "description": "Call main if main",
+    "body": [
+      "if __name__ == \"__main__\":",
+      "\tmain()"
+    ]
+  }
+}

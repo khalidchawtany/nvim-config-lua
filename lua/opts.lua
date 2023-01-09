@@ -2,8 +2,10 @@ local set = vim.opt
 local setg = vim.g
 local home = os.getenv("HOME")
 
-vim.g.mapleader = " "
-vim.g.loaclleader = "\\"
+
+vim.o.statuscolumn='%=%l%s%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "⎥ "  : "⎥ " ) : "⎥  ") : "⎥  " }'
+
+-- let &stc="\ %=%{v:wrap?'':v:relnum}\ ⎥%s%C\ \ \ "
 
 -- disable default plugin
 local disabled_built_ins = {

@@ -18,7 +18,7 @@ set termencoding=utf-8
 lua require('impatient')
 lua require('opts')
 source ~/.config/nvim/func.vim
-lua require('plugins')
+lua require('packerPlugins')
 lua require("user.winbar")
 lua require("user.autocommands")
 lua require('packer_compiled')

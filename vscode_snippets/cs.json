@@ -1,0 +1,153 @@
+{
+  "ofs": {
+    "prefix": "ofs",
+    "description": "Row(Cell) to String property assignment",
+    "body": [
+      "_$1.$2 = dt.Rows[0][\"$2\"].ToString();",
+      "$0"
+    ]
+  },
+  "ofi": {
+    "prefix": "ofi",
+    "description": "Row(Cell) to Integer property assignment",
+    "body": [
+      "_$1.$2 = int.Parse(dt.Rows[0][\"$2\"].ToString());",
+      "$0"
+    ]
+  },
+  "of$": {
+    "prefix": "of$",
+    "description": "Row(Cell) to Decimal property assignment",
+    "body": [
+      "_$1.$2 = Decimal.Parse(dt.Rows[0][\"$2\"].ToString());",
+      "$0"
+    ]
+  },
+  "ofd": {
+    "prefix": "ofd",
+    "description": "Row(Cell) to DateTime property assignment",
+    "body": [
+      "_$1.$2 = DateTime.Parse(dt.Rows[0][\"$2\"].ToString());",
+      "$0"
+    ]
+  },
+  "tf": {
+    "prefix": "tf",
+    "description": "Test Fixture",
+    "body": [
+      "[TestFixture]",
+      "public class $1",
+      "{",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "tu": {
+    "prefix": "tu",
+    "description": "Test Unit",
+    "body": [
+      "[Test]",
+      "public void ${1:should_be_true}()",
+      "{",
+      "\t${0:true.ShouldBeTrue();}",
+      "\\}"
+    ]
+  },
+  "tsetup": {
+    "prefix": "tsetup",
+    "description": "Test SetUp",
+    "body": [
+      "[SetUp]",
+      "public void SetUp()",
+      "{",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "tteardown": {
+    "prefix": "tteardown",
+    "description": "Test TearDown",
+    "body": [
+      "[TearDown]",
+      "public void TearDown()",
+      "{",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "tfsetup": {
+    "prefix": "tfsetup",
+    "description": "Test Fixture SetUp",
+    "body": [
+      "[OneTimeSetUpAttribute]",
+      "public void TestFixtureSetUp()",
+      "{",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "docsa": {
+    "prefix": "docsa",
+    "description": "XML docs all entries",
+    "body": [
+      "/*",
+      " * <summery>",
+      " * $1",
+      " * </summery>",
+      " * <param name=\"${2:parmmaname}\">${3:Pram Description}</param>",
+      " * <value> ${4:true or false} </value>",
+      " * <returns> ${5:True if there are unsaved changes; False if not} </returns>",
+      " * <remarks></remarks>",
+      " */"
+    ]
+  },
+  "docp": {
+    "prefix": "docp",
+    "description": "XML doc Parameter",
+    "body": "<param name=\"${2:parmmaname}\">${3:Pram Description}</param>"
+  },
+  "docss": {
+    "prefix": "docss",
+    "description": "XML docs summery",
+    "body": [
+      "/*",
+      " * <summery>",
+      " * $1",
+      " * </summery>",
+      " */"
+    ]
+  },
+  "doc": {
+    "prefix": "doc",
+    "description": "XML doc skeleton",
+    "body": [
+      "/*",
+      " *$1",
+      " */"
+    ]
+  },
+  "docv": {
+    "prefix": "docv",
+    "description": "XML doc values",
+    "body": "<value> ${1:Possible Values of this Property} </value>"
+  },
+  "docs": {
+    "prefix": "docs",
+    "description": "XML doc return",
+    "body": [
+      "<summery>",
+      "* $1",
+      "* </summery>"
+    ]
+  },
+  "docr": {
+    "prefix": "docr",
+    "description": "XML doc return",
+    "body": "<returns> ${1:True if there are unsaved changes; False if not} </returns>"
+  },
+  "docm": {
+    "prefix": "docm",
+    "description": "XML doc remarks",
+    "body": "<remarks> ${1:additiona info} </remarks>"
+  }
+}

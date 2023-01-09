@@ -391,8 +391,8 @@ packer.startup(
 
     use "lukas-reineke/indent-blankline.nvim"
 
-    -- make parenthese pairs distinguishable
-    use "p00f/nvim-ts-rainbow"
+
+    use "p00f/nvim-ts-rainbow"-- make parenthese pairs distinguishable
 
     -- all of these are colorizers
     use "NvChad/nvim-colorizer.lua"

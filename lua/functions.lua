@@ -1,3 +1,28 @@
+
+_G.tmp = {}
+
+function list_plugin_dirs()
+  local plugin_dirs = {}
+  local handle = vim.loop.fs_scandir(vim.fn.stdpath("config") .. "/lua/plugins")
+  while handle do
+    local name, typ = vim.loop.fs_scandir_next(handle)
+
+    if not name then
+      break
+    end
+    if (typ == "directory") then
+      table.insert(plugin_dirs, {import = "plugins." .. name})
+    end
+  end
+
+  return plugin_dirs
+end
+
+function _G.dump(...)
+  local objects = vim.tbl_map(vim.inspect, {...})
+  print(unpack(objects))
+end
+
 function LoadAllPlugins()
   local unloaded = ""
   for k, v in pairs(_G.packer_plugins) do
@@ -36,11 +61,6 @@ function table.copy(t)
     end
   end
   return t2
-end
-
-function _G.dump(...)
-  local objects = vim.tbl_map(vim.inspect, {...})
-  print(unpack(objects))
 end
 
 local function load(modulename)

@@ -1,0 +1,16 @@
+{
+  "cl": {
+    "prefix": "cl",
+    "description": "JS: console log",
+    "body": "console.log(${1:log});"
+  },
+  "ctor": {
+    "prefix": "ctor",
+    "description": "JS: constructor",
+    "body": [
+      "constructor(){",
+      "\t$0",
+      "\\}"
+    ]
+  }
+}

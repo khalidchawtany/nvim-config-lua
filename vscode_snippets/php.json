@@ -1,0 +1,221 @@
+{
+  "@p": {
+    "prefix": "@p",
+    "body": [
+      "@php",
+      "  $0",
+      "@endphp"
+    ]
+  },
+  "dr": {
+    "prefix": "dr",
+    "body": "dump(\\$request->toArray());"
+  },
+  "pl": {
+    "prefix": "pl",
+    "description": "expand p to full php",
+    "body": "<?php $1 ?>"
+  },
+  "php": {
+    "prefix": "php",
+    "description": "expand p to full php",
+    "body": [
+      "<?php",
+      "$0"
+    ]
+  },
+  "sfun": {
+    "prefix": "sfun",
+    "description": "Function",
+    "body": [
+      "public static function $1()",
+      "{",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "qfun": {
+    "prefix": "qfun",
+    "description": "Query Function",
+    "body": [
+      "function (\\$query) {",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "psfun": {
+    "prefix": "psfun",
+    "description": "Function",
+    "body": [
+      "private static function $1()",
+      "{",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "fun": {
+    "prefix": "fun",
+    "description": "Function",
+    "body": [
+      "public function $1()",
+      "{",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "if": {
+    "prefix": "if",
+    "description": "If",
+    "body": [
+      "if ($1) {",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "guarded": {
+    "prefix": "guarded",
+    "description": "model guarded attribute",
+    "body": [
+      "protected \\$guarded = [",
+      "\t$0,",
+      "\t];"
+    ]
+  },
+  "fillable": {
+    "prefix": "fillable",
+    "description": "model fillable attribute",
+    "body": [
+      "protected \\$fillable = [",
+      "\t$0,",
+      "\t];"
+    ]
+  },
+  "null": {
+    "prefix": "null",
+    "description": "migration nullable",
+    "body": "->nullable()$0"
+  },
+  "def": {
+    "prefix": "def",
+    "description": "migration default",
+    "body": "->default('$1')$0"
+  },
+  "minc": {
+    "prefix": "minc",
+    "description": "migration increments field",
+    "body": "\\$table->increments('${1:id}')$0;"
+  },
+  "mtext": {
+    "prefix": "mtext",
+    "description": "migration text field",
+    "body": "\\$table->text('${1:name}')$0;"
+  },
+  "mstr": {
+    "prefix": "mstr",
+    "description": "migration string field",
+    "body": "\\$table->string('${1:name}')$0;"
+  },
+  "menum": {
+    "prefix": "menum",
+    "description": "migration enum field",
+    "body": "\\$table->enum('${1:name}', ['${2:options1}', ])$0;"
+  },
+  "mbool": {
+    "prefix": "mbool",
+    "description": "migration boolean field",
+    "body": "\\$table->boolean('${1:isTrue}')$0;"
+  },
+  "mdec": {
+    "prefix": "mdec",
+    "description": "migration decimal field",
+    "body": "\\$table->decimal('${1:money}', ${2:12,2})$0;"
+  },
+  "mdate": {
+    "prefix": "mdate",
+    "description": "migration date field",
+    "body": "\\$table->date('${1:date}')$0;"
+  },
+  "mint": {
+    "prefix": "mint",
+    "description": "migration integer field",
+    "body": "\\$table->integer('${1:quantity}')$0;"
+  },
+  "muint": {
+    "prefix": "muint",
+    "description": "migration unsigned integer field",
+    "body": "\\$table->unsignedInteger('${1:name}')$0;"
+  },
+  "mtimestamp": {
+    "prefix": "mtimestamp",
+    "description": "migration timestamps",
+    "body": [
+      "\\$table->timestamps();",
+      "$0"
+    ]
+  },
+  "mfori": {
+    "prefix": "mfori",
+    "description": "migration foreignId",
+    "body": "\\$table->foreignId('$1_id')${2:->nullable()}->constrained();"
+  },
+  "mfor": {
+    "prefix": "mfor",
+    "description": "migration foreign",
+    "body": [
+      "\\$table->unsignedInteger('${1:name}');",
+      "\\$table->foreign('$1')",
+      "\t->references('$2')",
+      "\t->on('$3')",
+      "\t${4:->onDelete('cascade')}$0;"
+    ]
+  },
+  "pfun": {
+    "prefix": "pfun",
+    "description": "Function",
+    "body": [
+      "private function $1($2)",
+      "{",
+      "\t$0",
+      "\\}"
+    ]
+  },
+  "hc": {
+    "prefix": "hc",
+    "description": "HTML Comment",
+    "body": "<!-- ${1:end of }$0 -->"
+  },
+  "arr": {
+    "prefix": "arr",
+    "description": "Create a non-assigned array",
+    "body": "array(${1:'on'=>'post'}$2)$0"
+  },
+  "lrg": {
+    "prefix": "lrg",
+    "description": "Laravel 4: Route::get()",
+    "body": "Route::get(${1:\\$pattern}, ${2:\\$action});"
+  },
+  "csrf": {
+    "prefix": "csrf",
+    "description": "cross site script attacks",
+    "body": [
+      "/**",
+      " * Prevent cross site script attacks",
+      " */",
+      "public function __construct()",
+      "{",
+      "  \\$this->beforeFilter(${1:'csrf', array(${2:'on'=>'post'})});",
+      "\\}",
+      "$0"
+    ]
+  },
+  "ljoin": {
+    "prefix": "ljoin",
+    "description": "left join",
+    "body": "->join('$1', '$1.id', '=', '$2', 'LEFT OUTER')"
+  },
+  "join": {
+    "prefix": "join",
+    "description": "join",
+    "body": "->join('$1', '$1.id', '$2')"
+  }
+}

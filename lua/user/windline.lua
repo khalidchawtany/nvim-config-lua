@@ -185,9 +185,9 @@ basic.nomodoro = {
     },
     width = breakpoint_width,
     text = function(bufnr)
-        if packer_plugins["nomodoro"] and packer_plugins["nomodoro"].loaded then
-            return require('nomodoro').status()
-        end
+        -- if packer_plugins["nomodoro"] and packer_plugins["nomodoro"].loaded then
+        --     return require('nomodoro').status()
+        -- end
         return ""
     end,
 }
