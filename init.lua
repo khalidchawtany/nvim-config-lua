@@ -25,7 +25,7 @@ require("functions")
 
 require("lazy").setup(
   {
-    spec = list_plugin_dirs(),
+    spec = _G.ListLazyPluginDirs(),
     defaults = {},
     -- install = {colorscheme = {"tokyonight", "habamax"}},
     -- checker = {enabled = true}, -- automatically check for plugin updates
@@ -48,6 +48,7 @@ require("lazy").setup(
 )
 vim.cmd.source('~/.config/nvim/func.vim')
 require("user.winbar")
+require("user.statuscolumn")
 require("user.autocommands")
 require("maps")
 -- require('impatient')

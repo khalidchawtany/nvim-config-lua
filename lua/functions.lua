@@ -1,7 +1,7 @@
 
 _G.tmp = {}
 
-function list_plugin_dirs()
+_G.ListLazyPluginDirs = function()
   local plugin_dirs = {}
   local handle = vim.loop.fs_scandir(vim.fn.stdpath("config") .. "/lua/plugins")
   while handle do

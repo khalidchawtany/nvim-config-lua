@@ -103,6 +103,8 @@ if vim.fn.has "mac" == 1 then
       Squirrel = "",
       Tag = "",
       Watch = "",
+	  Expanded = "",
+	  Collapsed = "",
     },
   }
 else
@@ -199,6 +201,8 @@ else
       Squirrel = " ",
       Tag = " ",
       Watch = " ",
+	  Expanded = "",
+	  Collapsed = "",
     },
   }
 end

@@ -14,6 +14,7 @@ local M = {
       { "-g", "<cmd>Neotree float git_status<cr>", desc = "NeoTree (Git status)"},
       { "-b", "<cmd>Neotree float buffers<cr>", desc = "NeoTree (Buffers)"},
       { "-<space>", "<cmd>Neotree float buffers<cr>", desc = "NeoTree (Buffers)"},
+      { "<space>-", "<cmd>Neotree float buffers<cr>", desc = "NeoTree (Buffers)"},
       { "-0", ":Neotree float dir=<c-r>=FindGitDirOrRoot()<cr><cr>", desc = "NeoTree (Root)"},
     },
   -- cmd = {"Neotree"},

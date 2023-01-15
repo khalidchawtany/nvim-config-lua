@@ -7,7 +7,7 @@ vim.cmd [[
   endfunction
 
   function TestI()
-    let b:caret = winsaveview()    
+    let b:caret = winsaveview()
     %SnipRun
     call winrestview(b:caret)
   endfunction

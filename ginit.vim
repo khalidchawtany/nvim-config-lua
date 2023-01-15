@@ -1,4 +1,5 @@
 
+source /Users/juju/Development/Applications/neovim-qt/neovim-qt/build/bin/nvim-qt.app/Contents/Resources/runtime/plugin/nvim_gui_shim.vim
 hi Title guibg=#afd7ff
 
 " Support ligature
@@ -114,6 +115,8 @@ execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n><cmd>tabnext 10<cr>"
 
 let $PATH=$PATH.":/Users/juju/Development/Libraries/zf/zig-out/bin/"
 
+
+let NVIM_QT_RUNTIME_PATH="./Contents/Resources/runtime"
 if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
   "***************MUST BE LAST LINE*******
   "Start neovim-qt as maximized borderless.
@@ -121,8 +124,8 @@ if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
     GuiPopupmenu 0
     " call GuiWindowMaximized(2)
     cd ~/.config/nvim/
-    GuiAdaptiveColor v:true
-" let NVIM_QT_RUNTIME_PATH="./Contents/Resources/runtime"
+	GuiAdaptiveColor v:true
+	" ~/Development/Applications/neovim-qt/neovim-qt/build/bin/nvim-qt.app/Contents/Resources/runtime
 
  " GuiFont! FiaCode Nerd Font Mine:h18
  GuiFont! OperatorMonoLig Nerd Font:h18
