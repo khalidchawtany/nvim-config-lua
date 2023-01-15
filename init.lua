@@ -46,13 +46,13 @@ require("lazy").setup(
     }
   }
 )
-vim.cmd.source('~/.config/nvim/func.vim')
+vim.cmd.source("~/.config/nvim/func.vim")
 require("user.winbar")
 require("user.statuscolumn")
 require("user.autocommands")
 require("maps")
 -- require('impatient')
 require("opts")
-vim.cmd.source('~/.config/nvim/lua/maps.vim')
-vim.cmd[[autocmd User LazyReload source ~/.config/nvim/lua/maps.vim]]
+vim.cmd.source("~/.config/nvim/lua/maps.vim")
+vim.cmd [[autocmd User LazyReload source ~/.config/nvim/lua/maps.vim]]
 vim.opt.shadafile = ""

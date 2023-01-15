@@ -1,9 +1,7 @@
 local M = {
   "mhartington/formatter.nvim",
   cmd = {"Format", "FormatWrite"},
-  keys = {
-    {"<c-k><c-space>", ":Format<cr>", desc = "Format"}
-  }
+  keys = {{"<c-k><c-space>", ":Format<cr>", desc = "Format"}}
 }
 
 M.config = function()
@@ -31,7 +29,11 @@ M.config = function()
           function()
             return {
               exe = "prettier",
-              args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+              args = {
+                "--stdin-filepath",
+                vim.api.nvim_buf_get_name(0),
+                "--single-quote"
+              },
               stdin = true
             }
           end
@@ -40,7 +42,11 @@ M.config = function()
           prettier = function()
             return {
               exe = "prettier",
-              args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+              args = {
+                "--stdin-filepath",
+                vim.api.nvim_buf_get_name(0),
+                "--single-quote"
+              },
               stdin = true
             }
           end
@@ -49,7 +55,11 @@ M.config = function()
           prettier = function()
             return {
               exe = "prettier",
-              args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+              args = {
+                "--stdin-filepath",
+                vim.api.nvim_buf_get_name(0),
+                "--single-quote"
+              },
               stdin = true
             }
           end
@@ -63,7 +73,11 @@ M.config = function()
           function()
             return {
               exe = "prettier",
-              args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+              args = {
+                "--stdin-filepath",
+                vim.api.nvim_buf_get_name(0),
+                "--single-quote"
+              },
               stdin = true
             }
           end
@@ -78,14 +92,9 @@ M.config = function()
             }
           end
         },
-        go = {
-          function()
-            return {
-              exe = "gofmt",
-              stdin = true
-            }
-          end
-        },
+        go = {function()
+            return {exe = "gofmt", stdin = true}
+          end},
         lua = {
           -- luafmt
           function()
@@ -100,11 +109,7 @@ M.config = function()
           -- python-black
           -- pip3 install git+git://github.com/psf/black
           function()
-            return {
-              exe = "black",
-              args = {"--quiet"},
-              stdin = false
-            }
+            return {exe = "black", args = {"--quiet"}, stdin = false}
           end
         },
         cpp = {
@@ -112,7 +117,10 @@ M.config = function()
           function()
             return {
               exe = "clang-format",
-              args = {"--assume-filename", vim.api.nvim_buf_get_name(0)},
+              args = {
+                "--assume-filename",
+                vim.api.nvim_buf_get_name(0)
+              },
               stdin = true,
               cwd = vim.fn.expand("%:p:h") -- Run clang-format in cwd of the file.
             }
@@ -122,7 +130,11 @@ M.config = function()
           function()
             return {
               exe = "prettier",
-              args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--double-quote"},
+              args = {
+                "--stdin-filepath",
+                vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
+                "--double-quote"
+              },
               stdin = true
             }
           end
@@ -131,7 +143,11 @@ M.config = function()
           function()
             return {
               exe = "prettier",
-              args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), "--double-quote"},
+              args = {
+                "--stdin-filepath",
+                vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
+                "--double-quote"
+              },
               stdin = true
             }
           end
@@ -156,7 +172,11 @@ M.config = function()
             return {
               exe = "blade-formatter",
               -- args = {"--write", "--stdin", "--indent-size=4", "--wrap-line-length=100", vim.api.nvim_buf_get_name(0)},
-              args = {"--indent-size=2", "--wrap-line-length=100", vim.api.nvim_buf_get_name(0)},
+              args = {
+                "--indent-size=2",
+                "--wrap-line-length=100",
+                vim.api.nvim_buf_get_name(0)
+              },
               stdin = true
             }
           end
@@ -167,7 +187,11 @@ M.config = function()
               -- '/Users/juju/.composer/vendor/bin/phpstan analyze --error-format raw --no-progress'
               exe = 'PATH="/usr/local/opt/php@8.1/bin:$PATH" /Users/juju/.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf',
               -- args = {"-", "--standard=PSR12 --stdin-path=" .. vim.api.nvim_buf_get_name(0), "-"},
-              args = {"--standard=PSR12", vim.api.nvim_buf_get_name(0), "--tab-width=2"},
+              args = {
+                "--standard=PSR12",
+                vim.api.nvim_buf_get_name(0),
+                "--tab-width=2"
+              },
               stdin = true,
               ignore_exitcode = true
             }
