@@ -11,14 +11,16 @@ M.config = function()
       sources = {
         -- Hover
         null_ls.builtins.hover.dictionary,
-		null_ls.builtins.diagnostics.cspell,
+		null_ls.builtins.diagnostics.cspell.with({
+            filetypes = {"markdown", "text", "org", "norg", "gitcommit"}
+		}),
 		null_ls.builtins.code_actions.cspell,
 
         -- completion
         null_ls.builtins.completion.luasnip,
         null_ls.builtins.completion.spell.with(
           {
-            filetypes = {"markdown", "text"}
+            filetypes = {"markdown", "text", "org", "norg", "gitcommit"}
           }
         ),
 
