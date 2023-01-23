@@ -51,7 +51,7 @@ M.config = function()
         null_ls.builtins.formatting.djlint,
         null_ls.builtins.formatting.jq, -- Lua
         null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.lua_format, -- PHP
+        -- null_ls.builtins.formatting.lua_format, -- PHP
         null_ls.builtins.formatting.phpcbf,
         null_ls.builtins.formatting.phpcsfixer,
         null_ls.builtins.formatting.pint, -- Twig
