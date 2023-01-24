@@ -102,6 +102,7 @@
   "sibling-swap.nvim": { "branch": "main", "commit": "71eb9daa5233cd576ce8119bc2dbfa67d4d35462" },
   "snippet-converter.nvim": { "branch": "main", "commit": "ff19ee7e132e76746000b81957de7017ad588d44" },
   "splitjoin.vim": { "branch": "main", "commit": "956d67c88512b91c2938da3a9e0aeeea2b82cd0b" },
+  "statuscol.nvim": { "branch": "main", "commit": "5e545f98fe40498b4c93dcfaa472d7a972cec3fc" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "09fbf6dfd85ecae5e45b9200b37a79fc87e1fc40" },
   "telescope-alternate": { "branch": "master", "commit": "9e23e7946ed09217cb4d61613ce24164a37235e8" },
   "telescope-command-palette.nvim": { "branch": "master", "commit": "f7024ea025ed7985d8881d1b535004a1200903f3" },

@@ -3,7 +3,7 @@ local setg = vim.g
 local home = os.getenv("HOME")
 
 
-vim.o.statuscolumn='%=%l%s%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "⎥ "  : "⎥ " ) : "⎥  ") : "⎥  " }'
+-- vim.o.statuscolumn='%=%l%s%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "⎥ "  : "⎥ " ) : "⎥  ") : "⎥  " }'
 
 
 -- vim.o.statuscolumn='%s%=%{v:wrap ? "" : v:lnum} %#FoldColumn#%@v:lua.StatusColumn.handler.fold@%{v:lua.StatusColumn.display.fold()}%#StatusColumnBorder#▐%#StatusColumnBuffer#'
