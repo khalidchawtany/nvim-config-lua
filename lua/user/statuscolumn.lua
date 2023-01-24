@@ -1,123 +1,35 @@
-if _G.StatusColumn then
-  return
+local M = {}
+_G.Status = M
+
+---@return {name:string, text:string, texthl:string}[]
+function M.get_signs()
+  local buf = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+  return vim.tbl_map(
+    function(sign)
+      return vim.fn.sign_getdefined(sign.name)[1]
+    end,
+    vim.fn.sign_getplaced(buf, {group = "*", lnum = vim.v.lnum})[1].signs
+  )
 end
 
-local Icons = require('user.icons')
-
-_G.StatusColumn = {
-  handler = {
-    fold = function()
-      local lnum = vim.fn.getmousepos().line
-
-      -- Only lines with a mark should be clickable
-      if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then
-        return
-      end
-
-      local state
-      if vim.fn.foldclosed(lnum) == -1 then
-        state = "close"
-      else
-        state = "open"
-      end
-
-      vim.cmd.execute("'" .. lnum .. "fold" .. state .. "'")
+function M.column()
+  local sign, git_sign
+  for _, s in ipairs(M.get_signs()) do
+    if s.name:find("GitSign") then
+      git_sign = s
+    else
+      sign = s
     end
-  },
-
-  display = {
-    line = function()
-      if vim.v.wrap then
-        return ""
-      end
-
-      local lnum = tostring(vim.v.lnum)
-      if #lnum == 1 then -- Prevent adding a tenth line from bumping the size of the column
-        return " " .. lnum
-      else
-        return lnum
-      end
-    end,
-
-    fold = function()
-      if vim.v.wrap then
-        return ""
-      end
-
-      local lnum = vim.v.lnum
-      local icon = "  "
-
-      -- Line isn't in folding range
-      if vim.fn.foldlevel(lnum) <= 0 then
-        return icon
-      end
-
-      -- Not the first line of folding range
-      if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then
-        return icon
-      end
-
-      if vim.fn.foldclosed(lnum) == -1 then
-        icon = Icons.misc.Expanded
-      else
-        icon = Icons.misc.Collapsed
-      end
-
-      return icon
-    end
-  },
-
-  sections = {
-    sign_column = {
-      [[%s]]
-    },
-    line_number = {
-      [[%=%{v:lua.StatusColumn.display.line()}]]
-    },
-    spacing     = {
-      [[ ]]
-    },
-    folds       = {
-      [[%#FoldColumn#]], -- HL
-      [[%@v:lua.StatusColumn.handler.fold@]],
-      [[%{v:lua.StatusColumn.display.fold()}]]
-    },
-    border      = {
-      [[%#StatusColumnBorder#]], -- HL
-      [[▐]],
-    },
-    padding     = {
-      [[%#StatusColumnBuffer#]], -- HL
-      [[ ]],
-    },
-  },
-
-  build = function(tbl)
-    local statuscolumn = {}
-
-    for _, value in ipairs(tbl) do
-      if type(value) == "string" then
-        table.insert(statuscolumn, value)
-      elseif type(value) == "table" then
-        table.insert(statuscolumn, StatusColumn.build(value))
-      end
-    end
-
-    return table.concat(statuscolumn)
-  end,
-
-  set_window = function(value)
-    vim.defer_fn(function()
-      vim.api.nvim_win_set_option(vim.api.nvim_get_current_win(), "statuscolumn", value)
-    end, 1)
   end
-}
+  local components = {
+    sign and ("%#" .. sign.texthl .. "#" .. sign.text .. "%*") or " ",
+    [[%=]],
+    [[%{&nu?(&rnu&&v:relnum?v:relnum:v:lnum):''} ]],
+    git_sign and ("%#" .. git_sign.texthl .. "#" .. git_sign.text .. "%*") or "  "
+  }
+  return table.concat(components, "")
+end
 
-vim.opt.statuscolumn = StatusColumn.build({
-  StatusColumn.sections.sign_column,
-  StatusColumn.sections.line_number,
-  StatusColumn.sections.spacing,
-  StatusColumn.sections.folds,
-  StatusColumn.sections.border,
-  StatusColumn.sections.padding
-})
+vim.opt.statuscolumn = [[%!v:lua.Status.column()]]
+
+return M
