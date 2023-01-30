@@ -86,7 +86,7 @@
   "nvim-gps": { "branch": "master", "commit": "f4734dff6fc2f33b5fd13412e56c4fce06650a74" },
   "nvim-lspconfig": { "branch": "master", "commit": "1e988250a0f52a68ddb72905d623405d634e9c5d" },
   "nvim-spectre": { "branch": "master", "commit": "24275beae382e6bd0180b3064cf5729548641a02" },
-  "nvim-treesitter": { "branch": "master", "commit": "a5cf6b1f3fbf5bf91de9ac12e5b4127610766fed" },
+  "nvim-treesitter": { "branch": "master", "commit": "adeb6e02d3bd682f7bea99a988b0deadd407e888" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "9011d333aa411ae71ca8762ca3a277ce6b9e6527" },
   "nvim-treesitter-textsubjects": { "branch": "master", "commit": "bc047b20768845fd54340eb76272b2cf2f6fa3f3" },
   "nvim-ts-rainbow": { "branch": "master", "commit": "ef95c15a935f97c65a80e48e12fe72d49aacf9b9" },

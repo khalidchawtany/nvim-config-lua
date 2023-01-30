@@ -147,8 +147,8 @@ M.config = function()
             workspace = {
               -- Make the server aware of Neovim runtime files
               library = vim.api.nvim_get_runtime_file("", true),
-			  -- prevent lua being asked to configure workspace
-			  checkThirdParty = false,
+              -- prevent lua being asked to configure workspace
+              checkThirdParty = false
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
@@ -157,6 +157,23 @@ M.config = function()
           }
         }
       }
+    end,
+    ["tailwindcss"] = function()
+      -- Lsp servers that support documentColor
+      require("lspconfig").tailwindcss.setup(
+        {
+          settings = {
+            tailwindCSS = {
+              experimental = {
+                classRegex = {
+                  "cva\\(([^)]*)\\)",
+                  '["\'`]([^"\'`]*).*?["\'`]'
+                }
+              }
+            }
+          }
+        }
+      )
     end
   }
 end

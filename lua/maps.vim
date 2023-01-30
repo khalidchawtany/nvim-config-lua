@@ -36,6 +36,7 @@ nnoremap <silent> <c-l> <c-w><c-l>
 nnoremap <c-w>M <C-w>_<C-w><Bar>
 
 nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>echo ""<cr><cmd>diffupdate<cr><cmd>redraw!<cr>
+nnoremap <silent><nowait> <leader><BS> <cmd>syn clear<cr>
 " nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr>:nohlsearch \| echo "" \|redraw! \| diffupdate \| normal \<Plug>(FastFoldUpdate) <cr>
 
 
@@ -121,6 +122,7 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
 
 
   nnoremap <D-d><D-d> "xyy"xp
+  vnoremap <D-d><D-d> "xy`>"xpO
   inoremap <D-v> <c-r>+
   nnoremap <D-v> "+p
   nnoremap <D-p> <NOP>
