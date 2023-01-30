@@ -89,9 +89,6 @@ M.config = function()
           winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None"
         }
       },
-	  formatting = {
-		  format = require("tailwindcss-colorizer-cmp").formatter
-	  },
       -- formatting = {
       --   format = function(entry, vim_item)
       --     vim_item.menu =
@@ -123,6 +120,10 @@ M.config = function()
           cmp.config.compare.order
         }
       },
+
+	  -- formatting = {
+		 --  format = require("tailwindcss-colorizer-cmp").formatter
+	  -- },
       formatting = {
         format = function(entry, vim_item)
           vim_item.menu =
