@@ -1,25 +1,9 @@
 
-function OptimizePHPSyntax()
-	" syntax off
-	syn clear
-  " syn clear phpHereDoc
-  " syn clear phpNowDoc
-  " syn clear phpParent
-  " syn clear phpFloat
-  " syn clear phpOperator
-  " syn clear phpComparison
-  " syn clear phpRelation
-  " syn clear phpNumber
-  " syn clear phpMethodsVar
-  " syn clear phpComment
-  " syn clear phpRegion
-  " syn clear phpStringSingle
-endfunction
-
-augroup php_and_family
-  au!
-  au BufReadPre *.php call OptimizePHPSyntax()
-augroup END
+" treesitter does this autocmd
+" augroup php_and_family
+"   au!
+"   au BufReadPre *.php syn clear
+" augroup END
 
 
 " The following function takes a command such as the following
