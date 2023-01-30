@@ -46,6 +46,7 @@ require("lazy").setup(
     }
   }
 )
+vim.cmd.cd("~/.config/nvim")
 vim.cmd.source("~/.config/nvim/func.vim")
 require("user.winbar")
 require("user.statuscolumn")
@@ -56,3 +57,13 @@ require("opts")
 vim.cmd.source("~/.config/nvim/lua/maps.vim")
 vim.cmd [[autocmd User LazyReload source ~/.config/nvim/lua/maps.vim]]
 vim.opt.shadafile = ""
+
+
+vim.cmd[[
+" config for differnt guis
+for gui in ['nvui', 'goneovim', 'neovide']
+  if exists('g:' . gui)
+    execute "source ~/.config/nvim/guis/" . gui . ".vim"
+  endif
+endfor
+]]

@@ -4,6 +4,7 @@ return {
   keys = {
     "<Plug>(abolish-coerce)",
     "<Plug>(abolish-coerce-word)",
+    "crt",
     "crs",
     "crm",
     "crc",

@@ -1,6 +1,7 @@
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
+  event = "VimEnter",
   dependencies = {
     "MunifTanjim/nui.nvim",
     "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended

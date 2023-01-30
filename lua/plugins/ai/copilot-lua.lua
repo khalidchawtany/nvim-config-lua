@@ -25,9 +25,9 @@ M.config = function()
             auto_trigger = false,
             debounce = 75,
             keymap = {
-              accept = "<M-l>",
-              next = "<M-]>",
-              prev = "<M-[>",
+              accept = "<D-l>",
+              next = "<D-]>",
+              prev = "<D-[>",
               dismiss = "<C-]>"
             }
           },
