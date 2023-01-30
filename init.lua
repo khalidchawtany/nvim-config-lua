@@ -57,7 +57,7 @@ require("opts")
 vim.cmd.source("~/.config/nvim/lua/maps.vim")
 vim.cmd [[autocmd User LazyReload source ~/.config/nvim/lua/maps.vim]]
 vim.opt.shadafile = ""
-
+vim.cmd[[TSEnable highlight]]
 
 vim.cmd[[
 " config for differnt guis
