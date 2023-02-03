@@ -45,7 +45,7 @@ command! -bang -nargs=* FzfHelpTic call fzf#vim#grep('rg --column --no-ignore --
 " nnoremap <silent> <leader>hot <cmd>FzfHelpTic<cr>
 
 
-command! -bang -nargs=* Rg2 call fzf#vim#grep("rg --column --no-ignore --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rg2 call fzf#vim#grep("rg --column --no-ignore --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 nnoremap <silent> <c-p><c-a> :Rg2 <CR>
 nnoremap <silent> <c-p>a :Rg2 <C-R><C-W><CR>
 nnoremap <silent> <c-p><c-j> :FzfAg <CR>

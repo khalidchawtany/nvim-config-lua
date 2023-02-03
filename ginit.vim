@@ -8,7 +8,7 @@ let g:render_ligatures = 0
 nnoremap <silent> <leader>o<cr> :let g:render_ligatures =  (g:render_ligatures + 1) % 2 \| call rpcnotify(0, 'Gui', 'Option', 'RenderLigatures', g:render_ligatures)<cr>
 
 let g:gui_fonts = [
-      \ 'FiraCode\ Nerd\ Font:h18',
+      \ 'FiraCode\ Nerd\ Font:h20',
       \ 'Fira\ Code:h18',
       \ 'Operator\ Mono\ Lig:h17',
       \ 'RobotoMono\ Nerd\ Font:h18',
@@ -40,7 +40,7 @@ function! SetLineSpace(inc)
   exec 'set linespace='. linespace
   call rpcnotify(0, 'Gui', 'Linespace', linespace)
 endfunction
-set linespace=18
+set linespace=24
 " call SetLineSpace(0)
 
 " command! Bigger  :let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)+1', '')
@@ -65,11 +65,11 @@ nnoremap <silent> <c-w><bs>   :let g:WindowFrameless=(g:WindowFrameless + 1) % 2
 set mouse=a
 set nottimeout
 
-if &background == "light"
-    hi PmenuSel guibg=darkorange guifg=#B34826
-else
-    hi PmenuSel guibg=darkorange guifg=#B34826
-endif
+" if &background == "light"
+"     hi PmenuSel guibg=darkorange guifg=#B34826
+" else
+"     hi PmenuSel guibg=darkorange guifg=#B34826
+" endif
 
 "Make c-^ consitent between terminal and GUI
 map <c-6> <c-^>
@@ -133,4 +133,5 @@ if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
 
 endif
 
+" Make non-text characters less visible
 hi NonText guifg=#333355
