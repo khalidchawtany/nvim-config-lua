@@ -132,16 +132,19 @@ M.config = function()
             emoji = "[EMO]",
             path = "[FILE]",
             calc = "[CALC]",
-            luasnip = "[LSNIP]",
+            luasnip = "[LS]",
             buffer = "[BUF]",
-            rg = "[RG]"
+            rg = "[RG]",
+ 			copilot = "[Cop]",
+			treesitter = "[TS]",
           })[entry.source.name]
           vim_item.dup =
             ({
-            buffer = 1,
-            path = 1,
-            nvim_lsp = 1
-          })[entry.source.name] or 0
+				buffer = 1,
+				path = 1,
+				nvim_lsp = 0,
+				luasnip = 1,
+          })[entry.source.name] or 0 -- 0 here is the default duplicate value
           return vim_item
         end
       },

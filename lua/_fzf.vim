@@ -24,7 +24,7 @@ nnoremap silent! <c-p>a <cmd>Rg <c-r><c-w><cr>
 if has('mac')
   let $FZF_DEFAULT_OPTS=" --history=/Users/JuJu/.fzf_history --pointer=' ▶'"
         \." --marker='◉ ' --reverse --bind 'ctrl-space:select-all,ctrl-l:jump'"
-        \." --color=bg:#393D4E,bg+:#393D4E,fg+:#44aa44,hl:#22aa44,hl+:#44ff44,gutter:#393D4E,marker:#00ffff"
+        \." --color=bg:#24283b,bg+:#234F84,fg+:#B9CDF7,hl:#00C8E0,hl+:#44ff44,gutter:#24283b,marker:#00ffff,border:#00A9BF,separator:#24283b"
 
   let s:null = 'null'
 elseif has('win64')
