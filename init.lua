@@ -57,7 +57,6 @@ require("maps")
 require("opts")
 vim.cmd.source("~/.config/nvim/lua/maps.vim")
 vim.cmd [[autocmd User LazyReload source ~/.config/nvim/lua/maps.vim]]
-vim.opt.shadafile = ""
 vim.cmd[[TSEnable highlight]]
 
 vim.cmd[[
@@ -69,6 +68,7 @@ for gui in ['nvui', 'goneovim', 'neovide']
 endfor
 ]]
 
+vim.opt.shadafile = ""
 
 
 -- test stc

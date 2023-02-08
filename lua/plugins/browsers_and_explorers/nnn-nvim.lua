@@ -1,8 +1,8 @@
 local M = {
   "luukvbaal/nnn.nvim",
   keys = {
-    {"f<C-n>", '<cmd>lua require("nnn").toggle("explorer")', desc = "NNN (Explorer)", mode = {"n", "t"}},
-    {"f<C-p>", '<cmd>lua require("nnn").toggle("picker")', desc = "NNN (Picker)", mode = {"n", "t"}}
+    {"f<C-n>", ':lua require("nnn").toggle("explorer")<cr>', desc = "NNN (Explorer)", mode = {"n", "t"}},
+    {"f<C-p>", ':lua require("nnn").toggle("picker")<cr>', desc = "NNN (Picker)", mode = {"n", "t"}}
   }
 }
 
