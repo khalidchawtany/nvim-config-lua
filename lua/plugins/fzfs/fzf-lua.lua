@@ -229,8 +229,8 @@ M.config = function()
         ["ctrl-s"] = actions.file_split,
         ["ctrl-v"] = actions.file_vsplit,
         ["ctrl-t"] = actions.file_tabedit,
-        ["alt-q"] = actions.file_sel_to_qf,
-        ["alt-l"] = actions.file_sel_to_ll
+        ["ctrl-q"] = actions.file_sel_to_qf,
+        ["ctrl-l"] = actions.file_sel_to_ll
       },
       buffers = {
         -- providers that inherit these actions:

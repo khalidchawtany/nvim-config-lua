@@ -198,7 +198,7 @@ set.ruler = true -- Show the cursor position
 set.scrolloff = 2
 set.sidescrolloff = 5
 
-set.cpo = vim.o.cpo .. 'n' -- Draw color for lines that has number only
+-- set.cpo = vim.o.cpo .. 'n' -- Draw color for lines that has number only
 set.display:append{'lastline'}
 
 -- set.mousehide = true -- Hide mouse while typing

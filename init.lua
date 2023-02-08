@@ -51,6 +51,7 @@ vim.cmd.source("~/.config/nvim/func.vim")
 require("user.winbar")
 require("user.statuscolumn")
 require("user.autocommands")
+require("user.commands")
 require("maps")
 -- require('impatient')
 require("opts")
@@ -67,3 +68,11 @@ for gui in ['nvui', 'goneovim', 'neovide']
   endif
 endfor
 ]]
+
+
+
+-- test stc
+-- set stc=%=%{v:wrap?'':v:relnum}⎥%s%C\ \
+-- set cpo+=n
+-- set number
+-- set wrap
