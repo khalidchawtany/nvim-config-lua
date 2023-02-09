@@ -1,6 +1,7 @@
 local M = {
   "williamboman/mason.nvim",
-  dependencies = {"williamboman/mason-lspconfig.nvim"}
+  dependencies = {"williamboman/mason-lspconfig.nvim"},
+  event = "BufReadPre",
 }
 
 M.config = function()

@@ -1,5 +1,6 @@
 local M = {
- "windwp/windline.nvim",
+  "windwp/windline.nvim",
+  event = "VimEnter"
 }
 
 M.config = function()

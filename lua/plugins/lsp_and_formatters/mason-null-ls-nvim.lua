@@ -3,7 +3,8 @@ local M = {
   dependencies = {
     "null-ls.nvim",
     "mason.nvim"
-  }
+  },
+  event = "BufReadPre",
 }
 M.config = function()
   require("mason-null-ls").setup(

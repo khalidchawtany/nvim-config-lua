@@ -1,7 +1,7 @@
 return {
   "p00f/nvim-ts-rainbow", -- make parenthese pairs distinguishable
   dependencies = "nvim-treesitter/nvim-treesitter",
-  lazy = false,
+  event = "BufReadPost",
   config = function()
     require "nvim-treesitter.configs".setup {
       rainbow = {

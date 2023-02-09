@@ -1,7 +1,8 @@
 local M = {
- "phaazon/mind.nvim",
+  "phaazon/mind.nvim",
   branch = "v2.2",
-  requires = {"nvim-lua/plenary.nvim"}
+  requires = {"nvim-lua/plenary.nvim"},
+  lazy = true
 }
 
 M.config = function()
