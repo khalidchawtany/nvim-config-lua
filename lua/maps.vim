@@ -281,7 +281,7 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
   "current working dir
   nnoremap cdc <cmd>execute"lcd ". expand("%:h")<cr>
   "git dir ROOT
-  nnoremap cdg <cmd>execute "lcd " . FindGitDirOrRoot()<cr><cr>
+  nnoremap cdg <cmd>execute "lcd " . FindGitDirOrRoot()<cr>
 
   nnoremap cdd <cmd> execute "lcd /Volumes/Home/.local/share/nvim/"<cr>
   nnoremap cdv <cmd> execute "lcd /Volumes/Home/.config/nvim/"<cr>

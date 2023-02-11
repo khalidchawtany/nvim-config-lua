@@ -7,7 +7,7 @@ local M = {
 M.init = function()
   -- vim.keymap.set("n", "<c-s><c-m>", vim.cmd.ProjectMgr, {desc = "Project Mgr"})
 
-  vim.api.nvim_set_keymap("n", "<c-s><c-m>", ":ProjectMgr<CR>", {})
+  vim.api.nvim_set_keymap("n", "<c-s><c-m>", "<cmd>ProjectMgr<CR>", {})
 end
 
 M.config = function()

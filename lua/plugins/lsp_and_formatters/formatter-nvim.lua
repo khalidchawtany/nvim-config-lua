@@ -1,7 +1,7 @@
 local M = {
   "mhartington/formatter.nvim",
   cmd = {"Format", "FormatWrite"},
-  keys = {{"<c-k><c-space>", ":Format<cr>", desc = "Format"}}
+  keys = {{"<c-k><c-space>", "<cmd>Format<cr>", desc = "Format"}}
 }
 
 M.config = function()

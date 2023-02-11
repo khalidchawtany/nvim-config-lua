@@ -5,7 +5,7 @@ local M = {
 M.init = function()
   vim.keymap.set("n", "gcj", "<cmd>ComAnnotation<Cr>", {noremap = true, silent = true})
   vim.keymap.set("n", "gck", "<cmd>ComComment<cr>", {noremap = true, silent = true})
-  vim.keymap.set("x", "gck", ":ComComment<cr>", {noremap = true, silent = true})
+  vim.keymap.set("x", "gck", "<cmd>ComComment<cr>", {noremap = true, silent = true})
 
   -- local custom_template = require("coman").custom_template
   -- -- tbl is the function relate table. index 1 is function name

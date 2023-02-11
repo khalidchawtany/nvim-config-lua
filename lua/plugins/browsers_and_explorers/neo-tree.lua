@@ -8,7 +8,7 @@ local M = {
     "MunifTanjim/nui.nvim"
   },
   keys = {
-      { "--", ":Neotree float reveal dir=<c-r>=expand('%:h')<cr> reveal_force_cwd<cr>", desc = "NeoTree (float"},
+      { "--", '<cmd>execute"Neotree float reveal dir=".expand("%:h")." reveal_force_cwd"<cr>', desc = "NeoTree (float"},
       { "-r", "<cmd>Neotree right reveal<cr>", desc = "NeoTree (Reveal right)"},
       { "-l", "<cmd>Neotree left reveal<cr>", desc = "NeoTree (Reveal left)"},
       { "-f", "<cmd>Neotree float reveal<cr>", desc = "NeoTree (Reveal float)"},
@@ -16,7 +16,7 @@ local M = {
       { "-b", "<cmd>Neotree float buffers<cr>", desc = "NeoTree (Buffers)"},
       { "-<space>", "<cmd>Neotree float buffers<cr>", desc = "NeoTree (Buffers)"},
       { "<space>-", "<cmd>Neotree float buffers<cr>", desc = "NeoTree (Buffers)"},
-      { "-0", ":Neotree float dir=<c-r>=FindGitDirOrRoot()<cr><cr>", desc = "NeoTree (Root)"},
+      { "-0", '<cmd>execute"Neotree float dir=".FindGitDirOrRoot()<cr>', desc = "NeoTree (Root)"},
     },
   -- cmd = {"Neotree"},
 }

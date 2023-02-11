@@ -55,7 +55,8 @@ M.config = function()
 			null_ls.builtins.formatting.blade_formatter, -- Yaml
 			null_ls.builtins.formatting.yamlfmt,
 			-- CSS, Style, less, sass, scss
-			null_ls.builtins.formatting.rustywind, -- Go
+			null_ls.builtins.formatting.rustywind, -- sort Tailwind classes
+			-- Go
 			null_ls.builtins.formatting.gofmt,
 			null_ls.builtins.formatting.goimports,
 			null_ls.builtins.formatting.goimports_reviser,

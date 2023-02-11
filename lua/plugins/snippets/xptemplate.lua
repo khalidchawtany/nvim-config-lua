@@ -1,7 +1,7 @@
 local M = {
   "drmingdrmer/xptemplate",
-  -- event = {"InsertEnter"},
-  keys = {{"<c-\\>", mode = "i"}}
+  event = {"InsertEnter"},
+  -- keys = {{"<c-\\>", mode = "i"}}
 }
 
 M.config = function()
@@ -20,8 +20,8 @@ M.config = function()
   " i<C-r>=ListSnippetsStartingWithPrefix()<CR>
   ]]
   vim.g.xptemplate_key = "<c-\\>"
-  vim.g.xptemplate_nav_next = "<C-j>"
-  vim.g.xptemplate_nav_prev = "<C-k>"
+  vim.g.xptemplate_nav_next = "<C-]>"
+  vim.g.xptemplate_nav_prev = "<C-[>"
   vim.g.xptemplate_minimal_prefix = 0
 end
 return M
