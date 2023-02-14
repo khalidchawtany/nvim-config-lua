@@ -4,8 +4,8 @@ local M = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
     "hrsh7th/nvim-cmp"
-  }
-  -- cmd = {"Noice"}
+  },
+  cmd = {"Noice"}
 }
 M.config = function()
   require("noice").setup(

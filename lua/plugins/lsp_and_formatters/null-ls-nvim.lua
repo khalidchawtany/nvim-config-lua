@@ -23,7 +23,7 @@ M.config = function()
 			-- code actions
 			null_ls.builtins.code_actions.gitsigns,
 			null_ls.builtins.code_actions.proselint,
-			null_ls.builtins.code_actions.refactoring,
+			-- null_ls.builtins.code_actions.refactoring,
 			null_ls.builtins.code_actions.xo, -- eslint wrapper with great defaults
 			-- formatting
 			null_ls.builtins.formatting.prettier,
@@ -82,6 +82,15 @@ M.config = function()
 			return not vim.api.nvim_buf_get_name(bufnr):match("^git://")
 		end,
 	})
+
+	  require "null-ls".register({
+		  name = "more_actions",
+		  method = { require "null-ls".methods.CODE_ACTION },
+		  filetypes = { "_all" },
+		  generator = {
+			  fn = require("ts-node-action").available_actions
+		  }
+	  })
 end
 
 return M
