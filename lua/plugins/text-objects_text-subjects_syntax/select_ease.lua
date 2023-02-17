@@ -1,5 +1,7 @@
 return {
 	"ziontee113/SelectEase",
+	event = "VeryLazy",
+
 	config = function()
 		local select_ease = require("SelectEase")
 
@@ -27,28 +29,28 @@ return {
 			php = php_query,
 		}
 
-		vim.keymap.set({ "n", "s", "i" }, "<D-k>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<D-[>", function()
 			select_ease.select_node({
 				queries = queries,
 				direction = "previous",
 				vertical_drill_jump = true,
 			})
 		end, {})
-		vim.keymap.set({ "n", "s", "i" }, "<D-j>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<D-]>", function()
 			select_ease.select_node({
 				queries = queries,
 				direction = "next",
 				vertical_drill_jump = true,
 			})
 		end, {})
-		vim.keymap.set({ "n", "s", "i" }, "<D-h>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<D-;>", function()
 			select_ease.select_node({
 				queries = queries,
 				direction = "previous",
 				current_line_only = true,
 			})
 		end, {})
-		vim.keymap.set({ "n", "s", "i" }, "<D-l>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<D-'>", function()
 			select_ease.select_node({
 				queries = queries,
 				direction = "next",
@@ -56,10 +58,10 @@ return {
 			})
 		end, {})
 
-		vim.keymap.set({ "n", "s", "i" }, "<D-g>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<D-k>", function()
 			select_ease.select_node({ queries = queries, direction = "previous" })
 		end, {})
-		vim.keymap.set({ "n", "s", "i" }, "<D-;>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<D-j>", function()
 			select_ease.select_node({ queries = queries, direction = "next" })
 		end, {})
 	end,
