@@ -99,6 +99,13 @@ for i in [1,2,3,4,5,6,7,8,9]
   execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n><cmd>tabnext " . i . "<cr>"
 endfor
 
+
+for i in join(map(range(char2nr('a'),char2nr('z')),'nr2char(v:val)'),'')
+  execute "map <silent> <M-C-" . i . ">  <D-" . i . ">"
+  execute "map <silent> <M-C-" . i . ">  <D-" . i . ">"
+  execute "map <silent> <M-C-" . i . ">  <D-" . i . ">"
+endfor
+
 let i = 0
 execute "nnoremap <silent> <D-" . i . ">            <cmd>tabnext 10<cr>"
 execute "vnoremap <silent> <D-" . i . ">       <c-u><cmd>tabnext 10<cr>"
