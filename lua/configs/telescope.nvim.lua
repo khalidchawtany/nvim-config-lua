@@ -53,7 +53,7 @@ M.init = function()
             nnoremap <c-s>gc     <cmd>lua require('telescope.builtin').git_bcommits()<cr>
             nnoremap <c-s>gf     <cmd>lua require('telescope.builtin').git_files()<cr>
             nnoremap <c-s>f  <cmd>lua require 'telescope'.extensions.file_browser.file_browser()<cr>
- 
+
     ]]
 
   vim.api.nvim_set_keymap(

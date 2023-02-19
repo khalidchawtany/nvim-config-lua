@@ -15,10 +15,10 @@ M.init = function()
   nnoremap <silent><D-p><D-u>  <cmd>lua require('fzf-lua').oldfiles({})<cr>
   nnoremap <silent><D-p><D-'>  <cmd>lua require('fzf-lua').marks({})<cr>
   nnoremap <silent><D-p><D-[>  <cmd>lua require('fzf-lua').tabs({})<cr>
-  nnoremap <silent><D-p><D-j>  <cmd>lua require('fzf-lua').grep_project({})<cr>
-  nnoremap <silent><D-p>j      <cmd>lua require('fzf-lua').live_grep_native({})<cr>
-  nnoremap <silent><D-p><D-a>  <cmd>lua require('fzf-lua').live_grep({})<cr>
-  nnoremap <silent><D-p>a      <cmd>lua require('fzf-lua').live_grep_glob({})<cr>
+  nnoremap <silent><D-p><D-a>  <cmd>lua require('fzf-lua').grep_project({})<cr>
+  nnoremap <silent><D-p>a      <cmd>lua require('fzf-lua').live_grep_native({})<cr>
+  nnoremap <silent><D-p>j      <cmd>lua require('fzf-lua').live_grep({})<cr>
+  nnoremap <silent><D-p><D-j>  <cmd>lua require('fzf-lua').live_grep_glob({})<cr>
   nnoremap <silent><D-p>r      <cmd>lua require('fzf-lua').live_grep_resume({})<cr>
   nnoremap <silent><D-p><D-r>  <cmd>lua require('fzf-lua').resume({})<cr>
   nnoremap <silent><D-p><D-\>  <cmd>lua require('fzf-lua').grep_curbuf({})<cr>
