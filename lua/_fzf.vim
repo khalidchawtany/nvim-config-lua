@@ -1,6 +1,42 @@
 
+au FileType fzf set nonu nornu
+
+" autocmd! FileType fzf set laststatus=0 noshowmode noruler
+"   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+autocmd! User FzfStatusLine execute("set statusline=". &statusline )
+
+au OptionSet background call s:SetFzfColors()
+
+function s:SetFzfColors()
+
+	if has('mac')
+		let s:fzf_history = "/Users/JuJu/.fzf_history"
+		let s:null = 'null'
+	elseif has('win64')
+		let s:fzf_history = "C:/Users/juju/.fzf_history"
+		let s:null = 'nul'
+	endif
+
+	if &background == 'dark'
+		let $FZF_DEFAULT_OPTS=" --history=".s:fzf_history." --pointer=' ▶'"
+					\." --marker='◉ ' --reverse --bind 'ctrl-space:select-all,ctrl-l:jump'"
+					\." --color=bg:#24283b,bg+:#234F84,fg+:#B9CDF7,hl:#00C8E0,hl+:#44ff44,gutter:#24283b,marker:#00ffff,border:#00A9BF,separator:#24283b"
+	else
+		let $FZF_DEFAULT_OPTS=" --history=".s:fzf_history." --pointer=' ▶'"
+					\." --marker='◉ ' --reverse --bind 'ctrl-space:select-all,ctrl-l:jump'"
+					\." --color=bg:#e1e2e7,bg+:#B9CDF7,fg+:#234F84,hl:#00C8E0,hl+:#44ff44,gutter:#e1e2e7,marker:#00ffff,border:#00A9BF,separator:#e1e2e7"
+	endif
+
+endfunction
+call s:SetFzfColors()
+
+let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules}/*" --glob "!*{.jpg,png}" 2> /dev/'.s:null
+
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
+
+let g:fzf_nvim_statusline=0
 
 
 let g:fzf_command_prefix = 'Fzf'
@@ -11,51 +47,9 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
 "let g:fzf_layout = { 'window': 'execute (tabpagenr()-1)."tabnew"' }
 "let g:fzf_layout = { 'window': '-tabnew' }
 
-au FileType fzf set nonu nornu
-
-command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-      \   fzf#vim#with_preview(), <bang>0)
-
-nnoremap silent! <c-p><c-a> <cmd>Rg<cr>
-nnoremap silent! <c-p>a <cmd>Rg <c-r><c-w><cr>
-
-if has('mac')
-  let $FZF_DEFAULT_OPTS=" --history=/Users/JuJu/.fzf_history --pointer=' ▶'"
-        \." --marker='◉ ' --reverse --bind 'ctrl-space:select-all,ctrl-l:jump'"
-        \." --color=bg:#24283b,bg+:#234F84,fg+:#B9CDF7,hl:#00C8E0,hl+:#44ff44,gutter:#24283b,marker:#00ffff,border:#00A9BF,separator:#24283b"
-
-  let s:null = 'null'
-elseif has('win64')
-  let $FZF_DEFAULT_OPTS=" --history=C:/Users/juju/.fzf_history --reverse --bind '::jump,;:jump-accept,ctrl-a:select-all'  --color=bg+:#cccccc,fg+:#444444,hl:#22aa44,hl+:#44ff44"
-  let s:null = 'nul'
-endif
-
-
-let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!{.git,node_modules}/*" --glob "!*{.jpg,png}" 2> /dev/'.s:null
-
-command! -bang -nargs=* FZFAg call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!{.git,node_modules,vendor}/*" --color "always" '.shellescape(<q-args>) . ' 2> /dev/'.s:null, 1, <bang>0)
-
-command! -bang -nargs=* FzfHelpOctober call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --color=always --smart-case --glob "!{.git,node_modules,vendor}/*" --glob  "!**/lang/*" --glob "!**/{ru,zh-cn}/*" '.shellescape(<q-args>) . ' ~/Development/Libraries/october', 1,fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
-
-command! -bang -nargs=* FzfHelpTic call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --color=always --smart-case --glob "!{.git,node_modules,vendor}/*" --glob  "!**/lang/*" --glob "!**/{ru,zh-cn}/*" '.shellescape(<q-args>) . ' ~/Projects/PHP/tic/plugins/lox/tic/', 1,fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
-
-" nnoremap <silent> <leader>hoo <cmd>FzfHelpOctober<cr>
-" nnoremap <silent> <leader>hot <cmd>FzfHelpTic<cr>
-
-
-command! -bang -nargs=* Rg2 call fzf#vim#grep("rg --column --no-ignore --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
-nnoremap <silent> <c-p><c-a> :Rg2 <CR>
-nnoremap <silent> <c-p>a :Rg2 <C-R><C-W><CR>
-nnoremap <silent> <c-p><c-j> :FzfAg <CR>
-nnoremap <silent> <c-p>j :FzfAg <C-R><C-W><CR>
-
-
 " only show MRU files from within your cwd
 let g:fzf_mru_relative = 1
-nnoremap <silent> <c-p><c-u> :FzfHistory<cr>
-nnoremap <silent> <c-p>u     :FZFMru<cr>
+
 " to enable found references displayed in fzf
 let g:LanguageClient_selectionUI = 'fzf'
 
@@ -76,6 +70,36 @@ let g:fzf_tags_command = 'ctags -R'
 " [Commands] --expect expression for directly executing the command
 "let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 "}}} _Command Local Options
+
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+      \   fzf#vim#with_preview(), <bang>0)
+
+nnoremap silent! <c-p><c-a> <cmd>Rg<cr>
+nnoremap silent! <c-p>a <cmd>Rg <c-r><c-w><cr>
+
+
+
+command! -bang -nargs=* FZFAg call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!{.git,node_modules,vendor}/*" --color "always" '.shellescape(<q-args>) . ' 2> /dev/'.s:null, 1, <bang>0)
+
+command! -bang -nargs=* FzfHelpOctober call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --color=always --smart-case --glob "!{.git,node_modules,vendor}/*" --glob  "!**/lang/*" --glob "!**/{ru,zh-cn}/*" '.shellescape(<q-args>) . ' ~/Development/Libraries/october', 1,fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+command! -bang -nargs=* FzfHelpTic call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --color=always --smart-case --glob "!{.git,node_modules,vendor}/*" --glob  "!**/lang/*" --glob "!**/{ru,zh-cn}/*" '.shellescape(<q-args>) . ' ~/Projects/PHP/tic/plugins/lox/tic/', 1,fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+" nnoremap <silent> <leader>hoo <cmd>FzfHelpOctober<cr>
+" nnoremap <silent> <leader>hot <cmd>FzfHelpTic<cr>
+
+
+command! -bang -nargs=* Rg2 call fzf#vim#grep("rg --column --no-ignore --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+nnoremap <silent> <c-p><c-a> :Rg2 <CR>
+nnoremap <silent> <c-p>a :Rg2 <C-R><C-W><CR>
+nnoremap <silent> <c-p><c-j> :FzfAg <CR>
+nnoremap <silent> <c-p>j :FzfAg <C-R><C-W><CR>
+
+
+nnoremap <silent> <c-p><c-u> :FzfHistory<cr>
+nnoremap <silent> <c-p>u     :FZFMru<cr>
 
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/' . s:null)[:-2]
