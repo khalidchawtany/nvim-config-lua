@@ -1,4 +1,4 @@
 return {
 	"tpope/vim-unimpaired",
-	event = "BufRead",
+	event = "VeryLazy",
 }
