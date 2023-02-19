@@ -362,10 +362,10 @@ Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else
 
 
 
-    Map N <leader>tp :e <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
-    Map N <leader>to :e ~/org/todo.org<cr>
-    Map N <leader>Tp :tabe <c-r>=FindGitDirOrRoot()<cr>/todo.org<cr>
-    Map N <leader>To :tabe ~/org/todo.org<cr>
+    Map N <leader>tp :e <c-r>=FindGitDirOrRoot()<cr>/todo.norg<cr>
+    Map N <leader>to :e ~/org/todo.norg<cr>
+    Map N <leader>Tp :tabe <c-r>=FindGitDirOrRoot()<cr>/todo.norg<cr>
+    Map N <leader>To :tabe ~/org/todo.norg<cr>
 
 " tohtml runtime! syntax/2html.vim
     Map N <leader>e<BS> :! \| echo "changes discarded"<cr>
