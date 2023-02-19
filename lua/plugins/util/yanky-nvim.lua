@@ -7,8 +7,8 @@ return {
     vim.keymap.set({"n", "x"}, "gp", "<Plug>(YankyGPutAfter)")
     vim.keymap.set({"n", "x"}, "gP", "<Plug>(YankyGPutBefore)")
 
-	vim.keymap.set("n", "]p", "<Plug>(YankyCycleForward)")
-	vim.keymap.set("n", "[p", "<Plug>(YankyCycleBackward)")
+	vim.keymap.set("n", "[p", "<Plug>(YankyCycleForward)")
+	vim.keymap.set("n", "]p", "<Plug>(YankyCycleBackward)")
 
     require("yanky").setup(
       {
@@ -30,8 +30,8 @@ return {
           sync_with_ring = true
         },
         highlight = {
-          on_put = true,
-          on_yank = true,
+          on_put = false,
+          on_yank = false,
           timer = 250
         },
         preserve_cursor_position = {
