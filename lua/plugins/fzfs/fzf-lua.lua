@@ -1,90 +1,40 @@
 local M = {
   "ibhagwan/fzf-lua",
-  cmd = {"FzfLua"}
+  cmd = {"FzfLua"},
+  keys = {
+	  { "<D-p>-",      function() require('fzf-lua').lsp_document_symbols({}) end, desc = "lsp_document_symbols" },
+	  { "<D-p><D-->",  function() require('fzf-lua').lsp_document_symbols({}) end, desc = "lsp_document_symbols" },
+	  { "<D-p><D-p>",  function() require('fzf-lua').files({}) end,                desc = "files" },
+	  { "<D-p><D-l>",  function() require('fzf-lua').lines({}) end,                desc = "lines" },
+	  { "<D-p>l",      function() require('fzf-lua').blines({}) end,               desc = "blines" },
+	  { "<D-p><D-o>",  function() require('fzf-lua').buffers({}) end,              desc = "buffers" },
+	  { "<D-p><D-u>",  function() require('fzf-lua').oldfiles({}) end,             desc = "oldfiles" },
+	  { "<D-p><D-'>",  function() require('fzf-lua').marks({}) end,                desc = "marks" },
+	  { "<D-p><D-[>",  function() require('fzf-lua').tabs({}) end,                 desc = "tabs" },
+	  { "<D-p><D-a>",  function() require('fzf-lua').grep_project({}) end,         desc = "grep_project" },
+	  { "<D-p>a",      function() require('fzf-lua').live_grep_native({}) end,     desc = "live_grep_native" },
+	  { "<D-p>j",      function() require('fzf-lua').live_grep({}) end,            desc = "live_grep" },
+	  { "<D-p><D-j>",  function() require('fzf-lua').live_grep_glob({}) end,       desc = "live_grep_glob" },
+	  { "<D-p>r",      function() require('fzf-lua').live_grep_resume({}) end,     desc = "live_grep_resume" },
+	  { "<D-p><D-r>",  function() require('fzf-lua').resume({}) end,               desc = "resume" },
+	  { "<D-p><D-\\>", function() require('fzf-lua').grep_curbuf({}) end,          desc = "grep_curbuf" },
+	  { "<D-p>\\",     function() require('fzf-lua').grep_cword({}) end,           desc = "grep_cword" },
+	  { "<D-p><D-g>",  function() require('fzf-lua').git_status({}) end,           desc = "git_status" },
+	  { "<D-p>g",      function() require('fzf-lua').git_status({}) end,           desc = "git_status" },
+	  { "<D-p><D-v>",  function() require('fzf-lua').git_status({}) end,           desc = "git_status" },
+	  { "<D-p>v",      function() require('fzf-lua').git_status({}) end,           desc = "git_status" },
+	  { "<D-p><D-c>",  function() require('fzf-lua').git_commits({}) end,          desc = "git_commits" },
+	  { "<D-p>c",      function() require('fzf-lua').git_bcommits({}) end,         desc = "git_bcommits" },
+	  { "<D-p><D-b>",  function() require('fzf-lua').git_branches({}) end,         desc = "git_branches" },
+	  { "<D-p><D-m>",  function() require('fzf-lua').keymaps({}) end,              desc = "keymaps" },
+	  { "<D-p><D-'>",  function() require('fzf-lua').registers({}) end,            desc = "registers" },
+	  { "<D-p><D-\">", function() require('fzf-lua').registers({}) end,            desc = "registers" },
+	  { "<D-p><D-;>",  function() require('fzf-lua').commands({}) end,             desc = "commands" },
+  }
+-- stylua: ignore end
 }
 
-M.init = function()
-  vim.cmd [[
 
-  nnoremap <silent><D-p>-      <cmd>lua require('fzf-lua').lsp_document_symbols({})<cr>
-  nnoremap <silent><D-p><D-->  <cmd>lua require('fzf-lua').lsp_document_symbols({})<cr>
-  nnoremap <silent><D-p><D-p>  <cmd>lua require('fzf-lua').files({})<cr>
-  nnoremap <silent><D-p><D-l>  <cmd>lua require('fzf-lua').lines({})<cr>
-  nnoremap <silent><D-p>l      <cmd>lua require('fzf-lua').blines({})<cr>
-  nnoremap <silent><D-p><D-o>  <cmd>lua require('fzf-lua').buffers({})<cr>
-  nnoremap <silent><D-p><D-u>  <cmd>lua require('fzf-lua').oldfiles({})<cr>
-  nnoremap <silent><D-p><D-'>  <cmd>lua require('fzf-lua').marks({})<cr>
-  nnoremap <silent><D-p><D-[>  <cmd>lua require('fzf-lua').tabs({})<cr>
-  nnoremap <silent><D-p><D-a>  <cmd>lua require('fzf-lua').grep_project({})<cr>
-  nnoremap <silent><D-p>a      <cmd>lua require('fzf-lua').live_grep_native({})<cr>
-  nnoremap <silent><D-p>j      <cmd>lua require('fzf-lua').live_grep({})<cr>
-  nnoremap <silent><D-p><D-j>  <cmd>lua require('fzf-lua').live_grep_glob({})<cr>
-  nnoremap <silent><D-p>r      <cmd>lua require('fzf-lua').live_grep_resume({})<cr>
-  nnoremap <silent><D-p><D-r>  <cmd>lua require('fzf-lua').resume({})<cr>
-  nnoremap <silent><D-p><D-\>  <cmd>lua require('fzf-lua').grep_curbuf({})<cr>
-  nnoremap <silent><D-p>\      <cmd>lua require('fzf-lua').grep_cword({})<cr>
-  nnoremap <silent><D-p><D-g>  <cmd>lua require('fzf-lua').git_status	({})<cr>
-  nnoremap <silent><D-p>g      <cmd>lua require('fzf-lua').git_status	({})<cr>
-  nnoremap <silent><D-p><D-v>  <cmd>lua require('fzf-lua').git_status	({})<cr>
-  nnoremap <silent><D-p>v      <cmd>lua require('fzf-lua').git_status	({})<cr>
-  nnoremap <silent><D-p><D-c>  <cmd>lua require('fzf-lua').git_commits	({})<cr>
-  nnoremap <silent><D-p>c      <cmd>lua require('fzf-lua').git_bcommits	({})<cr>
-  nnoremap <silent><D-p><D-b>  <cmd>lua require('fzf-lua').git_branches	({})<cr>
-  nnoremap <silent><D-p><D-m>  <cmd>lua require('fzf-lua').keymaps	({})<cr>
-  nnoremap <silent><D-p><D-'>  <cmd>lua require('fzf-lua').registers	({})<cr>
-  nnoremap <silent><D-p><D-'>  <cmd>lua require('fzf-lua').registers	({})<cr>
-  nnoremap <silent><D-p><D-cr> <cmd>lua require('fzf-lua').commands	({})<cr>
-
-  ]]
-
-  -- buffers  => open buffers
-  -- files    => find or fd on a path
-  -- oldfiles => opened files history
-  -- quickfix => quickfix list
-  -- loclist  => location list
-
-  -- grep            => search for a pattern with grep or rg
-  -- grep_last       => run search again with the last pattern
-  -- grep_cword      => search word under cursor
-  -- grep_cWORD      => search WORD under cursor
-  -- grep_visual     => search visual selection
-  -- grep_curbuf     => live grep current buffer
-  -- live_grep       => live grep current project
-
-  -- git_files      => git ls-files
-  -- git_status     => git status
-  -- git_commits    => git commit log (project)
-  -- git_bcommits   => git commit log (buffer)
-  -- git_branch     > git branches
-
-  -- lsp_references             => References
-  -- lsp_definitions            => Definitions
-  -- lsp_declarations           => Declarations
-  -- lsp_typedefs               => Type Definitions
-  -- lsp_implementations        => Implementations
-  -- lsp_document_symbols       => Document Symbols
-  -- lsp_workspace_symbols      => Workspace Symbols
-  -- lsp_code_actions           => Code Actions
-  -- lsp_document_diagnostics   => Document Diagnostics
-  -- lsp_workspace_diagnostics  => Workspace Diagnostics
-
-  -- builtin         => fzf-lua builtin methods
-  -- help_tags       => help tags
-  -- man_pages       => man pages
-  -- colorschemes    => color schemes
-  -- commands        => neovim commands
-  -- command_history => command history
-  -- search_history  => search history
-  -- marks           => :marks
-  -- registers       => :registers
-  -- keymaps         => key mappings
-  -- spell_suggest   => spelling suggestions
-  -- tags            => project tags
-  -- btags           => buffer tags
-
-  -- :lua require('fzf-lua').files({ cwd = '~/.config' })
-  -- :lua require('fzf-lua').files({ fzf_layout = 'reverse-list' })
-end
 
 M.config = function()
   local actions = require "fzf-lua.actions"
@@ -700,3 +650,50 @@ M.config = function()
 end
 
 return M
+-- buffers  => open buffers
+-- files    => find or fd on a path
+-- oldfiles => opened files history
+-- quickfix => quickfix list
+-- loclist  => location list
+
+-- grep            => search for a pattern with grep or rg
+-- grep_last       => run search again with the last pattern
+-- grep_cword      => search word under cursor
+-- grep_cWORD      => search WORD under cursor
+-- grep_visual     => search visual selection
+-- grep_curbuf     => live grep current buffer
+-- live_grep       => live grep current project
+
+-- git_files      => git ls-files
+-- git_status     => git status
+-- git_commits    => git commit log (project)
+-- git_bcommits   => git commit log (buffer)
+-- git_branch     > git branches
+
+-- lsp_references             => References
+-- lsp_definitions            => Definitions
+-- lsp_declarations           => Declarations
+-- lsp_typedefs               => Type Definitions
+-- lsp_implementations        => Implementations
+-- lsp_document_symbols       => Document Symbols
+-- lsp_workspace_symbols      => Workspace Symbols
+-- lsp_code_actions           => Code Actions
+-- lsp_document_diagnostics   => Document Diagnostics
+-- lsp_workspace_diagnostics  => Workspace Diagnostics
+
+-- builtin         => fzf-lua builtin methods
+-- help_tags       => help tags
+-- man_pages       => man pages
+-- colorschemes    => color schemes
+-- commands        => neovim commands
+-- command_history => command history
+-- search_history  => search history
+-- marks           => :marks
+-- registers       => :registers
+-- keymaps         => key mappings
+-- spell_suggest   => spelling suggestions
+-- tags            => project tags
+-- btags           => buffer tags
+
+-- :lua require('fzf-lua').files({ cwd = '~/.config' })
+-- :lua require('fzf-lua').files({ fzf_layout = 'reverse-list' })
