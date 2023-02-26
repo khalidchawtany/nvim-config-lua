@@ -63,7 +63,7 @@ M.config = function()
         {
           name = "rg",
           -- Try it when you feel cmp performance is poor
-          keyword_length = 5
+          keyword_length = 3
         }
         -- {
         --   name = "look",

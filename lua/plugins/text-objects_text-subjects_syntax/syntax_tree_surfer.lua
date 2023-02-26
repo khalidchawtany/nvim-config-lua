@@ -58,8 +58,8 @@ return {
 		vim.keymap.set("x", "L", "<cmd>STSSelectChildNode<cr>", opts)
 
 		-- Swapping Nodes in Visual Mode
-		vim.keymap.set("x", "<A-j>", "<cmd>STSSwapNextVisual<cr>", opts)
-		vim.keymap.set("x", "<A-k>", "<cmd>STSSwapPrevVisual<cr>", opts)
+		vim.keymap.set("x", "<D-l>", "<cmd>STSSwapNextVisual<cr>", opts)
+		vim.keymap.set("x", "<D-h>", "<cmd>STSSwapPrevVisual<cr>", opts)
 
 		-- Syntax Tree Surfer V2 Mappings
 		-- Targeted Jump with virtual_text

@@ -5,7 +5,7 @@ return {
     {
       "<leader>gS",
       ":let g:splitjoin_php_method_chain_full = !g:splitjoin_php_method_chain_full<cr>",
-      desc = "Pounce (Repeat)"
+      desc = "SplitJoin (Split chain)"
     },
     {"gS", ":call Preserve('SplitjoinSplit')<cr>", desc = "SplitJoin (Split)"},
     {"gJ", ":call Preserve('SplitjoinJoin')<cr>", desc = "SplitJoin (Join)"}
