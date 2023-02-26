@@ -110,6 +110,7 @@
   "splitjoin.vim": { "branch": "main", "commit": "ee93ae08d479721b68a42715710db1d072f9b1c1" },
   "statuscol.nvim": { "branch": "main", "commit": "49a3bdab3e9cf23982724c1e888a6296fca4c8b9" },
   "syntax-tree-surfer": { "branch": "master", "commit": "9dc6657d76e3f8886a0b120e6a315c511f53bae7" },
+  "tailwind-sorter.nvim": { "branch": "main", "commit": "7a32f59c0cc8a73022be2c93fcbac1de825abfb9" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "51cf26134b12d107435d2529ccf2dafd5309abcb" },
   "telescope-alternate": { "branch": "master", "commit": "eaefa67ab9a158c0f28f9ca6740304ee4d36c6c2" },
   "telescope-command-palette.nvim": { "branch": "master", "commit": "f7024ea025ed7985d8881d1b535004a1200903f3" },
