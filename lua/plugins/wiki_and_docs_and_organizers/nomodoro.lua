@@ -8,9 +8,9 @@ local M = {
     "NomoTimer"
   },
   keys = {
-    {"<leader>nw", "<cmd>NomoWork<cr>", desc = "Pomodoro (Work)"},
-    {"<leader>nb", "<cmd>NomoBreak<cr>", desc = "Pomodoro (Break)"},
-    {"<leader>ns", "<cmd>NomoStop<cr>", desc = "Pomodoro (Stop)"}
+    {"<leader>ow", "<cmd>NomoWork<cr>", desc = "Pomodoro (Work)"},
+    {"<leader>ob", "<cmd>NomoBreak<cr>", desc = "Pomodoro (Break)"},
+    {"<leader>os", "<cmd>NomoStop<cr>", desc = "Pomodoro (Stop)"}
   }
 }
 

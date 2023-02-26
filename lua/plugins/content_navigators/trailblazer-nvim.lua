@@ -22,7 +22,7 @@ return {
 					"global_chron_buf_switch_group_chron",
 					"global_chron_buf_switch_group_line_sorted",
 					"buffer_local_chron",
-					"buffer_local_line_sorted"
+					"buffer_local_line_sorted",
 				},
 				-- The current / initially selected trail mark selection mode. Choose from one of the
 				-- available modes: global_chron, global_buf_line_sorted, global_chron_buf_line_sorted,
@@ -46,7 +46,7 @@ return {
 					-- this is the list of trail mark stacks that will be created by default. Add as many
 					-- as you like to this list. You can always create new ones in Neovim by using either
 					-- `:TrailBlazerSwitchTrailMarkStack <name>` or `:TrailBlazerAddTrailMarkStack <name>`
-					"default" -- , "stack_2", ...
+					"default", -- , "stack_2", ...
 				},
 				available_trail_mark_stack_sort_modes = {
 					"alpha_asc", -- alphabetical ascending
@@ -69,21 +69,21 @@ return {
 			mappings = { -- rename this to "force_mappings" to completely override default mappings and not merge with them
 				nv = { -- Mode union: normal & visual mode. Can be extended by adding i, x, ...
 					motions = {
-						new_trail_mark = '<D-m><D-m>',
-						track_back = '<D-m><D-h>',
-						peek_move_next_down = '<D-m><D-j>',
-						peek_move_previous_up = '<D-m><D-k>',
-						move_to_nearest = '<D-m><D-n>',
-						toggle_trail_mark_list = '<D-m><D-t>',
+						new_trail_mark = "<D-m><D-m>",
+						track_back = "<D-m><D-h>",
+						peek_move_next_down = "<D-m><D-j>",
+						peek_move_previous_up = "<D-m><D-k>",
+						move_to_nearest = "<D-m><D-n>",
+						toggle_trail_mark_list = "<D-m><D-t>",
 					},
 					actions = {
-						delete_all_trail_marks = '<D-m><D-BS>',
-						paste_at_last_trail_mark = '<D-m><D-p>',
-						paste_at_all_trail_marks = '<D-m><D-o>',
-						set_trail_mark_select_mode = '<D-m><D-t>',
-						switch_to_next_trail_mark_stack = '<D-m><D-.>',
-						switch_to_previous_trail_mark_stack = '<D-m><D-,>',
-						set_trail_mark_stack_sort_mode = '<D-m><D-s>',
+						delete_all_trail_marks = "<D-m><D-BS>",
+						paste_at_last_trail_mark = "<D-m><D-p>",
+						paste_at_all_trail_marks = "<D-m><D-o>",
+						set_trail_mark_select_mode = "<D-m><D-t>",
+						switch_to_next_trail_mark_stack = "<D-m><D-.>",
+						switch_to_previous_trail_mark_stack = "<D-m><D-,>",
+						set_trail_mark_stack_sort_mode = "<D-m><D-s>",
 					},
 				},
 				-- You can also add/move any motion or action to mode specific mappings i.e.:
@@ -106,17 +106,94 @@ return {
 					},
 					alt_actions = {
 						qf_action_save_visual_selection_start_line = "V",
-					}
+					},
 				},
 				v = {
 					actions = {
 						qf_action_move_selected_trail_marks_down = "<C-j>",
 						qf_action_move_selected_trail_marks_up = "<C-k>",
-					}
-				}
+					},
+				},
 			},
 			-- Your custom highlight group overrides go here
-			-- hl_groups = {}
+			hl_groups = {
+				TrailBlazerTrailMark = {
+					-- You can add any valid highlight group attribute to this table
+					guifg = "White",
+					guibg = "none",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkNext = {
+					guifg = "Green",
+					guibg = "none",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkPrevious = {
+					guifg = "Red",
+					guibg = "none",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkCursor = {
+					guifg = "Black",
+					guibg = "Orange",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkNewest = {
+					guifg = "Black",
+					guibg = "LightBlue",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkCustomOrd = {
+					guifg = "Black",
+					guibg = "LightSlateBlue",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkGlobalChron = {
+					guifg = "Black",
+					guibg = "Red",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkGlobalBufLineSorted = {
+					guifg = "Black",
+					guibg = "LightRed",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkGlobalFpathLineSorted = {
+					guifg = "Black",
+					guibg = "LightRed",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkGlobalChronBufLineSorted = {
+					guifg = "Black",
+					guibg = "Olive",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkGlobalChronFpathLineSorted = {
+					guifg = "Black",
+					guibg = "Olive",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkGlobalChronBufSwitchGroupChron = {
+					guifg = "Black",
+					guibg = "VioletRed",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkGlobalChronBufSwitchGroupLineSorted = {
+					guifg = "Black",
+					guibg = "MediumSpringGreen",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkBufferLocalChron = {
+					guifg = "Black",
+					guibg = "Green",
+					gui = "bold",
+				},
+				TrailBlazerTrailMarkBufferLocalLineSorted = {
+					guifg = "Black",
+					guibg = "LightGreen",
+					gui = "bold",
+				},
+			},
 		})
 	end,
 }
