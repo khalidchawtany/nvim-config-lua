@@ -17,6 +17,7 @@ local has_words_before = function()
 end
 
 M.config = function()
+	require('user.xptsource')
   vim.cmd [[
   " gray
   highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
@@ -42,6 +43,7 @@ M.config = function()
     {
       completion = {},
       sources = {
+        {name = "xpt"},
         {name = "luasnip"},
         {name = "copilot", group_index = 2},
         {name = "nvim_lsp"},
@@ -128,6 +130,7 @@ M.config = function()
         format = function(entry, vim_item)
           vim_item.menu =
             ({
+            xpt = "[XPT]",
             nvim_lsp = "[LSP]",
             emoji = "[EMO]",
             path = "[FILE]",
@@ -307,6 +310,7 @@ M.config = function()
   -- require "lspconfig".clangd.setup {
   --   capabilities = capabilities
   -- }
+  -- require('user.xptsource')
 end
 
 --M.config()
