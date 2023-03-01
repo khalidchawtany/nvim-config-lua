@@ -1,37 +1,43 @@
+local opts = {
+	preview_layout='vertical',
+	preview_vertical="down",
+	fzf_layout="reverse",
+}
+
 local M = {
   "ibhagwan/fzf-lua",
   cmd = {"FzfLua"},
   keys = {
 	  -- { "<D-p><leader>",  function() require('fzf-lua').changes({}) end,              desc = "changes" },
 	  { "<D-p>-",      function() require('fzf-lua').lsp_document_symbols({search = "methods"}) end, desc = "lsp_document_symbols" },
-	  { "<D-p><D-->",  function() require('fzf-lua').lsp_document_symbols({}) end,                                  desc = "lsp_document_symbols" },
-	  { "<D-p><D-p>",  function() require('fzf-lua').files({}) end,                                                 desc = "files" },
-	  { "<D-p><D-m>",  function() require('fzf-lua').changes({}) end,                                               desc = "changes" },
-	  { "<D-p><D-l>",  function() require('fzf-lua').lines({}) end,                                                 desc = "lines" },
-	  { "<D-p>l",      function() require('fzf-lua').blines({}) end,                                                desc = "blines" },
-	  { "<D-p><D-o>",  function() require('fzf-lua').buffers({}) end,                                               desc = "buffers" },
-	  { "<D-p><D-u>",  function() require('fzf-lua').oldfiles({}) end,                                              desc = "oldfiles" },
-	  { "<D-p><D-'>",  function() require('fzf-lua').marks({}) end,                                                 desc = "marks" },
-	  { "<D-p><D-[>",  function() require('fzf-lua').tabs({}) end,                                                  desc = "tabs" },
-	  { "<D-p><D-a>",  function() require('fzf-lua').grep_project({}) end,                                          desc = "grep_project" },
-	  { "<D-p>a",      function() require('fzf-lua').live_grep_native({}) end,                                      desc = "live_grep_native" },
-	  { "<D-p>j",      function() require('fzf-lua').live_grep({}) end,                                             desc = "live_grep" },
-	  { "<D-p><D-j>",  function() require('fzf-lua').live_grep_glob({}) end,                                        desc = "live_grep_glob" },
-	  { "<D-p>r",      function() require('fzf-lua').live_grep_resume({}) end,                                      desc = "live_grep_resume" },
-	  { "<D-p><D-r>",  function() require('fzf-lua').resume({}) end,                                                desc = "resume" },
-	  { "<D-p><D-\\>", function() require('fzf-lua').grep_curbuf({}) end,                                           desc = "grep_curbuf" },
-	  { "<D-p>\\",     function() require('fzf-lua').grep_cword({}) end,                                            desc = "grep_cword" },
-	  { "<D-p><D-g>",  function() require('fzf-lua').git_status({}) end,                                            desc = "git_status" },
-	  { "<D-p>g",      function() require('fzf-lua').git_status({}) end,                                            desc = "git_status" },
-	  { "<D-p><D-v>",  function() require('fzf-lua').git_status({}) end,                                            desc = "git_status" },
-	  { "<D-p>v",      function() require('fzf-lua').git_status({}) end,                                            desc = "git_status" },
-	  { "<D-p><D-c>",  function() require('fzf-lua').git_commits({}) end,                                           desc = "git_commits" },
-	  { "<D-p>c",      function() require('fzf-lua').git_bcommits({}) end,                                          desc = "git_bcommits" },
-	  { "<D-p><D-b>",  function() require('fzf-lua').git_branches({}) end,                                          desc = "git_branches" },
-	  { "<D-p><D-k>",  function() require('fzf-lua').keymaps({}) end,                                               desc = "keymaps" },
-	  { "<D-p><D-'>",  function() require('fzf-lua').registers({}) end,                                             desc = "registers" },
-	  { "<D-p><D-\">", function() require('fzf-lua').registers({}) end,                                             desc = "registers" },
-	  { "<D-p><D-;>",  function() require('fzf-lua').commands({}) end,                                              desc = "commands" },
+	  { "<D-p><D-->",  function() require('fzf-lua').lsp_document_symbols(opts) end,                                  desc = "lsp_document_symbols" },
+	  { "<D-p><D-p>",  function() require('fzf-lua').files(opts) end,                                                 desc = "files" },
+	  { "<D-p><D-m>",  function() require('fzf-lua').changes(opts) end,                                               desc = "changes" },
+	  { "<D-p><D-l>",  function() require('fzf-lua').lines(opts) end,                                                 desc = "lines" },
+	  { "<D-p>l",      function() require('fzf-lua').blines(opts) end,                                                desc = "blines" },
+	  { "<D-p><D-o>",  function() require('fzf-lua').buffers(opts) end,                                               desc = "buffers" },
+	  { "<D-p><D-u>",  function() require('fzf-lua').oldfiles(opts) end,                                              desc = "oldfiles" },
+	  { "<D-p><D-'>",  function() require('fzf-lua').marks(opts) end,                                                 desc = "marks" },
+	  { "<D-p><D-[>",  function() require('fzf-lua').tabs(opts) end,                                                  desc = "tabs" },
+	  { "<D-p><D-a>",  function() require('fzf-lua').grep_project(opts) end,                                          desc = "grep_project" },
+	  { "<D-p>a",      function() require('fzf-lua').live_grep_native(opts) end,                                      desc = "live_grep_native" },
+	  { "<D-p>j",      function() require('fzf-lua').live_grep(opts) end,                                             desc = "live_grep" },
+	  { "<D-p><D-j>",  function() require('fzf-lua').live_grep_glob(opts) end,                                        desc = "live_grep_glob" },
+	  { "<D-p>r",      function() require('fzf-lua').live_grep_resume(opts) end,                                      desc = "live_grep_resume" },
+	  { "<D-p><D-r>",  function() require('fzf-lua').resume(opts) end,                                                desc = "resume" },
+	  { "<D-p><D-\\>", function() require('fzf-lua').grep_curbuf(opts) end,                                           desc = "grep_curbuf" },
+	  { "<D-p>\\",     function() require('fzf-lua').grep_cword(opts) end,                                            desc = "grep_cword" },
+	  { "<D-p><D-g>",  function() require('fzf-lua').git_status(opts) end,                                            desc = "git_status" },
+	  { "<D-p>g",      function() require('fzf-lua').git_status(opts) end,                                            desc = "git_status" },
+	  { "<D-p><D-v>",  function() require('fzf-lua').git_status(opts) end,                                            desc = "git_status" },
+	  { "<D-p>v",      function() require('fzf-lua').git_status(opts) end,                                            desc = "git_status" },
+	  { "<D-p><D-c>",  function() require('fzf-lua').git_commits(opts) end,                                           desc = "git_commits" },
+	  { "<D-p>c",      function() require('fzf-lua').git_bcommits(opts) end,                                          desc = "git_bcommits" },
+	  { "<D-p><D-b>",  function() require('fzf-lua').git_branches(opts) end,                                          desc = "git_branches" },
+	  { "<D-p><D-k>",  function() require('fzf-lua').keymaps(opts) end,                                               desc = "keymaps" },
+	  { "<D-p><D-'>",  function() require('fzf-lua').registers(opts) end,                                             desc = "registers" },
+	  { "<D-p><D-\">", function() require('fzf-lua').registers(opts) end,                                             desc = "registers" },
+	  { "<D-p><D-;>",  function() require('fzf-lua').commands(opts) end,                                              desc = "commands" },
   }
 -- stylua: ignore end
 }
@@ -55,8 +61,8 @@ M.config = function()
       -- "aboveleft vnew   : split left
       -- Only valid when using a float window
       -- (i.e. when 'split' is not defined, default)
-      height = 0.85, -- window height
-      width = 0.80, -- window width
+      height = 0.95, -- window height
+      width = 0.95, -- window width
       row = 0.35, -- window row position (0=top, 1=bottom)
       col = 0.50, -- window col position (0=left, 1=right)
       -- border argument passthrough to nvim_open_win(), also used

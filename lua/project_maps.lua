@@ -160,6 +160,11 @@ _G.PROJECTS_MAPS = {
       paths = {{"resources", "views"}}
     },
     {
+      desciption = "Breads (LRVL)",
+      keys = "<leader>lb",
+      paths = {{"resources", "bread"}}
+    },
+    {
       desciption = "Routes (LRVL)",
       keys = "<leader>lw",
       paths = {{"routes"}}

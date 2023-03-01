@@ -4,13 +4,17 @@ return {
   keys = {
     "<Plug>(abolish-coerce)",
     "<Plug>(abolish-coerce-word)",
-    "crt",
-    "crs",
-    "crm",
-    "crc",
-    "cru",
     "cr-",
     "cr.",
-    "cr<space>"
+    "cr<space>",
+    "crU",
+    "cr_",
+    "crc",
+    "crk",
+    "crm",
+    "crp",
+    "crs",
+    "crt",
+    "cru",
   }
 }
