@@ -8,17 +8,30 @@ Hydra({
 		-- color = "pink",
 	},
 	heads = {
-		-- move between windows
-		{ "<C-h>", "<C-w>h" },
-		{ "<C-j>", "<C-w>j" },
-		{ "<C-k>", "<C-w>k" },
-		{ "<C-l>", "<C-w>l" },
+		-- focus windows
+		{ "h", "<C-w>h" },
+		{ "j", "<C-w>j" },
+		{ "k", "<C-w>k" },
+		{ "l", "<C-w>l" },
+
+		-- move windows
+		{ "H", "<C-w>H" },
+		{ "J", "<C-w>J" },
+		{ "K", "<C-w>K" },
+		{ "L", "<C-w>L" },
 
 		-- resizing window
-		{ "H",     "<C-w>3<" },
-		{ "L",     "<C-w>3>" },
-		{ "K",     "<C-w>2+" },
-		{ "J",     "<C-w>2-" },
+		{ "<C-h>",     "<C-w>3<" },
+		{ "<C-l>",     "<C-w>3>" },
+		{ "<C-k>",     "<C-w>2+" },
+		{ "<C-j>",     "<C-w>2-" },
+
+
+		-- only
+		{ "o",     "<C-w>o" },
+
+		 -- move to tab
+		{ "t",     "<C-w>t" },
 
 		-- equalize window sizes
 		{ "e",     "<C-w>=" },

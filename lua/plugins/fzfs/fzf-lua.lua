@@ -4,40 +4,68 @@ local opts = {
 	fzf_layout="reverse",
 }
 
+--   require'fzf-lua'.lsp_document_symbols({ fzf_args = [[--query='Function']] })
+-- :lua require'fzf-lua'.lsp_document_symbols({ fzf_opts = { ['--query'] = 'Function' }})
+-- -- I recommend the latter option as I find it easier to use custom queries
+-- -- for example this expands to "word under cursor"
+-- :lua require'fzf-lua'.lsp_document_symbols({ fzf_opts = { ['--query'] = vim.fn.expand('<cword>') }})
+
+--  -- both cmds have the same result (different ways of supplying the '--query'
+-- -- flag), using 'fzf_opts' table does the 'vim.fn.shellescape' for you
+-- :lua require'fzf-lua'.grep_project({ fzf_opts={ ['--query']=vim.fn.expand('<cword>') }})
+-- :lua require'fzf-lua'.grep_project({ fzf_cli_args= '--query='..vim.fn.shellescape(vim.fn.expand('<cword>')) })
+--  require'fzf-lua'.setup {
+--   grep = {
+--     actions = {
+--       ['ctrl-y'] = function(_, opts)
+--         if opts.__FNCREF__ then
+--           require'fzf-lua'.grep({ continue_last_search = true })
+--           require'fzf-lua.actions'.ensure_insert_mode()
+--         else
+--           require'fzf-lua'.live_grep({ continue_last_search = true })
+--           require'fzf-lua.actions'.ensure_insert_mode()
+--         end
+--       end
+--     },
+--   },
+-- }
+
 local M = {
   "ibhagwan/fzf-lua",
   cmd = {"FzfLua"},
   keys = {
-	  -- { "<D-p><leader>",  function() require('fzf-lua').changes({}) end,              desc = "changes" },
-	  { "<D-p>-",      function() require('fzf-lua').lsp_document_symbols({search = "methods"}) end, desc = "lsp_document_symbols" },
-	  { "<D-p><D-->",  function() require('fzf-lua').lsp_document_symbols(opts) end,                                  desc = "lsp_document_symbols" },
-	  { "<D-p><D-p>",  function() require('fzf-lua').files(opts) end,                                                 desc = "files" },
-	  { "<D-p><D-m>",  function() require('fzf-lua').changes(opts) end,                                               desc = "changes" },
-	  { "<D-p><D-l>",  function() require('fzf-lua').lines(opts) end,                                                 desc = "lines" },
-	  { "<D-p>l",      function() require('fzf-lua').blines(opts) end,                                                desc = "blines" },
-	  { "<D-p><D-o>",  function() require('fzf-lua').buffers(opts) end,                                               desc = "buffers" },
-	  { "<D-p><D-u>",  function() require('fzf-lua').oldfiles(opts) end,                                              desc = "oldfiles" },
-	  { "<D-p><D-'>",  function() require('fzf-lua').marks(opts) end,                                                 desc = "marks" },
-	  { "<D-p><D-[>",  function() require('fzf-lua').tabs(opts) end,                                                  desc = "tabs" },
-	  { "<D-p><D-a>",  function() require('fzf-lua').grep_project(opts) end,                                          desc = "grep_project" },
-	  { "<D-p>a",      function() require('fzf-lua').live_grep_native(opts) end,                                      desc = "live_grep_native" },
-	  { "<D-p>j",      function() require('fzf-lua').live_grep(opts) end,                                             desc = "live_grep" },
-	  { "<D-p><D-j>",  function() require('fzf-lua').live_grep_glob(opts) end,                                        desc = "live_grep_glob" },
-	  { "<D-p>r",      function() require('fzf-lua').live_grep_resume(opts) end,                                      desc = "live_grep_resume" },
-	  { "<D-p><D-r>",  function() require('fzf-lua').resume(opts) end,                                                desc = "resume" },
-	  { "<D-p><D-\\>", function() require('fzf-lua').grep_curbuf(opts) end,                                           desc = "grep_curbuf" },
-	  { "<D-p>\\",     function() require('fzf-lua').grep_cword(opts) end,                                            desc = "grep_cword" },
-	  { "<D-p><D-g>",  function() require('fzf-lua').git_status(opts) end,                                            desc = "git_status" },
-	  { "<D-p>g",      function() require('fzf-lua').git_status(opts) end,                                            desc = "git_status" },
-	  { "<D-p><D-v>",  function() require('fzf-lua').git_status(opts) end,                                            desc = "git_status" },
-	  { "<D-p>v",      function() require('fzf-lua').git_status(opts) end,                                            desc = "git_status" },
-	  { "<D-p><D-c>",  function() require('fzf-lua').git_commits(opts) end,                                           desc = "git_commits" },
-	  { "<D-p>c",      function() require('fzf-lua').git_bcommits(opts) end,                                          desc = "git_bcommits" },
-	  { "<D-p><D-b>",  function() require('fzf-lua').git_branches(opts) end,                                          desc = "git_branches" },
-	  { "<D-p><D-k>",  function() require('fzf-lua').keymaps(opts) end,                                               desc = "keymaps" },
-	  { "<D-p><D-'>",  function() require('fzf-lua').registers(opts) end,                                             desc = "registers" },
-	  { "<D-p><D-\">", function() require('fzf-lua').registers(opts) end,                                             desc = "registers" },
-	  { "<D-p><D-;>",  function() require('fzf-lua').commands(opts) end,                                              desc = "commands" },
+	 -- { "<D-p><leader>", function() require('fzf-lua').changes({}) end, desc = "changes" },
+	 { "<D-p>-",      function() require('fzf-lua').lsp_document_symbols({ fzf_args = [[--query='Method']] }) end, desc = "lsp_document_symbols Methods" },
+	 { "<D-p><D-->",  function() require('fzf-lua').lsp_document_symbols(opts) end, desc = "lsp_document_symbols" },
+	 { "<D-p><D-p>",  function() require('fzf-lua').files(opts) end, desc = "files" },
+	 { "<D-p><D-m>",  function() require('fzf-lua').changes(opts) end, desc = "changes" },
+	 { "<D-p><D-l>",  function() require('fzf-lua').lines(opts) end, desc = "lines" },
+	 { "<D-p>l",      function() require('fzf-lua').blines(table_merge({ fzf_opts={ ['--query']=vim.fn.expand('<cword>')}}, opts )) end, desc = "blines" },
+	 { "<D-p><D-o>",  function() require('fzf-lua').buffers(opts) end, desc = "buffers" },
+	 { "<D-p><D-u>",  function() require('fzf-lua').oldfiles(opts) end, desc = "oldfiles" },
+	 { "<D-p><D-'>",  function() require('fzf-lua').marks(opts) end, desc = "marks" },
+	 { "<D-p><D-[>",  function() require('fzf-lua').tabs(opts) end, desc = "tabs" },
+	 { "<D-p><D-j>",  function() require('fzf-lua').grep_project(opts) end, desc = "grep_project" },
+	 { "<D-p>j",      function() require('fzf-lua').grep_project(table_merge({ fzf_opts={ ['--query']=vim.fn.expand('<cword>')}}, opts )) end, desc = "grep_projct <cword>" },
+	 { "<D-p>J",      function() require('fzf-lua').live_grep_native(table_merge({ fzf_opts={ ['--query']=vim.fn.expand('<cword>')}}, opts )) end, desc = "live_grep_native" },
+
+	 { "<D-p>a",      function() require('fzf-lua').live_grep(table_merge({ fzf_opts={ ['--query']=vim.fn.expand('<cword>')}}, opts )) end, desc = "live_grep" },
+	 { "<D-p><D-a>",  function() require('fzf-lua').live_grep_glob(opts) end, desc = "live_grep_glob" },
+	 { "<D-p>r",      function() require('fzf-lua').live_grep_resume(opts) end, desc = "live_grep_resume" },
+	 { "<D-p><D-r>",  function() require('fzf-lua').resume(opts) end, desc = "resume" },
+	 { "<D-p><D-\\>", function() require('fzf-lua').grep_curbuf(opts) end, desc = "grep_curbuf" },
+	 { "<D-p>\\",     function() require('fzf-lua').grep_cword(opts) end, desc = "grep_cword" },
+	 { "<D-p><D-g>",  function() require('fzf-lua').git_status(opts) end, desc = "git_status" },
+	 { "<D-p>g",      function() require('fzf-lua').git_status(opts) end, desc = "git_status" },
+	 { "<D-p><D-v>",  function() require('fzf-lua').git_status(opts) end, desc = "git_status" },
+	 { "<D-p>v",      function() require('fzf-lua').git_status(opts) end, desc = "git_status" },
+	 { "<D-p><D-c>",  function() require('fzf-lua').git_commits(opts) end, desc = "git_commits" },
+	 { "<D-p>c",      function() require('fzf-lua').git_bcommits(opts) end, desc = "git_bcommits" },
+	 { "<D-p><D-b>",  function() require('fzf-lua').git_branches(opts) end, desc = "git_branches" },
+	 { "<D-p><D-k>",  function() require('fzf-lua').keymaps(opts) end, desc = "keymaps" },
+	 { "<D-p><D-'>",  function() require('fzf-lua').registers(opts) end, desc = "registers" },
+	 { "<D-p><D-\">", function() require('fzf-lua').registers(opts) end, desc = "registers" },
+	 { "<D-p><D-;>",  function() require('fzf-lua').commands(opts) end, desc = "commands" },
   }
 -- stylua: ignore end
 }

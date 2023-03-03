@@ -1,3 +1,4 @@
+vim.cmd.source('~/.config/nvim/lua/user/xptsource.vim')
 local cmp = require("cmp")
 local source = {}
 
@@ -68,7 +69,6 @@ function source:execute(completion_item, callback)
 	callback(completion_item)
 end
 
-vim.cmd.source('lua/user/xptsource.vim')
 
 ---Register your source to nvim-cmp.
 require("cmp").register_source("xpt", source)
