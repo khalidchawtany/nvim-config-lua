@@ -14,14 +14,12 @@ M.config = function()
           icon_preset = "diamond"
         }
       },
-      ["core.norg.completion"] = {
-        config = {}
-      },
       ["core.export"] = {
         config = {}
       },
       ["core.export.markdown"] = {
-        config = {}
+        config = {
+		}
       }
     }
   }

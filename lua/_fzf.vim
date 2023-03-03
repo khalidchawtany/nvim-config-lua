@@ -29,10 +29,10 @@ function s:SetFzfColors()
 					\." --marker='◉ ' --reverse --bind 'ctrl-space:select-all,ctrl-l:jump'"
 					\." --color=bg:#e1e2e7,bg+:#B9CDF7,fg+:#234F84,hl:#00C8E0,hl+:#44ff44,gutter:#e1e2e7,marker:#00ffff,border:#00A9BF,separator:#e1e2e7"
 
-		" hi Normal guibg=white
-		" hi NormalFloat guibg=white
-		" hi NormalNC guibg=white
-		" hi NormalSB guibg=white
+		hi Normal guibg=white
+		hi NormalFloat guibg=white
+		hi NormalNC guibg=white
+		hi NormalSB guibg=white
 
 	endif
 

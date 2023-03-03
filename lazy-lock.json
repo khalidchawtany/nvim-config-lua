@@ -76,6 +76,7 @@
   "neogen": { "branch": "main", "commit": "93d997dbddfe084e77ba4541c54a7b8bfd754fb1" },
   "neogit": { "branch": "master", "commit": "bddb2323aa45873eb15eca8a9368ac725a174855" },
   "neorg": { "branch": "main", "commit": "764dec5de14947f2f5d08bd3e0452324538e9a4d" },
+  "neorg-telescope": { "branch": "main", "commit": "9deacda7abbfe09cd80ba86d0eefad514cda0b11" },
   "netman.nvim": { "branch": "v1.1", "commit": "8ffdcd4648ceec940568101e941c65df4913d762" },
   "nnn.nvim": { "branch": "master", "commit": "2fbf0582bc3073567593f376775d6804a6901772" },
   "noice.nvim": { "branch": "main", "commit": "f148923300b9fc4609d76867f1f95410ab1442e8" },

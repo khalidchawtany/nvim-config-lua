@@ -1,3 +1,10 @@
+
+nnoremap  <leader>ej :call ExecuteJava()<cr>
+function! ExecuteJava()
+	write
+	exe "tab term cd " . shellescape(expand("%:h")) . " && javac " . expand ("%:t") . " && java " . expand("%:t:r")
+endfunction
+
 map <D-UP> <C-UP>
 map <D-DOWN> <C-DOWN>
 
