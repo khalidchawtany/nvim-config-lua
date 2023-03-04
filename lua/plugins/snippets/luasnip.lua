@@ -1,9 +1,8 @@
 local M = {
 	"L3MON4D3/LuaSnip",
-	dependencies = { "rafamadriz/friendly-snippets" },
+	dependencies = { "rafamadriz/friendly-snippets", "molleweide/LuaSnip-snippets.nvim" },
 	event = "InsertEnter",
-	keys = { { "<c-cr>", mode = "v" } }
-
+	keys = { { "<c-cr>", mode = "v" } },
 	-- config = function()
 	--   vim.cmd [[
 	-- " press <Tab> to expand or jump in a snippet. These can also be mapped separately
@@ -24,49 +23,62 @@ local M = {
 
 M.config = function()
 	local ls = require("luasnip") -- {{{
+	ls.filetype_extend("blade", { "html", "php", "javascript" })
+	ls.filetype_extend("php", { "html", "javascript" })
+	ls.filetype_extend("javascript", { "html" })
+	ls.filetype_extend("javascriptreact", { "html" })
+	ls.filetype_extend("typescriptreact", { "html" })
 
 	-- require("luasnip.loaders.from_vscode").lazy_load()
-	require("luasnip.loaders.from_lua").load(
-		{ paths = vim.fn.stdpath("config") .. "/luasnip_snippets/" })
-	require("luasnip.loaders.from_vscode").load(
-		{
-			paths = {
-				vim.fn.stdpath("config") .. "/vscode_snippets/",
-				"~/.local/share/nvim/lazy/friendly-snippets/"
-			}
-		})
+	require("luasnip.loaders.from_lua").lazy_load({
+		paths = {
+			vim.fn.stdpath("config") .. "/luasnip_snippets/",
+			vim.fn.stdpath("data") .. "/lazy/LuaSnip-snippets.nvim/",
+		},
+	})
+
+	require("luasnip.loaders.from_snipmate").lazy_load({
+		paths = { vim.fn.stdpath("config") .. "/snipmate_snippets/" },
+	})
+
+	require("luasnip.loaders.from_vscode").lazy_load({
+		paths = {
+			vim.fn.stdpath("config") .. "/vscode_snippets/",
+			vim.fn.stdpath("config") .. "/lazy/friendly-snippets/",
+		},
+	})
 
 	require("luasnip").config.setup({ store_selection_keys = "<c-cr>" })
 
-	vim.cmd(
-		[[command! LuaSnipEdit :lua require("luasnip.loaders.from_lua").edit_snippet_files()]]) -- }}}
+	vim.cmd([[command! LuaSnipEdit :lua require("luasnip.loaders.from_lua").edit_snippet_files()]]) -- }}}
 
 	-- Virtual Text{{{
 	local types = require("luasnip.util.types")
 	ls.config.set_config({
-		history = true, -- keep around last snippet local to jump back
+		history = true,                      -- keep around last snippet local to jump back
 		updateevents = "TextChanged,TextChangedI", -- update changes as you type
 		enable_autosnippets = true,
 		ext_opts = {
-			[types.choiceNode] = {
-				active = { virt_text = { { "●", "GruvboxOrange" } } }
-			}
+				[types.choiceNode] = {
+				active = { virt_text = { { "●", "GruvboxOrange" } } },
+			},
 			-- [types.insertNode] = {
 			-- 	active = {
 			-- 		virt_text = { { "●", "GruvboxBlue" } },
 			-- 	},
 			-- },
-		}
+		},
 	}) -- }}}
 
 	-- Key Mapping --{{{
 
 	vim.keymap.set({ "i", "s" }, "<c-s>", "<Esc>:w<cr>")
-	vim.keymap.set({ "i", "s" }, "<c-u>",
-		'<cmd>lua require("luasnip.extras.select_choice")()<cr><C-c><C-c>')
+	vim.keymap.set({ "i", "s" }, "<c-u>", '<cmd>lua require("luasnip.extras.select_choice")()<cr><C-c><C-c>')
 
 	vim.keymap.set({ "i", "s" }, "<c-cr>", function()
-		if ls.expand_or_jumpable() then ls.expand() end
+		if ls.expand_or_jumpable() then
+			ls.expand()
+		end
 	end, { silent = true })
 	-- vim.keymap.set({ "i", "s" }, "<C-k>", function()
 	-- 	if ls.expand_or_jumpable() then
@@ -111,7 +123,8 @@ M.config = function()
 
 	-- vim.keymap.set("n", "<Leader><CR>", "<cmd>LuaSnipEdit<cr>", {silent = true, noremap = true})
 	vim.cmd(
-		[[autocmd BufEnter */luasnip_snippets/*.lua nnoremap <silent> <buffer> <CR> /-- End Refactoring --<CR>O<Esc>O]])
+		[[autocmd BufEnter */luasnip_snippets/*.lua nnoremap <silent> <buffer> <CR> /-- End Refactoring --<CR>O<Esc>O]]
+	)
 end
 
 return M
