@@ -1,28 +1,38 @@
 local M = {
-  "vhyrro/neorg",
-  ft = {"norg"},
-  -- tag = "*",
-  dependencies = {"nvim-treesitter"} -- You may want to specify Telescope here as well
+	"vhyrro/neorg",
+	ft = { "norg" },
+	cmd ={ "Neorg" },
+	-- tag = "*",
+	dependencies = { "nvim-treesitter" }, -- You may want to specify Telescope here as well
 }
 
 M.config = function()
-  require("neorg").setup {
-    load = {
-      ["core.defaults"] = {},
-      ["core.norg.concealer"] = {
-        config = {
-          icon_preset = "diamond"
-        }
-      },
-      ["core.export"] = {
-        config = {}
-      },
-      ["core.export.markdown"] = {
-        config = {
-		}
-      }
-    }
-  }
+	require("neorg").setup({
+		load = {
+				["core.defaults"] = {},
+				["core.norg.concealer"] = {
+				config = {
+					icon_preset = "diamond",
+				},
+			},
+				["core.export"] = {
+				config = {},
+			},
+				["core.export.markdown"] = {
+				config = {},
+			},
+				["core.norg.dirman"] = {
+				config = {
+					workspaces = {
+						work = "~/notes/work/", -- Format: <name_of_workspace> = <path_to_workspace_root>
+						research = "~/notes/research/",
+					},
+					default_workspace = "work",
+					index = "index.norg", -- The name of the main (root) .norg file
+				},
+			},
+		},
+	})
 end
 
 return M
