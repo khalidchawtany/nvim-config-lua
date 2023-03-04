@@ -1,9 +1,14 @@
 local M = {
 	"vhyrro/neorg",
 	ft = { "norg" },
-	cmd ={ "Neorg" },
+	cmd = { "Neorg" },
 	-- tag = "*",
 	dependencies = { "nvim-treesitter" }, -- You may want to specify Telescope here as well
+	keys = {
+		{ "<leader>oi", "<cmd>Neorg workspace work<cr>",  desc = "Neorg (Index)" },
+		{ "<leader>ow", "<cmd>Neorg workspace work<cr>",  desc = "Neorg (Index)" },
+		{ "<leader>or", "<cmd>Neorg return<cr>", desc = "Neorg (return)" },
+	},
 }
 
 M.config = function()
