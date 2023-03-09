@@ -4,6 +4,9 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	cmd = {
+		"Larago",
+	},
 	keys = {
 		{ "<leader>lg", "<cmd>Larago<cr>" },
 	},
