@@ -41,6 +41,12 @@ function! FindGitDirOrRoot()
   return system("git rev-parse --show-toplevel | tr -d '\\n'")
 endfunction
 
+function! GetRootDirName()
+	let root_dir = FindGitDirOrRoot()
+	let root_dir = substitute(root_dir, '^.*/', '', '')
+	return root_dir
+endfunction
+
 command! -nargs=* Map call Map(<f-args>)
 
 
@@ -219,7 +225,7 @@ endfunction
 nnoremap <leader><cr> :call Exec_on_term("normal")<CR>
 vnoremap <leader><cr> :<c-u>call Exec_on_term("visual")<CR>
 
-function InsertRestRequest() abort
+function! InsertRestRequest() abort
   let text = "icurl \"http://www.mall.local/api/mall/categories/1\" \\ | jq -R '. as $raw | try fromjson catch $raw'0kf\"vi\""
   call feedkeys(text)
 endfunction
