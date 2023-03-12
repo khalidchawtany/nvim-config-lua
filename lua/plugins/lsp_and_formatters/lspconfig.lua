@@ -1,5 +1,13 @@
 return {
   "neovim/nvim-lspconfig",
+  opts = {
+	  servers = {
+		  tailwindcss = {
+
+		  }
+	  }
+
+  },
   config = function()
    --  local on_attach = function(client, bufnr)
    --    vim.lsp.handlers["textDocument/publishDiagnostics"] =
