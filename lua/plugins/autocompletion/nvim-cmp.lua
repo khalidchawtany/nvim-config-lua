@@ -1,4 +1,9 @@
-local M = {
+local has_words_before = function()
+	unpack = unpack or table.unpack
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+return {
 	"hrsh7th/nvim-cmp",
 	dependencies = {
 		"saadparwaiz1/cmp_luasnip",
@@ -9,18 +14,9 @@ local M = {
 	},
 	event = "InsertEnter",
 	opts = function(_, opts)
-	end,
-}
-
-local has_words_before = function()
-	unpack = unpack or table.unpack
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-M.config = function()
-	require("user.xptsource")
-	vim.cmd([[
+		local cmp = require("cmp")
+		require("user.xptsource")
+		vim.cmd([[
   " gray
   highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
   " blue
@@ -39,11 +35,8 @@ M.config = function()
   highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
   ]])
 
-	local cmp = require("cmp")
-
-	cmp.setup({
-		completion = {},
-		sources = {
+		opts.completion = {}
+		opts.sources = {
 			{ name = "xpt" },
 			{ name = "luasnip" },
 			{ name = "copilot", group_index = 2 },
@@ -76,12 +69,12 @@ M.config = function()
 			--     loud = true
 			--   }
 			-- }
-		},
-		experimental = {
+		}
+		opts.experimental = {
 			native_menu = false,
 			ghost_text = true,
-		},
-		window = {
+		}
+		opts.window = {
 			-- documentation = "native",
 			documentation = {
 				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -91,8 +84,8 @@ M.config = function()
 				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 				winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
 			},
-		},
-		sorting = {
+		}
+		opts.sorting = {
 			priority_weight = 2,
 			comparators = {
 				require("copilot_cmp.comparators").prioritize,
@@ -109,8 +102,8 @@ M.config = function()
 				cmp.config.compare.length,
 				cmp.config.compare.order,
 			},
-		},
-		formatting = {
+		}
+		opts.formatting = {
 			format = function(entry, item)
 				item.menu = ({
 						xpt = "[XPT]",
@@ -134,39 +127,13 @@ M.config = function()
 				require("tailwindcss-colorizer-cmp").formatter(entry, item)
 				return item
 			end,
-		},
-		snippet = {
+		}
+		opts.snippet = {
 			expand = function(args)
 				require("luasnip").lsp_expand(args.body)
 			end,
-		},
-		mapping = {
-			-- ["<C-n>"] = cmp.mapping(
-			--   function(fallback)
-			--     if require("neogen").jumpable() then
-			--       require("neogen").jump_next()
-			--     else
-			--       fallback()
-			--     end
-			--   end,
-			--   {
-			--     "i",
-			--     "s"
-			--   }
-			-- ),
-			-- ["<C-p>"] = cmp.mapping(
-			--   function(fallback)
-			--     if require("neogen").jumpable(true) then
-			--       require("neogen").jump_prev()
-			--     else
-			--       fallback()
-			--     end
-			--   end,
-			--   {
-			--     "i",
-			--     "s"
-			--   }
-			-- ),
+		}
+		opts.mapping = {
 			-- ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}),
 				["<c-n>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
@@ -209,82 +176,10 @@ M.config = function()
 					fallback()
 				end
 			end, { "i", "s" }),
-		},
-	})
+		}
 
-	-- require "cmp".setup.cmdline(
-	--   ":",
-	--   {
-	--     sources = {
-	--       {name = "cmdline"}
-	--     },
-	--     mapping = cmp.mapping.preset.cmdline(
-	--       {
-	--         ["<C-j>"] = {
-	--           c = function(fallback)
-	--             if cmp.visible() then
-	--               cmp.select_next_item()
-	--             else
-	--               fallback()
-	--             end
-	--           end
-	--         },
-	--         ["<C-k>"] = {
-	--           c = function(fallback)
-	--             if cmp.visible() then
-	--               cmp.select_prev_item()
-	--             else
-	--               fallback()
-	--             end
-	--           end
-	--         }
-	--       }
-	--     ) -- This line
-	--   }
-	-- )
-	--
-	-- require "cmp".setup.cmdline(
-	--   "/",
-	--   {
-	--     sources = {
-	--       {name = "buffer"}
-	--     },
-	--     mapping = cmp.mapping.preset.cmdline(
-	--       {
-	--         ["<C-j>"] = {
-	--           c = function(fallback)
-	--             if cmp.visible() then
-	--               cmp.select_next_item()
-	--             else
-	--               fallback()
-	--             end
-	--           end
-	--         },
-	--         ["<C-k>"] = {
-	--           c = function(fallback)
-	--             if cmp.visible() then
-	--               cmp.select_prev_item()
-	--             else
-	--               fallback()
-	--             end
-	--           end
-	--         }
-	--       }
-	--     ) -- This line
-	--   }
-	-- )
-
-	-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-	-- The following example advertise capabilities to `clangd`.
-	-- require "lspconfig".clangd.setup {
-	--   capabilities = capabilities
-	-- }
-	-- require('user.xptsource')
-end
-
---M.config()
-
-return M
+		-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+	end,
+}
