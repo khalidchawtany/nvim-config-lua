@@ -40,7 +40,7 @@ return {
 			{ name = "xpt" },
 			{ name = "luasnip" },
 			{ name = "copilot", group_index = 2 },
-			{ name = "nvim_lsp" },
+			{ name = "nvim_lsp", trigger_characters = { '-' }  },
 			{ name = "nvim_lua" },
 			{ name = "path" },
 			{

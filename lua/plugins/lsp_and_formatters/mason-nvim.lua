@@ -107,6 +107,7 @@ M.config = function()
     }
   )
 
+
   require("mason-lspconfig").setup_handlers {
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
@@ -138,6 +139,17 @@ M.config = function()
         }
       }
     end,
+	['unocss']= function ()
+		require 'lspconfig'.unocss.setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			-- filetypes = { ... },
+			root_dir = function(fname)
+				return require 'lspconfig.util'.root_pattern(".git")(fname)
+			end
+		}
+
+	end,
     ["sumneko_lua"] = function()
       require("lspconfig").sumneko_lua.setup {
         settings = {
