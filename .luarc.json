@@ -78,5 +78,6 @@
         "/Users/juju/.config/nvim/after",
         "/Users/juju/Development/Applications/neovim-qt/neovim-qt/build/bin/nvim-qt.app/Contents/MacOS/../Resources/runtime",
         "${3rd}/luassert/library"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }

@@ -39,8 +39,8 @@ return {
 		opts.sources = {
 			{ name = "xpt" },
 			{ name = "luasnip" },
-			{ name = "copilot", group_index = 2 },
-			{ name = "nvim_lsp", trigger_characters = { '-' }  },
+			{ name = "copilot",  group_index = 2 },
+			{ name = "nvim_lsp", trigger_characters = { "-" } },
 			{ name = "nvim_lua" },
 			{ name = "path" },
 			{
@@ -70,8 +70,13 @@ return {
 			--   }
 			-- }
 		}
+
+		opts.view = {
+			entries = "native",
+		}
+
 		opts.experimental = {
-			native_menu = false,
+			-- native_menu = false,
 			ghost_text = true,
 		}
 		opts.window = {
@@ -106,17 +111,17 @@ return {
 		opts.formatting = {
 			format = function(entry, item)
 				item.menu = ({
-						xpt = "[XPT]",
-						nvim_lsp = "[LSP]",
-						emoji = "[EMO]",
-						path = "[FILE]",
-						calc = "[CALC]",
-						luasnip = "[LS]",
-						buffer = "[BUF]",
-						rg = "[RG]",
-						copilot = "[Cop]",
-						treesitter = "[TS]",
-					})[entry.source.name]
+					xpt = "[XPT]",
+					nvim_lsp = "[LSP]",
+					emoji = "[EMO]",
+					path = "[FILE]",
+					calc = "[CALC]",
+					luasnip = "[LS]",
+					buffer = "[BUF]",
+					rg = "[RG]",
+					copilot = "[Cop]",
+					treesitter = "[TS]",
+				})[entry.source.name]
 				item.dup = ({
 						buffer = 1,
 						path = 1,
@@ -133,20 +138,20 @@ return {
 				require("luasnip").lsp_expand(args.body)
 			end,
 		}
-		opts.mapping = {
+		opts.mapping = cmp.mapping.preset.insert({
 			-- ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}),
-				["<c-n>"] = cmp.mapping(function(fallback)
+			["<c-n>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
 				elseif require("luasnip").expand_or_jumpable() then
 					require("luasnip").expand_or_jump()
 				elseif has_words_before() then
-					cmp.complete()
+					cmp.mapping.complete()
 				else
 					fallback()
 				end
 			end, { "i", "s" }),
-				["<c-p>"] = cmp.mapping(function(fallback)
+			["<c-p>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
 				elseif require("luasnip").jumpable(-1) then
@@ -155,28 +160,28 @@ return {
 					fallback()
 				end
 			end, { "i", "s" }),
-				["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-				["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-				["<C-d>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-e>"] = cmp.mapping.close(),
-				["<CR>"] = cmp.mapping.confirm({
+			["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+			["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+			["<C-d>"] = cmp.mapping.scroll_docs(-4),
+			["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<C-Space>"] = cmp.mapping.complete(),
+			["<C-e>"] = cmp.mapping.close(),
+			["<CR>"] = cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Replace,
 				select = true,
 			}),
-				["<TAB>"] = cmp.mapping(function(fallback)
+			["<TAB>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
 				elseif require("luasnip").expand_or_jumpable() then
 					require("luasnip").expand_or_jump()
 				elseif has_words_before() then
-					cmp.complete()
+					cmp.mapping.complete()
 				else
 					fallback()
 				end
 			end, { "i", "s" }),
-		}
+		})
 
 		-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
