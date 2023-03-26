@@ -1,6 +1,6 @@
 local M = {
   "VonHeikemen/fine-cmdline.nvim",
-  requires = {"MunifTanjim/nui.nvim"},
+  dependencies = {"MunifTanjim/nui.nvim"},
   keys = {
     {
       "<leader>;",

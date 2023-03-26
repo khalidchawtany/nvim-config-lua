@@ -62,7 +62,6 @@ local M = {
 		},
 		{ "<c-s><c-u>", function() require('telescope.builtin').oldfiles()end,                    desc = "Telescope: old files" },
 		{ "<c-s>u",     function() require('telescope.builtin').oldfiles()end,                    desc = "Telescope: old files" },
-		{ "<c-s><c-g>", function() require('telescope.builtin').git_status()end,                  desc = "Telescope: git_status" },
 		{ "<c-s>gg",    function() require('telescope.builtin').git_status()end,                  desc = "Telescope: git_status" },
 		{ "<c-s>gs",    function() require('telescope.builtin').git_stash()end,                   desc = "Telescope: git_stash" },
 		{ "<c-s>gb",    function() require('telescope.builtin').git_branches()end,                desc = "Telescope: git_branches" },

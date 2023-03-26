@@ -37,10 +37,10 @@ return {
 
 		opts.completion = {}
 		opts.sources = {
-			{ name = "xpt" },
-			{ name = "luasnip" },
-			{ name = "copilot",  group_index = 2 },
 			{ name = "nvim_lsp", trigger_characters = { "-" } },
+			{ name = "copilot",  group_index = 2 },
+			{ name = "luasnip" },
+			{ name = "xpt" },
 			{ name = "nvim_lua" },
 			{ name = "path" },
 			{
@@ -72,9 +72,8 @@ return {
 		}
 
 		opts.view = {
-			entries = "native",
+			-- entries = "native",
 		}
-
 		opts.experimental = {
 			-- native_menu = false,
 			ghost_text = true,

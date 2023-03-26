@@ -1,6 +1,6 @@
 return {
   "debugloop/telescope-undo.nvim",
-  requires = {"nvim-telescope/telescope.nvim"},
+  dependencies = {"nvim-telescope/telescope.nvim"},
   keys = {
     {
       "<c-s><c-r>",

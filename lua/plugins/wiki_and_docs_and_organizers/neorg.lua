@@ -28,6 +28,7 @@ M.config = function()
 
 						keybinds.map("norg", "i", "<C-9>", "<cmd>Neorg keybind norg core.promo.demote<CR>")
 						keybinds.map("norg", "i", "<C-0>", "<cmd>Neorg keybind norg core.promo.promote<CR>")
+						keybinds.map("norg", "n", "<leader>oc", "<cmd>Neorg toggle-concealer<CR>")
 
 
 						-- Unmaps any Neorg key from the `norg` mode

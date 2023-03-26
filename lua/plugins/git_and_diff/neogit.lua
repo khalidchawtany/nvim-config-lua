@@ -36,7 +36,7 @@ M.config = function()
       -- Requires you to have `sindrets/diffview.nvim` installed.
       -- use {
       --   'TimUntersberger/neogit',
-      --   requires = {
+      --   dependencies = {
       --     'nvim-lua/plenary.nvim',
       --     'sindrets/diffview.nvim'
       --   }

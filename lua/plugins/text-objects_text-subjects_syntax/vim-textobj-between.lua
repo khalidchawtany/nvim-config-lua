@@ -1,6 +1,6 @@
 return {
  "thinca/vim-textobj-between",
-  requires = {"kana/vim-textobj-user"},
+  dependencies = {"kana/vim-textobj-user"},
 
   keys = {
     {"is", "<Plug>(textobj-between-i)", desc = "TxetObj (Between-i)", mode={"v", "o"}},

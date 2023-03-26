@@ -2,7 +2,7 @@ local opts = {hidden = false, respect_gitignore = true}
 
 return {
   "princejoogie/dir-telescope.nvim",
-  requires = {"nvim-telescope/telescope.nvim"},
+  dependencies = {"nvim-telescope/telescope.nvim"},
   cmd = {"GrepInDirectory", "FileInDirectory"},
   keys = {
     {
