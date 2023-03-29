@@ -146,6 +146,10 @@ M.config = function()
 			require("lspconfig").lua_ls.setup({
 				settings = {
 					Lua = {
+
+						-- completion = {
+						-- 	keywordSnippet  = "Disable"  -- prevent duplicate snippets from luasnip and LSP
+						-- },
 						diagnostics = {
 							globals = { "vim", "use", "require" },
 						},
