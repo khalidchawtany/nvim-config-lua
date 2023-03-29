@@ -15,32 +15,34 @@ return {
 	event = "InsertEnter",
 	opts = function(_, opts)
 		local cmp = require("cmp")
-		require("user.xptsource")
-		vim.cmd([[
-  " gray
-  highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
-  " blue
-  highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
-  highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
-  " light blue
-  highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
-  highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
-  highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
-  " pink
-  highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
-  highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
-  " front
-  highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
-  highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
-  highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
-  ]])
+
+		-- require("user.xptsource")
+
+		vim.cmd[[
+				" gray
+				highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
+				" blue
+				highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+				highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
+				" light blue
+				highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+				highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
+				highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
+				" pink
+				highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+				highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
+				" front
+				highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+				highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
+				highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
+            ]]
 
 		opts.completion = {}
 		opts.sources = {
 			{ name = "nvim_lsp", trigger_characters = { "-" } },
 			{ name = "copilot",  group_index = 2 },
 			{ name = "luasnip" },
-			{ name = "xpt" },
+			-- { name = "xpt" },
 			{ name = "nvim_lua" },
 			{ name = "path" },
 			{
@@ -110,21 +112,21 @@ return {
 		opts.formatting = {
 			format = function(entry, item)
 				item.menu = ({
-					xpt = "[XPT]",
-					nvim_lsp = "[LSP]",
-					emoji = "[EMO]",
-					path = "[FILE]",
-					calc = "[CALC]",
+					-- xpt = "[XPT]",
+					copilot = "[Cop]",
 					luasnip = "[LS]",
+					nvim_lsp = "[LSP]",
+					path = "[FILE]",
 					buffer = "[BUF]",
 					rg = "[RG]",
-					copilot = "[Cop]",
 					treesitter = "[TS]",
+					calc = "[CALC]",
+					emoji = "[EMO]",
 				})[entry.source.name]
 				item.dup = ({
 						buffer = 1,
 						path = 1,
-						nvim_lsp = 0,
+						nvim_lsp = 1,
 						luasnip = 1,
 					})[entry.source.name] or 0 -- 0 here is the default duplicate value
 
