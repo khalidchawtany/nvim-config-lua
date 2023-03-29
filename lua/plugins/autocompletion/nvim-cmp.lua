@@ -39,9 +39,9 @@ return {
 
 		opts.completion = {}
 		opts.sources = {
-			{ name = "nvim_lsp", trigger_characters = { "-" } },
 			{ name = "copilot",  group_index = 2 },
 			{ name = "luasnip" },
+			{ name = "nvim_lsp", trigger_characters = { "-" } },
 			-- { name = "xpt" },
 			{ name = "nvim_lua" },
 			{ name = "path" },
@@ -126,7 +126,7 @@ return {
 				item.dup = ({
 						buffer = 1,
 						path = 1,
-						nvim_lsp = 1,
+						nvim_lsp = 0,
 						luasnip = 1,
 					})[entry.source.name] or 0 -- 0 here is the default duplicate value
 
