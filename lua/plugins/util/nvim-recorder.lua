@@ -8,7 +8,7 @@ return {
 			slots = { "a", "b" },
 			-- default keymaps, see README for description what the commands do
 			mapping = {
-				startStopRecording = "q",
+				startStopRecording = "œ", -- option-q
 				playMacro = "Q",
 				switchSlot = "<C-q>",
 				editMacro = "cq",

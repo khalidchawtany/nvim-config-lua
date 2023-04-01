@@ -17,6 +17,21 @@ M.config = function()
 		ensure_installed = { "lua_ls" },
 	})
 
+
+
+	-- local lspconfig = require('lspconfig')
+	-- local lsp_defaults = lspconfig.util.default_config
+	--
+	-- lsp_defaults.capabilities = vim.tbl_deep_extend(
+	-- 	'force',
+	-- 	lsp_defaults.capabilities,
+	-- 	require('cmp_nvim_lsp').default_capabilities()
+	-- )
+
+
+
+
+
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 		-- Enable signs
 		signs = true,
@@ -146,7 +161,6 @@ M.config = function()
 			require("lspconfig").lua_ls.setup({
 				settings = {
 					Lua = {
-
 						-- completion = {
 						-- 	keywordSnippet  = "Disable"  -- prevent duplicate snippets from luasnip and LSP
 						-- },
