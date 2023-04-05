@@ -11,6 +11,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"lukas-reineke/cmp-rg",
+		"buschco/nvim-cmp-ts-tag-close",
 	},
 	event = "InsertEnter",
 	opts = function(_, opts)
@@ -18,7 +19,7 @@ return {
 
 		-- require("user.xptsource")
 
-		vim.cmd[[
+		vim.cmd([[
 				" gray
 				highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
 				" blue
@@ -35,11 +36,12 @@ return {
 				highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 				highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 				highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
-            ]]
+            ]])
 
 		opts.completion = {}
 		opts.sources = {
 			{ name = "copilot",  group_index = 2 },
+			{ name = 'nvim-cmp-ts-tag-close' },
 			{ name = "luasnip" },
 			{ name = "nvim_lsp", trigger_characters = { "-" } },
 			-- { name = "xpt" },
