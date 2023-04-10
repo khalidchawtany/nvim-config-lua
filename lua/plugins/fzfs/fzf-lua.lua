@@ -50,7 +50,7 @@ local M = {
 		{
 			"<D-p>-",
 			function()
-				require("fzf-lua").lsp_document_symbols({ fzf_args = [[--query='Method']] })
+				require("fzf-lua").lsp_document_symbols({ fzf_args = [[--query='Method ']] })
 			end,
 			desc = "lsp_document_symbols Methods",
 		},
