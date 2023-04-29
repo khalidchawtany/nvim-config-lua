@@ -17,9 +17,9 @@ M.config = function()
 			null_ls.builtins.code_actions.cspell,
 			-- completion
 			null_ls.builtins.completion.luasnip,
-			null_ls.builtins.completion.spell.with({
-				filetypes = { "markdown", "text", "org", "norg", "gitcommit" },
-			}),
+			-- null_ls.builtins.completion.spell.with({
+			-- 	filetypes = { "markdown", "text", "org", "norg", "gitcommit" },
+			-- }),
 			-- code actions
 			null_ls.builtins.code_actions.gitsigns,
 			null_ls.builtins.code_actions.proselint,
