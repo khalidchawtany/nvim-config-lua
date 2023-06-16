@@ -19,7 +19,9 @@ M.config = function()
                 "--parser",
                 "vue",
                 "--no-semi",
-                "--single-quote"
+                "--single-quote",
+                "--space-before-function-paren",
+				"--max-attribute-length 1",
               },
               stdin = true
             }
@@ -32,7 +34,9 @@ M.config = function()
               args = {
                 "--stdin-filepath",
                 vim.api.nvim_buf_get_name(0),
-                "--single-quote"
+                "--single-quote",
+                "--space-before-function-paren",
+				"--max-attribute-length 1",
               },
               stdin = true
             }

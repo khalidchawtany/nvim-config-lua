@@ -2,8 +2,8 @@ return {
 	"ThePrimeagen/git-worktree.nvim",
 	keys = {
 
-		{ "<c-s><c-w>", function() require("telescope").extensions.git_worktree.create_git_worktree() end, desc = "Telescope: git work_trees create", },
-		{ "<c-s><c-g>", function() require("telescope").extensions.git_worktree.git_worktrees() end, desc = "Telescope: git work_trees list", },
+		{ "<c-s>gW", function() require("telescope").extensions.git_worktree.create_git_worktree() end, desc = "Telescope: git work_trees create", },
+		{ "<c-s>gw", function() require("telescope").extensions.git_worktree.git_worktrees() end, desc = "Telescope: git work_trees list", },
 		-- { "<c-s><c-w>", "Telescope: git work_trees create" },
 		-- { "<c-s><c-g>", "Telescope: git work_trees list" },},
 	},

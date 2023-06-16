@@ -21,18 +21,20 @@ function s:SetFzfColors()
 	endif
 
 	if &background == 'dark'
+					" \." --bind 'ctrl-r:reload:$FZF_DEFAULT_COMMAND'"
 		let $FZF_DEFAULT_OPTS=" --history=".s:fzf_history." --pointer=' ▶'"
 					\." --marker='◉ ' --reverse"
-					\." --bind 'ctrl-r:reload:$FZF_DEFAULT_COMMAND'"
 					\." --bind 'ctrl-space:select-all,ctrl-l:jump,ctrl-f:toggle-preview'"
-					\." --bind 'ctrl-x:change-preview-window(right,70%|down,40%,border-top|hidden|)'"
+					\." --bind 'ctrl-x:change-preview-window(down,40%,border-top|hidden|)'"
+					\." --bind 'ctrl-r:change-preview-window(right,45%|right,40%|right,35%|right,30%|right,25%|right,20%|right,15%|)'"
 					\." --color=bg:#24283b,bg+:#234F84,fg+:#B9CDF7,hl:#00C8E0,hl+:#44ff44,gutter:#24283b,marker:#00ffff,border:#00A9BF,separator:#24283b"
 	else
 		let $FZF_DEFAULT_OPTS=" --history=".s:fzf_history." --pointer=' ▶'"
 					\." --marker='◉ ' --reverse"
 					\." --bind 'ctrl-r:reload:$FZF_DEFAULT_COMMAND'"
 					\." --bind 'ctrl-space:select-all,ctrl-l:jump,ctrl-f:toggle-preview'"
-					\." --bind 'ctrl-x:change-preview-window(right,70%|down,40%,border-top|hidden|)'"
+					\." --bind 'ctrl-x:change-preview-window(down,40%,border-top|hidden|)'"
+					\." --bind 'ctrl-r:change-preview-window(right,45%|right,40%|right,35%|right,30%|right,25%|right,20%|right,15%|)'"
 					\." --color=bg:#e1e2e7,bg+:#B9CDF7,fg+:#234F84,hl:#00C8E0,hl+:#44ff44,gutter:#e1e2e7,marker:#00ffff,border:#00A9BF,separator:#e1e2e7"
 
 		hi Normal guibg=white

@@ -53,12 +53,12 @@ M.config = function()
 					end,
 				},
 			},
-				["core.norg.concealer"] = {
+				["core.concealer"] = {
 				config = {
 					icon_preset = "diamond", -- diamond, basic, varied
 				},
 			},
-				["core.norg.esupports.indent"] = {
+				["core.esupports.indent"] = {
 				config = {
 					tweaks = {
 						list = 4,
@@ -71,7 +71,7 @@ M.config = function()
 				["core.export.markdown"] = {
 				config = {},
 			},
-				["core.norg.dirman"] = {
+				["core.dirman"] = {
 				config = {
 					workspaces = {
 						work = "~/notes/work/", -- Format: <name_of_workspace> = <path_to_workspace_root>

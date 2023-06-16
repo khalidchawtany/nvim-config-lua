@@ -26,7 +26,19 @@ M.config = function()
 			-- null_ls.builtins.code_actions.refactoring,
 			null_ls.builtins.code_actions.xo, -- eslint wrapper with great defaults
 			-- formatting
-			null_ls.builtins.formatting.prettier,
+			-- null_ls.builtins.formatting.prettier,
+			null_ls.builtins.formatting.prettier.with({
+				extra_args = function(params)
+					return params.options
+					and params.options.tabSize
+					and {
+						"--tab-width",
+						"--single-quote",
+						"--single-attribute-per-line",
+						params.options.tabSize,
+					}
+				end,
+			}),
 			-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
 			-- null_ls.builtins.formatting.prettier.with({
 			--   filetypes = { "html", "json", "yaml", "markdown" },

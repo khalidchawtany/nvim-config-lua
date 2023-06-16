@@ -120,6 +120,8 @@ set.backupcopy = 'auto'
 --- Centralize backups, swapfiles and undo history
 set.backupdir = home .. '/.local/share/nvim/cache/backups'
 
+
+set.swapfile = true
 set.directory = home .. '/.local/share/nvim/cache/swaps'
 set.viewdir = home .. '/.local/share/nvim/cache/views'
 

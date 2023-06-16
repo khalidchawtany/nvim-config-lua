@@ -50,6 +50,11 @@ vim.g.loaclleader = "\\"
 
 require("functions")
 
+-- we need to symplink the plugin dirs to the lua dir of the config
+-- ln -s /Users/juju/.local/share/nvim/lazy/macaltkey.nvim/lua/macaltkey /Users/juju/.config/nvim/lua/
+-- keys = {{require"macaltkey".convert("<a-p>"), "<cmd>lua require'telescope'.extensions.project.project{}<CR>", desc = "Telescope (Projects)"}},
+require("macaltkey").setup()
+
 require("lazy").setup(
   {
     spec = _G.ListLazyPluginDirs(),
