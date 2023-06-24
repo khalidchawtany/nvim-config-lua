@@ -18,6 +18,7 @@ for newgroup, oldgroup in pairs(links) do
   vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
 end
 
+-- vim.lsp.buf.inlay_hint(0, true)
 
 
 

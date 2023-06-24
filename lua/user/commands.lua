@@ -1,3 +1,21 @@
+
+
+vim.api.nvim_create_user_command("ClearSwaps", function()
+	os.execute('rm -fr /Users/juju/.local/share/nvim/cache/swaps')
+end,{})
+
+local function can_autofix(client)
+	return client.config.settings.autoFixOnSave or false
+end
+
+vim.api.nvim_create_user_command("EslintFixAll", function()
+	local clients = vim.lsp.get_active_clients()
+	local can_autofix_clients = vim.tbl_filter(can_autofix, clients)
+	if #can_autofix_clients > 0 then
+		vim.lsp.buf.formatting_seq_sync(nil, 2000)
+	end
+end,{})
+
 vim.api.nvim_create_user_command("DiffOrig", function()
 	-- Get start buffer
 	local start = vim.api.nvim_get_current_buf()
