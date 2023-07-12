@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
  " disable syntax highlighting in big files
 function DisableSyntaxTreesitter()
     echo("Big file, disabling syntax, treesitter and folding")
@@ -23,16 +23,33 @@ augroup BigFileDisable
     autocmd BufReadPre,FileReadPre * if getfsize(expand("%")) > 512 * 1024 | exec DisableSyntaxTreesitter() | endif
 
 augroup END
-]]
 
 
+]])
 
+require("user.autocmd_buffer_clean")
 
-
-
-
-
-require ("user.autocmd_buffer_clean")
+-- On exit if we don't have modified buffers confirm exit
+vim.api.nvim_create_autocmd({ "ExitPre" }, {
+	callback = function()
+		local hasModifiedBuffers = false
+		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+			if vim.api.nvim_buf_get_option(buf, "modified") then
+				hasModifiedBuffers = true
+				break
+			end
+		end
+		if hasModifiedBuffers == false then
+			vim.cmd([[echohl WarningMsg]])
+			vim.cmd([[echo "======================================================================"]])
+			vim.cmd([[echo "                                                                      "]])
+			vim.cmd([[echo "                             CONFIRM EXIT                             " | set modified]])
+			vim.cmd([[echo "                                                                      "]])
+			vim.cmd([[echo "======================================================================"]])
+			vim.cmd([[echohl None]])
+		end
+	end,
+})
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	callback = function()

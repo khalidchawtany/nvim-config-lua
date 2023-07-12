@@ -3,6 +3,8 @@ local M = {
 	dependencies = { "rafamadriz/friendly-snippets", "molleweide/LuaSnip-snippets.nvim" },
 	event = "InsertEnter",
 	keys = { { "<c-cr>", mode = "v" } },
+ 	-- install jsregexp (optional!).
+	build = "make install_jsregexp"
 	-- config = function()
 	--   vim.cmd [[
 	-- " press <Tab> to expand or jump in a snippet. These can also be mapped separately

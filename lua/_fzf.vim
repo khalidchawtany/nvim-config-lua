@@ -203,6 +203,9 @@ imap <silent> <c-x><c-l> <plug>(fzf-complete-line)
 imap <silent> <c-x><c-i> <plug>(fzf-complete-buffer-line)
 imap <silent> <c-x><c-\> <plug>(fzf-complete-file)
 
+
+nnoremap <silent> <c-p><c-h> :call fzf#run({"source":"git diff --name-only HEAD HEAD~1 " , "sink":"edit"})<cr>
+
 "Get all files including git ignore
 nnoremap <silent> <c-p><space> :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
 " nnoremap <silent> <c-p><space> :call fzf#run({"source":"ag -all -l  \"\" \| sort -u " , "sink":"edit"})<cr>
