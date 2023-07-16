@@ -2,7 +2,7 @@ _G.neotree_global_clipboard = {}
 
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
-  branch = "v2.x",
+  branch = "v3.x",
   event = "VimEnter",
   dependencies = {
     "MunifTanjim/nui.nvim",
