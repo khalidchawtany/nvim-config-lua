@@ -34,6 +34,9 @@ map ≥ <M-\>>
 map ≤ <M-\<>
 
 
+au VimEnter * nnoremap <silent> <c-j> <c-w><c-j>
+
+
 nnoremap <silent> <c-h> <c-w><c-h>
 nnoremap <silent> <c-j> <c-w><c-j>
 nnoremap <silent> <c-k> <c-w><c-k>
