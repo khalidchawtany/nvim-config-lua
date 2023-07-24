@@ -48,7 +48,9 @@ M.config = function()
       },
       filesystem = {
         bind_to_cwd = false,
-        follow_current_file = false,
+        follow_current_file = {
+			enabled = false,
+		},
         filtered_items = {
           visible = true, -- when true, they will just be displayed differently than normal items
           hide_dotfiles = true,

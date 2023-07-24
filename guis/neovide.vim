@@ -79,11 +79,66 @@ lua << EOF
 vim.keymap.set({'n', 'i'}, "<D-=>", function() ResizeGuiFont(1)  end, opts)
 vim.keymap.set({'n', 'i'}, "<D-->", function() ResizeGuiFont(-1) end, opts)
 
+vim.keymap.set({'n'}, '<BS>', function()
+ vim.cmd([[
+  syntax sync minlines=1000
+  nohlsearch
+  diffupdate
+  redraw!
+  echo ""
+ ]])
+ require("notify").dismiss({ silent = true })
+ end, { noremap = true, silent = true }  )
+
+
+ vim.g.neovide_scale_factor = 1.0
+
+ local change_scale_factor = function(delta)
+	vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+ end
+
+ vim.keymap.set("n", "<C-=>", function() change_scale_factor(1.025) end)
+ vim.keymap.set("n", "<C-->", function() change_scale_factor(1/1.025) end)
+
+ if vim.g.neovide then
+	 vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
+	 vim.keymap.set('v', '<D-c>', '"+y') -- Copy
+	 vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
+	 vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
+	 vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
+	 vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
+end
+
+-- Allow clipboard copy paste in neovim
+-- vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+
+
+--   -- Helper function for transparency formatting
+-- local alpha = function()
+--   return string.format("%x", math.floor(255 * vim.g.neovide_transparency_point or 0.8))
+-- end
+-- -- Set transparency and background color (title bar color)
+-- vim.g.neovide_transparency = 0.0
+-- vim.g.neovide_transparency_point = 1.0
+-- vim.g.neovide_background_color = "#0f1117" .. alpha()
+-- -- Add keybinds to change transparency
+-- local change_transparency = function(delta)
+--   vim.g.neovide_transparency_point = vim.g.neovide_transparency_point + delta
+--   vim.g.neovide_background_color = "#0f1117" .. alpha()
+-- end
+-- vim.keymap.set({ "n", "v", "o" }, "<D-]>", function() change_transparency(0.01) end)
+-- vim.keymap.set({ "n", "v", "o" }, "<D-[>", function() change_transparency(-0.01) end)
+
+
 EOF
+
 
 "  " Set transparency and background color (title bar color)
 " let g:neovide_transparency=0.0
-" let g:neovide_transparency_point=1 
+" let g:neovide_transparency_point=1
 " let g:neovide_background_color = '#282D43'.printf('%x', float2nr(255 * g:neovide_transparency_point))
 "
 " " Add keybinds to change transparency
@@ -93,9 +148,6 @@ EOF
 " endfunction
 " noremap <expr><D-]> ChangeTransparency(0.01)
 " noremap <expr><D-[> ChangeTransparency(-0.01)
-
-
-
 
 
 

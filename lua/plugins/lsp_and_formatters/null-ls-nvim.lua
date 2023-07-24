@@ -54,6 +54,8 @@ M.config = function()
 			--   end,
 			-- }),
 
+            -- null_ls.builtins.formatting.autopep8,
+            null_ls.builtins.formatting.black,
 			null_ls.builtins.formatting.djhtml,
 			null_ls.builtins.formatting.djlint,
 			null_ls.builtins.formatting.jq, -- Lua
