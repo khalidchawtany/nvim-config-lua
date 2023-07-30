@@ -80,6 +80,7 @@ vim.keymap.set({'n', 'i'}, "<D-=>", function() ResizeGuiFont(1)  end, opts)
 vim.keymap.set({'n', 'i'}, "<D-->", function() ResizeGuiFont(-1) end, opts)
 
 vim.keymap.set({'n'}, '<BS>', function()
+ require("notify").dismiss({ silent = true })
  vim.cmd([[
   syntax sync minlines=1000
   nohlsearch
@@ -87,7 +88,6 @@ vim.keymap.set({'n'}, '<BS>', function()
   redraw!
   echo ""
  ]])
- require("notify").dismiss({ silent = true })
  end, { noremap = true, silent = true }  )
 
 
