@@ -80,7 +80,7 @@ M.config = function()
 			-- null_ls.builtins.diagnostics.eslint,
 			null_ls.builtins.diagnostics.tsc, -- Python
 			null_ls.builtins.diagnostics.djlint, -- django
-			null_ls.builtins.diagnostics.pycodestyle,
+			-- null_ls.builtins.diagnostics.pycodestyle,
 			null_ls.builtins.diagnostics.mypy, -- Json
 			null_ls.builtins.diagnostics.jsonlint,
 			null_ls.builtins.diagnostics.luacheck.with({

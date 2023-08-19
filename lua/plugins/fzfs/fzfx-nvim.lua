@@ -1,5 +1,6 @@
 return {
 	"linrongbin16/fzfx.vim",
+	version = false,
 	dependencies = { "junegunn/fzf.vim" },
 }
 
