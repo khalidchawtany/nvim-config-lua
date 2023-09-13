@@ -55,9 +55,9 @@ M.config = function()
 			-- }),
 
             -- null_ls.builtins.formatting.autopep8,
-            null_ls.builtins.formatting.black,
-			null_ls.builtins.formatting.djhtml,
-			null_ls.builtins.formatting.djlint,
+   --          null_ls.builtins.formatting.black,
+			-- null_ls.builtins.formatting.djhtml,
+			-- null_ls.builtins.formatting.djlint,
 			null_ls.builtins.formatting.jq, -- Lua
 			null_ls.builtins.formatting.stylua,
 			-- null_ls.builtins.formatting.lua_format, -- PHP
@@ -79,9 +79,9 @@ M.config = function()
 			-- JS, TS, VUE, REACT
 			-- null_ls.builtins.diagnostics.eslint,
 			null_ls.builtins.diagnostics.tsc, -- Python
-			null_ls.builtins.diagnostics.djlint, -- django
+			-- null_ls.builtins.diagnostics.djlint, -- django
 			-- null_ls.builtins.diagnostics.pycodestyle,
-			null_ls.builtins.diagnostics.mypy, -- Json
+			-- null_ls.builtins.diagnostics.mypy, -- Json
 			null_ls.builtins.diagnostics.jsonlint,
 			null_ls.builtins.diagnostics.luacheck.with({
 				extra_args = { "--globals", "{'vim'}" },

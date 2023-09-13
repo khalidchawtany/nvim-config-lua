@@ -101,6 +101,14 @@ cs(
 	end, {})
 )
 
+cs(
+	"fnc",
+	f(function(args, snip)
+		local file_name = vim.fn.fnamemodify(vim.fn.expand('%'),':t:r')
+		return pasCalcase(file_name)
+	end, {})
+)
+
 -- End Refactoring --
 
 return snippets, autosnippets

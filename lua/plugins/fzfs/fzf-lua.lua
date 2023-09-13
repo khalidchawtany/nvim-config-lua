@@ -127,7 +127,7 @@ local M = {
 		{
 			"<D-p>j",
 			function()
-				require("fzf-lua").grep_project(getOpts())
+				require("fzf-lua").grep_cword(getOpts())
 			end,
 			desc = "grep_projct <cword>",
 		},

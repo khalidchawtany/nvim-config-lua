@@ -36,20 +36,9 @@ return {
 				rust = "nvim-test.runners.cargo-test",
 				typescript = "nvim-test.runners.jest",
 				typescriptreact = "nvim-test.runners.jest",
+				php = "user.nvim_test_runners.php",
 			},
 		})
-
-		-- require("nvim-test.runners.php"):setup({
-		-- 	command = "./vendor/bin/phpunit",                                -- a command to run the test runner
-		-- 	args = { "--colors" },                                           -- default arguments
-		-- 	env = { CUSTOM_VAR = "value" },                                  -- custom environment variables
-		--
-		-- 	file_pattern = "\\v(__tests__/.*|(spec|test))\\.(js|jsx|coffee|ts|tsx)$", -- determine whether a file is a testfile
-		-- 	find_files = { "{name}Test.{ext}", "Test{name}.{ext}" },         -- find testfile for a file
-		--
-		-- 	filename_modifier = nil,                                         -- modify filename before tests run (:h filename-modifiers)
-		-- 	working_directory = nil,                                         -- set working directory (cwd by default)
-		-- })
 
 	end,
 }

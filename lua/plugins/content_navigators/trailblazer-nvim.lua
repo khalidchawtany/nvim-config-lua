@@ -70,7 +70,7 @@ return {
 				nv = { -- Mode union: normal & visual mode. Can be extended by adding i, x, ...
 					motions = {
 						new_trail_mark = "<D-m><D-m>",
-						track_back = "<D-m><D-h>",
+						track_back = "<D-m><D-b>",
 						peek_move_next_down = "<D-m><D-j>",
 						peek_move_previous_up = "<D-m><D-k>",
 						move_to_nearest = "<D-m><D-n>",

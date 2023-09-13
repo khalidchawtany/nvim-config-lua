@@ -143,6 +143,18 @@ _G.PROJECTS_MAPS = {
       fd_opts = {"-d", "1", "-g", "*.php"}
     },
     {
+      desciption = "Factories (LRVL)",
+      keys = "<leader>lf",
+      paths = {{ "database", "factories"}},
+      fd_opts = {"-d", "1", "-g", "*.php"}
+    },
+    {
+      desciption = "Seeders (LRVL)",
+      keys = "<leader>ls",
+      paths = {{ "database", "seeders"}},
+      fd_opts = {"-d", "1", "-g", "*.php"}
+    },
+    {
       desciption = "App (LRVL)",
       keys = "<leader>lA",
       paths = {{"app"}},

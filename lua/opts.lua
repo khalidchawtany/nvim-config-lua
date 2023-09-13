@@ -26,6 +26,8 @@ local disabled_built_ins = {
 
 for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end
 
+setg.editorconfig = false
+
 -- Fuzzy finder: ignore stuff that can't be opened, and generated files
 setg.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 set.wildignore = {"*.o", "*~", "*.pyc", "*pycache*"} -- Ignore compiled files
