@@ -234,6 +234,22 @@ basic.search_count = {
     end,
 }
 
+basic.reg_recording = {
+    name = "reg_recording",
+    hl_colors = {
+        red = { "black", "red" },
+    },
+    width = breakpoint_width,
+    text = function(bufnr)
+        if vim.fn.reg_recording() == '' then
+            return ""
+        end
+        local result = vim.fn.reg_recording()
+        return {{" recrodgin @" .. result, "red"}}
+    end,
+}
+
+
 local default = {
     filetypes = { "default" },
     active = {
@@ -241,6 +257,7 @@ local default = {
         basic.vi_mode,
         basic.file,
         basic.lsp_diagnos,
+        basic.reg_recording,
         basic.divider,
         basic.nomodoro,
         basic.search_count,
