@@ -47,19 +47,10 @@ nnoremap <c-w>M <C-w>_<C-w><Bar>
 
 nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>echo ""<cr><cmd>diffupdate<cr><cmd>redraw!<cr>
 nnoremap <silent><nowait> <leader><BS> <cmd>syn clear<cr>
-" nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr>:nohlsearch \| echo "" \|redraw! \| diffupdate \| normal \<Plug>(FastFoldUpdate) <cr>
-
 
 nnoremap <c-s>c <cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" Map nox F     <Plug>(clever-f-F)
-" Map nox T     <Plug>(clever-f-T)
-" Map nox f     <Plug>(clever-f-f)
-" Map nox t     <Plug>(clever-f-t)
-
-nnoremap cc 0C
 
 
 nnoremap <leader>ee :e ~/.config/nvim/lua/functions.lua<cr>
