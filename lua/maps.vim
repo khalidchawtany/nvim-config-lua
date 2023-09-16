@@ -45,7 +45,7 @@ nnoremap <silent> <c-l> <c-w><c-l>
 " Maximize current split
 nnoremap <c-w>M <C-w>_<C-w><Bar>
 
-nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>echo ""<cr><cmd>diffupdate<cr><cmd>redraw!<cr>
+nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>diffupdate<cr><cmd>redraw!<cr>
 nnoremap <silent><nowait> <leader><BS> <cmd>syn clear<cr>
 
 nnoremap <c-s>c <cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
