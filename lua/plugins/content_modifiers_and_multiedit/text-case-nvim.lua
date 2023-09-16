@@ -3,26 +3,28 @@ return {
     cmd = {},
     keys = {
         {
-            "<c-s>T",
+            "<c-s>ct",
             function()
                 vim.cmd([[TextCaseOpenTelescope]])
             end,
             mode = { "n", "v" },
-            { desc = "Telescope (Textcase)" },
+            desc = "Telescope (Textcase)",
         },
 
         {
-            "<leader>crt",
+            "crt",
             function()
-                require('textcase').current_word('to_title_case')
+                require("textcase").current_word("to_title_case")
             end,
             mode = { "n", "v" },
-            { desc = "Telescope (Textcase)" },
+            desc = "Title Case",
         },
     },
 
     config = function()
-        require("textcase").setup({})
+        require("textcase").setup({
+            -- prefix = "cr",
+        })
         require("telescope").load_extension("textcase")
     end,
 }

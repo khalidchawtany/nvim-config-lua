@@ -48,9 +48,9 @@ nnoremap <c-w>M <C-w>_<C-w><Bar>
 nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>diffupdate<cr><cmd>redraw!<cr>
 nnoremap <silent><nowait> <leader><BS> <cmd>syn clear<cr>
 
-nnoremap <c-s>c <cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" nnoremap <c-s>c <cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+"       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+"       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 
 nnoremap <leader>ee :e ~/.config/nvim/lua/functions.lua<cr>
@@ -83,21 +83,19 @@ nnoremap <silent> <leader>ww  <cmd>silent! w<cr>
 nnoremap <leader>wa        <cmd>wall<cr>
 nnoremap <leader>wu        <cmd>update<cr>
 
-inoremap ;w <cmd>silent! w<cr>
+" inoremap ;w <cmd>silent! w<cr>
 
 nnoremap <c-k><c-d> <cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>
 
 nnoremap <silent> <leader>eV <cmd>e ~/.config/nvim/<cr>
 nnoremap <silent> <leader>ev <cmd>e ~/.config/nvim/init.lua<cr>
 nnoremap <silent> <leader>ep <cmd>e ~/.config/nvim/lua/plugins<cr>
-nnoremap <silent> <leader>eP <cmd>e ~/.config/nvim/lua/packerPlugins.lua<cr>
 nnoremap <silent> <leader>el <cmd>e ~/.config/nvim/lua<cr>
-nnoremap <silent> <leader>ec <cmd>e ~/.config/nvim/lua/configs/<cr>
 Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
 
 
-  "Shift-Enter is like ]<space>
-  inoremap <silent> <s-cr> <esc>m`o<esc>``a
+"Shift-Enter is like ]<space>
+inoremap <silent> <s-cr> <esc>m`o<esc>``a
 
   map  ‰   <c-cr>
   map  ◊   <c-'>
