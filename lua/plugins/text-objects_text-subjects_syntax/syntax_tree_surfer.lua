@@ -1,6 +1,6 @@
 return {
 	"ziontee113/syntax-tree-surfer",
-	cmdd = {
+	cmd = {
 		"STSSelectMasterNode",
 		"STSSelectCurrentNode",
 		"STSSelectNextSiblingNode",

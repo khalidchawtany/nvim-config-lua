@@ -1,6 +1,13 @@
 return {
 	"martineausimon/nvim-bard",
 	dependencies = "MunifTanjim/nui.nvim",
+    cmd ={
+        "Bard",
+        "BardNewChat",
+        "BardSend",
+        "BardHide",
+        "BardToggle",
+    },
 	config = function()
 		local api_key
 		local file = io.open("/Users/juju/.local/share/nvim/keys/bard.txt", "r")

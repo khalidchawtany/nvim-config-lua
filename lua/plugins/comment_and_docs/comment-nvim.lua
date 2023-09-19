@@ -1,6 +1,6 @@
 local M = {
   "numToStr/Comment.nvim",
-  event = "VimEnter"
+  event = "BufEnter"
 }
 
 M.config = function()

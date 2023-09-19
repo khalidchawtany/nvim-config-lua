@@ -1,6 +1,11 @@
 -- lazy.nvim
 return {
 	"chrisgrieser/nvim-recorder",
+    keys = {
+        -- these must match the keys in the mapping config below
+        { "q", desc = " Start Recording" },
+        { "Q", desc = " Play Recording" },
+    },
 	config = function()
 		require("recorder").setup({
 			-- Named registers where macros are saved. The first register is the default
