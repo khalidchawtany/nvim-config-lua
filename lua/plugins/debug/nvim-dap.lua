@@ -3,7 +3,8 @@ local M = {
   dependencies = {
     "nvim-telescope/telescope-dap.nvim",
     "rcarriga/nvim-dap-ui",
-    "theHamsta/nvim-dap-virtual-text"
+    "theHamsta/nvim-dap-virtual-text",
+    "mfussenegger/nvim-dap-python"
   },
   cmd = {"DapLoad"}
 }
@@ -15,6 +16,7 @@ M.config = function()
     command = "node",
     args = {"/Users/juju/.local/share/nvim/debuggers/vscode-php-debug/out/phpDebug.js"}
   }
+
 
   dap.configurations.php = {
     {type = "php", request = "launch", name = "Listen for Xdebug", server = "127.0.0.1", port = 9003}
@@ -57,6 +59,7 @@ M.config = function()
   require("telescope").setup()
   require("telescope").load_extension("dap")
   require("dapui").setup()
+  require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 
   vim.g.dap_virtual_text = true
 end

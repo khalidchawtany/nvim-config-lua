@@ -1,6 +1,6 @@
 return {
 	"piersolenski/telescope-import.nvim",
-	requires = "nvim-telescope/telescope.nvim",
+	dependencies = "nvim-telescope/telescope.nvim",
 	ft = { "lua", "javascript", "python", "typescript" },
 	config = function()
 		require("telescope").load_extension("import")

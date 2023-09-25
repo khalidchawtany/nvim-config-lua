@@ -1,7 +1,7 @@
 local M = {
   "phaazon/mind.nvim",
   branch = "v2.2",
-  requires = {"nvim-lua/plenary.nvim"},
+  depencencies = {"nvim-lua/plenary.nvim"},
   lazy = true
 }
 

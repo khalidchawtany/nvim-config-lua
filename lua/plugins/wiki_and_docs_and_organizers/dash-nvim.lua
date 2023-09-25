@@ -1,6 +1,6 @@
 return {
   "mrjones2014/dash.nvim",
-  depencencies = {"nvim-telescope/telescope.nvim"},
+  dependencies = {"nvim-telescope/telescope.nvim"},
   cmd = {"Dash", "DashWord"},
   build = "make install",
   keys = {
