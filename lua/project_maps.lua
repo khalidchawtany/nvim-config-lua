@@ -155,6 +155,12 @@ _G.PROJECTS_MAPS = {
       fd_opts = {"-d", "1", "-g", "*.php"}
     },
     {
+      desciption = "Traits (LRVL)",
+      keys = "<leader>lt",
+      paths = {{ "app", "Traits"}},
+      fd_opts = {"-d", "1", "-g", "*.php"}
+    },
+    {
       desciption = "App (LRVL)",
       keys = "<leader>lA",
       paths = {{"app"}},

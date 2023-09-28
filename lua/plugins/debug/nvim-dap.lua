@@ -1,31 +1,28 @@
-local M = {
-  "mfussenegger/nvim-dap",
-  dependencies = {
-    "nvim-telescope/telescope-dap.nvim",
-    "rcarriga/nvim-dap-ui",
-    "theHamsta/nvim-dap-virtual-text",
-    "mfussenegger/nvim-dap-python"
-  },
-  cmd = {"DapLoad"}
-}
+return {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+        "nvim-telescope/telescope-dap.nvim",
+        "theHamsta/nvim-dap-virtual-text",
+        "mfussenegger/nvim-dap-python",
+    },
+    cmd = { "DapLoad" },
 
-M.config = function()
-  local dap = require("dap")
-  dap.adapters.php = {
-    type = "executable",
-    command = "node",
-    args = {"/Users/juju/.local/share/nvim/debuggers/vscode-php-debug/out/phpDebug.js"}
-  }
+    config = function()
+        local dap = require("dap")
+        dap.adapters.php = {
+            type = "executable",
+            command = "node",
+            args = { "/Users/juju/.local/share/nvim/debuggers/vscode-php-debug/out/phpDebug.js" },
+        }
 
+        dap.configurations.php = {
+            { type = "php", request = "launch", name = "Listen for Xdebug", server = "127.0.0.1", port = 9003 },
+        }
 
-  dap.configurations.php = {
-    {type = "php", request = "launch", name = "Listen for Xdebug", server = "127.0.0.1", port = 9003}
-  }
+        vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+        vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
 
-  vim.fn.sign_define("DapBreakpoint", {text = "🟥", texthl = "", linehl = "", numhl = ""})
-  vim.fn.sign_define("DapStopped", {text = "⭐️", texthl = "", linehl = "", numhl = ""})
-
-  vim.cmd [[
+        vim.cmd([[
    "nnoremap <leader>dh :lua require'dap'.toggle_breakpoint()<CR>
    "nnoremap <S-k> :lua require'dap'.step_out()<CR>
    "nnoremap <S-l> :lua require'dap'.step_into()<CR>
@@ -54,14 +51,12 @@ M.config = function()
 
 " Dap UI"
    "nnoremap <leader>dq :lua require("dapui").toggle()<CR>
-]]
+]])
 
-  require("telescope").setup()
-  require("telescope").load_extension("dap")
-  require("dapui").setup()
-  require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+        require("telescope").setup()
+        require("telescope").load_extension("dap")
+        require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
 
-  vim.g.dap_virtual_text = true
-end
-
-return M
+        vim.g.dap_virtual_text = true
+    end,
+}
