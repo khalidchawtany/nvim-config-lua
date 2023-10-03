@@ -4,7 +4,7 @@ return {
 	cmd = { "Portal" },
 	keys = {
 		{ "gjp", "<cmd>Portal jumplist backward<cr>", desc =  "Portal backward"  },
-		{ "gjn", "<cmd>Portal jumplist forward<cr>", desc =  "Portal o=forward"  },
+		{ "gjo", "<cmd>Portal jumplist forward<cr>", desc =  "Portal o=forward"  },
 	},
 	config = function()
 		require("portal").setup({

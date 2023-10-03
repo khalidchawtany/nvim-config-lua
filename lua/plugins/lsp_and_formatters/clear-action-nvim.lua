@@ -4,6 +4,7 @@ return {
         "CodeActionToggleSigns",
         "CodeActionToggleLabel",
     },
+
     opts = {
         signs = {
             enable = true,

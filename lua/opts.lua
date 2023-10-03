@@ -91,6 +91,7 @@ set.foldlevelstart = 2
 
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
+set.foldtext = "v:lua.vim.treesitter.foldtext()"
 
 set.belloff = 'all'
 

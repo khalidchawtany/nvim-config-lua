@@ -1,7 +1,7 @@
 local M = {
  "jayp0521/mason-null-ls.nvim",
   dependencies = {
-    "null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     "mason.nvim"
   },
   event = "BufReadPre",

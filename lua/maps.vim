@@ -59,6 +59,9 @@ nnoremap <leader>ee :e ~/.config/nvim/lua/functions.lua<cr>
 nnoremap <leader>dcc :DiffviewOpen <C-r>=expand('<cword>')<cr>..<C-r>=expand('<cword>')<cr>^<cr>
 
 nnoremap <leader>fp  <cmd>let @+=expand("%:p")<cr><cmd>echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
+nnoremap <leader>fP  <cmd>let @+=expand("%:~:.")<cr><cmd>echo "Copied current file  path '".expand("%:~:.")."' to clipboard"<cr>
+
+
 nnoremap <leader>fn  <cmd>let @+=expand("%:p:t")<cr><cmd>echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
 
 nnoremap <c-w>O            <cmd>wincmd o\|tabonly\|BufOnly<cr>
