@@ -9,6 +9,7 @@ nnoremap <silent> <leader>o<cr> :let g:render_ligatures =  (g:render_ligatures +
 
 let g:gui_fonts = [
       \ 'FiraCode\ Nerd\ Font:h20',
+      \ 'Thabit:b:h20',
       \ 'Fira\ Code:h18',
       \ 'Operator\ Mono\ Lig:h17',
       \ 'RobotoMono\ Nerd\ Font:h18',
@@ -24,6 +25,8 @@ function! ToggleFont(dir)
   execute 'set guifont='. fnameescape(g:gui_fonts[g:current_gui_font_index])
   echo g:gui_fonts[g:current_gui_font_index]
 endfunction
+
+let g:gui_font_face = g:gui_fonts[g:current_gui_font_index]
 
 
 nnoremap yof :set guifont=Fira\ Code<cr>

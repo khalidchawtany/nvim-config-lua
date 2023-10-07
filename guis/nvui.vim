@@ -8,3 +8,5 @@
   NvuiCmdCenterYPos 0.3
   NvuiCmdCenterYPos 0.3
   NvuiCmdPadding 10
+
+  set guifont=Fira\ Code:h25

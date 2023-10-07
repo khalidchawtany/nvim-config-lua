@@ -45,15 +45,17 @@
 
 
 
-  " set guifont=FiraCode\ Nerd\ Font:h18
- set guifont=FiraCode\ Nerd\ Font\ TALL:h18
+ " set guifont=FiraCode\ Nerd\ Font:h18
+ " set guifont=FiraCode\ Nerd\ Font\ TALL:h18
+ " set guifont=Thabit:b:h20
 
 
 lua << EOF
   vim.g.gui_font_default_size = 18
   vim.g.gui_font_size = vim.g.gui_font_default_size
   -- vim.g.gui_font_face = "FiraCode Nerd Font TALL"
-  vim.g.gui_font_face = "Fira Code"
+  -- vim.g.gui_font_face = "Fira Code"
+  -- vim.g.gui_font_face = "Thabit:b"
 
   RefreshGuiFont = function()
   vim.opt.guifont = string.format("%s:h%s",vim.g.gui_font_face, vim.g.gui_font_size)
