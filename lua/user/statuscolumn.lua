@@ -57,10 +57,27 @@ local function get_name_from_group(bufnum, lnum, group)
 	return get_sign_name(cur_sign_tbl)
 end
 
-_G.get_statuscol_gitsign = function(bufnr, lnum)
-	local cur_sign_nm = get_name_from_group(bufnr, lnum, "gitsigns_vimfn_signs_")
+_G.get_name_from_group = get_name_from_group
 
-	if cur_sign_nm ~= nil then
+_G.git_signs_name_space = vim.api.nvim_create_namespace("gitsigns_extmark_signs_")
+
+_G.get_statuscol_gitsign = function(bufnr, lnum)
+	-- local cur_sign_nm = get_name_from_group(bufnr, lnum, "gitsigns_vimfn_signs_")
+	local cur_sign_nm = ""
+
+    local marks = vim.api.nvim_buf_get_extmarks(bufnr, _G.git_signs_name_space, 0, -1, {details = true})
+
+    for _, mark in ipairs(marks) do
+        if mark[1] == lnum then
+            cur_sign_nm = mark[4]['sign_hl_group']
+            break
+        end
+    end
+
+
+    -- lua dump(vim.api.nvim_buf_get_extmarks(vim.api.nvim_win_get_buf(0), vim.api.nvim_create_namespace("gitsigns_extmark_signs_"), 0, -1, { details = true }))
+
+	if cur_sign_nm ~= nil and cur_sign_nm ~= "" then
 		return mk_hl(gitsigns_hl_pool[cur_sign_nm], gitsigns_bar)
 	else
 		return " "
