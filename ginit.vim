@@ -145,3 +145,8 @@ endif
 
 " Make non-text characters less visible
 hi NonText guifg=#333355
+
+if exists('g:GuiLoaded')
+    " Spawn a new window
+    nnoremap <leader>nw <cmd>call GuiNewWindow({})<cr>
+endif

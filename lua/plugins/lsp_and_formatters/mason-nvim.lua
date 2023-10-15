@@ -82,6 +82,28 @@ M.config = function()
                 },
             })
         end,
+
+        ["html"] = function()
+            require("lspconfig").html.setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+                -- filetypes = { ... },
+                settings = {
+                    html = {
+                        format = {
+                            templating = true,
+                            wrapLineLength = 120,
+                            wrapAttributes = "auto",
+                        },
+                        hover = {
+                            documentation = true,
+                            references = true,
+                        },
+                    },
+                },
+            })
+        end,
+
         ["intelephense"] = function()
             require("lspconfig").intelephense.setup({
                 on_attach = on_attach,
