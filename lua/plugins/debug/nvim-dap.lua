@@ -18,6 +18,20 @@ return {
         dap.configurations.php = {
             { type = "php", request = "launch", name = "Listen for Xdebug", server = "127.0.0.1", port = 9003 },
         }
+        dap.configurations.lua = {
+            {
+                name = "Current file (local-lua-dbg, nlua)",
+                type = "local-lua",
+                request = "launch",
+                cwd = "${workspaceFolder}",
+                program = {
+                    lua = "nlua.lua",
+                    file = "${file}",
+                },
+                verbose = true,
+                args = {},
+            },
+        }
 
         vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
         vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
