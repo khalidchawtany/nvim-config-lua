@@ -1,3 +1,7 @@
+
+local lower = function(w)
+    return string.lower(w)
+end
 return {
     "otavioschwanck/telescope-alternate",
     dependencies = { "nvim-telescope/telescope.nvim" },
@@ -45,24 +49,25 @@ return {
                     },
                 },
                 {
-                    "(.*)/resources/views/([^/])/(.*)",
+                    -- "(.*)/resources/views/([^/])/(.*)",
+                    "(.*)resources/views/(.*)/(.*).blade.php",
                     {
                         {
-                            "[1]/app/Models/[2:singularize,snake_to_pascal].php",
+                            "[1]app/Models/[2:singularize,snake_to_pascal].php",
                             "Model",
                             true,
                         },
                         {
-                            "[1]/app/Http/Controllers/[2:singularize,snake_to_pascal]Controller.php",
+                            "[1]app/Http/Controllers/[2:singularize,snake_to_pascal]Controller.php",
                             "Controller",
                             true,
                         },
                         {
-                            "[1]/app/Http/Requests/[2:snake_to_pascal]/",
+                            "[1]app/Http/Requests/[2:snake_to_pascal]/",
                             "Request",
                             true,
                         },
-                        { "[1]/resources/views/[2]/", "View", true },
+                        { "[1]resources/views/[2]/", "View", true },
                     },
                 },
 
@@ -89,9 +94,7 @@ return {
             presets = {}, -- Telescope pre-defined mapping presets
             transformers = {
 
-                lower = function(w)
-                    return string.lower(w)
-                end,
+                lower = lower,
 
                 upper = function(w)
                     return string.upper(w)
