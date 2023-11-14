@@ -11,6 +11,7 @@ local home = os.getenv("HOME")
 
 vim.cmd[[
 set signcolumn=yes:1
+set indentkeys+=!0<Tab>
 ]]
 
 vim.api.nvim_set_hl(0, "Cur", { bg="yellow", fg="#FF30F1", blend=50, standout=false, reverse=true , nocombine= true })
@@ -20,8 +21,8 @@ vim.go.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait900-
 
 -- disable default plugin
 local disabled_built_ins = {
-    "netrw", "netrwPlugin", "netrwSettings", "netrwFileHandlers", "gzip", "zip", "zipPlugin", "tar", "tarPlugin", "getscript", "getscriptPlugin",
-    "vimball", "vimballPlugin", "2html_plugin", "logipat", "rrhelper", "spellfile_plugin"
+        "netrw", "netrwPlugin", "netrwSettings", "netrwFileHandlers", "gzip", "zip", "zipPlugin", "tar", "tarPlugin", "getscript", "getscriptPlugin",
+        "vimball", "vimballPlugin", "2html_plugin", "logipat", "rrhelper", "spellfile_plugin"
 }
 
 for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end

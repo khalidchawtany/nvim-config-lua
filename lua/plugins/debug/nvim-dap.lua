@@ -7,20 +7,31 @@ return {
         "jbyuki/one-small-step-for-vimkind",
     },
     cmd = { "DapLoad" },
-
     config = function()
         local dap = require("dap")
         dap.adapters.php = {
             type = "executable",
             command = "node",
-            args = { "/Users/juju/.local/share/nvim/debuggers/vscode-php-debug/out/phpDebug.js" },
+            args = { "/Users/juju/.local/share/nvim/mason/packages/php-debug-adapter/extension/out/phpDebug.js" },
         }
+
         dap.adapters.nlua = function(callback, config)
             callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
         end
 
+        -- dap.configurations.php = {
+        --     { type = "php", request = "launch", name = "Listen for Xdebug", server = "127.0.0.1", port = 9003 },
+        -- }
         dap.configurations.php = {
-            { type = "php", request = "launch", name = "Listen for Xdebug", server = "127.0.0.1", port = 9003 },
+            {
+                type = "php",
+                request = "launch",
+                name = "Listen for Xdebug",
+                port = 9003,
+                -- pathMappings = {
+                --     ["/var/www/html"] = "${workspaceFolder}",
+                -- },
+            },
         }
         -- dap.configurations.lua = {
         --     {
@@ -36,13 +47,13 @@ return {
         --         args = {},
         --     },
         -- }
-         dap.configurations.lua = {
-             {
-                 type = "nlua",
-                 request = "attach",
-                 name = "Attach to running Neovim instance",
-             },
-         }
+        dap.configurations.lua = {
+            {
+                type = "nlua",
+                request = "attach",
+                name = "Attach to running Neovim instance",
+            },
+        }
 
         vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
         vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })

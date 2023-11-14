@@ -1,6 +1,14 @@
 return {
 
     on_attach = function(client, bufnr)
+        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+            -- Enable signs
+            signs = true,
+            virtual_text = false,
+            underline = true,
+            update_in_insert = false,
+        })
+
         if client.server_capabilities.inlayHintProvider then
             if vim.lsp.buf.inlay_hint then
                 vim.lsp.buf.inlay_hint(bufnr, true)

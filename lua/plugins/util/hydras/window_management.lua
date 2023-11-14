@@ -1,11 +1,23 @@
 local Hydra = require("hydra")
 
+local window_hint = [[
+ ^^^^^^^^^^^^     Move      ^^    Size   ^^   ^^     Split
+ ^^^^^^^^^^^^-------------  ^^-----------^^   ^^---------------
+ ^ ^ _k_ ^ ^  ^ ^ _K_ ^ ^   ^   _<C-k>_   ^   _s_: horizontally 
+ _h_ ^ ^ _l_  _H_ ^ ^ _L_   _<C-h>_ _<C-l>_   _v_: vertically
+ ^ ^ _j_ ^ ^  ^ ^ _J_ ^ ^   ^   _<C-j>_   ^   _q_, _c_: close
+ focus^^^^^^  window^^^^^^  ^_=_: equalize^   _z_: maximize
+ ^ ^ ^ ^ ^ ^  ^ ^ ^ ^ ^ ^   ^^ ^          ^   _o_: remain only
+ _b_: choose buffer
+]]
+
 Hydra({
 	name = "Change / Resize Window",
 	mode = { "n" },
 	body = "<C-w>",
 	config = {
 		-- color = "pink",
+        hint = window_hint
 	},
 	heads = {
 		-- focus windows

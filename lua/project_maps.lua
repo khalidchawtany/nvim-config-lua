@@ -132,6 +132,31 @@ _G.PROJECTS_MAPS = {
   },
   laravel = {
     {
+      desciption = "Components (LRVL-JS)",
+      keys = "<leader>ljc",
+      paths = {{"resources", "js", "components"}}
+    },
+    {
+      desciption = "Pages (LRVL-JS)",
+      keys = "<leader>ljp",
+      paths = {{"resources", "js", "pages"}}
+    },
+    {
+      desciption = "Layout (LRVL-JS)",
+      keys = "<leader>ljl",
+      paths = {{"resources", "js", "layouts"}}
+    },
+    {
+      desciption = "Types (LRVL-JS)",
+      keys = "<leader>ljl",
+      paths = {{"resources", "js", "types"}}
+    },
+    {
+      desciption = "JS (LRVL-JS)",
+      keys = "<leader>ljj",
+      paths = {{"resources", "js"}}
+    },
+    {
       desciption = "Controllers (LRVL)",
       keys = "<leader>lc",
       paths = {{"app", "Http", "Controllers"}}

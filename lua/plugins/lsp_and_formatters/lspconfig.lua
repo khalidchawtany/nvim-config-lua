@@ -6,6 +6,7 @@ return {
         },
     },
     config = function()
+        vim.diagnostic.config({ virtual_text = false, })
         --- toggle diagnostics
         vim.g.diagnostics_visible = true
         local function toggle_diagnostics()

@@ -89,6 +89,7 @@ nnoremap <leader>wu        <cmd>update<cr>
 " inoremap ;w <cmd>silent! w<cr>
 
 nnoremap <c-k><c-d> <cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>
+nnoremap <c-k><c-f> <cmd>Format<cr>
 
 nnoremap <silent> <leader>eV <cmd>e ~/.config/nvim/<cr>
 nnoremap <silent> <leader>ev <cmd>e ~/.config/nvim/init.lua<cr>

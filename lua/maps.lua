@@ -1,3 +1,12 @@
+-- On going to insert mode auto indent
+vim.keymap.set("n", "i", function()
+    if #vim.fn.getline(".") == 0 then
+        return [["_cc]]
+    else
+        return "i"
+    end
+end, { expr = true, desc = "properly indent on empty line when insert" })
+
 vim.keymap.set("n", "<m-cr>", function()
     vim.lsp.buf.code_action()
 end, { desc = "Code Actions" })
