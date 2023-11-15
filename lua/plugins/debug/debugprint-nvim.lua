@@ -1,58 +1,64 @@
 return {
-  "andrewferrier/debugprint.nvim",
-  keys = {
-    {
-      "g<Leader>P",
-      function()
-        require("debugprint").debugprint({above = true})
-      end,
-      desc = "Debugprint Above"
+    "andrewferrier/debugprint.nvim",
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter",
     },
-    {
-      "g<Leader>p",
-      function()
-        require("debugprint").debugprint()
-      end,
-      desc = "Debugprint Belog"
+    keys = {
+        {
+            "<leader>dpk",
+            function()
+                return require("debugprint").debugprint({ above = true })
+            end,
+            expr = true,
+            desc = "Debugprint Above",
+        },
+        {
+            "<leader>dpj",
+            function()
+                return require("debugprint").debugprint()
+            end,
+            desc = "Debugprint Belog",
+            expr = true,
+        },
+        {
+            "<leader>dpp",
+            function()
+                return require("debugprint").debugprint({ variable = true })
+            end,
+            expr = true,
+            desc = "Debugprint Var",
+        },
+        {
+            "<leader>dpP",
+            function()
+                return require("debugprint").debugprint({ variable = true, above = true })
+            end,
+            expr = true,
+            desc = "Debugprint Var Above",
+        },
+        {
+            "<Leader>dpr",
+            function()
+                return require("debugprint").deleteprints()
+            end,
+            expr = true,
+            desc = "Debugprint Delete",
+        },
     },
-    {
-      "g<Leader>j",
-      function()
-        require("debugprint").debugprint({variable = true})
-      end,
-      desc = "Debugprint Var"
-    },
-    {
-      "g<Leader>k",
-      function()
-        require("debugprint").debugprint({variable = true, above = true})
-      end,
-      desc = "Debugprint Var Above"
-    },
-    {
-      "g<Leader>d",
-      function()
-        require("debugprint").deleteprints()
-      end,
-      desc = "Debugprint Delete"
-    }
-  },
-  config = function()
-    local php = {
-      left = 'print "',
-      right = '"',
-      mid_var = "${",
-      right_var = '}"'
-    }
+    config = function()
+        local vue = {
+            left = 'console.log(`',
+            right = '`)',
+            mid_var = "${",
+            right_var = '}`)',
+        }
 
-    require("debugprint").add_custom_filetypes({php})
+        -- require("debugprint").add_custom_filetypes({vue})
 
-    require("debugprint").setup(
-      {
-        create_keymaps = false,
-        create_commands = false,
-        filetypes = {php}
-      }
-    )
-  end
+        require("debugprint").setup({
+            create_keymaps = true,
+            create_commands = true,
+            filetypes = { ["vue"] = vue },
+        })
+    end,
 }

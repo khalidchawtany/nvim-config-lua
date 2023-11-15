@@ -33,10 +33,6 @@ map “ <M-[>
 map ≥ <M-\>>
 map ≤ <M-\<>
 
-
-au VimEnter * nnoremap <silent> <c-j> <c-w><c-j>
-
-
 nnoremap <silent> <c-h> <c-w><c-h>
 nnoremap <silent> <c-j> <c-w><c-j>
 nnoremap <silent> <c-k> <c-w><c-k>
@@ -58,21 +54,18 @@ nnoremap <leader>ee :e ~/.config/nvim/lua/functions.lua<cr>
 " open diff view of the commit hash
 nnoremap <leader>dcc :DiffviewOpen <C-r>=expand('<cword>')<cr>..<C-r>=expand('<cword>')<cr>^<cr>
 
-nnoremap <leader>fp  <cmd>let @+=expand("%:p")<cr><cmd>echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
-nnoremap <leader>fP  <cmd>let @+=expand("%:~:.")<cr><cmd>echo "Copied current file  path '".expand("%:~:.")."' to clipboard"<cr>
-
-
-nnoremap <leader>fn  <cmd>let @+=expand("%:p:t")<cr><cmd>echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
+nnoremap <leader>yfp  <cmd>let @+=expand("%:p")<cr><cmd>echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
+nnoremap <leader>yfP  <cmd>let @+=expand("%:~:.")<cr><cmd>echo "Copied current file  path '".expand("%:~:.")."' to clipboard"<cr>
+nnoremap <leader>yfn  <cmd>let @+=expand("%:p:t")<cr><cmd>echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
 
 nnoremap <c-w>O            <cmd>wincmd o\|tabonly\|BufOnly<cr>
-nnoremap <c-;>wo           <cmd>tabonly \| BufOnly<cr>
+nnoremap <leader>wo           <cmd>tabonly \| BufOnly<cr>
 
-nnoremap <c-;>wa           <cmd>BufOnly -1<cr>
-nnoremap <c-;>ww           <cmd>bwipeout!<cr>
-nnoremap <c-;><c-;>ww      <cmd>bwipeout!<cr>
-nnoremap <silent> <c-;>wu  <cmd>silent! WipeoutUnmodified<cr>
-nnoremap <c-;><c-;>wa      <cmd>tabonly \| BufOnly \| bufdo execute ":bw!"<cr>
-
+nnoremap <leader>bwo           <cmd>BufOnly -1<cr>
+nnoremap <leader>bww           <cmd>bwipeout!<cr>
+nnoremap <leader>bwW           <cmd>bwipeout!<cr>
+nnoremap <leader>bwa           <cmd>tabonly \| BufOnly \| bufdo execute ":bw!"<cr>
+nnoremap <silent> <leader>bwu  <cmd>silent! WipeoutUnmodified<cr>
 
 
 nnoremap <leader>t<space>  <cmd>tabonly<cr>
@@ -89,7 +82,9 @@ nnoremap <leader>wu        <cmd>update<cr>
 " inoremap ;w <cmd>silent! w<cr>
 
 nnoremap <c-k><c-d> <cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>
+nnoremap <leader>cf <cmd>lua vim.lsp.buf.format({ timeout_ms = 5000 })<cr>
 nnoremap <c-k><c-f> <cmd>Format<cr>
+nnoremap <leader>cF <cmd>Format<cr>
 
 nnoremap <silent> <leader>eV <cmd>e ~/.config/nvim/<cr>
 nnoremap <silent> <leader>ev <cmd>e ~/.config/nvim/init.lua<cr>

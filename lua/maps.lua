@@ -19,7 +19,7 @@ end
 
 --
 --  delete all hidden, unmodified, non-terminal buffers
-vim.keymap.set("n", "<c-;>wh", function()
+vim.keymap.set("n", "<leader>bwh", function()
     local api = vim.api
     local active_buffers = {}
     for _, win in ipairs(api.nvim_list_wins()) do
@@ -38,4 +38,5 @@ vim.keymap.set("n", "<c-;>wh", function()
         end
     end
     api.nvim_out_write(string.format("Deleted %d hidden and unmodified buffers\n", count))
+    -- dump(string.format("Deleted %d hidden and unmodified buffers\n", count))
 end, { desc = "Delete all unmodified hidden buffers" })
