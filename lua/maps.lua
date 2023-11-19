@@ -13,7 +13,8 @@ end, { desc = "Code Actions" })
 
 if vim.lsp.inlay_hint then
     vim.keymap.set("n", "coi", function()
-        vim.lsp.inlay_hint(0, nil)
+        -- vim.lsp.inlay_hint()
+        vim.lsp.inlay_hint.enable(0, nil)
     end, { desc = "Toggle Inlay Hints" })
 end
 
