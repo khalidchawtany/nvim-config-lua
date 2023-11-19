@@ -1,16 +1,15 @@
-    -- Quickstart
-    -- Launch the server in the debuggee using F5
-    -- Open another Neovim instance with the source file
-    -- Place breakpoint with F8
-    -- Connect using the DAP client with F9
-    -- Run your script/plugin in the debuggee
-    -- Alternaltively you can:
-    --
-    -- Open a lua file
-    -- Place breakpoint
-    -- Invoke require"osv".run_this()
-    -- See osv.txt for more detailed instructions.
-
+-- Quickstart
+-- Launch the server in the debuggee using F5
+-- Open another Neovim instance with the source file
+-- Place breakpoint with F8
+-- Connect using the DAP client with F9
+-- Run your script/plugin in the debuggee
+-- Alternaltively you can:
+--
+-- Open a lua file
+-- Place breakpoint
+-- Invoke require"osv".run_this()
+-- See osv.txt for more detailed instructions.
 
 return {
     "mfussenegger/nvim-dap",
@@ -22,6 +21,21 @@ return {
     },
     cmd = { "DapLoad" },
     config = function()
+        vim.api.nvim_create_user_command("DapLoad", function()
+            dump("Quickstart")
+            dump("Launch the server in the debuggee using F5")
+            dump("Open another Neovim instance with the source file")
+            dump("Place breakpoint with F8")
+            dump("Connect using the DAP client with F9")
+            dump("Run your script/plugin in the debuggee")
+            dump("Alternaltively you can:")
+            dump("----------------------------------------------")
+            dump("Open a lua file")
+            dump("Place breakpoint")
+            dump('Invoke require"osv".run_this()')
+            dump("See osv.txt for more detailed instructions.")
+        end, {})
+
         local dap = require("dap")
         dap.adapters.php = {
             type = "executable",
@@ -116,16 +130,14 @@ return {
 
         vim.g.dap_virtual_text = true
 
-        vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='Todo', linehl='Todo', numhl='Todo'})
+        vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "Todo", linehl = "Todo", numhl = "Todo" })
 
-        vim.fn.sign_define('DapBreakpointCondition', {text='', texthl='Todo', linehl='Todo', numhl='Todo'})
+        vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "Todo", linehl = "Todo", numhl = "Todo" })
 
-        vim.fn.sign_define('DapLogPoint', {text='', texthl='Todo', linehl='Todo', numhl='Todo'})
+        vim.fn.sign_define("DapLogPoint", { text = "", texthl = "Todo", linehl = "Todo", numhl = "Todo" })
 
-        vim.fn.sign_define('DapStopped', {text='', texthl='Todo', linehl='Todo', numhl='Todo'})
+        vim.fn.sign_define("DapStopped", { text = "", texthl = "Todo", linehl = "Todo", numhl = "Todo" })
 
-        vim.fn.sign_define('DapBreakpointRejected', {text='', texthl='Todo', linehl='Todo', numhl='Todo'})
-
+        vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "Todo", linehl = "Todo", numhl = "Todo" })
     end,
-
 }
