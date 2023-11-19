@@ -13,12 +13,16 @@ local window_hint = [[
 
 Hydra({
 	name = "Change / Resize Window",
-	mode = { "n" },
-	body = "<C-w>",
+    hint = window_hint,
 	config = {
 		-- color = "pink",
-        hint = window_hint
+		hint = {
+			position = "middle",
+			border = "rounded",
+		},
 	},
+	mode = { "n" },
+	body = "<C-w>",
 	heads = {
 		-- focus windows
 		{ "h", "<C-w>h" },
