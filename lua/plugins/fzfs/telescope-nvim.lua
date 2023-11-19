@@ -1,3 +1,6 @@
+local custom_actions = require('user.telescope_custom.actions')
+local custom_pickers = require('user.telescope_custom.pickers')
+
 return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -9,6 +12,25 @@ return {
     },
     cmd = { "Telescope" },
     keys = {
+        {
+            "<c-s><c-y>",
+            function()
+                local themes = require('telescope.themes')
+
+                local dropdown = themes.get_dropdown({
+                    hidden = true,
+                    no_ignore = true,
+                    previewer = false,
+                    prompt_title = '',
+                    preview_title = '',
+                    results_title = '',
+                    layout_config = { prompt_position = 'top' },
+                })
+                custom_pickers.buffers(dropdown)
+            end,
+            desc = "Telescope: pickers",
+        },
+
         {
             "<c-s><leader>p",
             function()
@@ -366,6 +388,9 @@ return {
                         ["<C-CR>"] = actions.select_default + actions.center,
                         ["<C-c>"] = actions.close,
                         ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+
+                        ["<c-y>"] = custom_actions.toggle_buffer_mark,
+                        ['<c-w>'] = custom_actions.select_window,
 
                         -- Add up multiple actions
                         -- ["<CR>"] = actions.select_default + actions.center
