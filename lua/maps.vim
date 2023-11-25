@@ -38,6 +38,9 @@ nnoremap <silent> <c-j> <c-w><c-j>
 nnoremap <silent> <c-k> <c-w><c-k>
 nnoremap <silent> <c-l> <c-w><c-l>
 
+command! SwithGui :lua os.execute('osascript ~/juju/.config/nvim/switch_nvim_qt_gui_window.scpt')<cr>
+ " tell application "System Events" to ¬	perform action "AXRaise" of window 2 of ¬		application process "nvim-qt"-- tell application "nvim-qt" to activate
+"winnr() !=# winnr('h')
 " Maximize current split
 nnoremap <c-w>M <C-w>_<C-w><Bar>
 
