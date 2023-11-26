@@ -94,7 +94,12 @@ end
 
 local function load(modulename)
   local errmsg = ""
-  for _, path in ipairs({"/Users/juju/.config/nvim/lua/?.lua", "/Users/juju/.config/nvim/lua/configs/?.lua"}) do
+  for _, path in ipairs({
+      "/Users/juju/.config/nvim/lua/?.lua",
+      "/Users/juju/.config/nvim/lua/configs/?.lua",
+      '/Users/juju/.luarocks/lib/?.lua',
+      '/Users/juju/.luarocks/lib/?/?.lua'
+  }) do
     local filename = string.gsub(path, "%?", modulename)
     local file = io.open(filename, "rb")
 

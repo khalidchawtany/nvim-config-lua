@@ -65,7 +65,7 @@ set.hlsearch = true
 set.autoindent = true
 set.smartindent = true
 set.cindent = true
-set.wrap = true
+set.wrap = false
 
 -- Always use spaces instead of tab characters
 set.expandtab = true

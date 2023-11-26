@@ -44,6 +44,7 @@ vim.opt.runtimepath:prepend(lazypath)
 vim.opt.shadafile = "NONE"
 vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 vim.fn.setenv("DYLD_LIBRARY_PATH", "/usr/local/lib")
+ --
 package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?/init.lua"
 package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?.lua"
 package.path = package.path .. ";/Users/juju/.config/nvim/lua"
