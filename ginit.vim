@@ -137,7 +137,7 @@ if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
     GuiTabline 0
     GuiPopupmenu 0
     " call GuiWindowMaximized(2)
-    cd ~/.config/nvim/
+    " cd ~/.config/nvim/
 	GuiAdaptiveColor v:true
 	" ~/Development/Applications/neovim-qt/neovim-qt/build/bin/nvim-qt.app/Contents/Resources/runtime
 
