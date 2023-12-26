@@ -29,6 +29,10 @@ return {
         "FzfxResumeFiles",
         "FzfxResumeLiveGrep",
     },
+    keys = {
+        { "<M-D-p><M-D-p>", '<cmd>FzfxFiles<cr>', desc = "FzfxFiles", },
+
+    },
     dependencies = { "junegunn/fzf.vim" },
 }
 

@@ -22,6 +22,7 @@
           a = { "@block.outer", "@conditional.outer", "@loop.outer" },
           i = { "@block.inner", "@conditional.inner", "@loop.inner" },
         }, {}),
+        b = ai.gen_spec.treesitter({ a = "@block.outer", i = "@block.inner" }, {}),
         f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
         c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
       },

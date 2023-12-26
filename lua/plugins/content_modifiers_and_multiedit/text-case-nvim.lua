@@ -1,6 +1,6 @@
 return {
     "johmsalas/text-case.nvim",
-    cmd = {},
+    cmd = {"Subs"},
     keys = {
         {
             "<c-s>ct",

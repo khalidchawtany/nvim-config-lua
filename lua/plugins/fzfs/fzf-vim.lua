@@ -2,6 +2,7 @@ vim.cmd([[source ~/.config/nvim/lua/_fzf.vim]])
 return {
 	"junegunn/fzf.vim",
 	dependencies = { "junegunn/fzf" },
+    keys = {"<c-p><c-o>"},
 	cmd = {
 		"FZF",
 		"FzfAg",

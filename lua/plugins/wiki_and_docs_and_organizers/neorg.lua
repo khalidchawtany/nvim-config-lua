@@ -78,6 +78,8 @@ return {
 						index = "index.norg", -- The name of the main (root) .norg file
 					},
 				},
+                ["core.summary"] ={},
+                ["core.ui.calendar"] = {},
 			},
 		})
 	end,

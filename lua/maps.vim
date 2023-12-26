@@ -269,24 +269,24 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
   "CD into:
   "current buffer file dir
 
-  " nnoremap cdf :lcd %:p:h<cr>:pwd<cr>
-  nnoremap cdf <cmd>lcd %:p:h<cr><cmd>pwd<cr>
-  " nnoremap cd. :lcd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr><cmd>pwd<cr>
-  nnoremap cd. <cmd>execute "lcd " . fnamemodify(expand('%:h'), ':h')<cr><cmd>pwd<cr>
+  " nnoremap cdf :cd %:p:h<cr>:pwd<cr>
+  nnoremap cdf <cmd>cd %:p:h<cr><cmd>pwd<cr>
+  " nnoremap cd. :cd <c-r>=fnamemodify(expand('%:h'), ':h')<cr><cr><cmd>pwd<cr>
+  nnoremap cd. <cmd>execute "cd " . fnamemodify(expand('%:h'), ':h')<cr><cmd>pwd<cr>
 
-  nnoremap cdh <cmd>execute "lcd " . expand('%:h') . "/.."<cr><cmd>pwd<cr>
-  nnoremap cdk <cmd>execute "lcd " . getcwd() . "/.."<cr><cmd>pwd<cr>
+  nnoremap cdh <cmd>execute "cd " . expand('%:h') . "/.."<cr><cmd>pwd<cr>
+  nnoremap cdk <cmd>execute "cd " . getcwd() . "/.."<cr><cmd>pwd<cr>
 
-  nnoremap cdp <cmd>execute "lcd ". GetPluginPath()<cr><cmd>pwd<cr>
+  nnoremap cdp <cmd>execute "cd ". GetPluginPath()<cr><cmd>pwd<cr>
 
 
   "current working dir
-  nnoremap cdc <cmd>execute"lcd ". expand("%:h")<cr>
+  nnoremap cdc <cmd>execute"cd ". expand("%:h")<cr>
   "git dir ROOT
-  nnoremap cdg <cmd>execute "lcd " . FindGitDirOrRoot()<cr>
+  nnoremap cdg <cmd>execute "cd " . FindGitDirOrRoot()<cr>
 
-  nnoremap cdd <cmd> execute "lcd /Volumes/Home/.local/share/nvim/"<cr>
-  nnoremap cdv <cmd> execute "lcd /Volumes/Home/.config/nvim/"<cr>
+  nnoremap cdd <cmd> execute "cd /Volumes/Home/.local/share/nvim/"<cr>
+  nnoremap cdv <cmd> execute "cd /Volumes/Home/.config/nvim/"<cr>
 
 
   fun! GetPluginPath()

@@ -1,26 +1,25 @@
-local opts = {hidden = false, respect_gitignore = true}
 
 return {
   "princejoogie/dir-telescope.nvim",
   dependencies = {"nvim-telescope/telescope.nvim"},
-  cmd = {"GrepInDirectory", "FileInDirectory"},
   keys = {
     {
-      "<c-s><c-]>",
-      function()
-        require("dir-telescope.features.find-in-dir").FileInDirectory(opts)
-      end,
+      "<leader>fid",
+      "<cmd>Telescope dir find_files<CR>",
       desc = "Telescope (FileInDirectory)"
     },
     {
-      "<c-s><c-[>",
-      function()
-        require("dir-telescope.features.find-in-dir").GrepInDirectory(opts)
-      end,
+      "<leader>sid",
+      "<cmd>Telescope dir live_grep<CR>",
       desc = "Telescope (GrepInDirectory)"
     }
   },
   config = function()
-    require("dir-telescope").setup(opts)
+    require("dir-telescope").setup({
+      -- these are the default options set
+      hidden = true,
+      no_ignore = false,
+      show_preview = true,
+    })
   end
 }

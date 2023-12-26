@@ -1,7 +1,3 @@
-local is_not_hidden = function(path_data)
-    return not vim.startswith(vim.fn.fnamemodify(path_data.path, ":t"), ".")
-end
-
 local make_select_path = function(select_global, recency_weight)
     return function()
         local visits = require("mini.visits")
@@ -37,6 +33,14 @@ return {
         { '<Leader>vL', function() require('mini.visits').select_label() end,       desc='Select label (cwd)'},
         { '<Leader>vb', function() require('mini.visits').add_label(get_git_branch_name()) end, desc='Add Branch Label'},
         { '<Leader>vB', function() require('mini.visits').remove_label(get_git_branch_name()) end, desc='Add Branch Label'},
+
+        { '[v[', function() require('mini.visits').iterate_paths('first',    vim.fn.getcwd(), { filter = 'core', wrap = true }) end, desc='Core Label (first)'},
+        { '[vf', function() require('mini.visits').iterate_paths('first',    vim.fn.getcwd(), { filter = 'core', wrap = true }) end, desc='Core Label (first)'},
+        { '[vv', function() require('mini.visits').iterate_paths('backward', vim.fn.getcwd(), { filter = 'core', wrap = true }) end, desc='Core Label (backward)'},
+
+        { ']v]', function() require('mini.visits').iterate_paths('last',    vim.fn.getcwd(), { filter = 'core', wrap = true }) end, desc='Core Label (last)'},
+        { ']vl', function() require('mini.visits').iterate_paths('last',    vim.fn.getcwd(), { filter = 'core', wrap = true }) end, desc='Core Label (last)'},
+        { ']vv', function() require('mini.visits').iterate_paths('forward', vim.fn.getcwd(), { filter = 'core', wrap = true }) end, desc='Core Label (forward)'},
 
     },
     config = function()
