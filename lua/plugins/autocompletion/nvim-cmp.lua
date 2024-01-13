@@ -41,6 +41,7 @@ return {
         opts.completion = {}
         opts.sources = {
             { name = "copilot",              group_index = 2 },
+            { name = "codeium" },
             { name = "nvim-cmp-ts-tag-close" },
             { name = "luasnip" },
             { name = "nvim_lsp",             trigger_characters = { "-" } },
@@ -81,7 +82,7 @@ return {
         }
         opts.experimental = {
             -- native_menu = false,
-            ghost_text = false,
+            ghost_text = true,
         }
         opts.window = {
             -- documentation = "native",
