@@ -83,7 +83,7 @@ require("lazy").setup(
     }
   }
 )
--- vim.cmd.cd("~/.config/nvim")
+vim.cmd.cd("~/.config/nvim")
 vim.cmd.source("~/.config/nvim/func.vim")
 require("user.winbar")
 require("user.statuscolumn")
