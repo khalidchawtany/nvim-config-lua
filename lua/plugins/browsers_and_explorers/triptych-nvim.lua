@@ -3,7 +3,7 @@ return {
     event = "VeryLazy",
     cmd = { "Triptych" },
     keys = {
-        { "-tt", "<cmd>Triptych<cr>", desc = "Triptych File Browser", { silent = true, nowait = true } },
+        { "--", "<cmd>Triptych<cr>", desc = "Triptych File Browser", { silent = true, nowait = true } },
     },
     dependencies = {
         "nvim-lua/plenary.nvim", -- required

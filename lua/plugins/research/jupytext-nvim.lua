@@ -1,5 +1,4 @@
 return {
-  "goerz/jupytext.vim",
-  cmd = "Jupytext"
-  -- event = "BufReadPre *.ipynb"
+    "goerz/jupytext.vim",
+    event = "VeryLazy",
 }

@@ -310,8 +310,10 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
     "nnoremap gof <cmd>silent !open .<cr>
 
     " allow replacing word under cursor
-    nnoremap grW :%s/<c-r>=expand('<cWORD>')<cr>//g<left><left>
-    nnoremap grw :%s/<c-r>=expand('<cword>')<cr>//g<left><left>
+    nnoremap grW :%s/<c-r>=expand('<cWORD>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
+    nnoremap graW :%s/<c-r>=expand('<cWORD>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
+    nnoremap graw :bufdo :silent! %s/<c-r>=expand('<cword>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
+    nnoremap graw :bufdo :silent! %s/<c-r>=expand('<cword>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
 
     nnoremap ycd :!mkdir -p %:p:h<CR>
 

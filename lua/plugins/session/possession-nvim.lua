@@ -34,7 +34,7 @@ M.config = function()
       tmp = true, -- or fun(): boolean
       tmp_name = "tmp",
       on_load = true,
-      on_quit = true
+      on_quit = false
     },
     commands = {
       save = "SSave",

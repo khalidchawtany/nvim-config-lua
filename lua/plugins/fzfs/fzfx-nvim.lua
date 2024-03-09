@@ -1,39 +1,15 @@
 return {
-    "linrongbin16/fzfx.vim",
-    version = false,
-    cmd = {
-        "FzfxBranches",
-        "FzfxBranchesV",
-        "FzfxBranchesW",
-        "FzfxBuffers",
-        "FzfxBuffersV",
-        "FzfxBuffersW",
-        "FzfxCommands",
-        "FzfxCommandsV",
-        "FzfxCommandsW",
-        "FzfxFiles",
-        "FzfxFilesU",
-        "FzfxFilesUV",
-        "FzfxFilesUW",
-        "FzfxFilesV",
-        "FzfxFilesW",
-        "FzfxHistoryFiles",
-        "FzfxHistoryFilesV",
-        "FzfxHistoryFilesW",
-        "FzfxLiveGrep",
-        "FzfxLiveGrepU",
-        "FzfxLiveGrepUV",
-        "FzfxLiveGrepUW",
-        "FzfxLiveGrepV",
-        "FzfxLiveGrepW",
-        "FzfxResumeFiles",
-        "FzfxResumeLiveGrep",
-    },
+    "linrongbin16/fzfx.nvim",
     keys = {
-        { "<M-D-p><M-D-p>", '<cmd>FzfxFiles<cr>', desc = "FzfxFiles", },
-
+        { "<M-D-p><M-D-p>",  "<cmd>FzfxFiles<cr>",      desc = "FzfxFiles" },
+        { "<M-D-p><M-D-b>",  "<cmd>FzfxGBranches<cr>",    desc = "Branches" },
+        { "<M-D-p><M-D-o>",  "<cmd>FzfxBuffers<cr>",     desc = "Buffers" },
+        { "<M-D-p><M-D-m>",  "<cmd>FzfxCommands<cr>",    desc = "Commands" },
     },
-    dependencies = { "junegunn/fzf.vim" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "junegunn/fzf" },
+    config = function()
+        require("fzfx").setup()
+    end,
 }
 
 -- vim.keymap.set({'n'}, '<space>f', '<cmd>FzfxFiles<cr>', {silent=true, noremap=true, desc="Search files"})

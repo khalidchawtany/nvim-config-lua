@@ -82,7 +82,7 @@ return {
         }
         opts.experimental = {
             -- native_menu = false,
-            ghost_text = true,
+            ghost_text = false,
         }
         opts.window = {
             -- documentation = "native",

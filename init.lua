@@ -83,10 +83,12 @@ require("lazy").setup(
     }
   }
 )
-vim.cmd.cd("~/.config/nvim")
+if (vim.fn.getcwd() == "/") then
+    vim.cmd.cd("~/.config/nvim")
+end
 vim.cmd.source("~/.config/nvim/func.vim")
 require("user.winbar")
-require("user.statuscolumn")
+-- require("user.statuscolumn")
 require("user.autocommands")
 require("user.commands")
 require("project_maps")

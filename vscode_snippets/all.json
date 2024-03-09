@@ -1,1 +1,22 @@
-{"cl":{"body":"console.log(${1:log});","prefix":"cl","description":"JS: console log"},"keys":{"body":["keys = {","    {","        \"${1:keys}\",","        function()","            $0","        end,","        ${3:mode={\"n\"}}","        desc = \"${2:description}\",","    },","},"],"prefix":"keys"}}
+{
+    "cl": {
+        "body": "console.log(${1:log});",
+        "prefix": "cl",
+        "description": "JS: console log"
+    },
+    "keys": {
+        "body": [
+            "keys = {",
+            "    {",
+            "        \"${1:keys}\",",
+            "        function()",
+            "            $0",
+            "        end,",
+            "        ${3:mode={\"n\"}}",
+            "        desc = \"${2:description}\",",
+            "    },",
+            "},"
+        ],
+        "prefix": "keys"
+    }
+}

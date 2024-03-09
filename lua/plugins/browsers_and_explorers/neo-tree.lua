@@ -11,7 +11,7 @@ local M = {
   },
   keys = {
     {
-      "--",
+      "-<space>",
       '<cmd>execute"Neotree float reveal dir=".expand("%:h")." reveal_force_cwd"<cr>',
       desc = "NeoTree (float"
     },

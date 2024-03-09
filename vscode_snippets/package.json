@@ -50,6 +50,10 @@
             {
                 "language": "vim",
                 "path": "./vim.json"
+            },
+            {
+                "language": "quarto",
+                "path": "./quarto.json"
             }
         ]
     }

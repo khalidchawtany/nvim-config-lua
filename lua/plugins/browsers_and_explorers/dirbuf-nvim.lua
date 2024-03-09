@@ -11,8 +11,14 @@ return {
         vim.api.nvim_create_autocmd({ "FileType" }, {
             pattern = "dirbuf",
             callback = function()
-                vim.cmd([[nmap <silent><nowait><buffer> - <Plug>(dirbuf_up)]])
-                vim.cmd([[nmap <silent><nowait><buffer> q <cmd>DirbufQuit<cr>]])
+                vim.cmd([[
+                    nmap <silent><nowait><buffer> - <Plug>(dirbuf_up)
+                    nmap <silent><nowait><buffer> q <cmd>DirbufQuit<cr>
+                    nmap <silent><nowait><buffer> <leader>W <cmd>DirbufSync<cr>
+                    nmap <silent><nowait><buffer> <leader>w <cmd>DirbufSync -confirm<cr>
+                    nmap <silent><nowait><buffer> <leader>p <cmd>DirbufSync -dry-run<cr>
+               ]])
+ 
             end,
         })
     end,

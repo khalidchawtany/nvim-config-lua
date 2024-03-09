@@ -308,7 +308,7 @@ command! FzfTabs :call fzf#run({
       \   'options': " --preview-window right:50%  --preview 'echo {}'  --bind ?:toggle-preview",
       \ })
 
-nnoremap <silent> <c-p><c-i> <plug>FzfTabs :FzfTabs<cr>
+nnoremap <silent> <c-p><c-i>  <cmd>FzfTabs<cr>
 
 "}}} _Tabs
 
