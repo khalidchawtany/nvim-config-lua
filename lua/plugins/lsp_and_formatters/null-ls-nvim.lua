@@ -1,20 +1,26 @@
 local M = {
     "nvimtools/none-ls.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "davidmh/cspell.nvim",
+        "gbprod/none-ls-php.nvim",
+    },
     event = "BufEnter",
 }
 
 M.config = function()
     local null_ls = require("null-ls")
+    local cspell = require('cspell')
     -- return nil
     require("null-ls").setup({
         sources = {
+
+            -- CSpell
+            cspell.diagnostics,
+            cspell.code_actions,
+
             -- Hover
             null_ls.builtins.hover.dictionary,
-            null_ls.builtins.diagnostics.cspell.with({
-                filetypes = { "markdown", "text", "org", "norg", "gitcommit" },
-            }),
-            null_ls.builtins.code_actions.cspell,
             -- completion
             null_ls.builtins.completion.luasnip,
             -- null_ls.builtins.completion.spell.with({
@@ -24,7 +30,7 @@ M.config = function()
             null_ls.builtins.code_actions.gitsigns,
             null_ls.builtins.code_actions.proselint,
             -- null_ls.builtins.code_actions.refactoring,
-            null_ls.builtins.code_actions.xo, -- eslint wrapper with great defaults
+            -- null_ls.builtins.code_actions.xo, -- eslint wrapper with great defaults
             -- formatting
             -- null_ls.builtins.formatting.prettier,
             null_ls.builtins.formatting.prettier.with({
@@ -58,7 +64,7 @@ M.config = function()
             null_ls.builtins.formatting.black,
             null_ls.builtins.formatting.djhtml,
             null_ls.builtins.formatting.djlint,
-            null_ls.builtins.formatting.jq, -- Lua
+            -- null_ls.builtins.formatting.jq, -- Lua
             null_ls.builtins.formatting.stylua,
             -- null_ls.builtins.formatting.lua_format, -- PHP
             -- null_ls.builtins.formatting.phpcbf,
@@ -78,16 +84,16 @@ M.config = function()
             -- diagnostics
             -- JS, TS, VUE, REACT
             -- null_ls.builtins.diagnostics.eslint,
-            null_ls.builtins.diagnostics.tsc, -- Python
+            -- null_ls.builtins.diagnostics.tsc, -- Python
             -- null_ls.builtins.diagnostics.djlint, -- django
             -- null_ls.builtins.diagnostics.pycodestyle,
             -- null_ls.builtins.diagnostics.mypy, -- Json
-            null_ls.builtins.diagnostics.jsonlint,
-            null_ls.builtins.diagnostics.luacheck.with({
-                extra_args = { "--globals", "{'vim'}" },
-            }),
+            -- null_ls.builtins.diagnostics.jsonlint,
+            -- null_ls.builtins.diagnostics.luacheck.with({
+            --     extra_args = { "--globals", "{'vim'}" },
+            -- }),
             null_ls.builtins.diagnostics.stylelint, -- Tailwind
-            null_ls.builtins.diagnostics.php,
+            -- null_ls.builtins.diagnostics.php,
             -- null_ls.builtins.diagnostics.phpcs,
             null_ls.builtins.diagnostics.twigcs, -- Blade
             null_ls.builtins.diagnostics.yamllint,
@@ -96,6 +102,8 @@ M.config = function()
             return not vim.api.nvim_buf_get_name(bufnr):match("^git://")
         end,
     })
+
+    require("null-ls").register(require("none-ls-php.diagnostics.php"))
 
     require("null-ls").register({
         name = "more_actions",

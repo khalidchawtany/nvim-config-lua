@@ -8,11 +8,11 @@ let g:render_ligatures = 0
 nnoremap <silent> <leader>o<cr> :let g:render_ligatures =  (g:render_ligatures + 1) % 2 \| call rpcnotify(0, 'Gui', 'Option', 'RenderLigatures', g:render_ligatures)<cr>
 
 let g:gui_fonts = [
+      \ 'RobotoMono\ Nerd\ Font:h18',
       \ 'FiraCode\ Nerd\ Font:h20',
       \ 'Thabit:b:h20',
       \ 'Fira\ Code:h18',
       \ 'Operator\ Mono\ Lig:h17',
-      \ 'RobotoMono\ Nerd\ Font:h18',
       \ 'Monaco:h17',
       \ 'Source\ Code\ Pro\ for\ PowerLine:h17',
       \ 'Fura\ Mono\ Nerd\ Font:17'

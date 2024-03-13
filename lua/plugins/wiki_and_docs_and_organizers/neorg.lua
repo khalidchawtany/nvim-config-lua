@@ -10,10 +10,10 @@ return {
 		{ "<leader>or", "<cmd>Neorg return<cr>",         desc = "Neorg (return)" },
 	},
 	config = function()
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-			pattern = { "*.norg" },
-			command = "set conceallevel=3",
-		})
+		-- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+		-- 	pattern = { "*.norg" },
+		-- 	command = "set conceallevel=3",
+		-- })
 
 		require("neorg").setup({
 			load = {
