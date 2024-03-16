@@ -1,6 +1,7 @@
 return {
     "echasnovski/mini.files",
     version = false,
+    event = "VimEnter",
     keys = {
         {
             "--",
@@ -55,9 +56,9 @@ return {
                     -- Whether to show preview of file/directory under cursor
                     preview = true,
                     -- Width of focused window
-                    width_focus = 25,
+                    width_focus = 35,
                     -- Width of non-focused window
-                    width_nofocus = 25,
+                    width_nofocus = 35,
                     -- Width of preview window
                     width_preview = 120,
                 },
@@ -97,10 +98,9 @@ return {
             vim.keymap.set("n", lhs, rhs, { buffer = buf_id, desc = desc })
         end
 
-        vim.api.nvim_create_autocmd({"User"}, {
+        vim.api.nvim_create_autocmd({ "User" }, {
             pattern = "MiniFilesBufferCreate",
             callback = function(args)
-
                 -- -- Customize window-local settings
                 -- vim.wo[win_id].winblend = 50
                 -- vim.api.nvim_win_set_config(win_id, { border = "double" })
@@ -110,6 +110,13 @@ return {
                 local buf_id = args.data.buf_id
                 -- Tweak left-hand side of mapping to your liking
                 vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
+                vim.keymap.set("n", "<cr>", function()
+                    require("mini.files").go_in({ close_on_file = true })
+                end, { buffer = buf_id, nowait = true })
+
+                vim.keymap.set("n", "-", function()
+                    require("mini.files").go_out()
+                end, { buffer = buf_id, nowait = true })
 
                 -- Tweak keys to your liking
                 map_split(buf_id, "gs", "belowright horizontal")
