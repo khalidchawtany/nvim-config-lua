@@ -88,12 +88,10 @@ if (vim.fn.getcwd() == "/") then
 end
 vim.cmd.source("~/.config/nvim/func.vim")
 require("user.winbar")
--- require("user.statuscolumn")
 require("user.autocommands")
 require("user.commands")
 require("project_maps")
 require("maps")
--- require('impatient')
 require("opts")
 vim.cmd.source("~/.config/nvim/lua/maps.vim")
 vim.cmd [[autocmd User LazyReload source ~/.config/nvim/lua/maps.vim]]

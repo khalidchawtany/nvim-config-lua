@@ -3,7 +3,7 @@ return {
 	version = false,
 	keys = {
 		{
-			"-m",
+			"--",
 			function()
 				require("mini.files").open(vim.api.nvim_buf_get_name(0))
 			end,
@@ -53,13 +53,13 @@ return {
 					-- Maximum number of windows to show side by side
 					max_number = math.huge,
 					-- Whether to show preview of file/directory under cursor
-					preview = false,
+					preview = true,
 					-- Width of focused window
-					width_focus = 50,
+					width_focus = 25,
 					-- Width of non-focused window
-					width_nofocus = 15,
+					width_nofocus = 25,
 					-- Width of preview window
-					width_preview = 25,
+					width_preview = 120,
 				},
 			}
 		)
