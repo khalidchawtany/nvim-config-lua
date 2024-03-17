@@ -53,7 +53,7 @@ return {
 		{ "<leader>gw",        '<cmd>execute"call FugitiveDetect(expand(\'%:p\')) | Gwrite"<cr>', desc = "Git write" },
 		{ "<leader>gdv",       '<cmd>execute"call FugitiveDetect(expand(\'%:p\')) | Gvdiff"<cr>', desc = "Git diff-V" },
 		{ "<leader>gds",       '<cmd>execute"call FugitiveDetect(expand(\'%:p\')) | Gdiff"<cr>', desc = "Git diff-S" },
-		{ "<leader>g<leader>", '<cmd>execute"call FugitiveDetect(expand(\'%:p\')) | Gtabedit"<cr>', desc = "Git tab" },
+		{ "<leader>gt", '<cmd>execute"call FugitiveDetect(expand(\'%:p\')) | tab Git"<cr>', desc = "Git tab" },
 		{ "<leader>g<bs>",     '<cmd>execute"call FugitiveDetect(expand(\'%:p\')) | Gread | Gwrite"<cr>', desc = "Git Read|Write" },
 	},
 	init = function()
