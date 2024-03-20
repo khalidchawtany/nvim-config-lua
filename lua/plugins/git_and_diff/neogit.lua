@@ -3,7 +3,7 @@ return {
     cmd = { "Neogit" },
 
     keys = {
-        { "<leader>gs", "<cmd>Neogit<cr>", desc = "Neogit" },
+        { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
         { "<leader>gf", "<cmd>Neogit kind=floating<cr>", desc = "Neogit Float" },
     },
     dependencies = {
