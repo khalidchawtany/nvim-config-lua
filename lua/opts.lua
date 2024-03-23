@@ -161,7 +161,8 @@ set.list = false
 
 set.fillchars = 'stlnc:-,foldsep:┊,foldopen:,foldclose:,vert:│'
 
-set.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+-- set.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+set.sessionoptions="blank,buffers,curdir,help,tabpages,winsize,winpos,terminal"
  --
 
 -- vim.opt.fillchars = {

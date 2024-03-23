@@ -29,28 +29,28 @@ return {
 			php = php_query,
 		}
 
-		vim.keymap.set({ "n", "s", "i" }, "<D-[>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<M-D-k>", function()
 			select_ease.select_node({
 				queries = queries,
 				direction = "previous",
 				vertical_drill_jump = true,
 			})
 		end, {})
-		vim.keymap.set({ "n", "s", "i" }, "<D-]>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<M-D-j>", function()
 			select_ease.select_node({
 				queries = queries,
 				direction = "next",
 				vertical_drill_jump = true,
 			})
 		end, {})
-		vim.keymap.set({ "n", "s", "i" }, "<D-;>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<M-D-h>", function()
 			select_ease.select_node({
 				queries = queries,
 				direction = "previous",
 				current_line_only = true,
 			})
 		end, {})
-		vim.keymap.set({ "n", "s", "i" }, "<D-'>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<M-D-l>", function()
 			select_ease.select_node({
 				queries = queries,
 				direction = "next",
@@ -58,10 +58,10 @@ return {
 			})
 		end, {})
 
-		vim.keymap.set({ "n", "s", "i" }, "<D-k>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<M-D-'>", function()
 			select_ease.select_node({ queries = queries, direction = "previous" })
 		end, {})
-		vim.keymap.set({ "n", "s", "i" }, "<D-j>", function()
+		vim.keymap.set({ "n", "s", "i" }, "<M-D-CR>", function()
 			select_ease.select_node({ queries = queries, direction = "next" })
 		end, {})
 	end,
