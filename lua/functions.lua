@@ -113,7 +113,7 @@ local function load(modulename)
   -- return errmsg
 end
 -- _G.myrequire = load
-table.insert(package.loaders, 2, load) -- this will run before the standard loader, if you want it to
+-- table.insert(package.loaders, 2, load) -- this will run before the standard loader, if you want it to
 -- run after you can call table.insert(package.loaders, load)
 
 -- local function load(modulename)
