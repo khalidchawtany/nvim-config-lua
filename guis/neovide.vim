@@ -43,6 +43,12 @@
 
   let g:neovide_input_macos_alt_is_meta=v:false
 
+let g:neovide_confirm_quit = v:true
+
+
+" Fix border and winbar scrolling glitches
+let g:neovide_unlink_border_highlights = v:true
+
 
 
  " set guifont=FiraCode\ Nerd\ Font:h18
@@ -136,6 +142,7 @@ end
 
 
 EOF
+
 
 
 "  " Set transparency and background color (title bar color)
