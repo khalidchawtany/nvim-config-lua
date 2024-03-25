@@ -1,12 +1,36 @@
-vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
-vim.fn.setenv("DYLD_LIBRARY_PATH", "/usr/local/lib")
+ local rocks_config = {
+     rocks_path = "/Users/juju/.local/share/nvim/rocks",
+     luarocks_binary = "/Users/juju/.local/share/nvim/rocks/bin/luarocks",
+ }
 
-package.path = package.path .. ";/Users/juju/.local/share/nvim/lazy/luarocks.nvim/.rocks/share/lua/5.1/?/?.lua"
-package.path = package.path .. ";/Users/juju/.local/share/nvim/lazy/luarocks.nvim/.rocks/share/lua/5.1/?.lua"
+ vim.g.rocks_nvim = rocks_config
+
+ local luarocks_path = {
+     vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?.lua"),
+     vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?", "init.lua"),
+ }
+ package.path = package.path .. ";" .. table.concat(luarocks_path, ";")
+
+ local luarocks_cpath = {
+     vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.dylib"),
+     vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.dylib"),
+ }
+ package.cpath = package.cpath .. ";" .. table.concat(luarocks_cpath, ";")
+
+ vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, "lib", "luarocks", "rocks-5.1", "rocks.nvim", "*"))
+
+
+-- package.path = package.path .. ";/Users/juju/.local/share/nvim/lazy/luarocks.nvim/.rocks/share/lua/5.1/?/?.lua"
+-- package.path = package.path .. ";/Users/juju/.local/share/nvim/lazy/luarocks.nvim/.rocks/share/lua/5.1/?.lua"
 
 package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?/init.lua"
 package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?.lua"
-package.path = package.path .. ";/Users/juju/.config/nvim/lua"
+-- package.path = package.path .. ";/Users/juju/.config/nvim/lua"
+
+
+vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
+vim.fn.setenv("DYLD_LIBRARY_PATH", "/usr/local/lib")
+
 
  local links = {
   ['@lsp.type.namespace'] = '@namespace',
