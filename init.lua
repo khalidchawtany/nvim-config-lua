@@ -1,3 +1,13 @@
+vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
+vim.fn.setenv("DYLD_LIBRARY_PATH", "/usr/local/lib")
+
+package.path = package.path .. ";/Users/juju/.local/share/nvim/lazy/luarocks.nvim/.rocks/share/lua/5.1/?/?.lua"
+package.path = package.path .. ";/Users/juju/.local/share/nvim/lazy/luarocks.nvim/.rocks/share/lua/5.1/?.lua"
+
+package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?/init.lua"
+package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?.lua"
+package.path = package.path .. ";/Users/juju/.config/nvim/lua"
+
  local links = {
   ['@lsp.type.namespace'] = '@namespace',
   ['@lsp.type.type'] = '@type',
@@ -18,14 +28,6 @@ for newgroup, oldgroup in pairs(links) do
   vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
 end
 
--- vim.lsp.buf.inlay_hint(0, true)
-
-
-
-
-
-
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system(
@@ -42,14 +44,7 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 vim.opt.shadafile = "NONE"
-vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
-vim.fn.setenv("DYLD_LIBRARY_PATH", "/usr/local/lib")
- --
-package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?/init.lua"
-package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?.lua"
-package.path = package.path .. ";/Users/juju/.config/nvim/lua"
 
--- example using a list of specs with the default options
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 vim.g.loaclleader = "\\"
 
