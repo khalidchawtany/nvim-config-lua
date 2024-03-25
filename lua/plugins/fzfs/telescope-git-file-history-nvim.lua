@@ -7,7 +7,7 @@ return {
     },
     keys = {
         {
-            "<c-s><c-cr>",
+            "<c-s>gh",
             function()
                 require("telescope").extensions.git_file_history.git_file_history()
             end,
