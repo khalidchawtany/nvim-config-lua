@@ -3,7 +3,7 @@ local M = {
   dependencies = {"folke/trouble.nvim"},
   keys = {
     {
-      "<Leader>l",
+      "col",
 	  function()
 		require("lsp_lines").toggle()
       end,

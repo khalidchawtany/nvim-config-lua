@@ -1,6 +1,7 @@
 return {
 	"rgroli/other.nvim",
 	event = "VeryLazy",
+  enabled = false,
 	config = function()
 		require("other-nvim").setup({
 			mappings = {

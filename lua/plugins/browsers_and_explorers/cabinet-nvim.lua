@@ -1,6 +1,7 @@
 return {
     "smilhey/cabinet.nvim",
     event = "VeryLazy",
+  enabled = false,
     cmd = { "DrawerListBuffers", "DrawerList", "DrawerNext", "DrawerPrevious" },
     keys = {
         {

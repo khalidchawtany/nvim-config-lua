@@ -8,10 +8,17 @@ return {
         "luarocks.nvim",
     }, -- You may want to specify Telescope here as well
     keys = {
-        { "<leader>oi", "<cmd>Neorg workspace work<cr>", desc = "Neorg (Index)" },
-        { "<leader>ow", "<cmd>Neorg workspace work<cr>", desc = "Neorg (Index)" },
-        { "<leader>or", "<cmd>Neorg return<cr>",         desc = "Neorg (return)" },
+        { "<leader>ori", "<cmd>Neorg workspace work<cr>", desc = "Neorg (Index)" },
+        { "<leader>orw", "<cmd>Neorg workspace work<cr>", desc = "Neorg (Index)" },
+        { "<leader>orr", "<cmd>Neorg return<cr>",         desc = "Neorg (return)" },
     },
+    init = function()
+        local wk = require("which-key")
+        wk.register({
+            mode = { "n" },
+            ["<leader>or"] = { name = "+Neorg" },
+        })
+    end,
     config = function()
         -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
         -- 	pattern = { "*.norg" },

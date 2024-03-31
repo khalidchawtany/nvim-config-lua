@@ -70,7 +70,7 @@ vim.opt.runtimepath:prepend(lazypath)
 vim.opt.shadafile = "NONE"
 
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
-vim.g.loaclleader = "\\"
+vim.g.localleader = "\\"
 
 require("functions")
 

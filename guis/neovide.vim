@@ -34,6 +34,11 @@
   let g:neovide_floating_blur_amount_x = 1.0
   let g:neovide_floating_blur_amount_y = 1.0
 
+let g:neovide_floating_shadow = v:true
+let g:neovide_floating_z_height = 1
+let g:neovide_light_angle_degrees = 45
+let g:neovide_light_radius = 1
+
 
   let g:neovide_scroll_animation_length = 0.15
 
@@ -57,7 +62,7 @@ let g:neovide_unlink_border_highlights = v:true
 
 
 lua << EOF
-  vim.g.gui_font_default_size = 18
+  vim.g.gui_font_default_size = 17
   vim.g.gui_font_size = vim.g.gui_font_default_size
   -- vim.g.gui_font_face = "FiraCode Nerd Font TALL"
   -- vim.g.gui_font_face = "Fira Code"

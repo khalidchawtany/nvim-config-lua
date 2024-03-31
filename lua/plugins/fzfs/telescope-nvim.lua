@@ -1,6 +1,7 @@
 local custom_actions = require('user.telescope_custom.actions')
 local custom_pickers = require('user.telescope_custom.pickers')
 
+
 return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
@@ -444,7 +445,8 @@ return {
                     preview_cutoff = 10,
                 },
                 border = {},
-                borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                borderchars = require('user.functions').get_borderchars('telescope'),
                 color_devicons = true,
                 use_less = true,
                 set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,

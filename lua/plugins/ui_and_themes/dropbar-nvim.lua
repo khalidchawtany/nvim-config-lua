@@ -1,6 +1,7 @@
 return {
 	"Bekaboo/dropbar.nvim",
 	event = "VeryLazy",
+  enabled = false,
 
 	dependencies = {
 		"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended

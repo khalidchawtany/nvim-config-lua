@@ -1,5 +1,6 @@
 local M = {
   "ray-x/navigator.lua",
+  enabled = false,
   event = "BufReadPost",
   dependencies = {"ray-x/guihua.lua", build = "cd lua/fzy && make"}
 }

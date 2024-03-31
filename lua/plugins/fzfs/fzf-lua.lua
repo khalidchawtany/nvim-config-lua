@@ -41,8 +41,6 @@ end
 --   },
 -- }
 
-
-
 local M = {
     "ibhagwan/fzf-lua",
     cmd = { "FzfLua" },
@@ -314,15 +312,17 @@ M.config = function()
             -- "aboveleft vnew   : split left
             -- Only valid when using a float window
             -- (i.e. when 'split' is not defined, default)
-            height = 0.95, -- window height
-            width = 0.95, -- window width
+            height = 0.90, -- window height
+            width = 0.90, -- window width
             row = 0.35, -- window row position (0=top, 1=bottom)
             col = 0.50, -- window col position (0=left, 1=right)
             -- border argument passthrough to nvim_open_win(), also used
             -- to manually draw the border characters around the preview
             -- window, can be set to 'false' to remove all borders or to
             -- 'none', 'single', 'double', 'thicc' or 'rounded' (default)
-            border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+
+            border = require("user.functions").get_borderchars("fzf-lua"),
             fullscreen = false, -- start fullscreen?
             -- highlights should optimally be set by the colorscheme using
             -- FzfLuaXXX highlights. If your colorscheme doesn't set these

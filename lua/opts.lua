@@ -14,6 +14,8 @@ set signcolumn=yes:1
 set indentkeys+=!0<Tab>
 ]]
 
+vim.cmd('hi! link CurSearch Search')
+
 vim.api.nvim_set_hl(0, "Cur", { bg="yellow", fg="#FF30F1", blend=50, standout=false, reverse=true , nocombine= true })
 vim.go.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait900-blinkoff250-blinkon250-Cur/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
