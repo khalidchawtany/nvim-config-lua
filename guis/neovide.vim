@@ -46,7 +46,8 @@ let g:neovide_light_radius = 1
   let g:neovide_hide_mouse_when_typing = v:false
 
 
-  let g:neovide_input_macos_alt_is_meta=v:false
+  " let g:neovide_input_macos_alt_is_meta=v:true
+ let g:neovide_input_macos_option_key_is_meta = 'only_left'
 
 let g:neovide_confirm_quit = v:true
 
@@ -62,6 +63,11 @@ let g:neovide_unlink_border_highlights = v:true
 
 
 lua << EOF
+
+ vim.schedule(function()
+    vim.cmd "NeovideFocus"
+  end)
+
   vim.g.gui_font_default_size = 17
   vim.g.gui_font_size = vim.g.gui_font_default_size
   -- vim.g.gui_font_face = "FiraCode Nerd Font TALL"
@@ -95,6 +101,7 @@ vim.keymap.set({'n', 'i'}, "<D-->", function() ResizeGuiFont(-1) end, opts)
 vim.keymap.set({'n'}, '<BS>', function()
  require("notify").dismiss({ silent = true })
  vim.cmd([[
+ filetype on
   syntax sync minlines=1000
   nohlsearch
   diffupdate

@@ -9,13 +9,12 @@ local utils = require("nvim-test.utils")
 -- ]]
 
 local query = [[
-((expression_statement
-   (function_call_expression
-     arguments: (
-        arguments (
-            argument (string (string_value)@test-name))
-        )
-     )) @scope-root)
+
+((function_call_expression
+    function: (name) @test-func-name (#match? @test-func-name "^(describe|test|it)")
+    arguments: (arguments (argument (string (string_value) @test-name)))
+) @scope-root)
+
 ]]
 
 local php = Runner:init({
@@ -32,9 +31,16 @@ function php:parse_testname(name)
 end
 
 function php:build_test_args(args, tests)
+    if #tests > 1 then
+        -- table.insert(args, "--group")
+        -- table.insert(args, '"' .. tests[1] .. '"') -- used for pest
+        table.insert(args, "--filter")
+        table.insert(args, '"' .. tests[2] .. '"') -- used for pest
+        return
+    end
     table.insert(args, "--filter")
     -- table.insert(args, "^" .. table.concat(tests, " ") .. "$") -- used for phpunit
-    table.insert(args, table.concat(tests, " ")) -- used for pest
+    table.insert(args, '"' .. table.concat(tests, " ") .. '"') -- used for pest
 end
 
 function php:find_working_directory(filename)

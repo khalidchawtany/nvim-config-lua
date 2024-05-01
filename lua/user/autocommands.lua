@@ -1,4 +1,6 @@
 vim.cmd([[
+" autocmd BufReadPost * silent! :%foldopen!
+
  " disable syntax highlighting in big files
 function DisableSyntaxTreesitter()
     echo("Big file, disabling syntax, treesitter and folding")
@@ -52,9 +54,9 @@ require("user.autocmd_buffer_clean")
 -- })
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-	callback = function()
-		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150, on_visual = false })
-	end,
+    callback = function()
+        vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150, on_visual = false })
+    end,
 })
 
 -- local winbarAutoCommandId = nil
@@ -84,14 +86,13 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 -- end, { desc = "Toggle Winbar" })
 
 vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
-	-- pattern = "*",
-	callback = function()
-		-- {"BufReadPost,FileReadPost", "*", "if !(empty(&filetype) || &filetype=='noice') | normal zR | endif"}
-		if vim.bo.filetype == "noice" or vim.bo.buflisted == false then
-			return
-		end
+    -- pattern = "*",
+    callback = function()
+        -- {"BufReadPost,FileReadPost", "*", "if !(empty(&filetype) || &filetype=='noice') | normal zR | endif"}
+        if vim.bo.filetype == "noice" or vim.bo.buflisted == false then
+            return
+        end
 
-		vim.cmd.normal("zR")
-	end,
+        vim.cmd.normal("zR")
+    end,
 })
-

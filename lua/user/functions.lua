@@ -26,6 +26,14 @@ function M.sniprun_enable()
     vim.notify("Enabled SnipRun")
 end
 
+function M.get_borderoption(default)
+    if vim.g.neovide == true == true then
+        return "none";
+    end
+
+    return default;
+end
+
 function M.get_borderchars(plugin)
     local hide_borderchrs = vim.g.neovide == true
 

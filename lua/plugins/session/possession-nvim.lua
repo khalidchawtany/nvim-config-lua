@@ -25,7 +25,7 @@ M.config = function()
 
   require("possession").setup {
     session_dir = (Path:new(vim.fn.stdpath("data")) / "possession"):absolute(),
-    silent = false,
+    silent = true,
     load_silent = true,
     debug = false,
     prompt_no_cr = false,

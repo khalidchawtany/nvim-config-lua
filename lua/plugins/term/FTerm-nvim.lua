@@ -7,7 +7,7 @@ local M = {
       "<c-cr><c-s>",
       function()
         if _G.tmp.server == nil then
-          _G.tmp.server = require("FTerm"):new({ft = "terminal", dimensions = {height = 0.9, width = 0.9}})
+          _G.tmp.server = require("FTerm"):new({ft = "terminal", dimensions = {height = 0.98, width = 0.98}})
         end
         _G.tmp.server:toggle()
       end,
@@ -50,7 +50,7 @@ M.config = function()
       -- Command to run inside the terminal. It could be a `string` or `table`
       cmd = os.getenv("SHELL"),
       -- Neovim's native window border. See `:h nvim_open_win` for more configuration options.
-      border = "single",
+      border =  require('user.functions').get_borderoption('single'),
       -- Close the terminal as soon as shell/command exits.
       -- Disabling this will mimic the native terminal behaviour.
       auto_close = true,
@@ -61,8 +61,8 @@ M.config = function()
       -- Object containing the terminal window dimensions.
       -- The value for each field should be between `0` and `1`
       dimensions = {
-        height = 0.8, -- Height of the terminal window
-        width = 0.8, -- Width of the terminal window
+        height = 0.95, -- Height of the terminal window
+        width = 0.95, -- Width of the terminal window
         x = 0.5, -- X axis of the terminal window
         y = 0.5 -- Y axis of the terminal window
       },

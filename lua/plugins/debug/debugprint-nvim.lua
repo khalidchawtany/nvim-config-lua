@@ -5,7 +5,7 @@ return {
     },
     keys = {
         {
-            "<leader>dpk",
+            "<leader>cddk",
             function()
                 return require("debugprint").debugprint({ above = true })
             end,
@@ -13,7 +13,7 @@ return {
             desc = "Debugprint Above",
         },
         {
-            "<leader>dpj",
+            "<leader>cddj",
             function()
                 return require("debugprint").debugprint()
             end,
@@ -21,7 +21,7 @@ return {
             expr = true,
         },
         {
-            "<leader>dpp",
+            "<leader>cddp",
             function()
                 return require("debugprint").debugprint({ variable = true })
             end,
@@ -29,7 +29,7 @@ return {
             desc = "Debugprint Var",
         },
         {
-            "<leader>dpP",
+            "<leader>cddP",
             function()
                 return require("debugprint").debugprint({ variable = true, above = true })
             end,
@@ -37,7 +37,7 @@ return {
             desc = "Debugprint Var Above",
         },
         {
-            "<Leader>dpr",
+            "<Leader>cddr",
             function()
                 return require("debugprint").deleteprints()
             end,

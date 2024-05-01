@@ -9,22 +9,24 @@ local home = os.getenv("HOME")
 -- vim.o.statuscolumn='%s%=%{v:wrap ? "" : v:lnum} %#FoldColumn#%@v:lua.StatusColumn.handler.fold@%{v:lua.StatusColumn.display.fold()}%#StatusColumnBorder#▐%#StatusColumnBuffer#'
 
 
-vim.cmd[[
+vim.cmd [[
 set signcolumn=yes:1
 set indentkeys+=!0<Tab>
 ]]
 
 vim.cmd('hi! link CurSearch Search')
 
-vim.api.nvim_set_hl(0, "Cur", { bg="yellow", fg="#FF30F1", blend=50, standout=false, reverse=true , nocombine= true })
-vim.go.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait900-blinkoff250-blinkon250-Cur/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+vim.api.nvim_set_hl(0, "Cur", { bg = "yellow", fg = "#FF30F1", blend = 0, standout = false, reverse = true, nocombine = false })
+vim.go.guicursor =
+"n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait900-blinkoff250-blinkon250-Cur/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- let &stc="\ %=%{v:wrap?'':v:relnum}\ ⎥%s%C\ \ \ "
 
 -- disable default plugin
 local disabled_built_ins = {
-        "netrw", "netrwPlugin", "netrwSettings", "netrwFileHandlers", "gzip", "zip", "zipPlugin", "tar", "tarPlugin", "getscript", "getscriptPlugin",
-        "vimball", "vimballPlugin", "2html_plugin", "logipat", "rrhelper", "spellfile_plugin"
+    "netrw", "netrwPlugin", "netrwSettings", "netrwFileHandlers", "gzip", "zip", "zipPlugin", "tar", "tarPlugin",
+    "getscript", "getscriptPlugin",
+    "vimball", "vimballPlugin", "2html_plugin", "logipat", "rrhelper", "spellfile_plugin"
 }
 
 for _, plugin in pairs(disabled_built_ins) do vim.g["loaded_" .. plugin] = 1 end
@@ -33,11 +35,11 @@ setg.editorconfig = false
 
 -- Fuzzy finder: ignore stuff that can't be opened, and generated files
 setg.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
-set.wildignore = {"*.o", "*~", "*.pyc", "*pycache*"} -- Ignore compiled files
+set.wildignore = { "*.o", "*~", "*.pyc", "*pycache*" } -- Ignore compiled files
 set.wildignorecase = true
-set.wildmode = 'full' -- Complete the longest common string,
-set.wildoptions = 'pum' -- show wildmenu as normal autocompleting menu
-set.pumblend = 0 -- make pum NOT transparent
+set.wildmode = 'full'                                -- Complete the longest common string,
+set.wildoptions = 'pum'                              -- show wildmenu as normal autocompleting menu
+set.pumblend = 0                                     -- make pum NOT transparent
 set.pumheight = 15
 set.wildmenu = true
 set.completeopt = 'menuone,noinsert,noselect'
@@ -45,8 +47,8 @@ set.inccommand = 'nosplit'
 set.splitkeep = "topline" -- topline, screen, cursor
 
 set.showmode = true
-set.cmdheight = 0 -- Height of the command bar
-set.laststatus = 3  -- make the status bar global
+set.cmdheight = 0  -- Height of the command bar
+set.laststatus = 3 -- make the status bar global
 set.incsearch = true
 set.showmatch = true
 
@@ -87,15 +89,15 @@ set.whichwrap = 'b,s,h,l,<,>,[,]'
 -- Foldinf
 -- set.foldmethod = 'manual'
 -- set.foldcolumn = '1'
-set.foldlevel = 1
-vim.wo.foldlevel = 1
 set.modelines = 1
-set.foldlevelstart = 2
+set.foldlevel = 99
+-- vim.wo.foldlevel = 99
+set.foldlevelstart = 99 -- start with all folds open
 
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldtext = ""
--- set.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- set.foldtext = "v:lua.vim.treesitter.foldtext()" -- deprecated
 
 set.belloff = 'all'
 
@@ -113,7 +115,8 @@ set.diffopt:append { 'algorithm:patience' }
 
 -- set.grepprg = 'ag\\ --nogroup\\ --nocolor'
 set.grepprg = "rg --smart-case --vimgrep --block-buffered"
-set.formatoptions = 'jcroql' -- -=t
+vim.opt.grepformat = "%f:%l:%c:%m"
+set.formatoptions = 'jcroql'       -- -=t
 set.nrformats = "bin,hex,alpha"
 set.backspace = 'indent,eol,start' --- Allow backspace in insert mode
 
@@ -131,6 +134,7 @@ set.backupdir = home .. '/.local/share/nvim/cache/backups'
 set.swapfile = true
 set.directory = home .. '/.local/share/nvim/cache/swaps'
 set.viewdir = home .. '/.local/share/nvim/cache/views'
+set.viewoptions = 'cursor,curdir' -- 'folds,cursor,curdir'
 
 set.undofile = true
 -- if exists("&undodir")
@@ -142,8 +146,8 @@ set.undoreload = 10000
 set.history = 1000
 
 set.backupskip = '/tmp/*,/private/tmp/*' -- don't back up these
-set.autoread = true -- read files on change
-set.fileformats:append{'mac'}
+set.autoread = true                      -- read files on change
+set.fileformats:append { 'mac' }
 -- set.binary = true -- forces noexpandtab
 set.eol = false
 -- set.t_Co = 16
@@ -161,11 +165,11 @@ set.listchars = 'tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail
 --,space:…
 set.list = false
 
-set.fillchars = 'stlnc:-,foldsep:┊,foldopen:,foldclose:,vert:│'
+set.fillchars = 'stlnc:-,foldsep:┊,foldopen:,foldclose:,vert:│,fold: '
 
 -- set.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-set.sessionoptions="blank,buffers,curdir,help,tabpages,winsize,winpos,terminal"
- --
+set.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,terminal"
+--
 
 -- vim.opt.fillchars = {
 --   horiz     = '━',
@@ -200,17 +204,20 @@ set.showtabline = 1 -- hide tabline
 set.errorbells = false
 set.visualbell = true
 -- set.t_vb = ''
-set.startofline = false -- Dont reset cursor to start of line when moving around
+set.startofline = false                -- Dont reset cursor to start of line when moving around
 
-set.ruler = true -- Show the cursor position
+set.ruler = true                       -- Show the cursor position
 -- set.shortmess = 'lnxTo0FatIc' -- Dont show the intro message when starting Vim and Prevent completion message flickers
-set.shortmess = vim.o.shortmess .. "I" -- Dont show the intro message when starting Vim and Prevent completion message flickers
+set.shortmess = vim.o.shortmess ..
+"I"                                    -- Dont show the intro message when starting Vim and Prevent completion message flickers
+-- set.shortmess = vim.o.shortmess .. "T" -- Truncate other messages in the middle if they are too long
+-- set.shortmess = vim.o.shortmess .. "W" -- don't give "written" or "[w]" when writing a file
 
 set.scrolloff = 2
 set.sidescrolloff = 5
 
 -- set.cpo = vim.o.cpo .. 'n' -- Draw color for lines that has number only
-set.display:append{'lastline'}
+set.display:append { 'lastline' }
 
 -- set.mousehide = true -- Hide mouse while typing
 

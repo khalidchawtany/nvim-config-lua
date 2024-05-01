@@ -13,7 +13,7 @@ return {
 		},
 		{
 			"<leader>ha",
-			":lua require('harpoon'):list():append()<cr>",
+			":lua require('harpoon'):list():add()<cr>",
 			desc = "Harpoon (Add)",
 		},
 		{

@@ -1,6 +1,7 @@
 local M = {
 	"drmingdrmer/xptemplate",
 	event = { "InsertEnter" },
+    enabled=false,
 	-- keys = {{"<c-\\>", mode = "i"}}
 }
 

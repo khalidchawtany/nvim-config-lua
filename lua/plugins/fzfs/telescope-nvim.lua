@@ -425,7 +425,11 @@ return {
                 file_sorter = require("telescope.sorters").get_fuzzy_file,
                 file_ignore_patterns = {},
                 generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-                -- path_display = {},
+                path_display = {
+                    filename_first = {
+                        reverse_directories = true
+                    }
+                },
                 winblend = 0,
                 layout_strategy = "flex",
                 -- layout_defaults = {horizontal = {mirror = false}, vertical = {mirror = false}},
