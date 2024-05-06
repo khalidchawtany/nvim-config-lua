@@ -46,6 +46,14 @@ local M = {
     cmd = { "FzfLua" },
     keys = {
         -- { "<D-p><leader>", function() require('fzf-lua').changes({}) end, desc = "changes" },
+        --
+        {
+            "<D-p>G",
+            function()
+                vim.cmd([[ListFilesFromBranch]])
+            end,
+            desc = "Git list files from other branch",
+        },
         {
             "<D-p>-",
             function()

@@ -7,7 +7,7 @@ return {
     cmd = { "AdvancedGitSearch" },
     keys = {
         {
-            "<c-s>gH",
+            "<c-s>gj",
             function()
                 require("telescope").extensions.git_file_history.git_file_history()
             end,

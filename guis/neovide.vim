@@ -8,6 +8,8 @@
 
   " let g:neovide_remember_window_size = v:true
 
+  let g:neovide_confirm_quit = v:true
+
   let g:neovide_cursor_trail_length=5
 
   let g:neovide_cursor_animation_length=0.05
