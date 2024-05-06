@@ -12,7 +12,7 @@ local query = [[
 
 ((function_call_expression
     function: (name) @test-func-name (#match? @test-func-name "^(describe|test|it)")
-    arguments: (arguments (argument (string (string_value) @test-name)))
+    arguments: (arguments (argument (string (string_content) @test-name)))
 ) @scope-root)
 
 ]]
