@@ -1,3 +1,5 @@
+-- formatter=path.filename_first
+
 local getOpts = function(...)
     local n_args = select("#", ...) -- number of arguments passed
     if n_args == 0 then
@@ -265,11 +267,57 @@ local M = {
             end,
             desc = "commands",
         },
+        {
+            "<D-p><D-h>",
+            "<cmd>ListFilesFromHEAD<cr>",
+            desc = "Files from HEAD",
+        },
     },
     -- stylua: ignore end
 }
 
 M.init = function()
+    -- nnoremap <silent> <c-p><c-h> :call fzf#run({"source":"git diff --name-only HEAD HEAD~1 " , "sink":"edit"})<cr>
+
+    vim.api.nvim_create_user_command("ListFilesFromHEAD", function(opts)
+        require("fzf-lua").files({
+            cmd = "git diff --name-only HEAD HEAD~1 " .. opts.args,
+            prompt = opts.args .. "> ",
+            actions = {
+                ["default"] = function(selected, o)
+                    local file = require("fzf-lua").path.entry_to_file(selected[1], o)
+                    local cmd = string.format("edit %s", file.path)
+                    vim.cmd(cmd)
+                end,
+                ["ctrl-t"] = function(selected, o)
+                    local file = require("fzf-lua").path.entry_to_file(selected[1], o)
+                    -- local cmd = string.format("Gtabedit %s:%s", opts.args, file.path)
+                    local cmd = string.format("tabedit %s", file.path)
+                    vim.cmd(cmd)
+                end,
+                ["ctrl-s"] = function(selected, o)
+                    local file = require("fzf-lua").path.entry_to_file(selected[1], o)
+                    -- local cmd = string.format("Gsplit %s:%s", opts.args, file.path)
+                    local cmd = string.format("split %s", file.path)
+                    vim.cmd(cmd)
+                end,
+                ["ctrl-v"] = function(selected, o)
+                    local file = require("fzf-lua").path.entry_to_file(selected[1], o)
+
+                    local cmd = string.format("vsplit %s", file.path)
+                    vim.cmd(cmd)
+                end,
+            },
+            previewer = false,
+            preview = require("fzf-lua").shell.raw_preview_action_cmd(function(items)
+                local file = require("fzf-lua").path.entry_to_file(items[1])
+                return string.format("git diff %s HEAD~1 -- %s | delta", opts.args, file.path)
+            end),
+        })
+    end, {
+        force = true,
+    })
+
     vim.api.nvim_create_user_command("ListFilesFromBranch", function(opts)
         require("fzf-lua").files({
             cmd = "git ls-tree -r --name-only " .. opts.args,
@@ -306,6 +354,8 @@ end
 M.config = function()
     local actions = require("fzf-lua.actions")
     require("fzf-lua").setup({
+
+        defaults = { formatter = "path.filename_first" },
         -- fzf_bin         = 'sk',            -- use skim instead of fzf?
         -- https://github.com/lotabout/skim
         global_resume = true, -- enable global `resume`?
