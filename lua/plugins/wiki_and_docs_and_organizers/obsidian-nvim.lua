@@ -40,6 +40,9 @@ return {
         { "<leader>oow", "<cmd>ObsidianWorkspace<cr>",      desc = "Workspace (Obsidian)" },
         { "<leader>oor", "<cmd>ObsidianRename<cr>",         desc = "Rename (Obsidian)" },
         { "<leader>oot", "<cmd>ObsidianToggleCheckbox<cr>", desc = "Toggle Checkbox (Obsidian)" },
+        { "<leader>ooS", "<cmd>call jobstart('open -a /Applications/Obsidian.app --background \"obsidian://advanced-uri?vault=MyObsidianNotes&commandid=remotely-save%253Astart-sync\"', {})<cr>", desc = "Sync (Obsidian)" },
+        { "<leader>ooR", "<cmd>call jobstart('/Users/juju/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/MyObsidianNotes/.code/sync_tasks.sh', {})<cr>", desc = "Sync Reminders (Obsidian)" },
+ 
     },
     dependencies = {
         -- Required.

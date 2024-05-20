@@ -2,7 +2,7 @@
   source ~/.config/nvim/ginit.vim
   " set noincsearch
   " set noinccommand
-  set mouse=
+  set mouse=a
 
   let g:neovide_input_use_logo=v:true
 
@@ -108,6 +108,7 @@ vim.keymap.set({'n'}, '<BS>', function()
   nohlsearch
   diffupdate
   redraw!
+  fclose
   echo ""
  ]])
  end, { noremap = true, silent = true }  )

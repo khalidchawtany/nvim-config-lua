@@ -48,7 +48,7 @@ return {
             -- { name = "xpt" },
             { name = "nvim_lua" },
             { name = "path" },
-            { name = 'otter' },
+            { name = "otter" },
             {
                 name = "buffer",
                 option = {
@@ -126,6 +126,7 @@ return {
                     treesitter = "[TS]",
                     calc = "[CALC]",
                     emoji = "[EMO]",
+                    ['vim-dadbod-completion'] = "[DB]",
                 })[entry.source.name]
                 item.dup = ({
                     buffer = 1,
@@ -191,5 +192,13 @@ return {
         -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+        -- -- Setup up vim-dadbod
+        -- require("cmp").setup.filetype({ "sql", "mysql" }, {
+        --     sources = {
+        --         { name = "vim-dadbod-completion" },
+        --         { name = "buffer" },
+        --     },
+        -- })
     end,
 }

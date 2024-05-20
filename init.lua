@@ -1,3 +1,6 @@
+
+vim.deprecate = function() end ---@diagnostic disable-line: duplicate-set-field
+
  local rocks_config = {
      rocks_path = "/Users/juju/.local/share/nvim/rocks",
      luarocks_binary = "/Users/juju/.local/share/nvim/rocks/bin/luarocks",
