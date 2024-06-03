@@ -1,5 +1,6 @@
 return {
     "ccaglak/namespace.nvim",
+    -- "khalidchawtany/namespace.nvim",
     ft = { "php" },
     dependencies = {
         "nvim-lua/plenary.nvim",
