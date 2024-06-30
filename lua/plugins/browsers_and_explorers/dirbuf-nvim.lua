@@ -1,7 +1,9 @@
 return {
     "elihunter173/dirbuf.nvim",
     cmd = { "Dirbuf" },
+    event = "VimEnter",
     keys = {
+        { "--", "<cmd>Dirbuf<cr>",     desc = "Dirbuf" },
         { "-d", "<cmd>Dirbuf<cr>",     desc = "Dirbuf" },
         { "-q", "<cmd>DirbufQuit<cr>", desc = "Dirbuf" },
     },

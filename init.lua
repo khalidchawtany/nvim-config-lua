@@ -136,3 +136,13 @@ vim.opt.shadafile = ""
 -- set cpo+=n
 -- set number
 -- set wrap
+vim.cmd[[
+nnoremap <leader>r<leader> 
+\ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{R,r}eview/g<cr>
+\ :silent! %S/VehicleCategor{y,ies}/RegisteredGood{,s}/g<cr>
+\ :silent! %S/customer/client/g<cr>
+\ :silent! %S/CertificationPartial/CertRelease/g<cr>
+\ :silent! %S/certification/certificate/g<cr>
+" \ :silent! %S/vehicle/good/g<cr>
+]]
+-- \ :silent! %S/VehicleCategor{y,ies}/GoodCategor{y,ies}/g<cr>

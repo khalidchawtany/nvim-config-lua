@@ -1,4 +1,8 @@
 -- formatter=path.filename_first
+--  :FzfLua live_grep  multiline=2
+-- :FzfLua lsp_finder  multiline=1
+-- :lua require("fzf-lua").live_grep({  multiline = 2 })
+-- :lua require("fzf-lua").lsp_finder({  multiline = 1 })
 
 local getOpts = function(...)
     local n_args = select("#", ...) -- number of arguments passed
@@ -355,7 +359,10 @@ M.config = function()
     local actions = require("fzf-lua.actions")
     require("fzf-lua").setup({
 
-        defaults = { formatter = "path.filename_first" },
+        defaults = {
+            formatter = "path.filename_first",
+            multiline = 2
+        },
         -- fzf_bin         = 'sk',            -- use skim instead of fzf?
         -- https://github.com/lotabout/skim
         global_resume = true, -- enable global `resume`?

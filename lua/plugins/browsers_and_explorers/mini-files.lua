@@ -1,10 +1,17 @@
 return {
     "echasnovski/mini.files",
     version = false,
-    event = "VimEnter",
+    -- event = "VimEnter",
     keys = {
         {
-            "--",
+            "-f",
+            function()
+                require("mini.files").open(vim.api.nvim_buf_get_name(0))
+            end,
+            desc = "Mini files",
+        },
+        {
+            "-m",
             function()
                 require("mini.files").open(vim.api.nvim_buf_get_name(0))
             end,
@@ -46,7 +53,7 @@ return {
                     -- Whether to delete permanently or move into module-specific trash
                     permanent_delete = true,
                     -- Whether to use for editing directories
-                    use_as_default_explorer = true,
+                    use_as_default_explorer = false,
                 },
 
                 -- Customization of explorer windows

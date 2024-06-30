@@ -7,7 +7,7 @@ return {
     config = {
         -- startVisible = true,
         -- showBlankVirtLine = true,
-        -- highlightColor = { link = "Comment" },
+        highlightColor = { link = "Comment" },
         -- hints = {
         --      Caret = { text = "^", prio = 2 },
         --      Dollar = { text = "$", prio = 1 },
