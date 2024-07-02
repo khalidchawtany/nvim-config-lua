@@ -5,7 +5,6 @@ return {
     -- tag = "*",
     dependencies = {
         "nvim-treesitter",
-        "luarocks.nvim",
     }, -- You may want to specify Telescope here as well
     keys = {
         { "<leader>ooi", "<cmd>Neorg workspace work<cr>", desc = "Neorg (Index)" },

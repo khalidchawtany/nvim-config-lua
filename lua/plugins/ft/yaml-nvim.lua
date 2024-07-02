@@ -6,6 +6,6 @@ return {
     "nvim-telescope/telescope.nvim" -- optional
   },
   config = function()
-    require("yaml_nvim").init()
+    require("yaml_nvim").setup({ ft = { "yaml",  } })
   end
 }
