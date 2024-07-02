@@ -1,6 +1,5 @@
-local custom_actions = require('user.telescope_custom.actions')
-local custom_pickers = require('user.telescope_custom.pickers')
-
+local custom_actions = require("user.telescope_custom.actions")
+local custom_pickers = require("user.telescope_custom.pickers")
 
 return {
     "nvim-telescope/telescope.nvim",
@@ -16,16 +15,16 @@ return {
         {
             "<c-s><c-y>",
             function()
-                local themes = require('telescope.themes')
+                local themes = require("telescope.themes")
 
                 local dropdown = themes.get_dropdown({
                     hidden = true,
                     no_ignore = true,
                     previewer = false,
-                    prompt_title = '',
-                    preview_title = '',
-                    results_title = '',
-                    layout_config = { prompt_position = 'top' },
+                    prompt_title = "",
+                    preview_title = "",
+                    results_title = "",
+                    layout_config = { prompt_position = "top" },
                 })
                 custom_pickers.buffers(dropdown)
             end,
@@ -316,6 +315,19 @@ return {
     end,
 
     config = function()
+        local focus_preview = function(prompt_bufnr)
+            local action_state = require("telescope.actions.state")
+            local picker = action_state.get_current_picker(prompt_bufnr)
+            local prompt_win = picker.prompt_win
+            local previewer = picker.previewer
+            local winid = previewer.state.winid
+            local bufnr = previewer.state.bufnr
+            vim.keymap.set("n", "<c-f>", function()
+                vim.cmd(string.format("noautocmd lua vim.api.nvim_set_current_win(%s)", prompt_win))
+            end, { buffer = bufnr })
+            vim.cmd(string.format("noautocmd lua vim.api.nvim_set_current_win(%s)", winid))
+            -- api.nvim_set_current_win(winid)
+        end
         local open_in_nvim_tree = function(prompt_bufnr)
             local action_state = require("telescope.actions.state")
             local Path = require("plenary.path")
@@ -391,7 +403,9 @@ return {
                         ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
 
                         ["<c-y>"] = custom_actions.toggle_buffer_mark,
-                        ['<c-w>'] = custom_actions.select_window,
+                        ["<c-w>"] = custom_actions.select_window,
+
+                        ["<c-f>"] = focus_preview,
 
                         -- Add up multiple actions
                         -- ["<CR>"] = actions.select_default + actions.center
@@ -404,6 +418,7 @@ return {
                         ["<c-s>"] = open_in_nvim_tree,
                         ["<C-c>"] = actions.close,
                         -- ["<C-i>"] = my_cool_custom_action,
+                        ["<c-f>"] = focus_preview,
                     },
                 },
                 vimgrep_arguments = {
@@ -427,8 +442,8 @@ return {
                 generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
                 path_display = {
                     filename_first = {
-                        reverse_directories = true
-                    }
+                        reverse_directories = true,
+                    },
                 },
                 winblend = 0,
                 layout_strategy = "flex",
@@ -450,7 +465,7 @@ return {
                 },
                 border = {},
                 -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-                borderchars = require('user.functions').get_borderchars('telescope'),
+                borderchars = require("user.functions").get_borderchars("telescope"),
                 color_devicons = true,
                 use_less = true,
                 set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,

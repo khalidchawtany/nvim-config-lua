@@ -13,6 +13,20 @@ return {
             end,
             desc = "Telescope (Alternate)",
         },
+        {
+            "<c-s><c-space>",
+            function()
+                require("telescope").extensions["telescope-alternate"].alternate_file()
+            end,
+            desc = "Telescope (Alternate)",
+        },
+        {
+            "<c-s>space",
+            function()
+                require("telescope").extensions["telescope-alternate"].alternate_file()
+            end,
+            desc = "Telescope (Alternate)",
+        },
     },
 
     config = function()
