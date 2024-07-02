@@ -90,11 +90,36 @@ return {
                         { "[1]/models/[2:singularize,lower]/*.*",    "Model-F",      true },
                     },
                 },
+                {
+                    "(.*)/controllers/(.*)/(.*).[yaml\\|htm]",
+                    {
+                        { "[1]/controllers/[2:upper,snake_to_pascal].php",       "Controller",   true },
+                        { "[1]/controllers/[2:lower]/*.*", "Controller-F", true },
+                        { "[1]/models/[2:singularize].php",          "Model",        true },
+                        { "[1]/models/[2:singularize,lower]/*.*",    "Model-F",      true },
+                    },
+                },
+                {
+                    "(.*)/models/(.*)/(.*).[yaml\\|htm]",
+                    {
+                        { "[1]/controllers/[2:pluralize,snake_to_pascal].php",       "Controller",   true },
+                        { "[1]/controllers/[2:pluralize]/*.*", "Controller-F", true },
+                        { "[1]/models/[2:singularize].php",          "Model",        true },
+                        { "[1]/models/[2:singularize,lower]/*.*",    "Model-F",      true },
+                    },
+                },
             },
             presets = {}, -- Telescope pre-defined mapping presets
             transformers = {
 
                 lower = lower,
+
+                lower_last = function(w)
+                    local p1 = string.sub(w, 1, -3)
+                    local last_char = string.sub(w, -2, -1)
+                    last_char = last_char:lower()
+                    return  p1 .. last_char
+                end,
 
                 upper = function(w)
                     return string.upper(w)
