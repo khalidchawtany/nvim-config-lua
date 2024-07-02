@@ -1,72 +1,38 @@
-
 vim.deprecate = function() end ---@diagnostic disable-line: duplicate-set-field
-
- local rocks_config = {
-     rocks_path = "/Users/juju/.local/share/nvim/rocks",
-     luarocks_binary = "/Users/juju/.local/share/nvim/rocks/bin/luarocks",
- }
-
- vim.g.rocks_nvim = rocks_config
-
- local luarocks_path = {
-     vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?.lua"),
-     vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?", "init.lua"),
- }
- package.path = package.path .. ";" .. table.concat(luarocks_path, ";")
-
- local luarocks_cpath = {
-     vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.dylib"),
-     vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.dylib"),
- }
- package.cpath = package.cpath .. ";" .. table.concat(luarocks_cpath, ";")
-
- vim.opt.runtimepath:append(vim.fs.joinpath(rocks_config.rocks_path, "lib", "luarocks", "rocks-5.1", "rocks.nvim", "*"))
-
-
--- package.path = package.path .. ";/Users/juju/.local/share/nvim/lazy/luarocks.nvim/.rocks/share/lua/5.1/?/?.lua"
--- package.path = package.path .. ";/Users/juju/.local/share/nvim/lazy/luarocks.nvim/.rocks/share/lua/5.1/?.lua"
-
-package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?/init.lua"
-package.path = package.path .. ";/Users/juju/.luarocks/share/lua/5.1/?.lua"
--- package.path = package.path .. ";/Users/juju/.config/nvim/lua"
-
 
 vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
 vim.fn.setenv("DYLD_LIBRARY_PATH", "/usr/local/lib")
 
-
- local links = {
-  ['@lsp.type.namespace'] = '@namespace',
-  ['@lsp.type.type'] = '@type',
-  ['@lsp.type.class'] = '@type',
-  ['@lsp.type.enum'] = '@type',
-  ['@lsp.type.interface'] = '@type',
-  ['@lsp.type.struct'] = '@structure',
-  ['@lsp.type.parameter'] = '@parameter',
-  ['@lsp.type.variable'] = '@variable',
-  ['@lsp.type.property'] = '@property',
-  ['@lsp.type.enumMember'] = '@constant',
-  ['@lsp.type.function'] = '@function',
-  ['@lsp.type.method'] = '@method',
-  ['@lsp.type.macro'] = '@macro',
-  ['@lsp.type.decorator'] = '@function',
+local links = {
+    ["@lsp.type.namespace"] = "@namespace",
+    ["@lsp.type.type"] = "@type",
+    ["@lsp.type.class"] = "@type",
+    ["@lsp.type.enum"] = "@type",
+    ["@lsp.type.interface"] = "@type",
+    ["@lsp.type.struct"] = "@structure",
+    ["@lsp.type.parameter"] = "@parameter",
+    ["@lsp.type.variable"] = "@variable",
+    ["@lsp.type.property"] = "@property",
+    ["@lsp.type.enumMember"] = "@constant",
+    ["@lsp.type.function"] = "@function",
+    ["@lsp.type.method"] = "@method",
+    ["@lsp.type.macro"] = "@macro",
+    ["@lsp.type.decorator"] = "@function",
 }
 for newgroup, oldgroup in pairs(links) do
-  vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
+    vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
 end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system(
-    {
-      "git",
-      "clone",
-      "--filter=blob:none",
-      "--single-branch",
-      "https://github.com/folke/lazy.nvim.git",
-      lazypath
-    }
-  )
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "--single-branch",
+        "https://github.com/folke/lazy.nvim.git",
+        lazypath,
+    })
 end
 vim.opt.runtimepath:prepend(lazypath)
 
@@ -82,30 +48,42 @@ require("functions")
 -- keys = {{require"macaltkey".convert("<a-p>"), "<cmd>lua require'telescope'.extensions.project.project{}<CR>", desc = "Telescope (Projects)"}},
 require("macaltkey").setup()
 
-require("lazy").setup(
-  {
+require("lazy").setup({
     spec = _G.ListLazyPluginDirs(),
     defaults = {},
     -- install = {colorscheme = {"tokyonight", "habamax"}},
     -- checker = {enabled = true}, -- automatically check for plugin updates
     performance = {
-      rtp = {
-        -- disable some rtp plugins
-        disabled_plugins = {
-          "gzip",
-          "matchit",
-          "matchparen",
-          "netrwPlugin",
-          "tarPlugin",
-          "tohtml",
-          "tutor",
-          "zipPlugin"
-        }
-      }
-    }
-  }
-)
-if (vim.fn.getcwd() == "/") then
+        rtp = {
+            -- disable some rtp plugins
+            disabled_plugins = {
+                "gzip",
+                "matchit",
+                "matchparen",
+                "netrwPlugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+            },
+        },
+    },
+    pkg = {
+        enabled = true,
+        cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
+        -- the first package source that is found for a plugin will be used.
+        sources = {
+            "lazy",
+            "rockspec",
+            "packspec",
+        },
+    },
+    rocks = {
+        root = vim.fn.stdpath("data") .. "/lazy-rocks",
+        server = "https://nvim-neorocks.github.io/rocks-binaries/",
+    },
+})
+if vim.fn.getcwd() == "/" then
     vim.cmd.cd("~/.config/nvim")
 end
 vim.cmd.source("~/.config/nvim/func.vim")
@@ -116,33 +94,32 @@ require("project_maps")
 require("maps")
 require("opts")
 vim.cmd.source("~/.config/nvim/lua/maps.vim")
-vim.cmd [[autocmd User LazyReload source ~/.config/nvim/lua/maps.vim]]
-vim.cmd[[TSEnable highlight]]
+vim.cmd([[autocmd User LazyReload source ~/.config/nvim/lua/maps.vim]])
+vim.cmd([[TSEnable highlight]])
 
-vim.cmd[[
+vim.cmd([[
 " config for differnt guis
 for gui in ['nvui', 'goneovim', 'neovide']
   if exists('g:' . gui)
     execute "source ~/.config/nvim/guis/" . gui . ".vim"
   endif
 endfor
-]]
+]])
 
 vim.opt.shadafile = ""
-
 
 -- test stc
 -- set stc=%=%{v:wrap?'':v:relnum}⎥%s%C\ \
 -- set cpo+=n
 -- set number
 -- set wrap
-vim.cmd[[
-nnoremap <leader>r<leader> 
+vim.cmd([[
+nnoremap <leader>r<leader>
 \ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{R,r}eview/g<cr>
 \ :silent! %S/VehicleCategor{y,ies}/RegisteredGood{,s}/g<cr>
 \ :silent! %S/customer/client/g<cr>
 \ :silent! %S/CertificationPartial/CertRelease/g<cr>
 \ :silent! %S/certification/certificate/g<cr>
 " \ :silent! %S/vehicle/good/g<cr>
-]]
+]])
 -- \ :silent! %S/VehicleCategor{y,ies}/GoodCategor{y,ies}/g<cr>
