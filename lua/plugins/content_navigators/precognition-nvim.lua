@@ -1,6 +1,8 @@
 return {
     "tris203/precognition.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    --
+    cmd = {'Precognition'},
 
     -- :lua require("precognition").toggle()
     -- :lua require("precognition").peek()

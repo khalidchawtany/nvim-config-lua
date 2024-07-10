@@ -237,7 +237,7 @@ basic.search_count = {
 basic.reg_recording = {
     name = "reg_recording",
     hl_colors = {
-        red = { "black", "red" },
+        red = { "white", "red" },
     },
     width = breakpoint_width,
     text = function(bufnr)

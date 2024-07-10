@@ -4,6 +4,11 @@ local M = {
 }
 
 M.config = function()
+
+-- require('wlsample.bubble')
+--
+-- require('wlsample.evil_line')
+-- require('wlsample.bubble2')
   -- require("windline").setup({tabline = {}})
   -- require("wlsample.evil_line")
   require("user.windline")

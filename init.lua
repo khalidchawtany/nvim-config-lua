@@ -113,13 +113,39 @@ vim.opt.shadafile = ""
 -- set cpo+=n
 -- set number
 -- set wrap
+
+
+-- Shipman
+-- \ :silent! %S/coc/shipman/g<cr>
+-- \ :silent! %S/lox/khalid/g<cr>
+-- \ :silent! %S/customer/client/g<cr>
+
 vim.cmd([[
 nnoremap <leader>r<leader>
-\ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{R,r}eview/g<cr>
-\ :silent! %S/VehicleCategor{y,ies}/RegisteredGood{,s}/g<cr>
-\ :silent! %S/customer/client/g<cr>
-\ :silent! %S/CertificationPartial/CertRelease/g<cr>
-\ :silent! %S/certification/certificate/g<cr>
-" \ :silent! %S/vehicle/good/g<cr>
+\ :silent! %S/vehicle_document/cert_release_approval/g<cr>
+\ :silent! %S/vehicledocument/certreleaseapproval/g<cr>
+\ :silent! %S/vehicleDocument/certReleaseApproval/g<cr>
+\ :silent! %S/inspection_request/certificate/g<cr>
+\ :silent! %s/Vehicle/CertRelease/g<cr>
+\ :silent! %s/vehicle_/certrelease_/gI<cr>
+\ :silent! %s/vehicle/certrelease/gI<cr>
 ]])
+
+-- \ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{C,c}ert{R,_r,r, R}elease/g<cr>
+-- \ :silent! %S/{V,v}ehicle{D,_d,d, D}ocument/{R,r}elease{A,_a,a, A}pproval/g<cr>
+-- \ :silent! %S/vehicleDocument/certreleaseApproval/g<cr>
+-- \ :silent! %S/{V,v}ehicle{s,}_/{R,r}elease{s,}_/g<cr>
+-- \ :silent! %S/customer/client/g<cr>
+
+
+
+
+
+
+-- \ :silent! %S/VehicleCategor{y,ies}/RegisteredGood{,s}/g<cr>
+-- \ :silent! %S/certification/certificate/g<cr>
+-- \ :silent! %S/CertificationPartial/CertRelease/g<cr>
+-- \ :silent! %S/{V,v}ehicle/{R,r}elease/g<cr>
+-- \ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{R,r}eview/g<cr>
+-- \ :silent! %S/vehicle/good/g<cr>
 -- \ :silent! %S/VehicleCategor{y,ies}/GoodCategor{y,ies}/g<cr>
