@@ -36,9 +36,8 @@ return {
 
     init = function()
         local wk = require("which-key")
-        wk.register({
-            mode = { "n" },
-            ["<leader>tr"] = { name = "+Trouble" },
+        wk.add({
+            { "<leader>tr", group = "Trouble" },
         })
     end,
 }

@@ -14,9 +14,8 @@ return {
     },
     init = function()
         local wk = require("which-key")
-        wk.register({
-            mode = { "n" },
-            ["<leader>po"] = { name = "+Pomodoro" },
+        wk.add({
+            { "<leader>po", group = "Pomodoro" },
         })
     end,
 

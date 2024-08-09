@@ -431,7 +431,7 @@ M.config = function()
                 -- applies only when scrollbar = 'float'
                 scrollchars = { "█", "" }, -- scrollbar chars ({ <full>, <empty> }
                 -- applies only when scrollbar = 'border'
-                delay = 100, -- delay(ms) displaying the preview
+                delay = 0, -- delay(ms) displaying the preview
                 -- prevents lag on fast scrolling
                 winopts = {
                     -- builtin previewer window options
@@ -459,17 +459,17 @@ M.config = function()
             -- delete or modify is sufficient
             builtin = {
                 -- neovim `:tmap` mappings for the fzf win
-                ["<F1>"] = "toggle-help",
-                ["<F2>"] = "toggle-fullscreen",
+                ["<c-/>"] = "toggle-help",
+                ["<c-cr>"] = "toggle-fullscreen",
                 -- Only valid with the 'builtin' previewer
-                ["<F3>"] = "toggle-preview-wrap",
-                ["<F4>"] = "toggle-preview",
+                ["<c-w>"] = "toggle-preview-wrap",
+                ["<c-p>"] = "toggle-preview",
                 -- Rotate preview clockwise/counter-clockwise
-                ["<F5>"] = "toggle-preview-ccw",
-                ["<F6>"] = "toggle-preview-cw",
-                ["<S-down>"] = "preview-page-down",
-                ["<S-up>"] = "preview-page-up",
-                ["<S-left>"] = "preview-page-reset",
+                ["<c-]>"] = "toggle-preview-ccw",
+                ["<c-[>"] = "toggle-preview-cw",
+                ["<c-;>"] = "preview-page-down",
+                ["<c-'>"] = "preview-page-up",
+                ["<c-bs>"] = "preview-page-reset",
             },
             fzf = {
                 -- fzf '--bind=' options

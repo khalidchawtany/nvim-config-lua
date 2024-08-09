@@ -34,9 +34,8 @@ return {
     },
     init = function()
         local wk = require("which-key")
-        wk.register({
-            mode = { "n" },
-            ["<leader>tp"] = { name = "+TreePin" },
+        wk.add({
+            { "<leader>tp", group = "TreePin" },
         })
     end,
     config = function()

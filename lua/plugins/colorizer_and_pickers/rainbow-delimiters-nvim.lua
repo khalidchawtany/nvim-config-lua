@@ -1,7 +1,7 @@
 return {
     -- "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
     "HiPhish/rainbow-delimiters.nvim",
-    enabled = false,
+    -- enabled = false,
 
     config = function()
         -- This module contains a number of default definitions

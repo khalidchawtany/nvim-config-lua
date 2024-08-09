@@ -12,9 +12,8 @@ return {
     },
     init = function()
         local wk = require("which-key")
-        wk.register({
-            mode = { "n" },
-            ["<leader>oo"] = { name = "+Neorg" },
+        wk.add({
+            { "<leader>oo", group = "Neorg" },
         })
     end,
     config = function()
