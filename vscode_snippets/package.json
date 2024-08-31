@@ -54,6 +54,10 @@
             {
                 "language": "quarto",
                 "path": "./quarto.json"
+            },
+            {
+                "language": "yaml",
+                "path": "./yaml.json"
             }
         ]
     }

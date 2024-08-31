@@ -6,7 +6,6 @@ return {
         },
     },
     config = function()
-
         vim.lsp.util.stylize_markdown = function(bufnr, contents, opts)
             contents = vim.lsp.util._normalize_markdown(contents, {
                 width = vim.lsp.util._make_floating_popup_size(contents, opts),
@@ -19,8 +18,7 @@ return {
             return contents
         end
 
-
-        vim.diagnostic.config({ virtual_text = false, })
+        vim.diagnostic.config({ virtual_text = false })
         --- toggle diagnostics
         vim.g.diagnostics_visible = true
         local function toggle_diagnostics()
@@ -49,6 +47,17 @@ return {
                     cmd = { "/Users/juju/.config/v-analyzer/bin/v-analyzer" },
                     root_dir = require("lspconfig").util.root_pattern(".git", ".v-analyzer"),
                     filetypes = { "v", "vlang" },
+                },
+            },
+        })
+
+        require("lspconfig").yamlls.setup({
+            settings = {
+                yaml = {
+                    keyOrdering = false,
+                    editor = {
+                        tabSize = 4,
+                    },
                 },
             },
         })

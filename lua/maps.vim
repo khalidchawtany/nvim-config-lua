@@ -96,6 +96,7 @@ nnoremap <silent> <leader>ep <cmd>e ~/.config/nvim/lua/plugins<cr>
 nnoremap <silent> <leader>el <cmd>e ~/.config/nvim/lua<cr>
 nnoremap <silent> <leader>ed <cmd>e ~/dotfiles/<cr>
 nnoremap <silent> <leader>ez <cmd>e ~/dotfiles/zsh/<cr>
+nnoremap <silent> <leader>eL <cmd>e ~/.local/share/nvim/lazy/<cr>
 Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
 
 

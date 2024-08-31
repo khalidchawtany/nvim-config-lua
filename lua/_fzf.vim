@@ -24,7 +24,7 @@ function s:SetFzfColors()
 					" \." --bind 'ctrl-r:reload:$FZF_DEFAULT_COMMAND'"
 		let $FZF_DEFAULT_OPTS=" --history=".s:fzf_history." --pointer=' ▶'"
 					\." --marker='◉ ' --reverse"
-					\." --bind 'ctrl-space:select-all,ctrl-l:jump,ctrl-f:toggle-preview'"
+					\." --bind 'ctrl-w:select-all,ctrl-l:jump,ctrl-f:toggle-preview'"
 					\." --bind 'ctrl-x:change-preview-window(down,40%,border-top|hidden|)'"
 					\." --bind 'ctrl-r:change-preview-window(right,45%|right,40%|right,35%|right,30%|right,25%|right,20%|right,15%|)'"
 					\." --color=bg:#24283b,bg+:#234F84,fg+:#B9CDF7,hl:#00C8E0,hl+:#44ff44,gutter:#24283b,marker:#00ffff,border:#00A9BF,separator:#24283b"
@@ -40,7 +40,7 @@ function s:SetFzfColors()
 		let $FZF_DEFAULT_OPTS=" --history=".s:fzf_history." --pointer=' ▶'"
 					\." --marker='◉ ' --reverse"
 					\." --bind 'ctrl-r:reload:$FZF_DEFAULT_COMMAND'"
-					\." --bind 'ctrl-space:select-all,ctrl-l:jump,ctrl-f:toggle-preview'"
+					\." --bind 'ctrl-w:select-all,ctrl-l:jump,ctrl-f:toggle-preview'"
 					\." --bind 'ctrl-x:change-preview-window(down,40%,border-top|hidden|)'"
 					\." --bind 'ctrl-r:change-preview-window(right,45%|right,40%|right,35%|right,30%|right,25%|right,20%|right,15%|)'"
 					\." --color=bg:" . normal_bg . ",bg+:#B9CDF7,fg+:#234F84,hl:#00C8E0,hl+:#44ff44,gutter:" . normal_bg . ",marker:#00ffff,border:#00A9BF,separator:#e1e2e7"
@@ -402,7 +402,7 @@ command! -nargs=* AgCustom call fzf#run({
       \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
       \ 'sink*':    function('<sid>ag_handler'),
       \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
-      \            '--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
+      \            '--multi --bind=ctrl-w:select-all,ctrl-d:deselect-all '.
       \            '--color hl:68,hl+:110',
       \   'window': { 'width': 0.9, 'height': 0.7 }
       \ })

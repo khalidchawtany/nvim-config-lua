@@ -9,21 +9,21 @@ return {
         {
             "<c-s><c-f>",
             function()
-                require("telescope").extensions["telescope-alternate"].alternate_file()
+                require("telescope").extensions["telescope-alternate"].alternate_file({previewer = false})
             end,
             desc = "Telescope (Alternate)",
         },
         {
             "<c-s><c-space>",
             function()
-                require("telescope").extensions["telescope-alternate"].alternate_file()
+                require("telescope").extensions["telescope-alternate"].alternate_file({previewer = false})
             end,
             desc = "Telescope (Alternate)",
         },
         {
             "<c-s>space",
             function()
-                require("telescope").extensions["telescope-alternate"].alternate_file()
+                require("telescope").extensions["telescope-alternate"].alternate_file({previewer = false})
             end,
             desc = "Telescope (Alternate)",
         },

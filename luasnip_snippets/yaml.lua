@@ -4,6 +4,8 @@ local f = ls.function_node
 
 local snippets, autosnippets = {}, {}
 
+local fmt = require("luasnip.extras.fmt").fmt
+
 local group = vim.api.nvim_create_augroup("YAML Snippets", { clear = true })
 local file_pattern = "*.yaml"
 
@@ -59,10 +61,32 @@ local function cs(trigger, nodes, opts)
     table.insert(target_table, snippet)
 end
 
+-- cs(
+--     "brt",{
+--     f(function(args, snip)
+--             local time = os.time(os.date("!*t"))
+--             return "br_" .. time
+--         end
+--
+--     }
+--     , {})
+-- )
+
 cs(
-    "brt",
-    f(function(args, snip)
-        local time = os.time(os.date("!*t"))
-        return "br_" .. time
-    end, {})
+    "br",
+    fmt(
+        [[
+{}:
+    type: br
+]],
+        {
+            f(function(_, _)
+                local time = os.time(os.date("!*t"))
+                return "br_" .. time
+            end),
+        }
+    ),
+    {}
 )
+
+return snippets, autosnippets

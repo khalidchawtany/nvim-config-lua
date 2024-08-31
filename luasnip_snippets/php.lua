@@ -24,7 +24,7 @@ local function camelCase(str)
 	end)
 end
 
-local function pasCalcase(str)
+local function pascalCase(str)
 	str = camelCase(str)
 	return string.upper(string.sub(str, 1, 1)) .. string.sub(str, 2)
 end
@@ -88,7 +88,7 @@ cs(
 	"file",
 	f(function(args, snip)
 		local file_name = vim.fn.fnamemodify(vim.fn.expand('%'),':t:r')
-		return pasCalcase(file_name)
+		return pascalCase(file_name)
 	end, {})
 )
 
@@ -97,7 +97,7 @@ cs(
 	f(function(args, snip)
 		local file_name = vim.fn.fnamemodify(vim.fn.expand('%'),':t:r')
 		file_name = string.match(file_name, "%d+_%d+_%d+_%d+_(.*)")
-		return pasCalcase(file_name)
+		return pascalCase(file_name)
 	end, {})
 )
 
@@ -105,7 +105,7 @@ cs(
 	"fnc",
 	f(function(args, snip)
 		local file_name = vim.fn.fnamemodify(vim.fn.expand('%'),':t:r')
-		return pasCalcase(file_name)
+		return pascalCase(file_name)
 	end, {})
 )
 

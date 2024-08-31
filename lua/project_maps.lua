@@ -292,6 +292,13 @@ function MapProjectKeys()
     --   APPLIED_PROJECT_MAPS = project_type
     -- end
 
+    local developer = "lox"
+    if project_type == "october" then
+        if path:new(pwd .. os_sep .. "plugins" .. os_sep .. "khalid"):exists() then
+            developer = "khalid"
+        end
+    end
+
     for _, i in pairs(project_maps) do
         -- get the paths for each map entry
         local i_paths = {}
@@ -320,6 +327,7 @@ function MapProjectKeys()
 
         if i["fd_opts"] ~= nil then
             for _, v in ipairs(i["fd_opts"]) do
+                v = string.gsub(v, "lox", developer)
                 table.insert(opts.find_command, v)
             end
         end
