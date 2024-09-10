@@ -14,7 +14,8 @@ M.config = function()
       enable = true,
       keymaps = {
         ["."] = "textsubjects-smart",
-        [","] = "textsubjects-container-outer"
+        [","] = "textsubjects-container-outer",
+        -- [".,"] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
       }
     }
   }

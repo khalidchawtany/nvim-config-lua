@@ -366,7 +366,7 @@ return {
 
             defaults = {
                 formatter = "path.filename_first",
-                multiline = 2,
+                multiline = 1,
             },
             -- fzf_bin         = 'sk',            -- use skim instead of fzf?
             -- https://github.com/lotabout/skim

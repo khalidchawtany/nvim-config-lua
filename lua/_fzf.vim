@@ -23,9 +23,10 @@ function s:SetFzfColors()
 	if &background == 'dark'
 					" \." --bind 'ctrl-r:reload:$FZF_DEFAULT_COMMAND'"
 		let $FZF_DEFAULT_OPTS=" --history=".s:fzf_history." --pointer=' ▶'"
+                    \." --preview-window down,50%,border-top"
 					\." --marker='◉ ' --reverse"
 					\." --bind 'ctrl-w:select-all,ctrl-l:jump,ctrl-f:toggle-preview'"
-					\." --bind 'ctrl-x:change-preview-window(down,40%,border-top|hidden|)'"
+					\." --bind 'ctrl-x:change-preview-window(right,50%,border-right|hidden|down,50%,border-top)'"
 					\." --bind 'ctrl-r:change-preview-window(right,45%|right,40%|right,35%|right,30%|right,25%|right,20%|right,15%|)'"
 					\." --color=bg:#24283b,bg+:#234F84,fg+:#B9CDF7,hl:#00C8E0,hl+:#44ff44,gutter:#24283b,marker:#00ffff,border:#00A9BF,separator:#24283b"
 	else
@@ -63,7 +64,7 @@ let g:fzf_nvim_statusline=0
 let g:fzf_command_prefix = 'Fzf'
 
 "Show FZF in a floating window
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.7 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 " let $FZF_DEFAULT_OPTS='--layout=reverse'
 "let g:fzf_layout = { 'window': 'execute (tabpagenr()-1)."tabnew"' }
 "let g:fzf_layout = { 'window': '-tabnew' }
