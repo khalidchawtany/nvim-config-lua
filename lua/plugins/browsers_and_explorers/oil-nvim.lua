@@ -109,6 +109,39 @@ return {
                 ["gx"] = "actions.open_external",
                 ["g."] = "actions.toggle_hidden",
                 ["g\\"] = "actions.toggle_trash",
+                ["gi"] = {
+                    desc = "Toggle insensitive sort",
+                    callback = function()
+                        local config = require("oil.config")
+                        local view = require("oil.view")
+                        config.view_options.case_insensitive = not config.view_options.case_insensitive
+                        config.view_options.sort = { { "name", "asc" } }
+                        view.rerender_all_oil_buffers({ refetch = false })
+                    end,
+                    nowait = true,
+                },
+                ["gr"] = {
+                    desc = "oil: Search in directory",
+                    callback = function()
+                        local oil = require("oil")
+                        local prefills = { paths = oil.get_current_dir() }
+
+                        local grug_far = require("grug-far")
+                        -- instance check
+                        if not grug_far.has_instance("explorer") then
+                            grug_far.open({
+                                instanceName = "explorer",
+                                prefills = prefills,
+                                staticTitle = "Find and Replace from Explorer",
+                            })
+                        else
+                            grug_far.open_instance("explorer")
+                            -- updating the prefills without clearing the search and other fields
+                            grug_far.update_instance_prefills("explorer", prefills, false)
+                        end
+                    end,
+                    nowait = true,
+                },
                 ["gd"] = {
                     desc = "Toggle file detail view",
                     callback = function()
@@ -138,11 +171,11 @@ return {
                 -- so you may want to set to false if you work with large directories.
                 natural_order = true,
                 -- Sort file and directory names case insensitive
-                case_insensitive = false,
+                case_insensitive = true,
                 sort = {
                     -- sort order can be "asc" or "desc"
                     -- see :help oil-columns to see which columns are sortable
-                    { "type", "asc" },
+                    -- { "type", "asc" },
                     { "name", "asc" },
                 },
             },

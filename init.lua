@@ -179,3 +179,7 @@ nnoremap <leader>r<leader>
 -- \ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{R,r}eview/g<cr>
 -- \ :silent! %S/vehicle/good/g<cr>
 -- \ :silent! %S/VehicleCategor{y,ies}/GoodCategor{y,ies}/g<cr>
+vim.cmd([[
+nnoremap <leader>\ <cmd>SLoad alt<cr>
+
+]])

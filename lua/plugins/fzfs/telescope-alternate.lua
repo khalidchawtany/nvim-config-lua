@@ -1,29 +1,29 @@
-
 local lower = function(w)
     return string.lower(w)
 end
 return {
-    "otavioschwanck/telescope-alternate",
+    "khalidchawtany/telescope-alternate.nvim",
+    -- "otavioschwanck/telescope-alternate",
     dependencies = { "nvim-telescope/telescope.nvim" },
     keys = {
         {
             "<c-s><c-f>",
             function()
-                require("telescope").extensions["telescope-alternate"].alternate_file({previewer = false})
+                require("telescope").extensions["telescope-alternate"].alternate_file({ previewer = false })
             end,
             desc = "Telescope (Alternate)",
         },
         {
             "<c-s><c-space>",
             function()
-                require("telescope").extensions["telescope-alternate"].alternate_file({previewer = false})
+                require("telescope").extensions["telescope-alternate"].alternate_file({ previewer = false })
             end,
             desc = "Telescope (Alternate)",
         },
         {
             "<c-s>space",
             function()
-                require("telescope").extensions["telescope-alternate"].alternate_file({previewer = false})
+                require("telescope").extensions["telescope-alternate"].alternate_file({ previewer = false })
             end,
             desc = "Telescope (Alternate)",
         },
@@ -87,39 +87,44 @@ return {
 
                 -- OctoberCMS
                 {
-                    "(.*)/models/(.*).php",
-                    {
-                        { "[1]/controllers/[2:pluralize].php",       "Controller",   true },
-                        { "[1]/controllers/[2:pluralize,lower]/*.*", "Controller-F", true },
-                        { "[1]/models/[2].php",                      "Model",        true },
-                        { "[1]/models/[2:lower]/*.*",                "Model-F",      true },
+                   pattern = "(.*)/models/(.*).php",
+                   targets = {
+                        { template = "[1]/models/[2].php",                      label="Model",        enable_new = true , order=1 },
+                        { template = "[1]/controllers/[2:pluralize].php",       label="Controller",   enable_new = true , order=2},
+                        { template = "[1]/models/[2:lower]/*fields.yaml",       label="Fields",       enable_new = true , order=3},
+                        { template = "[1]/models/[2:lower]/*columns.yaml",      label="Columns",      enable_new = true , order=4},
+                        { template = "[1]/models/[2:lower]/*.*",                label="Model-F",      enable_new = true , order=5},
+                        { template = "[1]/controllers/[2:pluralize,lower]/*.*", label="Controller-F", enable_new = true , order=6},
                     },
                 },
                 {
                     "(.*)/controllers/(.*).php",
                     {
-                        { "[1]/controllers/[2:pluralize].php",       "Controller",   true },
-                        { "[1]/controllers/[2:pluralize,lower]/*.*", "Controller-F", true },
-                        { "[1]/models/[2:singularize].php",          "Model",        true },
-                        { "[1]/models/[2:singularize,lower]/*.*",    "Model-F",      true },
+                        { "[1]/models/[2:singularize].php",                       "Model",         true, 1},
+                        { "[1]/controllers/[2:pluralize].php",                    "Controller",    true, 2},
+                        { "[1]/models/[2:singularize,lower]/_config_form.yaml",   "Config Form",   true, 3},
+                        { "[1]/models/[2:singularize,lower]/_config_list.yaml",   "Config List",   true, 4},
+                        { "[1]/models/[2:singularize,lower]/_config_filter.yaml", "Config Filter", true, 5},
+                        { "[1]/controllers/[2:pluralize,lower]/*.*",              "Controller-F",  true, 6},
+                        { "[1]/models/[2:singularize,lower]/*.*",                 "Model-F",       true, 7},
                     },
                 },
                 {
                     "(.*)/controllers/(.*)/(.*).[yaml\\|htm]",
                     {
-                        { "[1]/controllers/[2:upper,snake_to_pascal].php",       "Controller",   true },
-                        { "[1]/controllers/[2:lower]/*.*", "Controller-F", true },
-                        { "[1]/models/[2:singularize].php",          "Model",        true },
-                        { "[1]/models/[2:singularize,lower]/*.*",    "Model-F",      true },
+                        { "[1]/models/[2:singularize].php",                "Model",        true, 1},
+                        { "[1]/controllers/[2:upper,snake_to_pascal].php", "Controller",   true, 2},
+                        { "[1]/controllers/[2:lower]/*.*",                 "Controller-F", true, 3},
+                        { "[1]/models/[2:singularize,lower]/*.*",          "Model-F",      true, 4},
                     },
                 },
                 {
                     "(.*)/models/(.*)/(.*).[yaml\\|htm]",
                     {
-                        { "[1]/controllers/[2:pluralize,snake_to_pascal].php",       "Controller",   true },
-                        { "[1]/controllers/[2:pluralize]/*.*", "Controller-F", true },
-                        { "[1]/models/[2:singularize].php",          "Model",        true },
-                        { "[1]/models/[2:singularize,lower]/*.*",    "Model-F",      true },
+                        { "[1]/models/[2:singularize].php",                    "Model",        true, 1},
+                        { "[1]/controllers/[2:pluralize,snake_to_pascal].php", "Controller",   true, 2},
+                        { "[1]/controllers/[2:pluralize]/*.*",                 "Controller-F", true, 3},
+                        { "[1]/models/[2:singularize,lower]/*.*",              "Model-F",      true, 4},
                     },
                 },
             },
@@ -132,7 +137,7 @@ return {
                     local p1 = string.sub(w, 1, -3)
                     local last_char = string.sub(w, -2, -1)
                     last_char = last_char:lower()
-                    return  p1 .. last_char
+                    return p1 .. last_char
                 end,
 
                 upper = function(w)
@@ -161,7 +166,6 @@ return {
                 end,
 
                 snake_to_pascal = function(inputString)
-
                     inputString = inputString:gsub("^%l", string.upper)
 
                     local pathParts = {}

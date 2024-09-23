@@ -2,10 +2,8 @@ return {
     "dbinagi/nomodoro",
     cmd = {
         "NomoWork",
-        "NomoBreak",
-        "NomoStop",
-        "NomoStatus",
         "NomoTimer",
+        "NomoStatus",
     },
     keys = {
         { "<leader>pow", "<cmd>NomoWork<cr>",  desc = "Pomodoro (Work)" },

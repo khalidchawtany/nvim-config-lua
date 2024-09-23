@@ -28,10 +28,10 @@ end
 
 function M.get_borderoption(default)
     if vim.g.neovide == true == true then
-        return "none";
+        return "none"
     end
 
-    return default;
+    return default
 end
 
 function M.get_borderchars(plugin)
@@ -136,6 +136,10 @@ function M.smart_quit()
     else
         vim.cmd("q!")
     end
+end
+
+function M.plugin_is_loaded(plugin)
+    return vim.tbl_get(require("lazy.core.config"), "plugins", plugin, "_", "loaded")
 end
 
 return M

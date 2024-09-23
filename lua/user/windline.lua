@@ -13,7 +13,6 @@ local hl_list = {
     Active = { "ActiveFg", "ActiveBg" },
 }
 
-
 local function printf(format, current, total)
     if current == 0 and total == 0 then
         return ""
@@ -197,6 +196,10 @@ basic.nomodoro = {
         -- if packer_plugins["nomodoro"] and packer_plugins["nomodoro"].loaded then
         --     return require('nomodoro').status()
         -- end
+        if require("user.functions").plugin_is_loaded('nomodoro') then
+            return require("nomodoro").status()
+        end
+
         return ""
     end,
 }
@@ -213,7 +216,7 @@ basic.search_count = {
         if vim.v.hlsearch == 0 then
             return ""
         end
-        vim.fn.searchcount { recompute = 1, maxcount = 0, timeout = 100 }
+        vim.fn.searchcount({ recompute = 1, maxcount = 0, timeout = 100 })
         local result = vim.fn.searchcount({ recompute = 0 })
         if vim.tbl_isempty(result) then
             return ""
@@ -241,14 +244,13 @@ basic.reg_recording = {
     },
     width = breakpoint_width,
     text = function(bufnr)
-        if vim.fn.reg_recording() == '' then
+        if vim.fn.reg_recording() == "" then
             return ""
         end
         local result = vim.fn.reg_recording()
-        return {{" recrodgin @" .. result, "red"}}
+        return { { " recrodgin @" .. result, "red" } }
     end,
 }
-
 
 local default = {
     filetypes = { "default" },
