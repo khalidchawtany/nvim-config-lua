@@ -45,7 +45,8 @@ command! SwithGui :lua os.execute('osascript ~/juju/.config/nvim/switch_nvim_qt_
 
 nnoremap <c-w>M <C-w>_<C-w><Bar>
 
-nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>diffupdate<cr><cmd>fclose<cr><cmd>redraw!<cr>
+nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>diffupdate<cr><cmd>fclose<cr><cmd>redraw!<cr><cmd>lua require("multicursor-nvim").clearCursors()<cr>
+                
 nnoremap <silent><nowait> <leader><BS> <cmd>syn clear<cr>
 
 " nnoremap <c-s>c <cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'

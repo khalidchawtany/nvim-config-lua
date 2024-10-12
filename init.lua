@@ -112,6 +112,19 @@ require("lazy").setup({
         root = vim.fn.stdpath("data") .. "/lazy-rocks",
         server = "https://nvim-neorocks.github.io/rocks-binaries/",
     },
+
+    -- concurrency = 4,
+    git = {
+        -- defaults for the `lazy log` command
+        -- log = { "--since=3 days ago" }, -- show commits from the last 3 days
+        log = { "-8" }, -- show the last 8 commits
+        timeout = 360, -- kill processes that take more than 2 minutes
+        url_format = "https://github.com/%s.git",
+        -- lazy.nvim requires git >=2.19.0. if you really want to use lazy with an older version,
+        -- then set the below to false. this should work, but is not supported and will
+        -- increase downloads a lot.
+        filter = true,
+    },
 })
 if vim.fn.getcwd() == "/" then
     vim.cmd.cd("~/.config/nvim")
@@ -124,7 +137,7 @@ require("project_maps")
 require("maps")
 require("opts")
 vim.cmd.source("~/.config/nvim/lua/maps.vim")
-vim.cmd([[autocmd User LazyReload source ~/.config/nvim/lua/maps.vim]])
+vim.cmd([[autocmd user lazyreload source ~/.config/nvim/lua/maps.vim]])
 vim.cmd([[TSEnable highlight]])
 
 vim.cmd([[

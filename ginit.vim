@@ -1,5 +1,4 @@
 
-source /Users/juju/Development/Applications/neovim-qt/neovim-qt/build/bin/nvim-qt.app/Contents/Resources/runtime/plugin/nvim_gui_shim.vim
 hi Title guibg=#afd7ff
 
 " Support ligature
@@ -132,6 +131,8 @@ let $PATH=$PATH.":/Users/juju/local/bin/"
 
 let NVIM_QT_RUNTIME_PATH="./Contents/Resources/runtime"
 if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
+
+   source /Users/juju/Development/Applications/neovim-qt/neovim-qt/build/bin/nvim-qt.app/Contents/Resources/runtime/plugin/nvim_gui_shim.vim
   "***************MUST BE LAST LINE*******
   "Start neovim-qt as maximized borderless.
     GuiTabline 0

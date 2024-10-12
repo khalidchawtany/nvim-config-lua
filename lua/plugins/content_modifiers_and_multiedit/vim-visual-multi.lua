@@ -2,6 +2,7 @@ local M = {
  "mg979/vim-visual-multi",
   event = "CursorMoved",
   branch = "master",
+  enabled = false,
   config = function()
     -- vim.g.multi_cursor_use_default_mapping = 0
     -- vim.g.multi_cursor_next_key = '<C-n>'

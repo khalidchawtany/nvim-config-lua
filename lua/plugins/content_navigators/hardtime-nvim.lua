@@ -12,7 +12,7 @@ return {
            desc = "Toggle Hardtime"
        },
    },
-   config = {
+   opts = {
        disabled_filetypes = {
            "qf",
            "minifiles",

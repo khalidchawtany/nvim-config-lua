@@ -2,7 +2,7 @@ return {
  "mizlan/iswap.nvim",
   cmd = {"ISwap"},
   keys = {
-    {"<leader>sa", "<cmd>ISwap<cr>", desc = "ISwap"}
+    {"<leader>sw", "<cmd>ISwap<cr>", desc = "ISwap"}
   },
   config = function()
     require("iswap").setup {

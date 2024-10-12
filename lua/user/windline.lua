@@ -196,7 +196,7 @@ basic.nomodoro = {
         -- if packer_plugins["nomodoro"] and packer_plugins["nomodoro"].loaded then
         --     return require('nomodoro').status()
         -- end
-        if require("user.functions").plugin_is_loaded('nomodoro') then
+        if require("user.functions").plugin_is_loaded("nomodoro") then
             return require("nomodoro").status()
         end
 
@@ -237,6 +237,57 @@ basic.search_count = {
     end,
 }
 
+basic.multicursor = {
+
+    name = "multicursor",
+    hl_colors = {
+        green = { "green", "black" },
+        red = { "red", "black" },
+        blue = { "blue", "black" },
+    },
+    width = breakpoint_width,
+    text = function(bufnr)
+        if not require("user.functions").plugin_is_loaded("multicursor.nvim") then
+            return ""
+        end
+
+        local mc = require("multicursor-nvim")
+
+        if mc.hasCursors() then
+            if vim.fn.mode() == "v" then
+                return "󰚕 (V)"
+            else
+                return "󰬸 (N)"
+            end
+        end
+        return ""
+        -- local status = {}
+        -- if mc.hasCursors() then
+        --     status.enabled = true
+        --     if vim.fn.mode() == "v" then
+        --         status.icon = "󰚕 "
+        --         status.short_text = "V"
+        --         status.text = "VISUAL"
+        --         status.color = "lualine_a_visual"
+        --     else
+        --         status.icon = "󰬸 "
+        --         status.short_text = "N"
+        --         status.text = "NORMAL"
+        --         status.color = "lualine_a_normal"
+        --     end
+        -- else
+        --     status.enabled = false
+        --     status.icon = "󰘪 "
+        --     status.short_text = "NO"
+        --     status.text = "SINGLE"
+        --     status.color = "lualine_a_normal"
+        -- end
+        -- status.icon_short_text = status.icon .. status.short_text
+        -- status.icon_text = status.icon .. status.text
+        -- return status
+    end,
+}
+
 basic.reg_recording = {
     name = "reg_recording",
     hl_colors = {
@@ -261,6 +312,7 @@ local default = {
         basic.lsp_diagnos,
         basic.reg_recording,
         basic.divider,
+        basic.multicursor,
         basic.nomodoro,
         basic.search_count,
         basic.divider,

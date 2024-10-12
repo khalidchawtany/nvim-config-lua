@@ -1,6 +1,7 @@
 return {
     "brenton-leighton/multiple-cursors.nvim",
     version = "*", -- Use the latest tagged version
+    enabled = false,
     opts = {
         pre_hook = function()
             require("cmp").setup({enabled=false})

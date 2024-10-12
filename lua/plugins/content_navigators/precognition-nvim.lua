@@ -6,7 +6,7 @@ return {
 
     -- :lua require("precognition").toggle()
     -- :lua require("precognition").peek()
-    config = {
+    opts = {
         -- startVisible = true,
         -- showBlankVirtLine = true,
         highlightColor = { link = "Comment" },
