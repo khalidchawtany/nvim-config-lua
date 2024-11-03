@@ -118,6 +118,8 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
   imap <c-a> <HOME>
   imap <c-e> <END>
 
+  imap ;w <esc><cmd>silent! w<cr>
+
   nnoremap <leader>tl <cmd>tabs<cr>
   nnoremap <leader>tn <cmd>tabnew<cr>
   nnoremap <leader>td <cmd>tab split<cr>

@@ -113,7 +113,7 @@ require("lazy").setup({
         server = "https://nvim-neorocks.github.io/rocks-binaries/",
     },
 
-    -- concurrency = 4,
+    concurrency = 20,
     git = {
         -- defaults for the `lazy log` command
         -- log = { "--since=3 days ago" }, -- show commits from the last 3 days

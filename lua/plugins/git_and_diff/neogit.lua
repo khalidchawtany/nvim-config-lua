@@ -3,7 +3,7 @@ return {
     cmd = { "Neogit" },
 
     keys = {
-        { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
+        { "<leader>gn", "<cmd>Neogit<cr>",               desc = "Neogit" },
         { "<leader>gf", "<cmd>Neogit kind=floating<cr>", desc = "Neogit Float" },
     },
     dependencies = {
@@ -14,5 +14,6 @@ return {
         "nvim-telescope/telescope.nvim", -- optional
         "ibhagwan/fzf-lua",        -- optional
     },
+    opts = { graph_style = "kitty" },
     config = true,
 }
