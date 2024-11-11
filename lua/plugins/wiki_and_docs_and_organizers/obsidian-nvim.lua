@@ -40,9 +40,16 @@ return {
         { "<leader>oow", "<cmd>ObsidianWorkspace<cr>",      desc = "Workspace (Obsidian)" },
         { "<leader>oor", "<cmd>ObsidianRename<cr>",         desc = "Rename (Obsidian)" },
         { "<leader>oot", "<cmd>ObsidianToggleCheckbox<cr>", desc = "Toggle Checkbox (Obsidian)" },
-        { "<leader>ooS", "<cmd>call jobstart('open -a /Applications/Obsidian.app --background \"obsidian://advanced-uri?vault=MyObsidianNotes&commandid=remotely-save%253Astart-sync\"', {})<cr>", desc = "Sync (Obsidian)" },
-        { "<leader>ooR", "<cmd>call jobstart('/Users/juju/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/MyObsidianNotes/.code/sync_tasks.sh', {})<cr>", desc = "Sync Reminders (Obsidian)" },
- 
+        {
+            "<leader>ooS",
+            "<cmd>call jobstart('open -a /Applications/Obsidian.app --background \"obsidian://advanced-uri?vault=MyObsidianNotes&commandid=remotely-save%253Astart-sync\"', {})<cr>",
+            desc = "Sync (Obsidian)",
+        },
+        {
+            "<leader>ooR",
+            "<cmd>call jobstart('/Users/juju/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/MyObsidianNotes/.code/sync_tasks.sh', {})<cr>",
+            desc = "Sync Reminders (Obsidian)",
+        },
     },
     dependencies = {
         -- Required.
@@ -54,12 +61,17 @@ return {
         workspaces = {
             {
                 name = "personal",
-                path = "/Users/juju/Library/Mobile Documents/iCloud~md~obsidian/Documents/MyObsidianNotes",
+                path = "/Users/juju/ownCloud/MyObsidianNotes",
             },
             -- {
             --     name = "work",
             --     path = "~/vaults/work",
             -- },
+        },
+        templates = {
+            folder = "Meta/Templates",
+            date_format = "%Y-%m-%d-%a",
+            time_format = "%H:%M",
         },
 
         daily_notes = {
@@ -70,7 +82,7 @@ return {
             -- Optional, if you want to change the date format of the default alias of daily notes.
             alias_format = "%B %-d, %Y",
             -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-            template = nil,
+            template = "DailyNoteTemplate.md",
         },
         -- see below for full list of options 👇
     },

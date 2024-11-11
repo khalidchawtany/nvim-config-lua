@@ -142,4 +142,14 @@ function M.plugin_is_loaded(plugin)
     return vim.tbl_get(require("lazy.core.config"), "plugins", plugin, "_", "loaded")
 end
 
+function M.read_file(path)
+    local api_key
+    local file = io.open(path, "r")
+    if file then
+        api_key = file:read()
+        file:close()
+    end
+    return api_key
+end
+
 return M

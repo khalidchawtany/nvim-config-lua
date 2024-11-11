@@ -5,83 +5,83 @@ return {
         "nvim-telescope/telescope.nvim", -- Optional: for fuzzy search capabilities
     },
 
-	-- keys = {
-	-- 	{
-	-- 		"<leader>hh",
-	-- 		":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>",
-	-- 		desc = "Harpoon (Toggle)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>ha",
-	-- 		":lua require('harpoon'):list():add()<cr>",
-	-- 		desc = "Harpoon (Add)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h1",
-	-- 		":lua require('harpoon'):list():select(1)<cr>",
-	-- 		desc = "Harpoon (1)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h2",
-	-- 		":lua require('harpoon'):list():select(2)<cr>",
-	-- 		desc = "Harpoon (2)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h3",
-	-- 		":lua require('harpoon'):list():select(3)<cr>",
-	-- 		desc = "Harpoon (3)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h4",
-	-- 		":lua require('harpoon'):list():select(4)<cr>",
-	-- 		desc = "Harpoon (4)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h5",
-	-- 		":lua require('harpoon'):list():select(5)<cr>",
-	-- 		desc = "Harpoon (5)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h6",
-	-- 		":lua require('harpoon'):list():select(6)<cr>",
-	-- 		desc = "Harpoon (6)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h7",
-	-- 		":lua require('harpoon'):list():select(7)<cr>",
-	-- 		desc = "Harpoon (7)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h8",
-	-- 		":lua require('harpoon'):list():select(8)<cr>",
-	-- 		desc = "Harpoon (8)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h9",
-	-- 		":lua require('harpoon'):list():select(9)<cr>",
-	-- 		desc = "Harpoon (9)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>h0",
-	-- 		":lua require('harpoon'):list():select(10)<cr>",
-	-- 		desc = "Harpoon (10)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>hj",
-	-- 		"lua require('harpoon'):list():next()<cr>",
-	-- 		desc = "Harpoon (Next)",
-	-- 	},
-	-- 	{
-	-- 		"<leader>hk",
-	-- 		"lua require('harpoon'):list():prev()<cr>",
-	-- 		desc = "Harpoon (Prev)",
-	-- 	},
-	-- 	{
-	-- 		"<c-space><c-space>",
-	-- 		":Telescope harpoon marks<cr>",
-	-- 		desc = "Harpoon (Telescope)",
-	-- 	},
-	-- },
+    -- keys = {
+    -- 	{
+    -- 		"<leader>hh",
+    -- 		":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<cr>",
+    -- 		desc = "Harpoon (Toggle)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>ha",
+    -- 		":lua require('harpoon'):list():add()<cr>",
+    -- 		desc = "Harpoon (Add)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h1",
+    -- 		":lua require('harpoon'):list():select(1)<cr>",
+    -- 		desc = "Harpoon (1)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h2",
+    -- 		":lua require('harpoon'):list():select(2)<cr>",
+    -- 		desc = "Harpoon (2)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h3",
+    -- 		":lua require('harpoon'):list():select(3)<cr>",
+    -- 		desc = "Harpoon (3)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h4",
+    -- 		":lua require('harpoon'):list():select(4)<cr>",
+    -- 		desc = "Harpoon (4)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h5",
+    -- 		":lua require('harpoon'):list():select(5)<cr>",
+    -- 		desc = "Harpoon (5)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h6",
+    -- 		":lua require('harpoon'):list():select(6)<cr>",
+    -- 		desc = "Harpoon (6)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h7",
+    -- 		":lua require('harpoon'):list():select(7)<cr>",
+    -- 		desc = "Harpoon (7)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h8",
+    -- 		":lua require('harpoon'):list():select(8)<cr>",
+    -- 		desc = "Harpoon (8)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h9",
+    -- 		":lua require('harpoon'):list():select(9)<cr>",
+    -- 		desc = "Harpoon (9)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>h0",
+    -- 		":lua require('harpoon'):list():select(10)<cr>",
+    -- 		desc = "Harpoon (10)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>hj",
+    -- 		"lua require('harpoon'):list():next()<cr>",
+    -- 		desc = "Harpoon (Next)",
+    -- 	},
+    -- 	{
+    -- 		"<leader>hk",
+    -- 		"lua require('harpoon'):list():prev()<cr>",
+    -- 		desc = "Harpoon (Prev)",
+    -- 	},
+    -- 	{
+    -- 		"<c-space><c-space>",
+    -- 		":Telescope harpoon marks<cr>",
+    -- 		desc = "Harpoon (Telescope)",
+    -- 	},
+    -- },
     config = function()
         require("spelunk").setup({
             -- Flag to enable directory-scoped bookmark persistence

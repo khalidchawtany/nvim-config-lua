@@ -1,5 +1,6 @@
 return {
   "luukvbaal/statuscol.nvim",
+  enabled = false,
   lazy = true,
   config = function()
     require("statuscol").setup()

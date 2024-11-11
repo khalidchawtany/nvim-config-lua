@@ -2,7 +2,7 @@ return {
     "benlubas/molten-nvim",
     -- version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
     build = ":UpdateRemotePlugins",
-    ft="jpynb",
+    ft = { "jpynb", "ipynb" },
     cond = os.getenv("VAR_IS_KITTY_TERM") == "true",
     init = function()
         -- these are examples, not defaults. Please see the readme
@@ -16,7 +16,7 @@ return {
 Usage:
 
 - Show list of notebooks:
-    jupyter notebook list 
+    jupyter notebook list
 
 - Show runtime path:
     jupyter --runtime
