@@ -117,18 +117,21 @@ vim.system({
 
 end, opts)
 
-vim.keymap.set({'n'}, '<BS>', function()
-require("notify").dismiss({ silent = true })
-vim.cmd([[
-filetype on
-syntax sync minlines=1000
-nohlsearch
-diffupdate
-redraw!
-fclose
-echo ""
-]])
- end, { noremap = true, silent = true }  )
+vim.keymap.set(
+    {'n'},
+    '<BS>',
+    function()
+        require("notify").dismiss({ silent = true })
+        vim.cmd([[
+                filetype on
+                syntax sync minlines=1000
+                nohlsearch
+                diffupdate
+                redraw!
+        ]])
+    end,
+    { noremap = true, silent = true }
+ )
 
 
  vim.g.neovide_scale_factor = 1.0

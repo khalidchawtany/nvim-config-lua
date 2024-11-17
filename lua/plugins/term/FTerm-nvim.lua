@@ -14,6 +14,19 @@ local M = {
       desc = "Toggle Long Terminal",
       mode = {"n", "t"}
     },
+
+    {
+      "<c-cr><c-\\>",
+      function()
+        if _G.tmp.alternate == nil then
+          _G.tmp.alternate =
+            require("FTerm"):new({ft = "fterm_alternate", cmd =  os.getenv('SHELL'), border="single", auto_close = false, dimensions = {height = 0.9, width = 0.9}})
+        end
+        _G.tmp.alternate:toggle()
+      end,
+      desc = "Alternate Terminal",
+      mode = {"n", "t"}
+    },
     -- Use this to toggle gitui in a floating terminal
     {
       "<c-cr><c-s>",

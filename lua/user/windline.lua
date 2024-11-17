@@ -184,8 +184,8 @@ basic.lsp_name = {
     end,
 }
 
-basic.nomodoro = {
-    name = "nomodoro",
+basic.pomo = {
+    name = "pomo",
     hl_colors = {
         green = { "green", "black" },
         red = { "red", "black" },
@@ -193,14 +193,26 @@ basic.nomodoro = {
     },
     width = breakpoint_width,
     text = function(bufnr)
-        -- if packer_plugins["nomodoro"] and packer_plugins["nomodoro"].loaded then
-        --     return require('nomodoro').status()
-        -- end
-        if require("user.functions").plugin_is_loaded("nomodoro") then
-            return require("nomodoro").status()
+        local ok, pomo = pcall(require, "pomo")
+        if not ok then
+            return ""
         end
 
-        return ""
+        local timer = pomo.get_first_to_finish()
+        if timer == nil then
+            return ""
+        end
+
+        return "󰄉 " .. tostring(timer)
+
+        -- if packer_plugins["pomo"] and packer_plugins["pomo"].loaded then
+        --     return require('pomo').status()
+        -- end
+        -- if require("user.functions").plugin_is_loaded("pomo.nvim") then
+        --     return "󰄉 " .. tostring(require('pomo').get_first_to_finish())
+        -- end
+        --
+        -- return ""
     end,
 }
 
@@ -224,7 +236,7 @@ basic.search_count = {
         ---NOTE: the search term can be included in the output
         --- using [%s] but this value seems flaky
         -- local search_reg = fn.getreg("@/")
-        if result.incomplete == 1 then -- timed out
+        if result.incomplete == 1 then     -- timed out
             return printf(" ?/?? ")
         elseif result.incomplete == 2 then -- max count exceeded
             if result.total > result.maxcount and result.current > result.maxcount then
@@ -313,7 +325,7 @@ local default = {
         basic.reg_recording,
         basic.divider,
         basic.multicursor,
-        basic.nomodoro,
+        basic.pomo,
         basic.search_count,
         basic.divider,
         basic.file_right,

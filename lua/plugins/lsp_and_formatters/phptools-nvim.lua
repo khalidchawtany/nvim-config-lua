@@ -14,7 +14,19 @@ return { -- lazy
     },
     config = function()
         require("phptools").setup({
-            ui = false, -- if you have stevearc/dressing.nvim or something similar keep it false or else true
+            ui = {
+                enable = true,                            -- default:true; false only if you have a UI enhancement plugin
+                fzf = false,                              -- default:false; requires fzf used only in tests module otherwise there might long list  of tests
+            },
+            create = false,                               -- default:false autorun PhpTools Create when creating a new php file
+            drupal_autoloader = {                         -- delete if you dont use it
+                scan_paths = { "/web/modules/contrib/" }, -- Paths to scan for modules
+                root_markers = { ".git" },                -- Project root markers
+                autoload_file = "/vendor/composer/autoload_psr4.php", -- Autoload file path
+            },
+            custom_toggles = {
+                -- { "foo", "bar", "baz" }, -- Add more custom toggle groups here
+            },
         })
         vim.keymap.set("v", "<leader>lr", ":PhpRefactor<cr>")
 

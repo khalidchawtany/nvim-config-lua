@@ -45,9 +45,9 @@ command! SwithGui :lua os.execute('osascript ~/juju/.config/nvim/switch_nvim_qt_
 
 nnoremap <c-w>M <C-w>_<C-w><Bar>
 
-nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>diffupdate<cr><cmd>fclose<cr><cmd>redraw!<cr><cmd>lua require("multicursor-nvim").clearCursors()<cr>
+nnoremap <silent><nowait> <BS> <cmd>syntax sync minlines=1000<cr><cmd>nohlsearch<cr><cmd>diffupdate<cr><cmd>redraw!<cr><cmd>lua require("multicursor-nvim").clearCursors()<cr>
                 
-nnoremap <silent><nowait> <leader><BS> <cmd>syn clear<cr>
+nnoremap <silent><nowait> <leader><BS> <cmd>fclose<cr><cmd>syn clear<cr>
 
 " nnoremap <c-s>c <cmd>echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 "       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -59,9 +59,9 @@ nnoremap <leader>ee :e ~/.config/nvim/lua/functions.lua<cr>
 " open diff view of the commit hash
 nnoremap <leader>dcc :DiffviewOpen <C-r>=expand('<cword>')<cr>..<C-r>=expand('<cword>')<cr>^<cr>
 
-nnoremap <leader>yfp  <cmd>let @+=expand("%:p")<cr><cmd>echo "Copied current file  path '".expand("%:p")."' to clipboard"<cr>
-nnoremap <leader>yfP  <cmd>let @+=expand("%:~:.")<cr><cmd>echo "Copied current file  path '".expand("%:~:.")."' to clipboard"<cr>
-nnoremap <leader>yfn  <cmd>let @+=expand("%:p:t")<cr><cmd>echo "Copied current file  path '".expand("%:p:t")."' to clipboard"<cr>
+nnoremap <leader>yfp  <cmd>let @+=expand("%:p")<cr><cmd>lua vim.notify("Copied current file  path '"..vim.fn.expand("%:p").."' to clipboard")<cr>
+nnoremap <leader>yfP  <cmd>let @+=expand("%:~:.")<cr><cmd>lua vim.notify("Copied current file  path '"..vim.fn.expand("%:~:.").."' to clipboard")<cr>
+nnoremap <leader>yfn  <cmd>let @+=expand("%:p:t")<cr><cmd>lua vim.notify("Copied current file  path '"..vim.fn.expand("%:p:t").."' to clipboard")<cr>
 
 nnoremap <c-w>O            <cmd>wincmd o\|tabonly\|BufOnly<cr>
 nnoremap <leader>wo           <cmd>tabonly \| BufOnly<cr>
@@ -378,7 +378,7 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
     Map N <leader>To :tabe ~/org/todo.norg<cr>
 
 " tohtml runtime! syntax/2html.vim
-    Map N <leader>e<BS> :! \| echo "changes discarded"<cr>
+    Map N <leader>e<BS> :e! \| lua require('snacks').notify.info("changes discarded")<cr>
 
     nnoremap  coq <cmd>QFix<cr>
     command! QFix call QFixToggle()

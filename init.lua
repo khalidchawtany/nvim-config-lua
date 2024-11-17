@@ -193,6 +193,6 @@ nnoremap <leader>r<leader>
 -- \ :silent! %S/vehicle/good/g<cr>
 -- \ :silent! %S/VehicleCategor{y,ies}/GoodCategor{y,ies}/g<cr>
 vim.cmd([[
-nnoremap <leader>\ <cmd>SLoad alt<cr>
-
+nnoremap <leader>\l <cmd>SLoad tmp<cr>
+nnoremap <leader>\s <cmd>SSave! tmp<cr>
 ]])

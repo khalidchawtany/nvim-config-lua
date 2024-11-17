@@ -1,16 +1,19 @@
 local M = {
   "windwp/windline.nvim",
-  event = "VimEnter"
+  event = "VimEnter",
+  enabled = true,
 }
 
 M.config = function()
 
 -- require('wlsample.bubble')
---
 -- require('wlsample.evil_line')
+-- require('wlsample.bubble2')
 -- require('wlsample.bubble2')
   -- require("windline").setup({tabline = {}})
   -- require("wlsample.evil_line")
+ -- require('wlsample.vscode')
+  
   require("user.windline")
   -- table.insert(require("windline").default_line.active, 1, {text=require('nomodoro').status, name="nomodoro"})
   -- require("wlfloatline").setup(
