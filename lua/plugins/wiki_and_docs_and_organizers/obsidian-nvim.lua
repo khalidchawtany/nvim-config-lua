@@ -61,7 +61,7 @@ return {
         workspaces = {
             {
                 name = "personal",
-                path = "/Users/juju/ownCloud/MyObsidianNotes",
+                path = "/Users/juju/Nextcloud/MyObsidianNotes",
             },
             -- {
             --     name = "work",

@@ -58,7 +58,12 @@ M.config = function()
         function(server_name) -- default handler (optional)
             local opts = {}
             opts.on_attach = on_attach
-            require("lspconfig")[server_name].setup(opts)
+            -- require("lspconfig")[server_name].setup(opts)
+            local server_setup = require("lspconfig")[server_name].setup
+            if server_setup then
+                server_setup(opts)
+            end
+
         end,
         -- Next, you can provide targeted overrides for specific servers.
         -- For example, a handler override for the `rust_analyzer`:
