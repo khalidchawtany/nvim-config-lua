@@ -137,6 +137,13 @@ M.fzf_missing_translations = function(opts)
 
                     local value = require('textcase').api.to_title_case(key)
 
+                    -- if the value of the key is [] empty array expand it
+                    local char_pos = (buf_line:find('%[%]'))
+                    if char_pos then
+                        vim.api.nvim_buf_set_text(0, buf_line_nr - 1, char_pos - 1, buf_line_nr, char_pos,
+                            { "[", buf_line:match("^(%s+)'") .. "]" })
+                    end
+
                     vim.api.nvim_buf_set_lines(0, buf_line_nr, buf_line_nr, true,
                         { string.format("%s'%s' => '%s',", spaces, key, value) })
                     vim.api.nvim_win_set_cursor(0, { buf_line_nr + 1, 0 })
