@@ -19,8 +19,41 @@ M.locate_all_translations = function(path, pattern)
     return list
 end
 
+M.get_plugin_path = function()
+    local dirs = vim.fn.split(vim.fn.expand('%:p'), '/')
+    local idx = vim.fn.index(dirs, 'plugins')
+
+    if idx == -1 then
+        return '.'
+    end
+
+    local path_parts = { table.unpack(dirs, 1, idx + 3) }
+    -- convert lua object to list
+    -- local parts = vim.tbl_values(path_parts)
+    local path = '/' .. vim.fn.join(path_parts, '/')
+    return path
+end
+
+M.get_plugin_namespace = function()
+    local dirs = vim.fn.split(vim.fn.expand('%:p'), '/')
+    local idx = vim.fn.index(dirs, 'plugins')
+
+    if idx == -1 then
+        return nil
+    end
+
+    local path_parts = { table.unpack(dirs, idx + 2, idx + 3) }
+    local namespace = vim.fn.join(path_parts, '.')
+    return namespace
+end
+
+M.get_file = function(path)
+    local file = path .. "/lang/en/lang.php"
+    return file
+end
+
 M.get_current_translations = function(path, prefix)
-    local file = path .. "/plugins/khalid/shipman/lang/en/lang.php"
+    local file = M.get_file(path)
     local flatten_array_script = string.format(
         [[
     function flatten(\$array, \$prefix = '%s') {
@@ -70,10 +103,10 @@ end
 M.fzf_missing_translations = function(opts)
     opts = opts or {}
 
-    local path = vim.loop.cwd()
+    local path = M.get_plugin_path()
 
-    local all_translations = M.locate_all_translations(path, "khalid.shipman::lang.*.\\w+")
-    local current_translations = M.get_current_translations(path, 'khalid.shipman::lang.')
+    local all_translations = M.locate_all_translations(path, M.get_plugin_namespace() .. "::lang.*.\\w+")
+    local current_translations = M.get_current_translations(path, M.get_plugin_namespace() .. '::lang.')
     local missing_translations = M.get_missing_translations(all_translations, current_translations)
 
 
@@ -103,7 +136,7 @@ M.fzf_missing_translations = function(opts)
                     local master            = entry:match("(.*)%..*")
                     local key               = entry:match(".*%.(.*)")
 
-                    local file              = path .. "/plugins/khalid/shipman/lang/en/lang.php"
+                    local file              = M.get_file(path)
 
                     local file_already_open = vim.api.nvim_buf_get_name(0) == file
                     if not file_already_open then
