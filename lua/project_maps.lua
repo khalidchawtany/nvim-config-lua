@@ -1,6 +1,8 @@
 local path = require("plenary.path")
 local os_sep = path.path.sep
 
+vim.keymap.set("n", "<leader>l;", require('user.missing_locale_finder').fzf_missing_translations)
+
 _G.APPLIED_PROJECT_MAPS = nil
 
 _G.PROJECTS_MAPS = {
