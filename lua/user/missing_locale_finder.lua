@@ -106,13 +106,30 @@ M.fzf_missing_translations = function(opts)
 
                     -- open the file and search for the key
                     local file        = path .. "/plugins/khalid/shipman/lang/en/lang.php"
-                    local cmd         = string.format("/usr/local/bin/rg \"%s\" -n --no-heading %s", master, file)
+                    local cmd         = string.format("/usr/local/bin/rg \"'%s' => [\" -n --no-heading %s", master, file)
                     local handle      = io.popen(cmd)
                     local locale_line = {}
+
+
+                    if handle == nil then
+                        print("No file found")
+                        return
+                    end
 
                     for line in handle:lines() do
                         locale_line = line
                         break
+                    end
+
+                    if #locale_line == 0 then
+                        vim.api.nvim_command("e " .. file)
+                        vim.api.nvim_buf_set_lines(0, -2, -2, true, { string.rep(" ", 4) .. "'" .. master .. "' => [" })
+                        key = key:match "^%s*(.*)":match "(.-)%s*$"
+                        local value = require('textcase').api.to_title_case(key:gsub("'", ""))
+                        vim.api.nvim_buf_set_lines(0, -2, -2, true,
+                            { string.format("%s%s '%s',", string.rep(" ", 8), key, value) })
+                        vim.api.nvim_buf_set_lines(0, -2, -2, true, { string.rep(" ", 4) .. "]," })
+                        return
                     end
 
                     local line_nr = locale_line:match("%d+")
@@ -121,7 +138,7 @@ M.fzf_missing_translations = function(opts)
 
                     vim.api.nvim_command("e " .. file .. ":" .. line_nr)
 
-                    key = key:match"^%s*(.*)":match"(.-)%s*$"
+                    key = key:match "^%s*(.*)":match "(.-)%s*$"
 
                     local value = require('textcase').api.to_title_case(key:gsub("'", ""))
                     vim.api.nvim_put({ string.format("%s%s '%s',", spaces, key, value) }, "l", true, true)
@@ -146,6 +163,6 @@ M.fzf_missing_translations = function(opts)
 end
 
 
-M.fzf_missing_translations()
+-- M.fzf_missing_translations()
 
 return M
