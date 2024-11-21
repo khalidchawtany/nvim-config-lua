@@ -97,62 +97,49 @@ M.fzf_missing_translations = function(opts)
         attach_mappings = function(prompt_bufnr, map)
             actions.select_default:replace(function()
                 local process_field = function(entry)
-                    entry             = entry:gsub("\"", "")
-                    entry             = entry:match("::lang.(.*)")
+                    entry                   = entry:gsub("\"", "")
+                    entry                   = entry:match("::lang.(.*)")
 
-                    -- get the part after the dot
-                    local master      = entry:match("(.*)%..*")
-                    local key         = "'" .. entry:match(".*%.(.*)") .. "' => "
+                    local master            = entry:match("(.*)%..*")
+                    local key               = entry:match(".*%.(.*)")
 
-                    -- open the file and search for the key
-                    local file        = path .. "/plugins/khalid/shipman/lang/en/lang.php"
-                    local cmd         = string.format("/usr/local/bin/rg \"'%s' => \\[\" -n --no-heading %s", master,
-                        file)
-                    local handle      = io.popen(cmd)
-                    local locale_line = {}
-
+                    local file              = path .. "/plugins/khalid/shipman/lang/en/lang.php"
 
                     local file_already_open = vim.api.nvim_buf_get_name(0) == file
-
-                    if handle == nil then
-                        print("No file found")
-                        return
-                    end
-
-                    for line in handle:lines() do
-                        locale_line = line
-                        break
-                    end
-
                     if not file_already_open then
                         vim.api.nvim_command("e " .. file)
                     end
 
-                    if #locale_line == 0 then
+                    local buf_lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+                    local buf_line_nr = nil
+                    local buf_line = ""
+                    local str = string.format("'%s' => ", master) .. '%['
+                    for i, line in ipairs(buf_lines) do
+                        if line:find(str) then
+                            buf_line_nr = i
+                            buf_line = line
+                            break
+                        end
+                    end
+
+                    if buf_line_nr == nil then
                         vim.api.nvim_buf_set_lines(0, -2, -2, true, { string.rep(" ", 4) .. "'" .. master .. "' => [" })
                         key = key:match "^%s*(.*)":match "(.-)%s*$"
                         local value = require('textcase').api.to_title_case(key:gsub("'", ""))
                         vim.api.nvim_buf_set_lines(0, -2, -2, true,
-                            { string.format("%s%s '%s',", string.rep(" ", 8), key, value) })
+                            { string.format("%s'%s' => '%s',", string.rep(" ", 8), key, value) })
                         vim.api.nvim_buf_set_lines(0, -2, -2, true, { string.rep(" ", 4) .. "]," })
                         vim.api.nvim_win_set_cursor(0, { vim.api.nvim_buf_line_count(0) - 2, 0 })
                         return
                     end
 
-                    local line_nr = locale_line:match("%d+")
-                    -- get the spaces between : and '
-                    local spaces = locale_line:match(":(%s+)'") .. string.rep(" ", 4)
+                    local spaces = buf_line:match("^(%s+)'") .. string.rep(" ", 4)
 
-                    -- if not file_already_open then
-                    --     vim.api.nvim_command("e " .. file .. ":" .. line_nr)
-                    -- end
+                    local value = require('textcase').api.to_title_case(key)
 
-                    key = key:match "^%s*(.*)":match "(.-)%s*$"
-
-                    local value = require('textcase').api.to_title_case(key:gsub("'", ""))
-                    vim.api.nvim_buf_set_lines(0, tonumber(line_nr), tonumber(line_nr), true,
-                        { string.format("%s%s '%s',", spaces, key, value) })
-                    vim.api.nvim_win_set_cursor(0, { tonumber(line_nr) + 1, 0 })
+                    vim.api.nvim_buf_set_lines(0, buf_line_nr, buf_line_nr, true,
+                        { string.format("%s'%s' => '%s',", spaces, key, value) })
+                    vim.api.nvim_win_set_cursor(0, { buf_line_nr + 1, 0 })
 
                     -- vim.api.nvim_put({ string.format("%s%s '%s',", spaces, key, value) }, "l", true, true)
                 end
