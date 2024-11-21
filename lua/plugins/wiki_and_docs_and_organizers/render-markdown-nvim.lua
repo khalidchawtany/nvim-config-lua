@@ -5,10 +5,10 @@ return {
         -- "echasnovski/mini.nvim", -- if you use the mini.nvim suite
     },
 
-    ft = {
-        "markdown",
-        "Avante",
-    },
+    -- ft = {
+    --     "markdown",
+    --     "Avante",
+    -- },
     cmd = { "RenderMarkdown" },
     opts = {
 

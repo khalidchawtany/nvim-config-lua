@@ -12,8 +12,8 @@ M.locate_all_translations = function(path, pattern)
         end
         -- get unique values only
         if not vim.tbl_contains(list, line) then
-        table.insert(list, line)
-    end
+            table.insert(list, line)
+        end
         table.sort(list)
     end
     return list
@@ -133,7 +133,7 @@ M.fzf_missing_translations = function(opts)
                 actions.close(prompt_bufnr)
 
                 if num_selections > 1 then
-                for _, entry in ipairs(selections) do
+                    for _, entry in ipairs(selections) do
                         process_field(entry[1])
                     end
                 else

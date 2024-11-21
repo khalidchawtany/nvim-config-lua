@@ -396,6 +396,8 @@ return {
                         ["<C-i>"] = actions.select_horizontal,
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
+                        ["<tab>"] = actions.toggle_selection + actions.move_selection_next,
+                        ["<s-tab>"] = actions.toggle_selection + actions.move_selection_next,
                         ["<c-space>"] = actions.toggle_selection + actions.move_selection_better,
                         ["<C-'>"] = actions.which_key,
                         ["<C-CR>"] = actions.select_default + actions.center,

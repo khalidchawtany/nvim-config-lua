@@ -1,6 +1,7 @@
 local M = {
   "jedrzejboczar/possession.nvim",
   dependencies = {"nvim-lua/plenary.nvim"},
+  event = "VimEnter",
   cmd = {
     "SSave",
     "SLoad",
@@ -34,7 +35,7 @@ M.config = function()
       tmp = true, -- or fun(): boolean
       tmp_name = "tmp",
       on_load = true,
-      on_quit = false
+      on_quit = true
     },
     commands = {
       save = "SSave",

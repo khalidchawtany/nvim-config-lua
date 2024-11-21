@@ -1,12 +1,12 @@
 local M = {}
 
 vim.cmd([[
-  function Test()
+  function! Test()
     %SnipRun
     call feedkeys("\<esc>`.")
   endfunction
 
-  function TestI()
+  function! TestI()
     let b:caret = winsaveview()
     %SnipRun
     call winrestview(b:caret)
@@ -150,6 +150,14 @@ function M.read_file(path)
         file:close()
     end
     return api_key
+end
+
+function M.splitBy(str, byStr)
+    local result = {}
+    for part in string.gmatch(str, "[^" .. byStr .."]+") do
+        table.insert(result, part)
+    end
+    return result
 end
 
 return M
