@@ -305,7 +305,7 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
 
     let path = '/'.join(dirs[:idx + 2], '/')
     return path
-    endf
+  endf
 
 
 
