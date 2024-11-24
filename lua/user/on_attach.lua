@@ -1,3 +1,12 @@
+--  vim.api.nvim_create_autocmd("LspAttach", {
+-- 	callback = function()
+-- 		wk.add({
+-- 			{ "K", vim.lsp.buf.hover, desc = "hover help" },
+-- 			{ "gd", tb.lsp_definitions, desc = "goto definition" },
+-- 	end,
+-- })
+
+
 return {
 
     on_attach = function(client, bufnr)
