@@ -40,12 +40,12 @@ return {
                 trigger = {
                     -- Normal mode maps
                     n = {
-                        ["<leader>rG"] = "open_blank", -- open UI - search pattern = blank
-                        ["<leader>rg"] = "open_cword", -- open UI - search pattern = <cword>
-                        ["<leader>rp"] = "open_paste", -- open UI - search pattern = First line of unnamed register as the search pattern
-                        ["<leader>ra"] = "open_again", -- open UI - search pattern = Previous search pattern
-                        ["<leader>rx"] = "abort", -- close UI / abort searching / abortadding results
-                        ["<leader>rc"] = "print_cmd", -- Print a version of last run rip grep that can be pasted into a shell
+                        ["<leader>rG"] = "open_blank",   -- open UI - search pattern = blank
+                        ["<leader>rg"] = "open_cword",   -- open UI - search pattern = <cword>
+                        ["<leader>rp"] = "open_paste",   -- open UI - search pattern = First line of unnamed register as the search pattern
+                        ["<leader>ra"] = "open_again",   -- open UI - search pattern = Previous search pattern
+                        ["<leader>rx"] = "abort",        -- close UI / abort searching / abortadding results
+                        ["<leader>rc"] = "print_cmd",    -- Print a version of last run rip grep that can be pasted into a shell
                         ["<leader>r?"] = "print_status", -- Print info about the current state of rgflow (mostly useful for deving on rgflow)
                     },
                     -- Visual/select mode maps
@@ -57,16 +57,16 @@ return {
                 ui = {
                     -- Normal mode maps
                     n = {
-                        ["<CR>"] = "start", -- With the ui open, start a search with the current parameters
-                        ["<ESC>"] = "close", -- With the ui open, discard and close the UI window
+                        ["<CR>"] = "start",     -- With the ui open, start a search with the current parameters
+                        ["<ESC>"] = "close",    -- With the ui open, discard and close the UI window
                         ["?"] = "show_rg_help", -- Show the rg help in a floating window, which can be closed with q or <ESC> or the usual <C-W><C-C>
-                        ["<BS>"] = "nop", -- No operation
-                        ["<C-^>"] = "nop", -- No operation
-                        ["<C-6>"] = "nop", -- No operation
+                        ["<BS>"] = "nop",       -- No operation
+                        ["<C-^>"] = "nop",      -- No operation
+                        ["<C-6>"] = "nop",      -- No operation
                     },
                     -- Insert mode maps
                     i = {
-                        ["<CR>"] = "start", -- With the ui open, start a search with the current parameters (from insert mode)
+                        ["<CR>"] = "start",          -- With the ui open, start a search with the current parameters (from insert mode)
                         ["<TAB>"] = "auto_complete", -- start autocomplete if PUM not visible, if visible use own hotkeys to select an option
                         ["<C-N>"] = "auto_complete", -- start autocomplete if PUM not visible, if visible use own hotkeys to select an option
                         ["<C-P>"] = "auto_complete", -- start autocomplete if PUM not visible, if visible use own hotkeys to select an option
@@ -76,18 +76,18 @@ return {
                 quickfix = {
                     -- Normal
                     n = {
-                        ["d"] = "qf_delete", -- QuickFix normal mode delete operator
+                        ["d"] = "qf_delete",       -- QuickFix normal mode delete operator
                         ["dd"] = "qf_delete_line", -- QuickFix delete a line from quickfix
-                        ["<TAB>"] = "qf_mark", -- QuickFix mark a line in the quickfix
+                        ["<TAB>"] = "qf_mark",     -- QuickFix mark a line in the quickfix
                         ["<S-TAB>"] = "qf_unmark", -- QuickFix unmark a line in the quickfix window
-                        ["<BS>"] = "nop", -- No operation
-                        ["<C-^>"] = "nop", -- No operation - Probably don't want to switch to a buffer in the little quickfix window
-                        ["<C-6>"] = "nop", -- No operation
+                        ["<BS>"] = "nop",          -- No operation
+                        ["<C-^>"] = "nop",         -- No operation - Probably don't want to switch to a buffer in the little quickfix window
+                        ["<C-6>"] = "nop",         -- No operation
                     },
                     -- Visual/select mode maps
                     x = {
-                        ["d"] = "qf_delete_visual", -- QuickFix visual mode delete operator
-                        ["<TAB>"] = "qf_mark_visual", -- QuickFix visual mode mark operator
+                        ["d"] = "qf_delete_visual",       -- QuickFix visual mode delete operator
+                        ["<TAB>"] = "qf_mark_visual",     -- QuickFix visual mode mark operator
                         ["<S-TAB>"] = "qf_unmark_visual", -- QuickFix visual mode unmark operator
                     },
                 },
@@ -132,16 +132,16 @@ return {
                 --      RgFlowInputPattern = {link = "Title"}
                 ---- UI
                 -- Recommend not setting a BG so it uses the current lines BG
-                RgFlowHead = nil, -- The header colors for FLAGS / PATTERN / PATH blocks
+                RgFlowHead = nil,     -- The header colors for FLAGS / PATTERN / PATH blocks
                 RgFlowHeadLine = nil, -- The line along the top of the header
                 -- Even though just a background, add the foreground or else when
                 -- appending cant see the insert cursor
-                RgFlowInputBg = nil, -- The Input lines
-                RgFlowInputFlags = nil, -- The flag input line
+                RgFlowInputBg = nil,      -- The Input lines
+                RgFlowInputFlags = nil,   -- The flag input line
                 RgFlowInputPattern = nil, -- The pattern input line
-                RgFlowInputPath = nil, -- The path input line
+                RgFlowInputPath = nil,    -- The path input line
                 ---- Quickfix
-                RgFlowQfPattern = nil, -- The highlighting of the pattern in the quickfix results
+                RgFlowQfPattern = nil,    -- The highlighting of the pattern in the quickfix results
             },
 
             -- ui_top_line_char = "▄",

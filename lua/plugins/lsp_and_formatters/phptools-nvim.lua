@@ -28,7 +28,6 @@ return { -- lazy
                 -- { "foo", "bar", "baz" }, -- Add more custom toggle groups here
             },
         })
-        vim.keymap.set("v", "<leader>lr", ":PhpRefactor<cr>")
 
         vim.api.nvim_create_autocmd({ "FileType" }, {
             pattern = "php",
@@ -36,37 +35,37 @@ return { -- lazy
                 vim.keymap.set(
                     "v",
                     "<leader>cpr",
-                    "<cmd>PhpRefactor<CR>",
-                    { silent = true, buffer = true, desc = "PHP - Import all" }
+                    "<cmd>PhpTools Refactor<CR>",
+                    { silent = true, buffer = true, desc = "PHP - Refactor" }
                 )
                 vim.keymap.set(
                     "n",
                     "<leader>cpm",
-                    "<cmd>PhpMethod<CR>",
-                    { silent = true, buffer = true, desc = "PHP - Class" }
+                    "<cmd>PhpToolds Method<CR>",
+                    { silent = true, buffer = true, desc = "PHP - Method" }
                 )
                 vim.keymap.set(
                     "n",
                     "<leader>cpss",
-                    "<cmd>PhpScripts<CR>",
+                    "<cmd>PhpTools Scripts<CR>",
                     { silent = true, buffer = true, desc = "PHP - Scripts" }
                 )
                 vim.keymap.set(
                     "n",
                     "<leader>cpn",
-                    "<cmd>PhpNamespace<CR>",
+                    "<cmd>PhpTools Namespace<CR>",
                     { silent = true, buffer = true, desc = "PHP - Namespace" }
                 )
                 vim.keymap.set(
                     "n",
                     "<leader>cpg",
-                    "<cmd>PhpGetSet<CR>",
+                    "<cmd>PhpTools GetSet<CR>",
                     { silent = true, buffer = true, desc = "PHP - GetSet" }
                 )
                 vim.keymap.set(
                     "n",
                     "<leader>cpc",
-                    "<cmd>PhpCreate<CR>",
+                    "<cmd>PhpTools Create<CR>",
                     { silent = true, buffer = true, desc = "PHP - Create" }
                 )
             end,
