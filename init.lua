@@ -165,13 +165,8 @@ vim.opt.shadafile = ""
 
 vim.cmd([[
 nnoremap <leader>r<leader>
-\ :silent! %S/vehicle_document/cert_release_approval/g<cr>
-\ :silent! %S/vehicledocument/certreleaseapproval/g<cr>
-\ :silent! %S/vehicleDocument/certReleaseApproval/g<cr>
-\ :silent! %S/inspection_request/certificate/g<cr>
-\ :silent! %s/Vehicle/CertRelease/g<cr>
-\ :silent! %s/vehicle_/certrelease_/gI<cr>
-\ :silent! %s/vehicle/certrelease/gI<cr>
+\ :silent! %S/Transaction/SafeTransaction/g<cr>
+\ :silent! %S/Account/Safe/g<cr>
 ]])
 
 -- \ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{C,c}ert{R,_r,r, R}elease/g<cr>
@@ -179,11 +174,6 @@ nnoremap <leader>r<leader>
 -- \ :silent! %S/vehicleDocument/certreleaseApproval/g<cr>
 -- \ :silent! %S/{V,v}ehicle{s,}_/{R,r}elease{s,}_/g<cr>
 -- \ :silent! %S/customer/client/g<cr>
-
-
-
-
-
 
 -- \ :silent! %S/VehicleCategor{y,ies}/RegisteredGood{,s}/g<cr>
 -- \ :silent! %S/certification/certificate/g<cr>

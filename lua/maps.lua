@@ -1,3 +1,37 @@
+-- toggle % and '<,'> in command line'
+vim.keymap.set("c", "<c-t>",
+    function()
+        local cmd = vim.fn.getcmdline()
+        if cmd:sub(1, 1) == "%" then
+            cmd = "'<,'>" .. cmd:sub(2)
+        elseif cmd:sub(1, 5) == "'<,'>" then
+            cmd = "%" .. cmd:sub(6)
+        end
+        vim.fn.setcmdline(cmd)
+    end, { noremap = true })
+
+-- toggle command execute
+vim.keymap.set("c", "<c-y>",
+    function()
+        local cmd = vim.fn.getcmdline()
+        if cmd:sub(1, 3) == "exe" then
+            local start = cmd:find("[\"']")
+
+            local finish = cmd:reverse():find("[\"']")
+
+            if start and finish then
+                cmd = cmd:sub(start + 1, -finish - 1)
+            end
+
+            cmd = cmd:gsub("\\([\"'])", "%1")
+            vim.fn.setcmdline(cmd)
+        else
+            cmd = cmd:gsub('"', '\\"')
+            cmd = "exe \"" .. cmd .. "\""
+            vim.fn.setcmdline(cmd)
+        end
+    end, { noremap = true })
+
 -- On going to insert mode auto indent
 vim.keymap.set("n", "i", function()
     if #vim.fn.getline(".") == 0 then

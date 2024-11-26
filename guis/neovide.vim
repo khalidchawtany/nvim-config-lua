@@ -100,7 +100,7 @@ lua << EOF
 vim.keymap.set({'n', 'i'}, "<D-=>", function() ResizeGuiFont(1)  end, opts)
 vim.keymap.set({'n', 'i'}, "<D-->", function() ResizeGuiFont(-1) end, opts)
 
-vim.keymap.set({'n'}, "<D-n>", function()
+vim.keymap.set({'n'}, "<leader>nw", function()
 -- vim.system('NVIM_LISTEN_ADDRESS=/tmp/nvimsocket open -a neovide --args --maximized --title-hidden --frame=buttonless', {detach = true})
 vim.system({
     '/Applications/Neovide.app/Contents/MacOS/neovide',

@@ -22,7 +22,7 @@ Hydra({
         },
     },
     mode = { "n" },
-    body = "<C-w>",
+    body = "<leader><C-w>",
     heads = {
         -- focus windows
         { "h",     "<C-w>h" },
