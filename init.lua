@@ -165,8 +165,7 @@ vim.opt.shadafile = ""
 
 vim.cmd([[
 nnoremap <leader>r<leader>
-\ :silent! %S/Transaction/SafeTransaction/g<cr>
-\ :silent! %S/Account/Safe/g<cr>
+\ :silent! %S/Slip/VisaApplication/g<cr>
 ]])
 
 -- \ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{C,c}ert{R,_r,r, R}elease/g<cr>

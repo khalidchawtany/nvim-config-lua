@@ -103,6 +103,13 @@ return {
             desc = "lines",
         },
         {
+            "<D-p><D-t>",
+            function()
+                require("fzf-lua").colorschemes(getOpts())
+            end,
+            desc = "colorschemes",
+        },
+        {
             "<D-p>l",
             function()
                 require("fzf-lua").blines(getOpts())
