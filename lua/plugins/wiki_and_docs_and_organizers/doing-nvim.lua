@@ -45,6 +45,6 @@ return {
             },
         }
         -- example on how to change the winbar highlight
-        vim.api.nvim_set_hl(0, 'WinBar', { link = 'Normal' })
+        vim.api.nvim_set_hl(0, 'WinBar', { link = 'Search' })
     end,
 }

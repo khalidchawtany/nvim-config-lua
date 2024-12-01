@@ -165,6 +165,7 @@ vim.opt.shadafile = ""
 
 vim.cmd([[
 nnoremap <leader>r<leader>
+\ :silent! %S/SlipPayment/VisaFee/g<cr>
 \ :silent! %S/Slip/VisaApplication/g<cr>
 ]])
 

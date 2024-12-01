@@ -13,7 +13,6 @@ let g:gui_fonts = [
       \ 'Fira\ Code:h18',
       \ 'Operator\ Mono\ Lig:h17',
       \ 'Monaco:h17',
-      \ 'Source\ Code\ Pro\ for\ PowerLine:h17',
       \ 'Fura\ Mono\ Nerd\ Font:17'
       \ ]
 
@@ -130,7 +129,7 @@ let $PATH=$PATH.":/Users/juju/local/bin/"
 
 
 let NVIM_QT_RUNTIME_PATH="./Contents/Resources/runtime"
-if $NVIM_LISTEN_ADDRESS == '/tmp/nvimsocket'
+if $IS_NVIM_QT == '1'
 
    source /Users/juju/Development/Applications/neovim-qt/neovim-qt/build/bin/nvim-qt.app/Contents/Resources/runtime/plugin/nvim_gui_shim.vim
   "***************MUST BE LAST LINE*******
