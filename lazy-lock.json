@@ -104,6 +104,7 @@
   "multicursor.nvim": { "branch": "main", "commit": "f454cac9d03ccaf20008f4793f05b159f5547e78" },
   "multiple-cursors.nvim": { "branch": "main", "commit": "2f5e786c43aa9c0fc34b295cfcc9bfbacef8e926" },
   "namespace.nvim": { "branch": "master", "commit": "b13d5dc1da64ac839552e8f7a4f69b486de252b4" },
+  "navigate-note.nvim": { "branch": "main", "commit": "a0276a25216f0e90c601e1d6b3ba2bc302356e82" },
   "neogen": { "branch": "main", "commit": "e3b8f6dca1c67c73ae2817418d39c061fdb65064" },
   "neogit": { "branch": "master", "commit": "dc36aa4b1172189a2e80cbdbd4be2e884e60c09e" },
   "neorg": { "branch": "main", "commit": "c1bade17d313909031703c8587d6841fef457ebb" },
