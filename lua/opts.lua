@@ -14,38 +14,38 @@ set indentkeys+=!0<Tab>
 vim.cmd("hi! link CurSearch Search")
 
 vim.api.nvim_set_hl(
-	0,
-	"Cur",
-	{ bg = "yellow", fg = "#FF30F1", blend = 0, standout = false, reverse = true, nocombine = false }
+    0,
+    "Cur",
+    { bg = "yellow", fg = "#FF30F1", blend = 0, standout = false, reverse = true, nocombine = false }
 )
 vim.go.guicursor =
-	"n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait900-blinkoff250-blinkon250-Cur/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+"n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait900-blinkoff250-blinkon250-Cur/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- let &stc="\ %=%{v:wrap?'':v:relnum}\ ⎥%s%C\ \ \ "
 
 -- disable default plugin
 local disabled_built_ins = {
-	"netrw",
-	"netrwPlugin",
-	"netrwSettings",
-	"netrwFileHandlers",
-	"gzip",
-	"zip",
-	"zipPlugin",
-	"tar",
-	"tarPlugin",
-	"getscript",
-	"getscriptPlugin",
-	"vimball",
-	"vimballPlugin",
-	"2html_plugin",
-	"logipat",
-	"rrhelper",
-	"spellfile_plugin",
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-	vim.g["loaded_" .. plugin] = 1
+    vim.g["loaded_" .. plugin] = 1
 end
 
 setg.editorconfig = false
@@ -54,9 +54,9 @@ setg.editorconfig = false
 setg.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 set.wildignore = { "*.o", "*~", "*.pyc", "*pycache*" } -- Ignore compiled files
 set.wildignorecase = true
-set.wildmode = "full" -- Complete the longest common string,
-set.wildoptions = "pum" -- show wildmenu as normal autocompleting menu
-set.pumblend = 0 -- make pum NOT transparent
+set.wildmode = "full"                                  -- Complete the longest common string,
+set.wildoptions = "pum"                                -- show wildmenu as normal autocompleting menu
+set.pumblend = 0                                       -- make pum NOT transparent
 set.pumheight = 15
 set.wildmenu = true
 set.completeopt = "menuone,noinsert,noselect"
@@ -64,7 +64,7 @@ set.inccommand = "nosplit"
 set.splitkeep = "topline" -- topline, screen, cursor
 
 set.showmode = true
-set.cmdheight = 0 -- Height of the command bar
+set.cmdheight = 0  -- Height of the command bar
 set.laststatus = 3 -- make the status bar global
 set.incsearch = true
 set.showmatch = true
@@ -119,8 +119,18 @@ set.foldtext = ""
 
 -- vim.api.nvim_create_autocmd("LspNotify", {
 -- 	callback = function(args)
--- 		if args.data.method == "textDocument/didOpen" then
--- 			vim.lsp.foldclose("imports", vim.fn.bufwinid(args.buf))
+-- 		-- client.supports_method('textDocument/foldingRange')
+-- 		local bufnr = vim.api.nvim_get_current_buf() -- get buffer number
+-- 		for _, client in pairs(vim.lsp.get_clients()) do -- loop over each client to check notifications
+-- 			if args.data.client_id == client.id then
+-- 				if client.supports_method("textDocument/foldingRange", bufnr) then
+-- 					dd("client_id=" .. args.data.client_id, "client.id=" .. client.id, "client.name=" .. client.name)
+-- 					vim.lsp.foldclose("methods", vim.fn.bufwinid(args.buf))
+-- 					-- if args.data.method == "textDocument/didOpen" then
+-- 					-- 	vim.lsp.foldclose("imports", vim.fn.bufwinid(args.buf))
+-- 					-- end
+-- 				end
+-- 			end
 -- 		end
 -- 	end,
 -- })
@@ -128,8 +138,7 @@ set.foldtext = ""
 vim.opt.fillchars = "fold: "
 vim.wo.foldmethod = "expr"
 vim.opt.foldlevel = 99
-vim.o.foldtext =
-	[[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.o.foldtext = [[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 
 set.belloff = "all"
 
@@ -148,7 +157,7 @@ set.diffopt:append({ "algorithm:patience" })
 -- set.grepprg = 'ag\\ --nogroup\\ --nocolor'
 set.grepprg = "rg --smart-case --vimgrep --block-buffered"
 vim.opt.grepformat = "%f:%l:%c:%m"
-set.formatoptions = "jcroql" -- -=t
+set.formatoptions = "jcroql"       -- -=t
 set.nrformats = "bin,hex,alpha"
 set.backspace = "indent,eol,start" --- Allow backspace in insert mode
 
@@ -177,7 +186,7 @@ set.undoreload = 10000
 set.history = 1000
 
 set.backupskip = "/tmp/*,/private/tmp/*" -- don't back up these
-set.autoread = true -- read files on change
+set.autoread = true                      -- read files on change
 set.fileformats:append({ "mac" })
 -- set.binary = true -- forces noexpandtab
 set.eol = false
@@ -235,11 +244,12 @@ set.showtabline = 1 -- hide tabline
 set.errorbells = false
 set.visualbell = true
 -- set.t_vb = ''
-set.startofline = false -- Dont reset cursor to start of line when moving around
+set.startofline = false                -- Dont reset cursor to start of line when moving around
 
-set.ruler = true -- Show the cursor position
+set.ruler = true                       -- Show the cursor position
 -- set.shortmess = 'lnxTo0FatIc' -- Dont show the intro message when starting Vim and Prevent completion message flickers
-set.shortmess = vim.o.shortmess .. "I" -- Dont show the intro message when starting Vim and Prevent completion message flickers
+set.shortmess = vim.o.shortmess ..
+"I"                                    -- Dont show the intro message when starting Vim and Prevent completion message flickers
 -- set.shortmess = vim.o.shortmess .. "T" -- Truncate other messages in the middle if they are too long
 -- set.shortmess = vim.o.shortmess .. "W" -- don't give "written" or "[w]" when writing a file
 
