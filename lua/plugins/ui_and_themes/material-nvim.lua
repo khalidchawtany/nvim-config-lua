@@ -1,6 +1,6 @@
 return {
     "marko-cerovac/material.nvim",
-    event = "VeryLazy",
+    event = "ColorSchemePre",
 
     -- vim.g.material_style = "deep ocean"
     -- darker

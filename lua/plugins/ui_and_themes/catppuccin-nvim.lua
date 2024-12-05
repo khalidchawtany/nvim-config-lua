@@ -3,7 +3,7 @@ return {
     name = "catppuccin",
 
     event = {
- "VeryLazy",
-        "ColorScheme github*",
+        "VeryLazy",
+        "ColorScheme catppuccin*",
     },
 }

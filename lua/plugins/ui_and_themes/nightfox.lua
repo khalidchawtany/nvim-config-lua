@@ -1,7 +1,10 @@
 return {
     "EdenEast/nightfox.nvim",
-    lazy = true,
-    init = function()
+    event = {
+        "VeryLazy",
+        "ColorScheme nightfox*",
+    },
+    config = function()
         require("nightfox").setup({
             options = {
                 styles = {

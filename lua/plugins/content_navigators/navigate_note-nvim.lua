@@ -20,13 +20,13 @@ return {
     },
 
     opts = {
-        filename = "nav.md", -- The filename of the markdown.
+        filename = ".nav.md", -- The filename of the markdown.
         width = 0.6,   -- The width of the popup window when jumping in the file with <tab>.
         keymaps = {
             nav_mode = {
                 -- Navigation & Jumping
-                next = "<tab>",
-                prev = "<s-tab>",
+                next = "<c-j>",
+                prev = "<c-k>",
                 open = "<cr>",
                 switch_back = "<bs>", -- Switch back to the previous file from `nav.md`.
                 -- Editing

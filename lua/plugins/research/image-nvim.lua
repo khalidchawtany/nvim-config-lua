@@ -1,6 +1,7 @@
 return {
     "3rd/image.nvim",
     cond = os.getenv("VAR_IS_KITTY_TERM") == "true",
+    event = { "BufEnter", "BufWinEnter" },
     config = function()
         _G.only_render_image_at_cursor = false
 

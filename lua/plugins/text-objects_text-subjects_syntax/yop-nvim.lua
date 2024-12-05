@@ -1,6 +1,7 @@
 return {
   "zdcthomas/yop.nvim",
-  init = function()
+  event = "VeryLazy",
+  config = function()
 	  -- sort visual or operator pending lines
     local sort = function(lines, _)
       local utils = require("yop.utils")
