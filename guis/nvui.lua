@@ -1,5 +1,7 @@
 
-  source ~/.config/nvim/ginit.vim
+  vim.cmd.source('/Users/juju/.config/nvim/ginit.vim') 
+
+  vim.cmd[[
   " Configure nvui
   NvuiCmdFontFamily Jetbrains Mono
   NvuiCmdFontSize 25.0
@@ -8,5 +10,4 @@
   NvuiCmdCenterYPos 0.3
   NvuiCmdCenterYPos 0.3
   NvuiCmdPadding 10
-
-  set guifont=Fira\ Code:h25
+  ]]

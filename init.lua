@@ -1,17 +1,16 @@
- if vim.env.PROF then
-  -- example for lazy.nvim
-  -- change this to the correct path for your plugin manager
-  local snacks = vim.fn.stdpath("data") .. "/lazy/snacks.nvim"
-  vim.opt.rtp:append(snacks)
-  require("snacks.profiler").startup({
-    startup = {
-      event = "VimEnter", -- stop profiler on this event. Defaults to `VimEnter`
-      -- event = "UIEnter",
-      -- event = "VeryLazy",
-    },
-  })
+if vim.env.PROF then
+	-- example for lazy.nvim
+	-- change this to the correct path for your plugin manager
+	local snacks = vim.fn.stdpath("data") .. "/lazy/snacks.nvim"
+	vim.opt.rtp:append(snacks)
+	require("snacks.profiler").startup({
+		startup = {
+			event = "VimEnter", -- stop profiler on this event. Defaults to `VimEnter`
+			-- event = "UIEnter",
+			-- event = "VeryLazy",
+		},
+	})
 end
-
 
 vim.deprecate = function() end ---@diagnostic disable-line: duplicate-set-field
 
@@ -157,7 +156,7 @@ vim.cmd([[
 " config for differnt guis
 for gui in ['nvui', 'goneovim', 'neovide']
   if exists('g:' . gui)
-    execute "source ~/.config/nvim/guis/" . gui . ".vim"
+    execute "silent! source ~/.config/nvim/guis/" . gui . ".lua"
   endif
 endfor
 ]])
@@ -181,21 +180,7 @@ nnoremap <leader>r<leader>
 \ :silent! %S/Slip/VisaApplication/g<cr>
 ]])
 
--- \ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{C,c}ert{R,_r,r, R}elease/g<cr>
--- \ :silent! %S/{V,v}ehicle{D,_d,d, D}ocument/{R,r}elease{A,_a,a, A}pproval/g<cr>
--- \ :silent! %S/vehicleDocument/certreleaseApproval/g<cr>
--- \ :silent! %S/{V,v}ehicle{s,}_/{R,r}elease{s,}_/g<cr>
--- \ :silent! %S/customer/client/g<cr>
-
--- \ :silent! %S/VehicleCategor{y,ies}/RegisteredGood{,s}/g<cr>
--- \ :silent! %S/certification/certificate/g<cr>
--- \ :silent! %S/CertificationPartial/CertRelease/g<cr>
--- \ :silent! %S/{V,v}ehicle/{R,r}elease/g<cr>
--- \ :silent! %S/{I,i}nspection{R,_r,r, R}equest/{R,r}eview/g<cr>
--- \ :silent! %S/vehicle/good/g<cr>
--- \ :silent! %S/VehicleCategor{y,ies}/GoodCategor{y,ies}/g<cr>
 vim.cmd([[
 nnoremap <leader>\l <cmd>SLoad tmp<cr>
 nnoremap <leader>\s <cmd>SSave! tmp<cr>
 ]])
-

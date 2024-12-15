@@ -154,6 +154,7 @@ vim.cmd("let $diff_me=0")
 
 set.diffopt:append({ "algorithm:patience" })
 
+set.messagesopt="hit-enter,history:1000,wait:2000"
 -- set.grepprg = 'ag\\ --nogroup\\ --nocolor'
 set.grepprg = "rg --smart-case --vimgrep --block-buffered"
 vim.opt.grepformat = "%f:%l:%c:%m"
