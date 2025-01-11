@@ -4,6 +4,9 @@ end
 
 vim.cmd.source("~/.config/nvim/ginit.vim")
 
+vim.g.neovide_transparency = 1.0
+vim.g.neovide_normal_opacity = 1.0
+
 vim.o.mouse = "a"
 
 vim.g.neovide_input_use_logo = true

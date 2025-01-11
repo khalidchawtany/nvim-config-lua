@@ -184,3 +184,13 @@ vim.cmd([[
 nnoremap <leader>\l <cmd>SLoad tmp<cr>
 nnoremap <leader>\s <cmd>SSave! tmp<cr>
 ]])
+
+vim.keymap.set({ "n" }, "<leader>cq", function()
+	local sources = require("cmp").get_config().sources
+	for i = #sources, 1, -1 do
+		if sources[i].name == "codeium" then
+			table.remove(sources, i)
+		end
+	end
+	require("cmp").setup.buffer({ sources = sources })
+end, { noremap = true, silent = true })
