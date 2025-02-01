@@ -1,7 +1,7 @@
 return {
     "chrisgrieser/nvim-scissors",
     dependencies = "nvim-telescope/telescope.nvim", -- optional
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     keys = {
         {
             "<leader>sse",
