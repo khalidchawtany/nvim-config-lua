@@ -96,6 +96,20 @@ return {
                     opts = { horizontal = true },
                     desc = "Open the entry in a horizontal split",
                 },
+                ["g1"] = {
+                    desc = "Bookmark1",
+                    callback = function()
+                        require("oil").open('~/Projects/PHP/ltcoc/ltcoc/plugins/lox/coc/')
+                    end,
+                    nowait = true,
+                },
+                ["g2"] = {
+                    desc = "Bookmark2",
+                    callback = function()
+                        require("oil").open('~/Projects/PHP/pvoc/pvoc/plugins/lox/coc/')
+                    end,
+                    nowait = true,
+                },
                 ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
                 ["<C-p>"] = "actions.preview",
                 ["<C-c>"] = "actions.close",

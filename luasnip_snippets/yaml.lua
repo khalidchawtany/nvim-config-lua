@@ -89,4 +89,20 @@ cs(
     {}
 )
 
+cs(
+    "brr",
+    fmt(
+        [[
+{}
+]],
+        {
+            f(function(_, _)
+                local time = os.time(os.date("!*t"))
+                return "br_" .. time
+            end),
+        }
+    ),
+    {}
+)
+
 return snippets, autosnippets
