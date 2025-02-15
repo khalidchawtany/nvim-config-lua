@@ -10,14 +10,14 @@ M.locate_all_translations = function(path, pattern)
         if line:sub(-1) == "'" then
             line = line:sub(1, -2)
         end
-        if string.match(line, "$") then  goto continue end
-        if string.match(line, "?") then  goto continue end
+        -- if string.match(line, "$") then  goto continue end
+        -- if string.match(line, "?") then  goto continue end
         -- get unique values only
         if not vim.tbl_contains(list, line) then
             table.insert(list, line)
         end
         table.sort(list)
-        ::continue::
+        -- ::continue::
     end
     return list
 end
@@ -126,7 +126,7 @@ M.fzf_missing_translations = function(opts)
             finder = finders.new_table({
                 results = missing_translations,
             }),
-            -- default_text = "!? !$ ",
+            default_text = "!? !$ ",
             sorter = conf.generic_sorter(opts),
             attach_mappings = function(prompt_bufnr, map)
                 actions.select_default:replace(function()

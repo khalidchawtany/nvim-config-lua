@@ -299,6 +299,9 @@ function MapProjectKeys()
         if path:new(pwd .. os_sep .. "plugins" .. os_sep .. "khalid"):exists() then
             developer = "khalid"
         end
+        if path:new(pwd .. os_sep .. "plugins" .. os_sep .. "lox"):exists() then
+            developer = "lox"
+        end
     end
 
     for _, i in pairs(project_maps) do

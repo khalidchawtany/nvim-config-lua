@@ -2,8 +2,9 @@ return {
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
-	---@type snacks.Config
+
 	keys = {
+
 		{
 			"<localleader>.",
 			function()
@@ -18,12 +19,224 @@ return {
 			end,
 			desc = "Select Scratch Buffer",
 		},
+
+		{
+			"<C-;>prs",
+			function()
+				require("snacks").picker.resume({ source = "smart" })
+			end,
+			desc = "Smart Picker Resume",
+		},
+
+		{
+			"<C-;>ps",
+			function()
+				require("snacks").picker.pick({ source = "smart" })
+			end,
+			desc = "Smart Picker",
+		},
+
+		{
+			"<C-;>pp",
+			function()
+				require("snacks").picker.pick({ source = "files" })
+			end,
+			desc = "Files Picker",
+		},
+
+		{
+			"<C-;>prp",
+			function()
+				require("snacks").picker.resume({ source = "smart" })
+			end,
+			desc = "Files Picker Resume",
+		},
+		{
+			"<C-;>po",
+			function()
+				require("snacks").picker.pick({ source = "buffers" })
+			end,
+			desc = "Buffer Picker",
+		},
+		{
+			"<C-;>p<cr>",
+			function()
+				require("snacks").picker.pick({ source = "commands" })
+			end,
+			desc = "Commands Picker",
+		},
+
+		{
+			"<C-;>pu",
+			function()
+				require("snacks").picker.pick({ source = "undo" })
+			end,
+			desc = "Undo Picker",
+		},
+
+		{
+			"-s",
+			function()
+				require("snacks").picker.explorer()
+			end,
+			desc = "Snacks Explorer",
+		},
+
+		{
+			"<C-;>pj",
+			function()
+				require("snacks").picker.pick({ source = "grep" })
+			end,
+			desc = "Grep Picker",
+		},
+
+		{
+			"<C-;>gb",
+			function()
+				require("snacks").picker.git_branches()
+			end,
+			desc = "Git Branches Picker",
+		},
+
+		{
+			"<leader>un",
+			function()
+				require("snacks").notifier.hide()
+			end,
+			desc = "Dismiss All Notifications",
+		},
+
+		{
+			"<leader>uu",
+			function()
+				require("snacks").notifier.show_history()
+			end,
+			desc = "Show All Notifications",
+		},
+		{
+			"<leader>bd",
+			function()
+				require("snacks").bufdelete()
+			end,
+			desc = "Delete Buffer",
+		},
+		{
+			"<leader>gg",
+			function()
+				require("snacks").lazygit()
+			end,
+			desc = "Lazygit",
+		},
+		{
+			"<leader>gb",
+			function()
+				require("snacks").git.blame_line()
+			end,
+			desc = "Git Blame Line",
+		},
+		{
+			"<leader>gB",
+			function()
+				require("snacks").gitbrowse()
+			end,
+			desc = "Git Browse",
+		},
+		{
+			"<leader>gf",
+			function()
+				require("snacks").lazygit.log_file()
+			end,
+			desc = "Lazygit Current File History",
+		},
+		{
+			"<leader>gll",
+			function()
+				require("snacks").lazygit.log()
+			end,
+			desc = "Lazygit Log (cwd)",
+		},
+		{
+			"<leader>cR",
+			function()
+				require("snacks").rename()
+			end,
+			desc = "Rename File",
+		},
+		{
+			"<c-/>",
+			function()
+				-- require("snacks").terminal()
+				require("snacks").terminal()
+			end,
+			desc = "Toggle Terminal",
+		},
+		{
+			"<leader>pls",
+			function()
+				-- require("snacks").terminal()
+				require("snacks").terminal("lazysql mysql://root:root@localhost")
+			end,
+			desc = "which_key_ignore",
+		},
+		{
+			"]]",
+			function()
+				require("snacks").words.jump(vim.v.count1)
+			end,
+			desc = "Next Reference",
+		},
+		{
+			"[[",
+			function()
+				require("snacks").words.jump(-vim.v.count1)
+			end,
+			desc = "Prev Reference",
+		},
+		{
+			"<leader>N",
+			desc = "Neovim News",
+			function()
+				require("snacks").win({
+					file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+					width = 0.9,
+					height = 0.9,
+					wo = {
+						spell = false,
+						wrap = false,
+						signcolumn = "yes",
+						statuscolumn = " ",
+						conceallevel = 3,
+					},
+				})
+			end,
+		},
 	},
+	---@type snacks.Config
 	opts = {
 		init = {
 			-- your init configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
+		},
+
+		picker = {
+			win = {
+				-- input window
+				input = {
+					keys = {
+
+						-- ["<C-a>"] = { "<c-a>", mode = { "i" }, expr = false, desc = "go to start" },
+						-- ["<c-a>"] = {
+						-- 	function()
+						-- 		vim.api.nvim_feedkeys('0', 'n', false)
+						--
+						-- 	end,
+						-- 	mode = { "n", "i" },
+						-- },
+						["<c-space>"] = { "select_all", mode = { "n", "i" } },
+					},
+				},
+			},
 		},
 		lazygit = {
 			-- your lazygit configuration comes here
@@ -86,118 +299,6 @@ return {
 					keys = { q = "close" },
 				},
 			},
-		},
-	},
-	keys = {
-
-		{
-			"<leader>un",
-			function()
-				require("snacks").notifier.hide()
-			end,
-			desc = "Dismiss All Notifications",
-		},
-		{
-			"<leader>uu",
-			function()
-				require("snacks").notifier.show_history()
-			end,
-			desc = "Show All Notifications",
-		},
-		{
-			"<leader>bd",
-			function()
-				require("snacks").bufdelete()
-			end,
-			desc = "Delete Buffer",
-		},
-		{
-			"<leader>gg",
-			function()
-				require("snacks").lazygit()
-			end,
-			desc = "Lazygit",
-		},
-		{
-			"<leader>gb",
-			function()
-				require("snacks").git.blame_line()
-			end,
-			desc = "Git Blame Line",
-		},
-		{
-			"<leader>gB",
-			function()
-				require("snacks").gitbrowse()
-			end,
-			desc = "Git Browse",
-		},
-		{
-			"<leader>gf",
-			function()
-				require("snacks").lazygit.log_file()
-			end,
-			desc = "Lazygit Current File History",
-		},
-		{
-			"<leader>gll",
-			function()
-				require("snacks").lazygit.log()
-			end,
-			desc = "Lazygit Log (cwd)",
-		},
-		{
-			"<leader>cR",
-			function()
-				require("snacks").rename()
-			end,
-			desc = "Rename File",
-		},
-		{
-			"<c-/>",
-			function()
-				require("snacks").terminal()
-			end,
-			desc = "Toggle Terminal",
-		},
-		{
-			"<c-_>",
-			function()
-				require("snacks").terminal()
-			end,
-			desc = "which_key_ignore",
-		},
-		{
-			"]]",
-			function()
-				require("snacks").words.jump(vim.v.count1)
-			end,
-			desc = "Next Reference",
-		},
-		{
-			"[[",
-			function()
-				require("snacks").words.jump(-vim.v.count1)
-			end,
-			desc = "Prev Reference",
-		},
-		{
-			"<leader>N",
-			desc = "Neovim News",
-			function()
-				require("snacks").win({
-					file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-					width = 0.9,
-					height = 0.9,
-					wo = {
-						spell = false,
-						wrap = false,
-						signcolumn = "yes",
-						statuscolumn = " ",
-						conceallevel = 3,
-					},
-				})
-			end,
 		},
 	},
 	init = function()
