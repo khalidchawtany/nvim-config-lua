@@ -1,267 +1,298 @@
 local path = require("plenary.path")
 local os_sep = path.path.sep
 
-vim.keymap.set("n", "<leader>l;", require('user.missing_locale_finder').fzf_missing_translations)
+vim.keymap.set("n", "<leader>l;", require("user.missing_locale_finder").fzf_missing_translations)
 
 _G.APPLIED_PROJECT_MAPS = nil
 
 _G.PROJECTS_MAPS = {
     october = {
         {
-            desciption = "M-Lang (OCT)",
+            description = "M-Lang (OCT)",
             keys = "<leader>ll",
             paths = { { "plugins" } },
             prompt = "lang",
             fd_opts = { "--full-path", "-g", "**/lox/**/lang/**/*.php" },
         },
         {
-            desciption = "M-Yaml (OCT)",
+            description = "M-Yaml (OCT)",
             keys = "<leader>lyy",
             paths = { { "plugins" } },
             prompt = "yaml",
             fd_opts = { "--full-path", "-g", "**/lox/**/*.yaml" },
         },
         {
-            desciption = "M-Yaml - Controller (OCT)",
+            description = "M-Yaml - Controller (OCT)",
             keys = "<leader>lyc",
             paths = { { "plugins" } },
             prompt = "yaml",
             fd_opts = { "--full-path", "-g", "**/lox/**/controllers/*/*.yaml" },
         },
         {
-            desciption = "M-Yaml - Models (OCT)",
+            description = "M-Yaml - Models (OCT)",
             keys = "<leader>lya",
             paths = { { "plugins" } },
             prompt = "yaml",
             fd_opts = { "--full-path", "-g", "**/lox/**/models/*/*.yaml" },
         },
+
         {
-            desciption = "M-Migrations (OCT)",
+            description = "M-Routes (OCT)",
+            keys = "<leader>lw",
+            paths = { { "plugins" } },
+            prompt = "routes",
+            fd_opts = { "--full-path", "-g", "**/lox/**/routes/*"},
+        },
+
+        {
+            description = "M-Classes (OCT)",
+            keys = "<leader>ls",
+            paths = { { "plugins" } },
+            prompt = "classes",
+            fd_opts = { "--full-path", "-g", "**/lox/**/classes/**"},
+        },
+        {
+            description = "M-Migrations (OCT)",
             keys = "<leader>lm",
             paths = { { "plugins" } },
             prompt = "migrations",
             fd_opts = { "--full-path", "-g", "**/lox/**/updates/*" },
         },
         {
-            desciption = "M-Componenets (OCT)",
+            description = "M-Factories (OCT)",
+            keys = "<leader>lf",
+            paths = { { "plugins" } },
+            prompt = "factories",
+            fd_opts = { "--full-path", "-g", "**/lox/**/classes/factories/*" },
+        },
+
+        {
+            description = "M-Fetchers (OCT)",
+            keys = "<leader>lF",
+            paths = { { "plugins" } },
+            prompt = "fetchers",
+            fd_opts = { "--full-path", "-g", "**/lox/**/classes/fetchers/*" },
+        },
+        {
+            description = "M-Componenets (OCT)",
             keys = "<leader>loo",
             paths = { { "plugins" } },
             prompt = "components",
             fd_opts = { "--full-path", "-g", "**/lox/**/components/*.php" },
         },
         {
-            desciption = "M-Componenets (OCT)",
+            description = "M-Componenets (OCT)",
             keys = "<leader>lo",
             paths = { { "plugins" } },
             prompt = "components",
             fd_opts = { "--full-path", "-g", "**/lox/**/components/**" },
         },
         {
-            desciption = "M-Pages (OCT)",
+            description = "M-Pages (OCT)",
             keys = "<leader>lp",
             paths = { { "themes" } },
             prompt = "pages",
             fd_opts = { "--full-path", "-g", "**/pages/**" },
         },
         {
-            desciption = "Controllers PHP (OCT)",
+            description = "Controllers PHP (OCT)",
             keys = "<leader>lC",
             paths = { { "plugins" } },
             prompt = "controllers",
             fd_opts = { "--full-path", "-g", "**/controllers/*.php" },
         },
         {
-            desciption = "M-Controllers PHP (OCT)",
+            description = "M-Controllers PHP (OCT)",
             keys = "<leader>lc",
             paths = { { "plugins" } },
             prompt = "controllers",
             fd_opts = { "--full-path", "-g", "**/lox/**/controllers/*.php" },
         },
         {
-            desciption = "Controllers (OCT)",
+            description = "Controllers (OCT)",
             keys = "<leader>lC",
             paths = { { "plugins" } },
             prompt = "controllers",
             fd_opts = { "--full-path", "-g", "**/controllers/**" },
         },
         {
-            desciption = "M-Controllers (OCT)",
+            description = "M-Controllers (OCT)",
             keys = "<leader>lk",
             paths = { { "plugins" } },
             prompt = "controllers",
             fd_opts = { "--full-path", "-g", "**/lox/**/controllers/**" },
         },
         {
-            desciption = "M-Classes (OCT)",
+            description = "M-Classes (OCT)",
             keys = "<leader>lu",
             paths = { { "plugins" } },
             prompt = "Classes (Util)",
             fd_opts = { "--full-path", "-g", "**/lox/**/classes/**" },
         },
         {
-            desciption = "M-Models (OCT)",
+            description = "M-Models (OCT)",
             keys = "<leader>la",
             paths = { { "plugins" } },
             prompt = "models",
             fd_opts = { "--full-path", "-g", "**/lox/**/models/*.php" },
         },
         {
-            desciption = "M-Models (OCT)",
+            description = "M-Models (OCT)",
             keys = "<leader>ln",
             paths = { { "plugins" } },
             prompt = "models",
             fd_opts = { "--full-path", "-g", "**/lox/**/models/*/*" },
         },
         {
-            desciption = "Models (OCT)",
+            description = "Models (OCT)",
             keys = "<leader>lA",
             paths = { { "plugins" } },
             prompt = "models",
             fd_opts = { "--full-path", "-g", "**/models/*.php" },
         },
         {
-            desciption = "lox (OCT)",
+            description = "lox (OCT)",
             keys = "<leader>l<leader>",
             paths = { { "plugins" } },
             prompt = "all",
             fd_opts = { "--full-path", "-g", "**/lox/**/*" },
         },
         {
-            desciption = "Themes (IGN)",
+            description = "Themes (IGN)",
             keys = "<leader>lt",
             paths = { { "themes" } },
         },
     },
     laravel = {
         {
-            desciption = "Components (LRVL-JS)",
+            description = "Components (LRVL-JS)",
             keys = "<leader>ljc",
             paths = { { "resources", "js", "components" } },
         },
         {
-            desciption = "Pages (LRVL-JS)",
+            description = "Pages (LRVL-JS)",
             keys = "<leader>ljp",
             paths = { { "resources", "js", "pages" } },
         },
         {
-            desciption = "Layout (LRVL-JS)",
+            description = "Layout (LRVL-JS)",
             keys = "<leader>ljl",
             paths = { { "resources", "js", "layouts" } },
         },
         {
-            desciption = "Types (LRVL-JS)",
+            description = "Types (LRVL-JS)",
             keys = "<leader>ljl",
             paths = { { "resources", "js", "types" } },
         },
         {
-            desciption = "JS (LRVL-JS)",
+            description = "JS (LRVL-JS)",
             keys = "<leader>ljj",
             paths = { { "resources", "js" } },
         },
         {
-            desciption = "Controllers (LRVL)",
+            description = "Controllers (LRVL)",
             keys = "<leader>lc",
             paths = { { "app", "Http", "Controllers" } },
         },
         {
-            desciption = "Models (LRVL)",
+            description = "Models (LRVL)",
             keys = "<leader>la",
             paths = { { "app" }, { "app", "Models" } },
             fd_opts = { "-d", "1", "-g", "*.php" },
         },
         {
-            desciption = "Factories (LRVL)",
+            description = "Factories (LRVL)",
             keys = "<leader>lfa",
             paths = { { "database", "factories" } },
             fd_opts = { "-d", "1", "-g", "*.php" },
         },
 
         {
-            desciption = "Filament Resources (LRVL)",
+            description = "Filament Resources (LRVL)",
             keys = "<leader>lfr",
             paths = { { "app", "Filament" } },
             fd_opts = { "--full-path", "-g", "**/**/*" },
         },
 
         {
-            desciption = "Filament Providers (LRVL)",
+            description = "Filament Providers (LRVL)",
             keys = "<leader>lfp",
             paths = { { "app", "Providers", "Filament" } },
             fd_opts = { "-d", "1", "-g", "*.php" },
         },
         {
-            desciption = "Seeders (LRVL)",
+            description = "Seeders (LRVL)",
             keys = "<leader>ls",
             paths = { { "database", "seeders" } },
             fd_opts = { "-d", "1", "-g", "*.php" },
         },
         {
-            desciption = "Traits (LRVL)",
+            description = "Traits (LRVL)",
             keys = "<leader>lt",
             paths = { { "app", "Traits" } },
             fd_opts = { "-d", "1", "-g", "*.php" },
         },
         {
-            desciption = "App (LRVL)",
+            description = "App (LRVL)",
             keys = "<leader>lA",
             paths = { { "app" } },
             fd_opts = { "-g", "*.php" },
         },
         {
-            desciption = "Migrations (LRVL)",
+            description = "Migrations (LRVL)",
             keys = "<leader>lm",
             paths = { { "database", "migrations" } },
             fd_opts = { "-d", "1", "-g", "*.php" },
         },
         {
-            desciption = "Views (LRVL)",
+            description = "Views (LRVL)",
             keys = "<leader>lv",
             paths = { { "resources", "views" } },
         },
         {
-            desciption = "Breads (LRVL)",
+            description = "Breads (LRVL)",
             keys = "<leader>lb",
             paths = { { "resources", "bread" } },
         },
         {
-            desciption = "Routes (LRVL)",
+            description = "Routes (LRVL)",
             keys = "<leader>lw",
             paths = { { "routes" } },
         },
         {
-            desciption = "Requests (LRVL)",
+            description = "Requests (LRVL)",
             keys = "<leader>lr",
             paths = { { "app", "Http", "Requests" } },
         },
     },
     ignite = {
         {
-            desciption = "Components (IGN)",
+            description = "Components (IGN)",
             keys = "<leader>lc",
             paths = { { "app", "components" } },
         },
         {
-            desciption = "Screens (IGN)",
+            description = "Screens (IGN)",
             keys = "<leader>ls",
             paths = { { "app", "screens" } },
         },
         {
-            desciption = "Models (IGN)",
+            description = "Models (IGN)",
             keys = "<leader>lm",
             paths = { { "app", "models" } },
         },
         {
-            desciption = "API (IGN)",
+            description = "API (IGN)",
             keys = "<leader>la",
             paths = { { "app", "services", "api" } },
         },
         {
-            desciption = "DB (IGN)",
+            description = "DB (IGN)",
             keys = "<leader>ld",
             paths = { { "app", "services", "database" } },
         },
         {
-            desciption = "Navigator (IGN)",
+            description = "Navigator (IGN)",
             keys = "<leader>ln",
             paths = { { "app", "navigators" } },
         },
@@ -326,8 +357,8 @@ function MapProjectKeys()
             opts["search_dirs"] = i_paths
         end
 
-        if i["desciption"] ~= nil then
-            opts["prompt_title"] = i.desciption
+        if i["description"] ~= nil then
+            opts["prompt_title"] = i.description
         end
 
         if i["fd_opts"] ~= nil then
@@ -342,6 +373,23 @@ function MapProjectKeys()
         -- map the entry
         vim.keymap.set("n", i.keys, function()
             require("telescope.builtin").find_files(table.copy(opts))
+
+            -- require("snacks.picker").pick({
+            --     items = {
+            --         { name = "1", value = "1", text = "1", display_value = "1" },
+            --         { name = "2", value = "2", text = "2", display_value = "2" },
+            --     },
+            --     format = function(item)
+            --         local ret = {}
+            --         ret[#ret + 1] = { ("%-" .. 3 .. "s"):format(item.name), "SnacksPickerLabel" }
+            --         ret[#ret + 1] = { item.text, "SnacksPickerComment" }
+            --         return ret
+            --     end,
+            --     confirm = function(picker, item)
+            --         picker:close()
+            --         vim.cmd(("WorkspacesOpen %s"):format(item.name))
+            --     end,
+            -- })
         end)
     end
 end

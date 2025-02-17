@@ -186,18 +186,20 @@ nnoremap <leader>\s <cmd>SSave! tmp<cr>
 ]])
 
 vim.keymap.set({ "n" }, "g`", function()
-    vim.cmd.wincmd('o')
-    vim.cmd.edit("~/Projects/PHP/ltcoc/ltcoc/plugins/lox/coc/Plugin.php")
-    vim.cmd.vsplit()
-    vim.cmd.edit("~/Projects/PHP/pvoc/pvoc/plugins/lox/coc/Plugin.php")
-end, { noremap = true, silent = true, nowait=true })
+	vim.cmd.wincmd("o")
+	vim.cmd.edit("~/Projects/PHP/ltcoc/ltcoc/plugins/lox/coc/Plugin.php")
+	vim.cmd.vsplit()
+	vim.cmd.edit("~/Projects/PHP/pvoc/pvoc/plugins/lox/coc/Plugin.php")
+end, { noremap = true, silent = true, nowait = true })
 
 vim.keymap.set({ "n" }, "<leader>cq", function()
 	local sources = require("cmp").get_config().sources
 	for i = #sources, 1, -1 do
-		if sources[i].name == "codeium" or sources[i].name == "copilot"  then
+		if sources[i].name == "codeium" or sources[i].name == "copilot" then
 			table.remove(sources, i)
 		end
 	end
 	require("cmp").setup.buffer({ sources = sources })
 end, { noremap = true, silent = true })
+
+-- '<,'>s/\(\w\),$/\1(),
