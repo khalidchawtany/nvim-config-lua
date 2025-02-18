@@ -176,8 +176,45 @@ vim.opt.shadafile = ""
 
 vim.cmd([[
 nnoremap <leader>r<leader>
-\ :silent! %S/SlipPayment/VisaFee/g<cr>
-\ :silent! %S/Slip/VisaApplication/g<cr>
+\ :silent! g/Date/s/'data'/fake()->date()/g<cr>
+\ :silent! g/No./s/'data'/fake()->regexify('[A-Za-z0-9]{50}')/g<cr>
+\ :silent! g/Number/s/'data'/fake()->regexify('[A-Za-z0-9]{50}')/g<cr>
+\ :silent! g/Name/s/'data'/fake()->company()/g<cr>
+\ :silent! g/Address/s/'data'/fake()->address()/g<cr>
+\ :silent! g/Office/s/'data'/fake()->company()/g<cr>
+\ :silent! g/Country/s/'data'/fake()->country()/g<cr>
+\ :silent! g/City/s/'data'/fake()->city()/g<cr>
+\ :silent! g/Email/s/'data'/fake()->email()/g<cr>
+\ :silent! g/Place/s/'data'/fake()->address()/g<cr>
+\ :silent! g/Shipment Mode/s/'data'/fake()->randomElement(['Sea', 'Land', 'Air'])/g<cr>
+\ :silent! g/Zip/s/'data'/fake()->regexify('[A-Za-z0-9]{50}')/g<cr>
+\ :silent! g/Port/s/'data'/fake()->text()/g<cr>
+\ :silent! g/Currency/s/'data'/'USD'/g<cr>
+\ :silent! g/Value/s/'data'/fake()->randomFloat(2, 100, 10000)/g<cr>
+\ :silent! g/Weight/s/'data'/fake()->randomFloat(2, 100, 10000)/g<cr>
+\ :silent! g/Partner/s/'data'/'TIC'/g<cr>
+\ :silent! g/Exchange Rate/s/'data'/fake()->randomFloat(2, 100, 10000)/g<cr>
+\ :silent! g/PIN/s/'data'/fake()->regexify('[A-Za-z0-9]{50}')/g<cr>
+\ :silent! g/Pin/s/'data'/fake()->regexify('[A-Za-z0-9]{50}')/g<cr>
+\ :silent! g/Y\/N/s/'data'/fake()->randomElement(['Yes', 'No'])/g<cr>
+\ :silent! g/Remark/s/'data'/fake()->sentence()/g<cr>
+\ :silent! g/Categorization/s/'data'/fake()->word()/g<cr>
+\ :silent! g/HSCode/s/'data'/fake()->regexify('[A-Za-z0-9]{50}')/g<cr>
+\ :silent! g/Quantity/s/'data'/fake()->randomFloat(2, 100, 10000)/g<cr>
+\ :silent! g/VIN/s/'data'/fake()->regexify('[A-Za-z0-9]{15}')/g<cr>
+\ :silent! g/ICS/s/'data'/fake()->sentence()/g<cr>
+\ :silent! g/Unit of Measure/s/'data'/fake()->randomElement(['kg', 'ton'])/g<cr>
+\ :silent! g/Description/s/'data'/fake()->sentence()/g<cr>
+\ :silent! g/Standards Reference/s/'data'/fake()->regexify('[A-Za-z0-9]{15}')/g<cr>
+\ :silent! g/License Reference/s/'data'/fake()->regexify('[A-Za-z0-9]{15}')/g<cr>
+\ :silent! g/Line Registration/s/'data'/fake()->regexify('[A-Za-z0-9]{15}')/g<cr>
+\ :silent! g/Center/s/'data'/fake()->company()/g<cr>
+\ :silent! g/Make/s/'data'/fake()->randomElement(['Toyota', 'BMW', 'Nissan'])/g<cr>
+\ :silent! g/Model/s/'data'/'Model ' . fake()->regexify('[A-Za-z0-9]{5}')/g<cr>
+\ :silent! g/capacity/s/'data'/fake()->randomNumber(2, true)/g<cr>
+\ :silent! g/fee/s/'data'/fake()->randomFloat(2, 100, 10000)/g<cr>
+\ :silent! g/Year/s/'data'/fake()->year()/g<cr>
+\ :silent! g/Mileage/s/'data'/fake()->word()/g<cr>
 ]])
 
 vim.cmd([[

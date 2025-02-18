@@ -1,7 +1,8 @@
 local M = {
   "zbirenbaum/copilot.lua",
-  cmd = {"Copilot"}
-  -- event = "VimEnter"
+  -- cmd = {"Copilot"},
+  event = "VeryLazy",
+
 }
 
 M.config = function()
