@@ -19,7 +19,7 @@ return {
                 keymaps = {
                     init_selection = "+", -- set to `false` to disable one of the mappings
                     node_incremental = "+",
-                    scope_incremental = "0",
+                    scope_incremental = "g=",
                     node_decremental = "-",
                 },
             },

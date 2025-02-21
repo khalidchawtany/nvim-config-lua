@@ -5,7 +5,13 @@ return {
 		"rafamadriz/friendly-snippets",
 		"mikavilpas/blink-ripgrep.nvim",
 		"fang2hou/blink-copilot",
-		{ "saghen/blink.compat", opts = { enable_events = true } },
+		{
+			"saghen/blink.compat",
+			opts = {
+				enable_events = true,
+				impersonate_nvim_cmp = true,
+			},
+		},
 
 		{
 			"buschco/nvim-cmp-ts-tag-close",
@@ -47,6 +53,7 @@ return {
 
 			-- disable a keymap from the preset
 			-- ["<C-e>"] = {},
+			-- ["u"] = {},
 
 			-- ["<Cr>"] = {},
 			["<CR>"] = { "accept", "fallback" },
@@ -64,7 +71,7 @@ return {
 			},
 			["<C-l>"] = {
 				function(cmp)
-					cmp.show({ providers = { "copilot", "codeium" } })
+					cmp.show({ providers = { "copilot", "codeium", "codecompanion" } })
 				end,
 			},
 
@@ -112,6 +119,7 @@ return {
 		},
 		signature = { enabled = true },
 		completion = {
+			-- accept = { dot_repeat = false },
 
 			menu = {
 				-- Don't show completion menu automatically in cmdline mode
@@ -132,7 +140,7 @@ return {
 				auto_show = true,
 				auto_show_delay_ms = 500,
 			},
-			ghost_text = { enabled = true },
+			ghost_text = { enabled = false },
 			list = {
 				-- Change selection type per mode
 				selection = {
@@ -166,6 +174,8 @@ return {
 				"codeium",
 				"buffer",
 				"ripgrep",
+                "codecompanion",
+
 			},
 			per_filetype = {
 				sql = { "snippets", "dadbod", "buffer" },
@@ -233,6 +243,12 @@ return {
 					score_offset = 500, -- Boost/penalize the score of the items
 					override = nil, -- Override the source's functions
 				},
+
+                codecompanion = {
+                    name = "CodeCompanion",
+                    module = "codecompanion.providers.completion.blink",
+					score_offset = 500,
+                },
 
 				copilot = {
 					name = "copilot",

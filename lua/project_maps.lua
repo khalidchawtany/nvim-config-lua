@@ -333,6 +333,7 @@ function snackItTemp(opts)
 		cmd = "fd",
 		args = args,
 		paths = opts.search_dirs,
+        -- cwd = opts.cwd,
 	})
 end
 
@@ -467,8 +468,15 @@ function MapProjectKeys()
 		vim.keymap.set("n", i.keys, function()
 			-- dump(opts)
 			-- snackIt(opts)
-			-- snackItTemp(opts)
-			require("telescope.builtin").find_files(table.copy(opts))
+			snackItTemp(opts)
+
+			-- {
+			--   cwd = "/Users/juju/Projects/PHP/pvoc/pvoc/plugins",
+			--   find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--full-path", "-g", "**/lox/**/lang/**/*.php" },
+			--   prompt_title = "M-Lang (OCT)"
+			-- }
+
+			-- require("telescope.builtin").find_files(table.copy(opts))
 		end)
 	end
 end
