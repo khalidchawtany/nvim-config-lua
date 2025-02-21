@@ -1,7 +1,7 @@
 return {
     "quarto-dev/quarto-nvim",
     dependencies = {
-        "hrsh7th/nvim-cmp",
+        -- "hrsh7th/nvim-cmp",
         "neovim/nvim-lspconfig",
         "nvim-treesitter/nvim-treesitter",
         "jmbuhr/otter.nvim",
