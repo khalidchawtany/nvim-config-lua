@@ -26,7 +26,26 @@ return {
 			},
 			cmd = "Codeium",
 			build = ":Codeium Auth",
-			opts = { virtual_text = { enabled = true } },
+			opts = {
+				virtual_text = {
+					enabled = true,
+					map_keys = true,
+					key_bindings = {
+						-- Accept the current completion.
+						accept = "<c-\\>",
+						-- Accept the next word.
+						accept_word = false,
+						-- Accept the next line.
+						accept_line = false,
+						-- Clear the virtual text.
+						clear = false,
+						-- Cycle to the next completion.
+						next = "<M-]>",
+						-- Cycle to the previous completion.
+						prev = "<M-[>",
+					},
+				},
+			},
 		},
 	},
 
@@ -174,8 +193,7 @@ return {
 				"codeium",
 				"buffer",
 				"ripgrep",
-                "codecompanion",
-
+				"codecompanion",
 			},
 			per_filetype = {
 				sql = { "snippets", "dadbod", "buffer" },
@@ -244,11 +262,11 @@ return {
 					override = nil, -- Override the source's functions
 				},
 
-                codecompanion = {
-                    name = "CodeCompanion",
-                    module = "codecompanion.providers.completion.blink",
+				codecompanion = {
+					name = "CodeCompanion",
+					module = "codecompanion.providers.completion.blink",
 					score_offset = 500,
-                },
+				},
 
 				copilot = {
 					name = "copilot",
