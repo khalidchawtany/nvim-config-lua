@@ -1,21 +1,23 @@
+vim.api.nvim_create_user_command("Fzel", function()
+	require("user.fze").fze()
+end, {})
 
 vim.api.nvim_create_user_command("DiffKO", function()
-    -- vim.cmd.wincmd{args={'v'}}
-    -- vim.cmd.wincmd{args={'='}}
-    -- vim.cmd.lcd(vim.fn.getreg('+'))
-    -- vim.cmd.lcd("/Users/juju/Projects/PHP/orion")
-    vim.cmd.tabnew()
-    vim.cmd.edit("/Users/juju/Projects/PHP/knights/" .. vim.fn.getreg('+'))
-    vim.cmd.vsplit("/Users/juju/Projects/PHP/orion/" .. vim.fn.getreg('+'))
-    vim.cmd.diffthis()
-    vim.cmd.wincmd{args={'w'}}
-    vim.cmd.diffthis()
-
-end,{})
+	-- vim.cmd.wincmd{args={'v'}}
+	-- vim.cmd.wincmd{args={'='}}
+	-- vim.cmd.lcd(vim.fn.getreg('+'))
+	-- vim.cmd.lcd("/Users/juju/Projects/PHP/orion")
+	vim.cmd.tabnew()
+	vim.cmd.edit("/Users/juju/Projects/PHP/knights/" .. vim.fn.getreg("+"))
+	vim.cmd.vsplit("/Users/juju/Projects/PHP/orion/" .. vim.fn.getreg("+"))
+	vim.cmd.diffthis()
+	vim.cmd.wincmd({ args = { "w" } })
+	vim.cmd.diffthis()
+end, {})
 
 vim.api.nvim_create_user_command("ClearSwaps", function()
-	os.execute('rm -fr /Users/juju/.local/share/nvim/cache/swaps')
-end,{})
+	os.execute("rm -fr /Users/juju/.local/share/nvim/cache/swaps")
+end, {})
 
 local function can_autofix(client)
 	return client.config.settings.autoFixOnSave or false
@@ -27,7 +29,7 @@ vim.api.nvim_create_user_command("EslintFixAll", function()
 	if #can_autofix_clients > 0 then
 		vim.lsp.buf.formatting_seq_sync(nil, 2000)
 	end
-end,{})
+end, {})
 
 vim.api.nvim_create_user_command("DiffOrig", function()
 	-- Get start buffer
