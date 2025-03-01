@@ -135,7 +135,7 @@ M.fze = function()
 			["--highlight-line"] = true, -- fzf >= v0.53
 		},
 		actions = {
-			["ctrl-x"] = function(selected, o)
+			["default"] = function(selected, o)
 				local fzf_path = require("fzf-lua.path")
 
 				local paths = {}
@@ -171,5 +171,6 @@ M.fze = function()
 		},
 	})
 end
+M.fze()
 
 return M

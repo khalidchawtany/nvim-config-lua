@@ -1,5 +1,14 @@
 vim.keymap.set("n", "<leader>xl", "<cmd>.lua<CR>", { desc = "Execute current line" })
 vim.keymap.set("v", "<leader>xl", "<cmd>'<,'>lua<CR>", { desc = "Execute current line" })
+
+vim.keymap.set("n", "<D-p>e", function()
+	require("user.fze").fze()
+end, { desc = "FZE Search" })
+
+vim.keymap.set("n", "<D-p><D-e>", function()
+	require("user.fze").fze()
+end, { desc = "FZE Search" })
+
 -- toggle % and '<,'> in command line'
 vim.keymap.set("c", "<c-t>", function()
 	local cmd = vim.fn.getcmdline()
