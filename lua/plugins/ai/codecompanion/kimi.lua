@@ -7,6 +7,7 @@ local State = {
 local _state = State.ANTICIPATING_OUTPUTTING
 
 local openai = require("codecompanion.adapters.openai")
+local utils = require("codecompanion.utils.adapters")
 
 local setup_kimi = function()
 	return require("codecompanion.adapters").extend("openai_compatible", {
@@ -18,53 +19,60 @@ local setup_kimi = function()
 		name = "kimi",
 		schema = {
 			model = {
-				choices = { "kimi-k1.5-preview" },
+				choices = {
+					["kimi-k1.5-preview"] = {
+						{ opts = { can_reason = true } },
+					},
+				},
 				default = "kimi-k1.5-preview",
 			},
 			temperature = {
 				default = 0,
 			},
 		},
-		setup = function(self)
-			_state = State.ANTICIPATING_OUTPUTTING
-			if self.opts and self.opts.stream then
-				self.parameters.stream = true
-				self.parameters.stream_options = { include_usage = true }
-			end
-			return true
-		end,
+		-- setup = function(self)
+		-- 	_state = State.ANTICIPATING_OUTPUTTING
+		-- 	if self.opts and self.opts.stream then
+		-- 		self.parameters.stream = true
+		-- 		self.parameters.stream_options = { include_usage = true }
+		-- 	end
+		-- 	return true
+		-- end,
 		chat_output = function(self, data)
-			local inner = openai.handlers.chat_output(self, data)
+			local output = {}
 
-			if inner == nil then
-				return inner
+			if data and data ~= "" then
+				local data_mod = utils.clean_streamed_data(data)
+				local ok, json = pcall(vim.json.decode, data_mod, { luanil = { object = true } })
+
+				if ok and json.choices and #json.choices > 0 then
+					local choice = json.choices[1]
+					local delta = (self.opts and self.opts.stream) and choice.delta or choice.message
+
+					if delta then
+						output.role = nil
+						if delta.role then
+							output.role = delta.role
+						end
+						if self.opts.can_reason and delta.reasoning_content then
+							output.reasoning = delta.reasoning_content
+						end
+						if delta.content then
+							output.content = (output.content or "") .. delta.content
+						end
+						return {
+							status = "success",
+							output = output,
+						}
+					end
+				end
 			end
-
-			if inner.status ~= "success" or inner.output == nil or type(inner.output.content) ~= "string" then
-				return inner
-			end
-
-			if string.find(inner.output.content, "<think>") ~= nil then
-				_state = State.ANTICIPATING_REASONING
-				inner.output.content = inner.output.content:gsub("%s*<think>%s*", "")
-			elseif string.find(inner.output.content, "</think>") ~= nil then
-				_state = State.ANTICIPATING_OUTPUTTING
-				inner.output.content = inner.output.content:gsub("%s*</think>%s*", "")
-			elseif inner.output.content:match("^%s*$") ~= nil then
-				inner.output.content = ""
-			elseif _state == State.ANTICIPATING_OUTPUTTING then
-				_state = State.OUTPUTTING
-			elseif _state == State.ANTICIPATING_REASONING then
-				_state = State.REASONING
-			end
-
-			if _state == State.ANTICIPATING_REASONING or _state == State.REASONING then
-				inner.output.reasoning = inner.output.content
-				inner.output.content = nil
-			end
-
-			return inner
-			-- return openai.handlers.chat_output(self, data)
+		end,
+		inline_output = function(self, data, context)
+			return openai.handlers.inline_output(self, data, context)
+		end,
+		on_exit = function(self, data)
+			return openai.handlers.on_exit(self, data)
 		end,
 	})
 end
