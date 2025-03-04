@@ -196,10 +196,8 @@ nnoremap <leader>\s <cmd>SSave! tmp<cr>
 ]])
 
 vim.keymap.set({ "n" }, "g`", function()
-	vim.cmd.wincmd("o")
-	vim.cmd.edit("~/Projects/PHP/ltcoc/ltcoc/plugins/lox/coc/Plugin.php")
 	vim.cmd.vsplit()
-	vim.cmd.edit("~/Projects/PHP/pvoc/pvoc/plugins/lox/coc/Plugin.php")
+	vim.cmd.edit("/Users/juju/Projects/PHP/ltcoc/ltcoc/vendor/kjdion84/laraback/src/LarabackServiceProvider.php")
 end, { noremap = true, silent = true, nowait = true })
 
 -- '<,'>s/\(\w\),$/\1(),
@@ -210,3 +208,6 @@ vim.api.nvim_create_user_command('TOhtml', function(args)
   vim.fn.writefile(html, outfile)
   vim.cmd.split(outfile)
 end, { bar = true, nargs = '?' })
+
+
+vim.cmd.hi("SnacksPickerDir guifg=#8893b5")

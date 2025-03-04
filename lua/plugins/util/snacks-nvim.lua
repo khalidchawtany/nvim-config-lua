@@ -253,6 +253,7 @@ return {
 	},
 	---@type snacks.Config
 	opts = {
+
 		init = {
 			-- your init configuration comes here
 			-- or leave it empty to use the default settings
@@ -260,6 +261,7 @@ return {
 		},
 
 		picker = {
+            ui_select = true, -- replace `vim.ui.select` with the snacks picker
 			win = {
 				-- input window
 				input = {
@@ -314,6 +316,7 @@ return {
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 		},
+
 		bigfile = {
 			notify = true, -- show notification when big file detected
 			size = 1.5 * 1024 * 1024, -- 1.5MB

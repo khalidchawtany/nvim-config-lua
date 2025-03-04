@@ -376,7 +376,8 @@ return {
 							filePath = fileParts[2] .. "/" .. fileParts[1]
 						end
 
-						return string.format("git diff %s HEAD -- %s | delta", branch, filePath)
+						-- return string.format("git diff %s HEAD -- %s | delta", branch, filePath)
+						return string.format("git diff %s -- %s | delta", branch, filePath)
 					end),
 				})
 			end

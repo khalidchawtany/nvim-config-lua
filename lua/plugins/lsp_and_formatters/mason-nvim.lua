@@ -34,9 +34,7 @@ M.config = function()
         update_in_insert = false,
     })
 
-    local on_attach = function(client, bufnr)
-        require("user.on_attach").on_attach(client, bufnr)
-    end
+    local on_attach = require("user.on_attach").on_attach
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -63,7 +61,6 @@ M.config = function()
             if server_setup then
                 server_setup(opts)
             end
-
         end,
         -- Next, you can provide targeted overrides for specific servers.
         -- For example, a handler override for the `rust_analyzer`:
