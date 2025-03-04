@@ -190,6 +190,7 @@ nnoremap <leader>r<leader>
 \ :silent! %s/\./_/g<cr>
 ]])
 
+
 vim.cmd([[
 nnoremap <leader>\l <cmd>SLoad tmp<cr>
 nnoremap <leader>\s <cmd>SSave! tmp<cr>
