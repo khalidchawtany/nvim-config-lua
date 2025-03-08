@@ -71,6 +71,10 @@ function table.removekey(table, key)
 	return element
 end
 
+function table.isempty(t)
+    return next(t) == nil
+end
+
 function table.length(t)
 	local count = 0
 	for _ in pairs(t) do

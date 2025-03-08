@@ -1,6 +1,15 @@
-vim.api.nvim_create_user_command("Fzel", function()
-	require("user.fze").fze()
-end, {})
+
+vim.api.nvim_create_user_command("FS", function(args)
+    local functions = require("user.functions")
+    local opts = functions.splitBy(args.args, "/")
+
+    opts = {
+        find = opts[1],
+        replace = opts[2],
+        substitute = opts[3],
+    }
+	require("user.fze").fze(opts)
+end, { desc = "Fzf Edit", nargs = "*" })
 
 vim.api.nvim_create_user_command("DiffKO", function()
 	-- vim.cmd.wincmd{args={'v'}}

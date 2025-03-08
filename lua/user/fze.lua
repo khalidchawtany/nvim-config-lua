@@ -96,7 +96,7 @@ M.rename = function(path, from, to, run_subs)
 
 				vim.fn.system({ "cp", "-r", path, new_path })
 
-				if run_subs and path:sub(-1) ~= "/" then
+				if run_subs and path:sub(1,1) ~= "/" then
 					M.run_subs_fn(pwd .. "/" .. new_path, from, to)
 					-- TODO: run subs on the files copied
 				else
@@ -111,7 +111,8 @@ M.rename = function(path, from, to, run_subs)
 	end
 end
 
-M.fze = function()
+M.fze = function(opts)
+    -- local functions = require("user.functions")
 	require("fzf-lua").files({
 		as_complete = true,
 		previewer = false,
@@ -123,6 +124,7 @@ M.fze = function()
 		color_icons = false, -- colorize file|git icons
 		fd_opts = [[--color=never --hidden --type d --type f --type l --exclude .git]],
 		fzf_opts = {
+            ["--query"] = table.isempty(opts) and nil or opts.find,
 			-- options are sent as `<left>=<right>`
 			-- set to `false` to remove a flag
 			-- set to `true` for a no-value flag
@@ -147,7 +149,7 @@ M.fze = function()
 					if old_name == nil then
 						return
 					end
-					vim.ui.input({ prompt = "New name: " }, function(new_name)
+					vim.ui.input({ prompt = "New name: ", default = table.isempty(opts) and "" or opts.replace}, function(new_name)
 						if new_name == nil then
 							return
 						end
@@ -171,6 +173,6 @@ M.fze = function()
 		},
 	})
 end
-M.fze()
+-- M.fze({find = "x", replace = "y", substitute = ""})
 
 return M
