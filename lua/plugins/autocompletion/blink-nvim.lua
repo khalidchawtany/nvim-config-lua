@@ -125,6 +125,7 @@ return {
 			return not vim.tbl_contains({ "oil", "minifiles" }, vim.bo.filetype)
 				and vim.bo.buftype ~= "prompt"
 				and vim.b.completion ~= false
+				and vim.bo.filetype  ~= 'snacks_picker_input'
 		end,
 
 		-- optionally, separate cmdline and terminal keymaps
