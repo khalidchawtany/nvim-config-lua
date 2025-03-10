@@ -134,6 +134,6 @@ M.project = function(opts)
 		:find()
 end
 
--- M.project({})
+M.project({})
 
 return M
