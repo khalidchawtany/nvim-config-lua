@@ -52,7 +52,7 @@ vim.g.neovide_floating_z_height = 1
 vim.g.neovide_light_angle_degrees = 45
 vim.g.neovide_light_radius = 1
 
-vim.g.neovide_floating_corner_radius = 0.2
+vim.g.neovide_floating_corner_radius = 0
 
 vim.g.neovide_underline_stroke_scale = 1.0
 

@@ -31,6 +31,17 @@ augroup END
 
 require("user.autocmd_buffer_clean")
 
+-- When cursor moves to a diagnostic line, open the diagnostic float window
+-- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--     group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+--     callback = function()
+--         vim.diagnostic.open_float(nil, {
+--             focus = false,
+--             border = "rounded",
+--         })
+--     end,
+-- })
+
 -- On exit if we don't have modified buffers confirm exit
 -- vim.api.nvim_create_autocmd({ "ExitPre" }, {
 -- 	callback = function()

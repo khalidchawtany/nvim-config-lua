@@ -21,7 +21,7 @@ return {
         },
 
         {
-            "<leader>prp",
+            "<leader>pr",
             function()
                 require("snacks").picker.resume({ source = "smart" })
             end,

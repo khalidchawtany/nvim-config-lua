@@ -229,7 +229,7 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
   inoremap <C-u> <esc>mzgUiw`za
 
 
-  nnoremap <leader>e<cr> <cmd>e ++ff=dos<cr>
+  nnoremap <leader>e<cr> <cmd>e ++ff=dos<cr><cmd>%s/\r//g<cr>
   nnoremap <leader>en    <cmd>enew<cr>
 
   nnoremap <silent> <leader>e<Tab>  <cmd>set expandtab \| retab!<cr>
