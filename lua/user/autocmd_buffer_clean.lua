@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
 	end,
 })
 
-vim.keymap.set("n", "<c-;>w<leader>", function()
+vim.keymap.set("n", "<leader>bw<leader>", function()
 	local curbufnr = vim.api.nvim_get_current_buf()
 	local buflist = vim.api.nvim_list_bufs()
 	for _, bufnr in ipairs(buflist) do
