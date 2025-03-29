@@ -145,11 +145,11 @@ M.fze = function(opts)
 					table.insert(paths, fzf_path.entry_to_file(path, o).path)
 				end
 
-				vim.ui.input({ prompt = "Old name: ", default = string.gsub(o.last_query, "'", "") }, function(old_name)
+				Snacks.input({ prompt = "Old name: ", default = string.gsub(o.last_query, "'", "") }, function(old_name)
 					if old_name == nil then
 						return
 					end
-					vim.ui.input({ prompt = "New name: ", default = table.isempty(opts) and "" or opts.replace}, function(new_name)
+					Snacks.input({ prompt = "New name: ", default = table.isempty(opts) and "" or opts.replace}, function(new_name)
 						if new_name == nil then
 							return
 						end
