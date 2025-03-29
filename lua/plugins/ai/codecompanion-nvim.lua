@@ -15,6 +15,13 @@ return {
             "<cmd>CodeCompanionActions<cr>",
             { noremap = true, silent = true }
         )
+
+        vim.keymap.set(
+            { "n", "v" },
+            "<LocalLeader>p",
+            "<cmd>CodeCompanion<cr>",
+            { noremap = true, silent = true }
+        )
         vim.keymap.set(
             { "n", "v" },
             "<LocalLeader>c",
