@@ -142,7 +142,7 @@ vim.o.foldtext = [[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop
 
 set.belloff = "all"
 
-set.shell = "/usr/local/bin/zsh"
+set.shell = "/opt/homebrew/bin/zsh"
 set.termguicolors = true
 set.textwidth = 80
 
