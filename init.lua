@@ -202,7 +202,7 @@ vim.keymap.set({ "n" }, "g`", function()
 end, { noremap = true, silent = true, nowait = true })
 
 -- '<,'>s/\(\w\),$/\1(),
- 
+
 vim.api.nvim_create_user_command('TOhtml', function(args)
   local outfile = args.args ~= '' and args.args or vim.fn.tempname() .. '.html'
   local html = require('tohtml').tohtml()
@@ -212,3 +212,4 @@ end, { bar = true, nargs = '?' })
 
 
 vim.cmd.hi("SnacksPickerDir guifg=#8893b5")
+-- vim.cmd[[set rtp+=/opt/homebrew/opt/fzf]]

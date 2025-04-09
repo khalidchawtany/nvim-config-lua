@@ -1,6 +1,6 @@
 local ft = {
     "html",
-    "javascript",
+    -- "javascript",
     "typescript",
     "javascriptreact",
     "typescriptreact",
