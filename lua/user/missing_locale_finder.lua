@@ -3,7 +3,7 @@ local M = {}
 M.locate_all_translations = function(path, pattern)
     local list = {}
     -- search only in the path
-    local cmd = string.format('/usr/local/bin/rg "%s" -INo --trim -C 0 --no-heading %s', pattern, path)
+    local cmd = string.format('/opt/homebrew/bin/rg "%s" -INo --trim -C 0 --no-heading %s', pattern, path)
     local handle = io.popen(cmd)
     for line in handle:lines() do
         -- if line ends with ' then remove it
