@@ -135,10 +135,10 @@ set.foldtext = ""
 -- 	end,
 -- })
 
-vim.opt.fillchars = "fold: "
 vim.wo.foldmethod = "expr"
 vim.opt.foldlevel = 99
-vim.o.foldtext = [[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.o.foldtext =
+[[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 
 set.belloff = "all"
 
@@ -152,9 +152,8 @@ set.clipboard = "unnamedplus"
 -- Keep diffme function state
 vim.cmd("let $diff_me=0")
 
-set.diffopt:append({ "algorithm:patience" })
 
-set.messagesopt="hit-enter,history:1000,wait:2000"
+set.messagesopt = "hit-enter,history:1000,wait:2000"
 -- set.grepprg = 'ag\\ --nogroup\\ --nocolor'
 set.grepprg = "rg --smart-case --vimgrep --block-buffered"
 vim.opt.grepformat = "%f:%l:%c:%m"
@@ -206,25 +205,44 @@ set.listchars = "tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail
 --,space:…
 set.list = false
 
-set.fillchars = "stlnc:-,foldsep:┊,foldopen:,foldclose:,vert:│,fold: "
 
 -- set.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 set.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,terminal"
 --
 
--- vim.opt.fillchars = {
---   horiz     = '━',
---   horizup   = '┻',
---   horizdown = '┳',
---   vert      = '┃',
---   vertleft  = '┫',
---   vertright = '┣',
---   verthoriz = '╋',
--- }
+-- vim.cmd[[hi DiffviewDiffAdd guibg=orange]]
 
 -- Add ignorance of whitespace to diff
-vim.opt.diffopt:append("iwhite")
-vim.opt.diffopt:append("linematch:60")
+-- vim.opt.diffopt:append({ "algorithm:patience" })
+vim.opt.diffopt = {
+    'internal',            -- default
+    'filler',              -- default
+    'closeoff',            -- default
+    'inline:word',         -- default is inline:simple
+    'linematch:200',       -- default is linematch:40
+    'algorithm:patience',
+    -- 'context:12',
+    -- 'algorithm:histogram',
+    'indent-heuristic',
+    'iwhite',
+}
+
+vim.opt.fillchars = {
+    diff = '╱',
+    fold = ' ',
+    stlnc = '-',
+    foldsep = '┊',
+    foldopen = '',
+    foldclose = '',
+    vert = '│',
+    --   horiz     = '━',
+    --   horizup   = '┻',
+    --   horizdown = '┳',
+    --   vert      = '┃',
+    --   vertleft  = '┫',
+    --   vertright = '┣',
+    --   verthoriz = '╋',
+}
 
 vim.cmd("syntax on")
 set.cursorline = false
@@ -245,12 +263,12 @@ set.showtabline = 1 -- hide tabline
 set.errorbells = false
 set.visualbell = true
 -- set.t_vb = ''
-set.startofline = false                -- Dont reset cursor to start of line when moving around
+set.startofline = false -- Dont reset cursor to start of line when moving around
 
-set.ruler = true                       -- Show the cursor position
+set.ruler = true        -- Show the cursor position
 -- set.shortmess = 'lnxTo0FatIc' -- Dont show the intro message when starting Vim and Prevent completion message flickers
 set.shortmess = vim.o.shortmess ..
-"I"                                    -- Dont show the intro message when starting Vim and Prevent completion message flickers
+    "I" -- Dont show the intro message when starting Vim and Prevent completion message flickers
 -- set.shortmess = vim.o.shortmess .. "T" -- Truncate other messages in the middle if they are too long
 -- set.shortmess = vim.o.shortmess .. "W" -- don't give "written" or "[w]" when writing a file
 

@@ -174,20 +174,18 @@ vim.opt.shadafile = ""
 -- \ :silent! %S/lox/khalid/g<cr>
 -- \ :silent! %S/customer/client/g<cr>
 
+-- don't modify prepare university lecture
 vim.cmd([[
-nnoremap <leader>r<leader>
-\ :silent! %s/,//g<cr>
-\ :silent! %s/;//g<cr>
-\ :silent! %s/\///g<cr>
-\ :silent! %s/\\//g<cr>
-\ :silent! %s/>//g<cr>
-\ :silent! %s/<//g<cr>
-\ :silent! %s/)//g<cr>
-\ :silent! %s/(//g<cr>
-\ :silent! %s/://g<cr>
-\ :silent! %s/…//g<cr>
-\ :silent! %s/\s/_/g<cr>
-\ :silent! %s/\./_/g<cr>
+nnoremap <leader>ru
+\ :silent! %s/\d\+\n\n### Notes:\n//g<cr>
+\ :silent! %s/\d\+\n\n### Notes:\n//g<cr>
+\ :silent! %s/^#\s/## /g<cr>
+\ :silent! %s/^\(##.*$\)\n/\1\r<hr>\r\r<cr>
+\ :silent! %s/\d\+\n//g<cr>
+\ :silent! %s//\r/g<cr>
+
+vnoremap <leader>rl <esc>:'<,'>v/^$/s/^/- /<cr>
+nnoremap <leader>rl :s/^/- /<cr>
 ]])
 
 

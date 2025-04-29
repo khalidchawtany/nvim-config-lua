@@ -190,8 +190,9 @@ M.config = function()
                 function()
                     return {
                         -- '/Users/juju/.composer/vendor/bin/phpstan analyze --error-format raw --no-progress'
-                        exe =
-                        'PATH="/opt/homebrew/opt/php@8.2/bin:$PATH" /Users/juju/.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf',
+                        exe ='PATH="/opt/homebrew/opt/php@8.2/bin:$PATH" /Users/juju/.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf',
+                        -- exe ='/Users/juju/.local/share/nvim/mason/bin/pint',
+
                         -- args = {"-", "--standard=PSR12 --stdin-path=" .. vim.api.nvim_buf_get_name(0), "-"},
                         args = {
                             "--standard=PSR12",

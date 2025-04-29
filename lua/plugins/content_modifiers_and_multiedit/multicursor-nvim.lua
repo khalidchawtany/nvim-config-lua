@@ -27,6 +27,13 @@ return {
         vim.keymap.set ( {"n" , "v"} , "<leader>sp" , function () mc.matchAddCursor  ( -1 ) end , {desc = "MC: add match above"}  )
         vim.keymap.set ( {"n" , "v"} , "<leader>sP" , function () mc.matchSkipCursor ( -1 ) end , {desc = "MC: skip match above"} )
 
+        -- Add cursor to operator gaip to add cursor to all lines of the paragraph
+        vim.keymap.set("n", "ga", mc.addCursorOperator)
+
+
+        -- Add cursor to all occurrences of the current word.
+        vim.keymap.set({"n"}, "<leader>s/", mc.searchAllAddCursors)
+
         -- You can also add cursors with any motion you prefer:
         -- vim.keymap.set("n", "<right>", function() mc.addCursor("w") end)
         -- vim.keymap.set("n", "<leader><right>", function() mc.skipCursor("w") end)
@@ -40,8 +47,8 @@ return {
         vim.keymap.set({"n", "v"}, "<leaer>sA", function() mc.skipCursor("*") end, {desc = "MC: skip match *"})
 
         -- Rotate the main cursor.
-        vim.keymap.set({"n", "v"}, "<left>", mc.nextCursor, {desc = "MC: next cursor"})
-        vim.keymap.set({"n", "v"}, "<right>", mc.prevCursor, {desc = "MC: prev cursor"})
+        vim.keymap.set({"n", "v"}, "<leader>s<left>", mc.nextCursor, {desc = "MC: next cursor"})
+        vim.keymap.set({"n", "v"}, "<leader>s<right>", mc.prevCursor, {desc = "MC: prev cursor"})
 
         -- Delete the main cursor.
         vim.keymap.set({"n", "v"}, "<leader>s<bs>", mc.deleteCursor, {desc = "MC: delete cursor"})

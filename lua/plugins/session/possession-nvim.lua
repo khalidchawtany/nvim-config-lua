@@ -66,7 +66,7 @@ M.config = function()
 				match = {
 					floating = true,
 					buftype = {},
-					filetype = {},
+					filetype = {'DiffViewFiles'},
 					custom = false, -- or fun(win): boolean
 				},
 			},

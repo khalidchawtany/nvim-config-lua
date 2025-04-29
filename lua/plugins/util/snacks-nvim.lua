@@ -54,11 +54,19 @@ return {
         },
 
         {
-            "<leader>pg",
+            "<leader>pj",
+            function()
+                require("snacks").picker.pick({ source = "jumps" })
+            end,
+            desc = "Jumps Picker",
+        },
+
+        {
+            "<leader>pgs",
             function()
                 require("snacks").picker.pick({ source = "git_status" })
             end,
-            desc = "Smart Picker",
+            desc = "Git Status Picker",
         },
 
         {
@@ -72,9 +80,26 @@ return {
         {
             "<leader>pf",
             function()
-                require("snacks").picker.pick({ source = "files" })
+                require("snacks").picker.pick({ source = "smart" })
             end,
             desc = "Files Picker",
+        },
+
+        {
+            "<leader>pF",
+            function()
+                require("snacks").picker.pick({ source = "smart", hidden = true, ignored = true, })
+            end,
+            desc = "Files Picker",
+        },
+
+        {
+            "<leader>pw",
+            function()
+                local cword = vim.fn.expand("<cword>")
+                require("snacks.picker").pick({ source = "smart", search = cword, hidden = true, ignored = true, })
+            end,
+            desc = "Files Picker <cword>",
         },
 
         {
@@ -116,11 +141,28 @@ return {
         },
 
         {
+            "<leader>pl",
+            function()
+                require("snacks").picker.lines()
+            end,
+            desc = "Lines Picker",
+        },
+
+        {
             "<leader>pk",
             function()
                 require("snacks").picker.keymaps()
             end,
             desc = "Keymaps Picker",
+        },
+
+
+        {
+            "<leader>ph",
+            function()
+                require("snacks").picker.pick({ source = "help" })
+            end,
+            desc = "Help Picker",
         },
 
         {
@@ -142,6 +184,10 @@ return {
         {
             "<leader>pj",
             function()
+                local cword = vim.fn.expand("<cword>")
+                if cword ~= "" then
+                    return require("snacks").picker.pick({ source = "grep", search = cword, hidden = true, ignored = true, })
+                end
                 require("snacks").picker.pick({ source = "grep" })
             end,
             desc = "Grep Picker",
@@ -281,7 +327,7 @@ return {
             format = "file",
             dev = { "~/Projects/PHP/", "~/Sites" },
             confirm = "load_session",
-            patterns = {".git", "_darcs", ".hg", ".bzr", ".svn", "package.json", "Makefile" },
+            patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "package.json", "Makefile" },
             win = {
                 preview = { minimal = true },
                 input = {
@@ -388,7 +434,7 @@ return {
         },
 
         bigfile = {
-            notify = true,   -- show notification when big file detected
+            notify = true,            -- show notification when big file detected
             size = 1.5 * 1024 * 1024, -- 1.5MB
             -- Enable or disable features when big file detected
             ---@param ctx {buf: number, ft:string}

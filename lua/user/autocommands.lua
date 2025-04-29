@@ -1,5 +1,12 @@
-
 require("user.autocmd_buffer_clean")
+
+
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufReadPost' }, {
+    pattern = { '*.htm'},
+    callback = function(ev)
+        vim.cmd('set filetype=php')
+    end
+})
 
 -- When cursor moves to a diagnostic line, open the diagnostic float window
 -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
