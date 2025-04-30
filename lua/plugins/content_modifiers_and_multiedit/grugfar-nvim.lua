@@ -6,14 +6,14 @@ return {
 		{
 			"<leader>rf",
 			function()
-				require("grug-far").grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
+				require("grug-far").open({ prefills = { search = vim.fn.expand("<cword>") } })
 			end,
 			desc = "GrugFar (CWord)",
 		},
 		{
 			"<leader>rF",
 			function()
-				require("grug-far").grug_far({
+				require("grug-far").open({
 					prefills = { search = vim.fn.expand("<cword>"), flags = vim.fn.expand("%") },
 				})
 			end,
