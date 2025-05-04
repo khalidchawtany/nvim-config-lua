@@ -141,6 +141,13 @@ return {
                 },
             },
             adapters = {
+                qwen_4b = function()
+                    return require("codecompanion.adapters").extend("openai_compatible", {
+                        env = {
+                            url = "http://localhost:1234"
+                        },
+                    })
+                end,
                 copilot = function()
                     return require("codecompanion.adapters").extend("copilot", {
                         schema = {
@@ -186,17 +193,17 @@ return {
                 action_palette = {
                     width = 100,
                     height = 15,
-                    prompt = "Prompt ",   -- Prompt used for interactive LLM calls
-                    provider = "default", -- default|telescope|mini_pick
+                    prompt = "Prompt ",                     -- Prompt used for interactive LLM calls
+                    provider = "default",                   -- default|telescope|mini_pick
                     opts = {
-                        show_default_actions = true, -- Show the default actions in the action palette?
+                        show_default_actions = true,        -- Show the default actions in the action palette?
                         show_default_prompt_library = true, -- Show the default prompt library in the action palette?
                     },
                 },
                 diff = {
                     enabled = true,
-                    close_chat_at = 240, -- Close an open chat buffer if the total columns of your display are less than...
-                    layout = "vertical", -- vertical|horizontal split for default provider
+                    close_chat_at = 240,    -- Close an open chat buffer if the total columns of your display are less than...
+                    layout = "vertical",    -- vertical|horizontal split for default provider
                     opts = { "internal", "filler", "closeoff", "algorithm:patience", "followwrap", "linematch:120" },
                     provider = "mini_diff", -- default|mini_diff
                 },

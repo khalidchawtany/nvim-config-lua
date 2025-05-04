@@ -9,7 +9,8 @@ return {
         {
             "<c-s><c-f>",
             function()
-                require("telescope").extensions["telescope-alternate"].alternate_file({ previewer = false })
+                -- require("telescope").extensions["telescope-alternate"].alternate_file({ previewer = false })
+                require('telescope-alternate.snacks').alternate({})
             end,
             desc = "Telescope (Alternate)",
         },
@@ -126,7 +127,7 @@ return {
                     "(.*)/controllers/(.*)/(.*).[yaml\\|htm]",
                     {
                         { "[1]/models/[2:singularize].php",                "Model",        false, 1 },
-                        { "[1]/controllers/[2:upper,snake_to_pascal].php", "Controller",   false, 2 },
+                        { "[1]/controllers/[2:snake_to_pascal].php", "Controller",   false, 2 },
                         { "[1]/controllers/[2:lower]/*.*",                 "Controller-F", false, 3 },
                         { "[1]/models/[2:singularize,lower]/*.*",          "Model-F",      false, 4 },
                         { "[1]/updates/create_table_[2:lower].php",         "Migration",    false, 5 },
