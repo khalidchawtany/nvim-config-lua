@@ -1,5 +1,3 @@
-local set = vim.opt
-local setg = vim.g
 local home = os.getenv("HOME")
 
 -- vim.o.statuscolumn='%=%l%s%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "⎥ "  : "⎥ " ) : "⎥  ") : "⎥  " }'
@@ -10,6 +8,8 @@ vim.cmd([[
 set signcolumn=yes:1
 set indentkeys+=!0<Tab>
 ]])
+
+
 
 vim.cmd("hi! link CurSearch Search")
 
@@ -48,74 +48,71 @@ for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
 
-setg.editorconfig = false
+vim.g.editorconfig = false
 
 -- Fuzzy finder: ignore stuff that can't be opened, and generated files
-setg.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
-set.wildignore = { "*.o", "*~", "*.pyc", "*pycache*" } -- Ignore compiled files
-set.wildignorecase = true
-set.wildmode = "full"                                  -- Complete the longest common string,
-set.wildoptions = "pum"                                -- show wildmenu as normal autocompleting menu
-set.pumblend = 0                                       -- make pum NOT transparent
-set.pumheight = 15
-set.wildmenu = true
-set.completeopt = "menuone,noinsert,noselect"
-set.inccommand = "nosplit"
-set.splitkeep = "topline" -- topline, screen, cursor
+vim.g.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*pycache*" } -- Ignore compiled files
+vim.opt.wildignorecase = true
+vim.opt.wildmode = "full"                                  -- Complete the longest common string,
+vim.opt.wildoptions = "pum"                                -- show wildmenu as normal autocompleting menu
+vim.opt.pumblend = 0                                       -- make pum NOT transparent
+vim.opt.pumheight = 15
+vim.opt.wildmenu = true
+vim.opt.completeopt = "menuone,noinsert,noselect"
+vim.opt.inccommand = "nosplit"
+vim.opt.splitkeep = "topline" -- topline, screen, cursor
 
-set.showmode = true
-set.cmdheight = 0  -- Height of the command bar
-set.laststatus = 3 -- make the status bar global
-set.incsearch = true
-set.showmatch = true
+vim.opt.showmode = true
+vim.opt.cmdheight = 0  -- Height of the command bar
+vim.opt.laststatus = 3 -- make the status bar global
+vim.opt.incsearch = true
+vim.opt.showmatch = true
 
-set.matchtime = 2 -- time in decisecons to jump back from matching bracket
+vim.opt.matchtime = 2 -- time in decisecons to jump back from matching bracket
 
-set.showfulltag = true
-set.number = true
-set.relativenumber = true
-set.ignorecase = true
-set.smartcase = true
-set.hidden = true
-set.equalalways = false
-set.splitright = true
-set.splitbelow = true
-set.updatetime = 250
-set.hlsearch = true
+vim.opt.showfulltag = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hidden = true
+vim.opt.equalalways = false
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.updatetime = 250
+vim.opt.hlsearch = true
 
-set.autoindent = true
-set.smartindent = true
-set.cindent = true
-set.wrap = false
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.cindent = true
+vim.opt.wrap = false
 
 -- Always use spaces instead of tab characters
-set.expandtab = true
-set.smarttab = true
-set.shiftround = true
-set.tabstop = 4
-set.shiftwidth = 4
-set.softtabstop = 4
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.shiftround = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
 
 -- Make it so that long lines wrap smartly
-set.breakindent = true
-set.showbreak = "↳ "
-set.wrapscan = true
-set.linebreak = true
-set.whichwrap = "b,s,h,l,<,>,[,]"
+vim.opt.breakindent = true
+vim.opt.showbreak = "↳ "
+vim.opt.wrapscan = true
+vim.opt.linebreak = true
+vim.opt.whichwrap = "b,s,h,l,<,>,[,]"
 
--- Foldinf
--- set.foldmethod = 'manual'
--- set.foldcolumn = '1'
+-- Foldinfo
+-- vim.opt.modelines = 1
+-- vim.opt.foldcolumn = '1'
 vim.wo.foldlevel = 99
-set.modelines = 1
-set.foldlevel = 99
-set.foldlevelstart = 99 -- start with all folds open
-
-set.foldmethod = "expr"
-set.foldexpr = "nvim_treesitter#foldexpr()"
-set.foldtext = ""
--- set.foldtext = "v:lua.vim.treesitter.foldtext()" -- deprecated
---
+vim.opt.foldlevelstart = 99 -- start with all folds open
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- causes random folding to be closed on some edits
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
+vim.wo.foldmethod = "expr"  -- 'manual'
+vim.o.foldtext = [[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 
 -- vim.api.nvim_create_autocmd("LspNotify", {
 -- 	callback = function(args)
@@ -135,79 +132,75 @@ set.foldtext = ""
 -- 	end,
 -- })
 
-vim.wo.foldmethod = "expr"
-vim.opt.foldlevel = 99
-vim.o.foldtext =
-[[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 
-set.belloff = "all"
+vim.opt.belloff = "all"
 
-set.shell = "/opt/homebrew/bin/zsh"
-set.termguicolors = true
-set.textwidth = 80
+vim.opt.shell = "/opt/homebrew/bin/zsh"
+vim.opt.termguicolors = true
+vim.opt.textwidth = 80
 
 -- Always have the clipboard be the same as my regular clipboard
-set.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
 -- Keep diffme function state
 vim.cmd("let $diff_me=0")
 
 
-set.messagesopt = "hit-enter,history:1000,wait:2000"
--- set.grepprg = 'ag\\ --nogroup\\ --nocolor'
-set.grepprg = "rg --smart-case --vimgrep --block-buffered"
+vim.opt.messagesopt = "hit-enter,history:1000,wait:2000"
+-- vim.opt.grepprg = 'ag\\ --nogroup\\ --nocolor'
+vim.opt.grepprg = "rg --smart-case --vimgrep --block-buffered"
 vim.opt.grepformat = "%f:%l:%c:%m"
-set.formatoptions = "jcroql"       -- -=t
-set.nrformats = "bin,hex,alpha"
-set.backspace = "indent,eol,start" --- Allow backspace in insert mode
+vim.opt.formatoptions = "jcroql"       -- -=t
+vim.opt.nrformats = "bin,hex,alpha"
+vim.opt.backspace = "indent,eol,start" --- Allow backspace in insert mode
 
-set.magic = true
+vim.opt.magic = true
 
-set.lazyredraw = false
-set.ttyfast = true
-set.tf = true
+vim.opt.lazyredraw = false
+vim.opt.ttyfast = true
+vim.opt.tf = true
 -- How should I decide to take abackup
-set.backupcopy = "auto"
+vim.opt.backupcopy = "auto"
 --- Centralize backups, swapfiles and undo history
-set.backupdir = home .. "/.local/share/nvim/cache/backups"
+vim.opt.backupdir = home .. "/.local/share/nvim/cache/backups"
 
-set.swapfile = true
-set.directory = home .. "/.local/share/nvim/cache/swaps"
-set.viewdir = home .. "/.local/share/nvim/cache/views"
-set.viewoptions = "cursor,curdir" -- 'folds,cursor,curdir'
+vim.opt.swapfile = true
+vim.opt.directory = home .. "/.local/share/nvim/cache/swaps"
+vim.opt.viewdir = home .. "/.local/share/nvim/cache/views"
+vim.opt.viewoptions = "cursor,curdir" -- 'folds,cursor,curdir'
 
-set.undofile = true
+vim.opt.undofile = true
 -- if exists("&undodir")
-set.undodir = home .. "/.local/share/nvim/cache/undo"
+vim.opt.undodir = home .. "/.local/share/nvim/cache/undo"
 -- endif
-set.undolevels = 1000
-set.undoreload = 10000
+vim.opt.undolevels = 1000
+vim.opt.undoreload = 10000
 
-set.history = 1000
+vim.opt.history = 1000
 
-set.backupskip = "/tmp/*,/private/tmp/*" -- don't back up these
-set.autoread = true                      -- read files on change
-set.fileformats:append({ "mac" })
--- set.binary = true -- forces noexpandtab
-set.eol = false
--- set.t_Co = 16
-set.tabpagemax = 50
-set.exrc = true
-set.secure = true
+vim.opt.backupskip = "/tmp/*,/private/tmp/*" -- don't back up these
+vim.opt.autoread = true                      -- read files on change
+vim.opt.fileformats:append({ "mac" })
+-- vim.opt.binary = true -- forces noexpandtab
+vim.opt.eol = false
+-- vim.opt.t_Co = 16
+vim.opt.tabpagemax = 50
+vim.opt.exrc = true
+vim.opt.secure = true
 
 -- Respect modeline in files
-set.modeline = true
-set.modelines = 4
+vim.opt.modeline = true
+vim.opt.modelines = 4
 
--- set.printoptions = 'header:0,duplex:long,paper:letter'
+-- vim.opt.printoptions = 'header:0,duplex:long,paper:letter'
 
-set.listchars = "tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·,lead:…"
+vim.opt.listchars = "tab:» ,eol:↲,nbsp:␣,extends:…,precedes:<,extends:>,trail:·,lead:…"
 --,space:…
-set.list = false
+vim.opt.list = false
 
 
--- set.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-set.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,terminal"
+-- vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,terminal"
 --
 
 -- vim.cmd[[hi DiffviewDiffAdd guibg=orange]]
@@ -245,40 +238,40 @@ vim.opt.fillchars = {
 }
 
 vim.cmd("syntax on")
-set.cursorline = false
+vim.opt.cursorline = false
 
-set.timeout = true
-set.timeoutlen = 500
+vim.opt.timeout = true
+vim.opt.timeoutlen = 500
 
-set.ttimeout = true
-set.ttimeoutlen = 0
+vim.opt.ttimeout = true
+vim.opt.ttimeoutlen = 0
 
-set.title = true -- Show the filename in the window titlebar
+vim.opt.title = true -- Show the filename in the window titlebar
 
-set.virtualedit = "all"
-set.mouse = ""
-set.showtabline = 1 -- hide tabline
+vim.opt.virtualedit = "all"
+vim.opt.mouse = ""
+vim.opt.showtabline = 1 -- hide tabline
 
 -- Disable error bells
-set.errorbells = false
-set.visualbell = true
--- set.t_vb = ''
-set.startofline = false -- Dont reset cursor to start of line when moving around
+vim.opt.errorbells = false
+vim.opt.visualbell = true
+-- vim.opt.t_vb = ''
+vim.opt.startofline = false -- Dont reset cursor to start of line when moving around
 
-set.ruler = true        -- Show the cursor position
--- set.shortmess = 'lnxTo0FatIc' -- Dont show the intro message when starting Vim and Prevent completion message flickers
-set.shortmess = vim.o.shortmess ..
+vim.opt.ruler = true        -- Show the cursor position
+-- vim.opt.shortmess = 'lnxTo0FatIc' -- Dont show the intro message when starting Vim and Prevent completion message flickers
+vim.opt.shortmess = vim.o.shortmess ..
     "I" -- Dont show the intro message when starting Vim and Prevent completion message flickers
--- set.shortmess = vim.o.shortmess .. "T" -- Truncate other messages in the middle if they are too long
--- set.shortmess = vim.o.shortmess .. "W" -- don't give "written" or "[w]" when writing a file
+-- vim.opt.shortmess = vim.o.shortmess .. "T" -- Truncate other messages in the middle if they are too long
+-- vim.opt.shortmess = vim.o.shortmess .. "W" -- don't give "written" or "[w]" when writing a file
 
-set.scrolloff = 2
-set.sidescrolloff = 5
+vim.opt.scrolloff = 2
+vim.opt.sidescrolloff = 5
 
--- set.cpo = vim.o.cpo .. 'n' -- Draw color for lines that has number only
-set.display:append({ "lastline" })
+-- vim.opt.cpo = vim.o.cpo .. 'n' -- Draw color for lines that has number only
+vim.opt.display:append({ "lastline" })
 
--- set.mousehide = true -- Hide mouse while typing
+-- vim.opt.mousehide = true -- Hide mouse while typing
 
-set.synmaxcol = 500 -- max syntax highlight chars
-set.foldopen = "block,hor,insert,jump,mark,percent,quickfix,search,tag,undo"
+vim.opt.synmaxcol = 500 -- max syntax highlight chars
+vim.opt.foldopen = "block,hor,insert,jump,mark,percent,quickfix,search,tag,undo"

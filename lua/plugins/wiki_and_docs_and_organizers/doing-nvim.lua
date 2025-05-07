@@ -13,7 +13,7 @@ return {
         {
             "<leader>de",
             function()
-                require('doing.api').edit()
+                require('doing').edit()
             end,
             mode = { "n" },
             desc = "[E]dit what tasks you`re [D]oing",
@@ -21,7 +21,7 @@ return {
         {
             "<leader>dn",
             function()
-                require('doing.api').done()
+                require('doing').done()
             end,
             mode = { "n" },
             desc = "[D]o[n]e with current task",
@@ -32,12 +32,12 @@ return {
             -- default options
             message_timeout = 2000,
             winbar = {
-                enabled = true,
+                enabled = false,
                 -- ignores buffers that match filetype
                 ignored_buffers = { 'NvimTree', 'oil', 'fugitive' }
             },
 
-            doing_prefix = 'Current Task: ',
+            doing_prefix = '',
             store = {
                 -- automatically create a .tasks when calling :Do
                 auto_create_file = true,

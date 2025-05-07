@@ -315,6 +315,19 @@ basic.reg_recording = {
     end,
 }
 
+basic.doing = {
+    name = "doing",
+    hl_colors = {
+        blue = { "white", "blue" },
+    },
+    width = breakpoint_width,
+    text = function(bufnr)
+        local doing = require("doing")
+        local text = " " .. doing.status() .. " +" .. tostring(doing.tasks_left())
+        return { { text, "red" } }
+    end,
+}
+
 local default = {
     filetypes = { "default" },
     active = {
@@ -324,6 +337,7 @@ local default = {
         basic.lsp_diagnos,
         basic.reg_recording,
         basic.divider,
+        basic.doing,
         basic.multicursor,
         basic.pomo,
         basic.search_count,

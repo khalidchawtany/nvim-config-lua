@@ -15,6 +15,14 @@ return {
             desc = "Telescope (Alternate)",
         },
         {
+            "<leader>p[",
+            function()
+                -- require("telescope").extensions["telescope-alternate"].alternate_file({ previewer = false })
+                require('telescope-alternate.snacks').alternate({})
+            end,
+            desc = "Snack (Alternate)",
+        },
+        {
             "<c-s><c-space>",
             function()
                 require("telescope").extensions["telescope-alternate"].alternate_file({ previewer = false })
