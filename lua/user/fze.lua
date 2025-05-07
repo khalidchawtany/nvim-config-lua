@@ -233,6 +233,6 @@ M.fze = function(opts)
         },
     })
 end
-M.fze({ find = "billfee", replace = "bill_payment", substitute = true, op = "mv" })
+-- M.fze({ find = "billfee", replace = "bill_payment", substitute = true, op = "mv" })
 
 return M
