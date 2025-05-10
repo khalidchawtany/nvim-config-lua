@@ -1,5 +1,5 @@
 if not vim.g.neovide then
-	return
+    return
 end
 
 vim.cmd.source("~/.config/nvim/ginit.vim")
@@ -72,24 +72,24 @@ vim.g.neovide_refresh_rate_idle = 5
 vim.g.neovide_detach_on_quit = "always_quit" --always_quit, always_detach, or prompt
 
 vim.schedule(function()
-	vim.cmd("NeovideFocus")
+    vim.cmd("NeovideFocus")
 end)
 
 vim.g.gui_font_default_size = 17
 vim.g.gui_font_size = vim.g.gui_font_default_size
 
 RefreshGuiFont = function()
-	vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
+    vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
 end
 
 ResizeGuiFont = function(delta)
-	vim.g.gui_font_size = vim.g.gui_font_size + delta
-	RefreshGuiFont()
+    vim.g.gui_font_size = vim.g.gui_font_size + delta
+    RefreshGuiFont()
 end
 
 ResetGuiFont = function()
-	vim.g.gui_font_size = vim.g.gui_font_default_size
-	RefreshGuiFont()
+    vim.g.gui_font_size = vim.g.gui_font_default_size
+    RefreshGuiFont()
 end
 
 -- Call function on startup to set default value
@@ -100,28 +100,48 @@ ResetGuiFont()
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set({ "n", "i" }, "<D-=>", function()
-	ResizeGuiFont(1)
+    ResizeGuiFont(1)
 end, opts)
 vim.keymap.set({ "n", "i" }, "<D-->", function()
-	ResizeGuiFont(-1)
+    ResizeGuiFont(-1)
 end, opts)
 
 vim.keymap.set({ "n" }, "<leader>nw", function()
-	-- vim.system('NVIM_LISTEN_ADDRESS=/tmp/nvimsocket open -a neovide --args --maximized --title-hidden --frame=buttonless', {detach = true})
-	vim.system({
-		"/Applications/Neovide.app/Contents/MacOS/neovide",
-		-- '--maximized',
-		"--title-hidden",
-		"--frame=buttonless",
-	}, {
-		detach = true,
-		env = { NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket" },
-	})
+    -- vim.system('NVIM_LISTEN_ADDRESS=/tmp/nvimsocket open -a neovide --args --maximized --title-hidden --frame=buttonless', {detach = true})
+    vim.system({
+        "/Applications/Neovide.app/Contents/MacOS/neovide",
+        -- '--maximized',
+        "--title-hidden",
+        "--frame=buttonless",
+    }, {
+        detach = true,
+        env = { NVIM_LISTEN_ADDRESS = "/tmp/nvimsocket" },
+    })
 end, opts)
 
+local function closeMsgbox()
+    -- Get all window numbers in current tab
+    local wins = vim.api.nvim_tabpage_list_wins(0)
+
+    for _, win in ipairs(wins) do
+        -- Get buffer attached to window
+        local buf = vim.api.nvim_win_get_buf(win)
+        -- Get filetype of buffer
+        local ft = vim.api.nvim_buf_get_option(buf, 'filetype')
+
+        -- If filetype is msgnbox, close the window
+        if ft == 'msgbox' then
+            vim.api.nvim_win_close(win, false)
+        end
+    end
+end
+
+
 vim.keymap.set({ "n" }, "<BS>", function()
-	require("notify").dismiss({ silent = true })
-	vim.cmd([[
+    require("notify").dismiss({ silent = true })
+    closeMsgbox()
+
+    vim.cmd([[
     filetype on
     syntax sync minlines=1000
     nohlsearch
@@ -133,21 +153,21 @@ end, { noremap = true, silent = true })
 vim.g.neovide_scale_factor = 1.0
 
 local change_scale_factor = function(delta)
-	vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
 end
 
 vim.keymap.set("n", "<C-=>", function()
-	change_scale_factor(1.025)
+    change_scale_factor(1.025)
 end)
 vim.keymap.set("n", "<C-->", function()
-	change_scale_factor(1 / 1.025)
+    change_scale_factor(1 / 1.025)
 end)
 
-vim.keymap.set("n", "<D-s>", ":w<CR>") -- Save
-vim.keymap.set("v", "<D-c>", '"+y') -- Copy
-vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
-vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
-vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
+vim.keymap.set("n", "<D-s>", ":w<CR>")      -- Save
+vim.keymap.set("v", "<D-c>", '"+y')         -- Copy
+vim.keymap.set("n", "<D-v>", '"+P')         -- Paste normal mode
+vim.keymap.set("v", "<D-v>", '"+P')         -- Paste visual mode
+vim.keymap.set("c", "<D-v>", "<C-R>+")      -- Paste command mode
 vim.keymap.set("i", "<D-v>", '<ESC>l"+Pli') -- Paste insert mode
 
 -- Allow clipboard copy paste in neovim
