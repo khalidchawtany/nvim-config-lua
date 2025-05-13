@@ -6,9 +6,6 @@ return {
     config = function()
         require("typescript-tools").setup({
 
-            on_attach = function(client, bufnr)
-                require("user.on_attach").on_attach(client, bufnr)
-            end,
             settings = {
                 -- spawn additional tsserver instance to calculate diagnostics on it
                 separate_diagnostic_server = true,

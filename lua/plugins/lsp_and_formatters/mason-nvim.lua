@@ -1,8 +1,9 @@
 local M = {
     "williamboman/mason.nvim",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
-    event = "BufReadPre",
+    -- event = "BufReadPre",
 }
+
 
 M.config = function()
     vim.diagnostic.config {
@@ -18,8 +19,6 @@ M.config = function()
         update_in_insert = false,
     }
 
-    local on_attach = require("user.on_attach").on_attach
-
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     -- You are now capable!
@@ -27,8 +26,9 @@ M.config = function()
         dynamicRegistration = true,
     }
 
-    -- if not migrated to new config
-    -- require("lspconfig").apex_ls.setup {}
+    vim.lsp.config('*', {
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
+    })
 
     vim.lsp.config('lua_ls', {
         settings = {
@@ -74,9 +74,6 @@ M.config = function()
 
 
     vim.lsp.config('html', {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        -- filetypes = { ... },
         settings = {
             html = {
                 format = {
@@ -93,8 +90,6 @@ M.config = function()
     })
 
     vim.lsp.config('ts_ls', {
-        on_attach = on_attach,
-        capabilities = capabilities,
         -- filetypes = { ... },
         root_dir = function(fname)
             return require("lspconfig.util").root_pattern(".git")(fname)
@@ -127,8 +122,6 @@ M.config = function()
 
 
     vim.lsp.config('intelephense', {
-        on_attach = on_attach,
-        capabilities = capabilities,
         -- filetypes = { ... },
         root_dir = function(fname)
             return require("lspconfig.util").root_pattern(".git")(fname)
@@ -141,8 +134,6 @@ M.config = function()
 
     vim.lsp.config('tailwindcss', {
 
-        on_attach = on_attach,
-        capabilities = capabilities,
         settings = {
             tailwindCSS = {
                 experimental = {

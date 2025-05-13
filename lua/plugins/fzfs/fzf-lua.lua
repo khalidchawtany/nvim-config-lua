@@ -308,7 +308,7 @@ return {
 		-- nnoremap <silent> <c-p><c-h> :call fzf#run({"source":"git diff --name-only HEAD HEAD~1 " , "sink":"edit"})<cr>
 
 		vim.api.nvim_create_user_command("ListFilesFromHEAD", function(opts)
-			require("fzf-lua").files({
+			require("fzf-lua").git_files({
 				cmd = "git diff --name-only HEAD HEAD~1 " .. opts.args,
 				prompt = opts.args .. "> ",
 				actions = {
@@ -337,6 +337,7 @@ return {
 					end,
 				},
 				previewer = false,
+				-- preview = require('fzf-lua.previewer.fzf').git_diff,
 				preview = require("fzf-lua").shell.raw_preview_action_cmd(function(items)
 					local file = require("fzf-lua").path.entry_to_file(items[1])
 					return string.format("git diff %s HEAD~1 -- %s | delta", opts.args, file.path)

@@ -111,7 +111,6 @@ return {
 					virtual_text = true, -- show the highlight using virtual text
 					virtual_text_str = "", -- the virtual text character to highlight
 				},
-				-- on_attach = my_custom_on_attach,
 				-- capabilities = my_custom_capabilities -- e.g. lsp_status capabilities
 				-- --- OR you can specify a function to deactivate or change or control how the config is created
 				-- capabilities = function(config)
