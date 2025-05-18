@@ -1,4 +1,3 @@
-require('vim._extui').enable({})
 
 if vim.env.PROF then
     -- example for lazy.nvim

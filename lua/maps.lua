@@ -1,6 +1,7 @@
 vim.keymap.set("n", "<leader>xl", "<cmd>.lua<CR>", { desc = "Execute current line" })
 vim.keymap.set("v", "<leader>xl", "<cmd>'<,'>lua<CR>", { desc = "Execute visual line" })
 
+
 vim.keymap.set("n", "<D-p>e", function()
 	require("user.fze").fze({})
 end, { desc = "FZE Search" })

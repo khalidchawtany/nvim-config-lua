@@ -1,9 +1,10 @@
  return {
   "echasnovski/mini.ai",
-  keys = {
-    { "a", mode = { "x", "o" } },
-    { "i", mode = { "x", "o" } },
-  },
+  event = "VeryLazy",
+  -- keys = {
+  --   { "a", mode = { "x", "o" } },
+  --   { "i", mode = { "x", "o" } },
+  -- },
   dependencies = {
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
@@ -15,6 +16,7 @@
   },
   opts = function()
     local ai = require("mini.ai")
+
     return {
       n_lines = 500,
       custom_textobjects = {
@@ -24,6 +26,7 @@
         }, {}),
         b = ai.gen_spec.treesitter({ a = "@block.outer", i = "@block.inner" }, {}),
         f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+        ['-'] = ai.gen_spec.function_call({name_pattern="[%:%w_%.]"}),
         c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
       },
     }

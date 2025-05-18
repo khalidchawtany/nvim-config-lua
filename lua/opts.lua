@@ -275,3 +275,18 @@ vim.opt.display:append({ "lastline" })
 
 vim.opt.synmaxcol = 500 -- max syntax highlight chars
 vim.opt.foldopen = "block,hor,insert,jump,mark,percent,quickfix,search,tag,undo"
+
+-- this is to prevent ext_ui bugs
+-- vim.cmd[[cmap w<cr> <leader>w]]
+--
+-- require('vim._extui').enable({
+--     enable = true, -- Whether to enable or disable the UI.
+--     msg = { -- Options related to the message module.
+--         ---@type 'box'|'cmd' Type of window used to place messages, either in the
+--         ---cmdline or in a separate message box window with ephemeral messages.
+--         pos = 'box',
+--         box = { -- Options related to the message box window.
+--             timeout = 2000, -- Time a message is visible.
+--         },
+--     },
+-- })

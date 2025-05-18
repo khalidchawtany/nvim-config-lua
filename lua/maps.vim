@@ -45,7 +45,7 @@ command! SwithGui :lua os.execute('osascript ~/juju/.config/nvim/switch_nvim_qt_
 
 nnoremap <c-w>M <C-w>_<C-w><Bar>
 
-nnoremap <silent><nowait> <BS> <cmd>nohlsearch<cr><cmd>lua require("multicursor-nvim").clearCursors()<cr>
+nnoremap <silent><nowait> <BS> <cmd>nohlsearch<cr><cmd>lua require('functions').BS()<cr>
                 
 nnoremap <silent><nowait> <leader><BS> <cmd>fclose<cr><cmd>syn clear<cr>
 

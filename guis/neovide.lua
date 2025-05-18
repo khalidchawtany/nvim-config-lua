@@ -4,35 +4,10 @@ end
 
 vim.cmd.source("~/.config/nvim/ginit.vim")
 
-local function closeMsgbox()
-    -- Get all window numbers in current tab
-    local wins = vim.api.nvim_tabpage_list_wins(0)
-
-    for _, win in ipairs(wins) do
-        -- Get buffer attached to window
-        local buf = vim.api.nvim_win_get_buf(win)
-        -- Get filetype of buffer
-        local ft = vim.api.nvim_buf_get_option(buf, 'filetype')
-
-        -- If filetype is msgnbox, close the window
-        if ft == 'msgbox' or ft == 'notify' or ft=='msgmore' then
-            vim.api.nvim_win_close(win, false)
-        end
-    end
-end
 
 
 vim.keymap.set({ "n" }, "<BS>", function()
-    require("notify").dismiss({ silent = true })
-    closeMsgbox()
-
-    vim.cmd([[
-    filetype on
-    syntax sync minlines=1000
-    nohlsearch
-    diffupdate
-    redraw!
-    ]])
+    require('functions').BS()
 end, { noremap = true, silent = true })
 
 vim.g.neovide_opacity = 1.0

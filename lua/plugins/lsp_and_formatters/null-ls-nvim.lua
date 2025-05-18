@@ -11,13 +11,36 @@ local M = {
 M.config = function()
     local null_ls = require("null-ls")
     local cspell = require('cspell')
+
+    local cspell_config = {
+        extra_args = { "--config", vim.fn.expand("~/.cspell.json") },
+        diagnostics_postprocess = function(diagnostic)
+            diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
+        end,
+        config = {
+            find_json = function(_)
+                return vim.fn.expand("~/.config/nvim/cspell.json")
+            end,
+            on_success = function(cspell_config_file_path, params, action_name)
+                if action_name == "add_to_json" then
+                    os.execute(
+                        string.format(
+                            "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+                            cspell_config_file_path,
+                            cspell_config_file_path
+                        )
+                    )
+                end
+            end,
+        },
+    }
     -- return nil
     require("null-ls").setup({
         sources = {
 
             -- CSpell
-            cspell.diagnostics,
-            cspell.code_actions,
+            cspell.diagnostics.with(cspell_config),
+            cspell.code_actions.with(cspell_config),
 
             -- Hover
             null_ls.builtins.hover.dictionary,
@@ -71,7 +94,7 @@ M.config = function()
             -- null_ls.builtins.formatting.phpcsfixer,
             null_ls.builtins.formatting.pint.with({
                 command = "pint",
-            }),                                 -- Twig
+            }),                                          -- Twig
             null_ls.builtins.formatting.blade_formatter, -- Yaml
             null_ls.builtins.formatting.yamlfmt,
             -- CSS, Style, less, sass, scss
@@ -104,7 +127,6 @@ M.config = function()
     })
 
     require("null-ls").register(require("none-ls-php.diagnostics.php"))
-
 end
 
 return M

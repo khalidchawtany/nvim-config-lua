@@ -69,13 +69,21 @@ M.get_subs_methods = function()
         table.insert(methods, method)
     end
 
-
-
     return methods
 end
 
+
+M.get_rename_methods = function()
+    local methods = M.get_subs_methods()
+    -- Remove the to_dash_case method which should be the last one
+    table.remove(methods, #methods)
+    return methods
+end
+
+
 M.run_subs_fn = function(filepath, from, to)
-    vim.fn.setreg("s", "%S/" .. from .. "/" .. to .. "/g")
+    vim.fn.setreg("a", ";%S/" .. from .. "/" .. to .. "/g\")
+    vim.fn.setreg("s", ";S/" .. from .. "/" .. to .. "/g\")
     local uv = vim.loop
     local methods = M.get_subs_methods()
     uv.fs_open(filepath, "r", 438, function(err, fd)
@@ -119,7 +127,7 @@ end
 -- M.run_subs_fn("/Users/juju/Projects/PHP/ltcoc/ltcoc/plugins/lox/coc/models/Proceeding.php", "proceeding", "matter")
 
 M.rename = function(path, from, to, run_subs, op)
-    local methods = M.get_subs_methods()
+    local methods = M.get_rename_methods()
     local pwd = vim.loop.cwd()
 
     local tried = {}
@@ -127,8 +135,10 @@ M.rename = function(path, from, to, run_subs, op)
         local pattern = method(from)
         local to_pattern = method(to)
 
+        local hasDashes  = string.find(pattern, "-") and string.find(to_pattern, "-")
 
-        if M.has_value(tried, pattern) == false then
+
+        if M.has_value(tried, pattern) == false and not hasDashes then
             if string.match(path, pattern) then
                 local new_path = string.gsub(path, pattern, to_pattern)
 

@@ -70,6 +70,14 @@ return {
         },
 
         {
+            "<leader>pgg",
+            function()
+                require("snacks").picker.pick({ source = "git_status" })
+            end,
+            desc = "Git Status Picker",
+        },
+
+        {
             "<leader>pb",
             function()
                 require("snacks").picker.git_branches()
@@ -305,6 +313,28 @@ return {
                     height = 0.9,
                     wo = {
                         spell = false,
+                        wrap = false,
+                        signcolumn = "yes",
+                        statuscolumn = " ",
+                        conceallevel = 3,
+                    },
+                })
+            end,
+        },
+        {
+            "<leader>no",
+            desc = "Todos",
+            function()
+                require("snacks").win({
+                    file = vim.api.nvim_get_runtime_file("~/org/todo.norg", false)[1],
+                    width = 0.9,
+                    height = 0.9,
+                    bo = {
+                        ft = "norg",
+                        buftype = "",
+                    },
+                    wo = {
+                        spell = true,
                         wrap = false,
                         signcolumn = "yes",
                         statuscolumn = " ",

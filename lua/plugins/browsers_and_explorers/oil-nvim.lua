@@ -119,6 +119,7 @@ return {
                 ["_"] = "actions.open_cwd",
                 ["`"] = "actions.cd",
                 ["g~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
+                ["~"] =false,
                 ["gs"] = "actions.change_sort",
                 ["gx"] = "actions.open_external",
                 ["g."] = "actions.toggle_hidden",
