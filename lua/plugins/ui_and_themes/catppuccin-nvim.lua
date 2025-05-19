@@ -3,7 +3,6 @@ return {
     name = "catppuccin",
 
     event = {
-        "VeryLazy",
-        "ColorScheme catppuccin*",
+        "ColorSchemePre catppuccin*",
     },
 }

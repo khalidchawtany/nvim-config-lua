@@ -1,6 +1,7 @@
 return {
     "brianhuster/live-preview.nvim",
     -- dependencies = { "brianhuster/autosave.nvim" }, -- Not required, but recomended for autosaving and sync scrolling
+    cmd = { "LivePreview", "StopPreview" },
     opts = {
         commands = {
             start = "LivePreview", -- Command to start the live preview server and open the default browser.

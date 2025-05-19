@@ -1,5 +1,6 @@
 return {
 	"smjonas/duplicate.nvim",
+    keys = { "yd", "ydd" },
 	opts = {
 		-- set any operator to `nil` to disable it
 		operator = {

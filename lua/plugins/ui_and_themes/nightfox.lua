@@ -1,7 +1,6 @@
 return {
     "EdenEast/nightfox.nvim",
     event = {
-        "VeryLazy",
         "ColorScheme nightfox*",
     },
     config = function()
