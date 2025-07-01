@@ -1,5 +1,9 @@
 
+nnoremap <leader>` <cmd>wincmd o<cr><cmd>lcd /Users/juju/Projects/OneWay/OneWay/WebApps/Admin/Modules<cr><cmd>e .<cr><cmd>vsp<cr><cmd>lcd /Users/juju/Projects/OneWay/OneWay/WebApps/TaxiAdmin<cr><cmd>e .<cr>
 nnoremap  <leader>ej :call ExecuteJava()<cr>
+nmap  <leader>e` ?java<cr>/{<cr>vi{y<c-w>lgg0/{<cr>lvi{p;w!<cr><leader>ej<cr>
+
+
 function! ExecuteJava()
 	write
 	exe "tab term cd " . shellescape(expand("%:h")) . " && javac " . expand ("%:t") . " && java " . expand("%:t:r")
@@ -253,9 +257,6 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
 
   nnoremap <silent> <c-k><c-=> <cmd>silent! call Preserve("normal gg=G")<cr>
 
-  " Move visual block
-  vnoremap <D-u> <cmd>m '>+1<CR>gv=gv
-  vnoremap <D-k> <cmd>m '<-2<CR>gv=gv
 
   " select last matched item
   nnoremap <c-g>/ //e<Enter>v??<Enter>
@@ -285,6 +286,12 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
 
   nnoremap cdp <cmd>execute "cd ". GetPluginPath()<cr><cmd>pwd<cr>
 
+  nnoremap cdr <cmd>execute "lcd ". GetProjectRootPath()<cr><cmd>pwd<cr>
+  nnoremap cdm <cmd>execute "lcd ". GetProjectRootPath() . "/Modules"<cr><cmd>pwd<cr>
+
+  nnoremap <leader>er <cmd>execute "e ". GetProjectRootPath()<cr>
+  nnoremap <leader>em <cmd>execute "e ". GetProjectRootPath() . "/Modules"<cr>
+
 
   "current working dir
   nnoremap cdc <cmd>execute"cd ". expand("%:h")<cr>
@@ -307,6 +314,26 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
     return path
   endf
 
+
+  fun! GetProjectRootPath()
+        let l:current_dir = expand('%:p:h')
+        let l:parent_dir = l:current_dir
+
+        while l:parent_dir !=# ''
+          let l:env_file = l:parent_dir . '/.env'
+          if filereadable(l:env_file)
+            return l:parent_dir
+          endif
+
+          let l:next_parent = fnamemodify(l:parent_dir, ':h')
+          if l:next_parent ==# l:parent_dir
+            break
+          endif
+          let l:parent_dir = l:next_parent
+        endwhile
+
+        return ''
+  endf
 
 
 

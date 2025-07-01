@@ -111,8 +111,9 @@ vim.opt.foldlevelstart = 99 -- start with all folds open
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- causes random folding to be closed on some edits
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 -- vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
-vim.wo.foldmethod = "expr"  -- 'manual'
-vim.o.foldtext = [[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.wo.foldmethod = "expr" -- 'manual'
+vim.o.foldtext =
+[[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
 
 -- vim.api.nvim_create_autocmd("LspNotify", {
 -- 	callback = function(args)
@@ -207,18 +208,18 @@ vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,term
 
 -- Add ignorance of whitespace to diff
 -- vim.opt.diffopt:append({ "algorithm:patience" })
-vim.opt.diffopt = {
-    'internal',            -- default
-    'filler',              -- default
-    'closeoff',            -- default
-    'inline:word',         -- default is inline:simple
-    'linematch:200',       -- default is linematch:40
-    'algorithm:patience',
-    -- 'context:12',
-    -- 'algorithm:histogram',
-    'indent-heuristic',
-    'iwhite',
-}
+-- vim.opt.diffopt = {
+--     'internal',            -- default
+--     'filler',              -- default
+--     'closeoff',            -- default
+--     'inline:word',         -- default is inline:simple
+--     'linematch:200',       -- default is linematch:40
+--     'algorithm:patience',
+--     -- 'context:12',
+--     -- 'algorithm:histogram',
+--     'indent-heuristic',
+--     'iwhite',
+-- }
 
 vim.opt.fillchars = {
     diff = '╱',
@@ -279,14 +280,23 @@ vim.opt.foldopen = "block,hor,insert,jump,mark,percent,quickfix,search,tag,undo"
 -- this is to prevent ext_ui bugs
 -- vim.cmd[[cmap w<cr> <leader>w]]
 --
--- require('vim._extui').enable({
---     enable = true, -- Whether to enable or disable the UI.
---     msg = { -- Options related to the message module.
---         ---@type 'box'|'cmd' Type of window used to place messages, either in the
---         ---cmdline or in a separate message box window with ephemeral messages.
---         pos = 'box',
---         box = { -- Options related to the message box window.
---             timeout = 2000, -- Time a message is visible.
---         },
---     },
--- })
+require('vim._extui').enable({
+    enable = true, -- Whether to enable or disable the UI.
+    msg = {        -- Options related to the message module.
+        ---@type 'cmd'|'msg' Where to place regular messages, either in the
+        ---cmdline or in a separate ephemeral message window.
+        target = 'cmd',
+        timeout = 2000, -- Time a message is visible in the message window.
+    },
+})
+-- TODO: this hack avoid the extgui bug
+-- if vim.g.neovide then
+--     vim.api.nvim_create_autocmd('FocusGained', {
+--         group = vim.api.nvim_create_augroup('Neovide_ExTUI', { clear = false }),
+--         pattern = '*',
+--         once = true,
+--         callback = function()
+--             vim.cmd('new | close')
+--         end
+--     })
+-- end

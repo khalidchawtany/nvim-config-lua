@@ -1,4 +1,3 @@
-
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         -- Unset 'formatexpr'
@@ -60,7 +59,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         elseif client:supports_method('textDocument/document_range_formatting') then
             buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
         end
-
     end,
 })
 
@@ -83,7 +81,10 @@ return {
         for server, config in pairs(opts.servers) do
             -- passing config.capabilities to blink.cmp merges with the capabilities in your
             -- `opts[server].capabilities, if you've defined it
-            config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+            local capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+            capabilities.textDocument.completion.completionItem.snippetSupport = false
+
+            config.capabilities = capabilities
             lspconfig[server].setup(config)
         end
     end,

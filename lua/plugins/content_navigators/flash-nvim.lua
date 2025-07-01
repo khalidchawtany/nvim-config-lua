@@ -20,7 +20,7 @@ return {
             desc = "Flash TS Jump",
         },
         {
-            "st",
+            "sk",
             mode = { "n", "o", "x" },
             function()
                 require("flash").treesitter()
@@ -36,7 +36,7 @@ return {
             desc = "Flash Remote ",
         },
         {
-            "rt",
+            "rk",
             mode = { "o", "x" },
             function()
                 require("flash").treesitter_search()

@@ -20,13 +20,6 @@ M.config = function()
         update_in_insert = false,
     }
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-    -- You are now capable!
-    capabilities.textDocument.colorProvider = {
-        dynamicRegistration = true,
-    }
-
     vim.lsp.config('*', {
         capabilities = vim.lsp.protocol.make_client_capabilities(),
     })

@@ -87,49 +87,50 @@ return {
         --     },
         -- }
 
-
-        vim.api.nvim_set_keymap("n", "<F8>", [[:lua require"dap".toggle_breakpoint()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>ddb", [[:lua require"dap".toggle_breakpoint()<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<F9>", [[:lua require"dap".continue()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>ddc", [[:lua require"dap".continue()<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<F10>", [[:lua require"dap".step_over()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<D-j>", [[:lua require"dap".step_over()<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<S-F10>", [[:lua require"dap".step_into()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<D-l>", [[:lua require"dap".step_into()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<D-k>", [[:lua require"dap".step_out()<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<F5>", [[:lua require"osv".launch({port = 8086})<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>dds", [[:lua require"osv".launch({port = 8086})<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<leader>ddS", [[:lua require"dap".stop()<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<leader>ddk", [[:lua require"dap".up()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>ddj", [[:lua require"dap".down()<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<leader>ddl", [[:lua require"dap".run_last()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>ddr", [[:lua require"dap".repl.open()<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<leader>ddiv", [[:lua require'dap.ui.variables'.hover()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap( "v", "<leader>ddiv", [[:lua require'dap.ui.variables'.visual_hover()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>ddis", [[:lua require'dap.ui.variables'.scopes()<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap( "n", "<leader>dde", [[:lua require'dap'.set_exception_breakpoints({"all"})<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>dda", [[:lua require'debugHelper'.attach()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap( "n", "<leader>ddA", [[:lua require'debugHelper'.attachToRemote()<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<F12>", [[:lua require"dap.ui.widgets".hover()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>ddk", [[:lua require"dap.ui.widgets".hover()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap( "n", "<leader>ddK", [[:lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<leader>ddtf", [[:Telescope dap frames<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>ddtc", [[:Telescope dap commands<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>ddtb", [[:Telescope dap list_breakpoints<CR>]], { noremap = true })
-
-        vim.api.nvim_set_keymap("n", "<leader>ddq", [[:lua require("dapui").toggle()<CR>]], { noremap = true })
-        vim.api.nvim_set_keymap("n", "<leader>ddd", [[:lua require("dapui").toggle()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<F9>", [[:lua require"dap".continue()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddc", [[:lua require"dap".continue()<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap("n", "<F8>", [[:lua require"dap".toggle_breakpoint()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddb", [[:lua require"dap".toggle_breakpoint()<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap("n", "<F5>", [[:lua require"osv".launch({port = 8086})<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>dds", [[:lua require"osv".launch({port = 8086})<CR>]], { noremap = true })
+        --
+        --
+        -- vim.api.nvim_set_keymap("n", "<F10>", [[:lua require"dap".step_over()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<D-j>", [[:lua require"dap".step_over()<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap("n", "<S-F10>", [[:lua require"dap".step_into()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddi", [[:lua require"dap".step_into()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddo", [[:lua require"dap".step_out()<CR>]], { noremap = true })
+        --
+        --
+        -- vim.api.nvim_set_keymap("n", "<leader>ddS", [[:lua require"dap".stop()<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap("n", "<leader>ddk", [[:lua require"dap".up()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddj", [[:lua require"dap".down()<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap("n", "<leader>ddl", [[:lua require"dap".run_last()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddr", [[:lua require"dap".repl.open()<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap("n", "<leader>ddiv", [[:lua require'dap.ui.variables'.hover()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap( "v", "<leader>ddiv", [[:lua require'dap.ui.variables'.visual_hover()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddis", [[:lua require'dap.ui.variables'.scopes()<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap( "n", "<leader>dde", [[:lua require'dap'.set_exception_breakpoints({"all"})<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>dda", [[:lua require'debugHelper'.attach()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap( "n", "<leader>ddA", [[:lua require'debugHelper'.attachToRemote()<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap("n", "<F12>", [[:lua require"dap.ui.widgets".hover()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddk", [[:lua require"dap.ui.widgets".hover()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap( "n", "<leader>ddK", [[:lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap("n", "<leader>ddtf", [[:Telescope dap frames<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddtc", [[:Telescope dap commands<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddtb", [[:Telescope dap list_breakpoints<CR>]], { noremap = true })
+        --
+        -- vim.api.nvim_set_keymap("n", "<leader>ddq", [[:lua require("dapui").toggle()<CR>]], { noremap = true })
+        -- vim.api.nvim_set_keymap("n", "<leader>ddd", [[:lua require("dapui").toggle()<CR>]], { noremap = true })
 
 
         -- Signs

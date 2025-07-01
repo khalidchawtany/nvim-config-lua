@@ -3,7 +3,6 @@ return {
     -- event = "VeryLazy",
     --
     cmd = {'Precognition'},
-
     -- :lua require("precognition").toggle()
     -- :lua require("precognition").peek()
     opts = {

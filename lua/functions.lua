@@ -293,7 +293,10 @@ M.closeMsgbox = function()
         -- If filetype is msgbox, close the window
         if ft == 'msgbox'
             or ft == 'notify'
-            or ft == 'msgmore'
+            or ft == 'msg'
+            or ft == 'cmd'
+            or ft == 'pager'
+            or ft == 'dialog'
             or ft == "snacks_notif"
             or ft == "fugitive"
         then
@@ -308,7 +311,7 @@ M.BS = function()
 
     vim.cmd([[
     filetype on
-    syntax sync minlines=1000
+    " syntax sync minlines=1000
     nohlsearch
     diffupdate
     redraw!

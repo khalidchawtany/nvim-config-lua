@@ -59,6 +59,7 @@ return {
 					["<s-tab>"] = cb("select_prev_entry"), -- Open the diff for the previous file
 					["<leader>e"] = cb("focus_files"), -- Bring focus to the files panel
 					["<leader>b"] = cb("toggle_files"), -- Toggle the files panel.
+					["<leader>o"] = function() vim.cmd[[DiffviewToggleFiles]] end,
 				},
 				file_panel = {
 					["j"] = cb("next_entry"), -- Bring the cursor to the next file entry
@@ -66,7 +67,9 @@ return {
 					["k"] = cb("prev_entry"), -- Bring the cursor to the previous file entry.
 					["<up>"] = cb("prev_entry"),
 					["<cr>"] = cb("select_entry"), -- Open the diff for the selected entry.
-					["o"] = cb("select_entry"),
+					-- ["o"] = cb("select_entry"),
+					["o"] = function() vim.cmd[[DiffviewToggleFiles]] end,
+					["<leader>o"] = function() vim.cmd[[DiffviewToggleFiles]] end,
 					["<2-LeftMouse>"] = cb("select_entry"),
 					["-"] = cb("toggle_stage_entry"), -- Stage / unstage the selected entry.
 					["S"] = cb("stage_all"), -- Stage all entries.

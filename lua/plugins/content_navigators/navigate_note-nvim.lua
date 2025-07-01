@@ -37,6 +37,10 @@ return {
             add = "<leader>na",
             open_nav = "<leader>nn", -- Switch to `nav.md`.
         },
+        link_surround = {  -- sometime you may want to change the link format in case of conflict with other formatting conversion.
+			left = "[[", -- The left delimiter for links.
+			right = "]]" -- The right delimiter for links.
+		},
         context_line_count = { -- It would be a total of `2 * context_line_count - 1` lines.
             tab = 8,
             vline = 2,
