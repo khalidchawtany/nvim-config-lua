@@ -6,7 +6,7 @@ return {
         -- "rafamadriz/friendly-snippets",
         "mikavilpas/blink-ripgrep.nvim",
         "fang2hou/blink-copilot",
-        "adibhanna/laravel.nvim",
+        -- "adibhanna/laravel.nvim",
 
         {
             "saghen/blink.compat",
@@ -197,7 +197,7 @@ return {
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
             default = {
-                "laravel",
+                -- "laravel",
                 "path",
                 "snippets",
                 "lsp",
@@ -277,11 +277,11 @@ return {
                     name = "nvim-cmp-ts-tag-close",
                     module = "blink.compat.source",
                 },
-                laravel = {
-                    name = "laravel",
-                    module = "laravel.blink_source",
-                    score_offset = 1000, -- High priority for Laravel completions
-                },
+                -- laravel = {
+                --     name = "laravel",
+                --     module = "laravel.blink_source",
+                --     score_offset = 1000, -- High priority for Laravel completions
+                -- },
                 cmdline = {
                     -- ignores cmdline completions when executing shell commands
                     enabled = function()

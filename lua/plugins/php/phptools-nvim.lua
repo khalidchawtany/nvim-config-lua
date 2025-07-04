@@ -32,42 +32,12 @@ return { -- lazy
         vim.api.nvim_create_autocmd({ "FileType" }, {
             pattern = "php",
             callback = function()
-                vim.keymap.set(
-                    "v",
-                    "<leader>cpr",
-                    "<cmd>PhpTools Refactor<CR>",
-                    { silent = true, buffer = true, desc = "PHP - Refactor" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>cpm",
-                    "<cmd>PhpToolds Method<CR>",
-                    { silent = true, buffer = true, desc = "PHP - Method" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>cpss",
-                    "<cmd>PhpTools Scripts<CR>",
-                    { silent = true, buffer = true, desc = "PHP - Scripts" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>cpn",
-                    "<cmd>PhpTools Namespace<CR>",
-                    { silent = true, buffer = true, desc = "PHP - Namespace" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>cpg",
-                    "<cmd>PhpTools GetSet<CR>",
-                    { silent = true, buffer = true, desc = "PHP - GetSet" }
-                )
-                vim.keymap.set(
-                    "n",
-                    "<leader>cpc",
-                    "<cmd>PhpTools Create<CR>",
-                    { silent = true, buffer = true, desc = "PHP - Create" }
-                )
+                vim.keymap.set( "v", "<localleader>]rr", "<cmd>PhpTools Refactor<CR>", { silent  = true, buffer = true, desc = "Refactor" })
+                vim.keymap.set( "n", "<localleader>]im", "<cmd>PhpTools Method<CR>", { silent    = true, buffer = true, desc = "Generate Method" })
+                vim.keymap.set( "n", "<localleader>]xs", "<cmd>PhpTools Scripts<CR>", { silent   = true, buffer = true, desc = "Run Compose Scripts" })
+                vim.keymap.set( "n", "<localleader>]in", "<cmd>PhpTools Namespace<CR>", { silent = true, buffer = true, desc = "Generate Namespace" })
+                vim.keymap.set( "n", "<localleader>]ig", "<cmd>PhpTools GetSet<CR>", { silent    = true, buffer = true, desc = "Generate GetSet" })
+                vim.keymap.set( "n", "<localleader>]ia", "<cmd>PhpTools Create<CR>", { silent    = true, buffer = true, desc = "Create" })
             end,
         })
     end,
