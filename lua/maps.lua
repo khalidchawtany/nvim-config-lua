@@ -85,3 +85,15 @@ vim.keymap.set("n", "<leader>bwh", function()
 	api.nvim_out_write(string.format("Deleted %d hidden and unmodified buffers\n", count))
 	-- dump(string.format("Deleted %d hidden and unmodified buffers\n", count))
 end, { desc = "Delete all unmodified hidden buffers" })
+
+
+vim.keymap.set("n", "<leader>yff", function()
+    local rel_path = require('functions').to_relative_path(vim.fn.expand('%:p'))
+    local line_num = vim.api.nvim_win_get_cursor(0)[1]
+    -- format the path and line number
+    local path_with_line = rel_path .. ":" .. line_num
+    -- copy to system clipboard
+    vim.fn.setreg('+', path_with_line)
+    vim.fn.setreg('*', path_with_line)
+    print(path_with_line)
+end, { desc = "Copy file path to root" })

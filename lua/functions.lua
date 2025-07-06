@@ -318,4 +318,19 @@ M.BS = function()
     ]])
 end
 
+M.to_relative_path = function(path)
+    local cwd = vim.fn.getcwd()
+    if path:startswith(cwd) then
+        return path:sub(#cwd + 2)
+    end
+    return path
+
+
+    -- local full_path = vim.fn.expand('%:p')
+    -- -- get the project root directory
+    -- local root_dir = vim.fn.getcwd()
+    -- -- remove the root path from the full path to get a relative path
+    -- local rel_path = string.gsub(full_path, "^" .. vim.pesc(root_dir) .. "/", "")
+end
+
 return M

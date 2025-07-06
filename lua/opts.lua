@@ -289,14 +289,3 @@ require('vim._extui').enable({
         timeout = 2000, -- Time a message is visible in the message window.
     },
 })
--- TODO: this hack avoid the extgui bug
--- if vim.g.neovide then
---     vim.api.nvim_create_autocmd('FocusGained', {
---         group = vim.api.nvim_create_augroup('Neovide_ExTUI', { clear = false }),
---         pattern = '*',
---         once = true,
---         callback = function()
---             vim.cmd('new | close')
---         end
---     })
--- end

@@ -66,13 +66,6 @@ return {
         -- { "<D-p><leader>", function() require('fzf-lua').changes({}) end, desc = "changes" },
         --
         {
-            "<D-p>G",
-            function()
-                vim.cmd([[ListFilesFromBranch]])
-            end,
-            desc = "Git list files from other branch",
-        },
-        {
             "<D-p>-",
             function()
                 require("fzf-lua").lsp_document_symbols({ fzf_args = [[--query='Method ']] })
@@ -298,6 +291,11 @@ return {
             desc = "commands",
         },
         {
+            "<D-p>]",
+            "<cmd>ListFilesFromBranch<cr>",
+            desc = "Git list files from other branch",
+        },
+        {
             "<D-p><D-h>",
             "<cmd>ListFilesFromHEAD<cr>",
             desc = "Files from HEAD",
@@ -308,13 +306,21 @@ return {
         -- nnoremap <silent> <c-p><c-h> :call fzf#run({"source":"git diff --name-only HEAD HEAD~1 " , "sink":"edit"})<cr>
 
         vim.api.nvim_create_user_command("ListFilesFromHEAD", function(opts)
+            require("lazy").load({ plugins = { "vim-fugitive" } })
             require("fzf-lua").git_files({
-                cmd     = "git diff --name-only HEAD HEAD~1 " .. opts.args,
-                prompt  = opts.args .. "> ",
-                actions = {
+                cmd       = "git diff --name-only HEAD HEAD~1 " .. opts.args,
+                prompt    = opts.args .. "> ",
+                actions   = {
                     ["default"] = function(selected, o)
                         local file = require("fzf-lua").path.entry_to_file(selected[1], o)
-                        local cmd = string.format("edit %s", file.path)
+                        local rel_path = require('functions').to_relative_path(file.path)
+                        local cmd = string.format("Gedit HEAD:%s", rel_path)
+                        vim.cmd(cmd)
+                    end,
+                    ["ctrl-g"] = function(selected, o)
+                        local file = require("fzf-lua").path.entry_to_file(selected[1], o)
+                        -- local cmd = string.format("Gtabedit %s:%s", opts.args, file.path)
+                        local cmd = string.format("e %s", file.path)
                         vim.cmd(cmd)
                     end,
                     ["ctrl-t"] = function(selected, o)
@@ -337,13 +343,12 @@ return {
                     end,
                 },
 
-				previewer = false,
+                previewer = false,
                 -- preview = "git diff {ref} {file}",
-                preview = require('fzf-lua.previewer.fzf').git_diff,
-                preview = require("fzf-lua").shell.raw_preview_action_cmd(function(items)
-                	local file = require("fzf-lua").path.entry_to_file(items[1])
-                	return string.format("git --no-pager diff   %s HEAD~1 -- %s | delta", opts.args, file.path)
-
+                preview   = require('fzf-lua.previewer.fzf').git_diff,
+                preview   = require("fzf-lua").shell.raw_preview_action_cmd(function(items)
+                    local file = require("fzf-lua").path.entry_to_file(items[1])
+                    return string.format("git --no-pager diff   %s HEAD~1 -- %s | delta", opts.args, file.path)
                 end),
             })
         end, {
@@ -351,8 +356,8 @@ return {
         })
 
         vim.api.nvim_create_user_command("ListFilesFromBranch", function(opts)
+            require("lazy").load({ plugins = { "vim-fugitive" } })
             local args = opts.args
-
             local listFilesFromBranch = function(branch)
                 require("fzf-lua").files({
                     cmd = "git ls-tree -r --name-only " .. branch,
@@ -362,7 +367,6 @@ return {
                         ["ctrl-s"] = false,
                         ["ctrl-v"] = function(selected, o)
                             local file = require("fzf-lua").path.entry_to_file(selected[1], o)
-                            vim.cmd([[Lazy load vim-fugitive]])
                             local cmd = string.format("Gvsplit %s:%s", branch, file.path)
                             vim.cmd(cmd)
                         end,
@@ -437,9 +441,9 @@ return {
                 -- Only valid when using a float window
                 -- (i.e. when 'split' is not defined, default)
                 height = 0.90, -- window height
-                width = 0.90, -- window width
-                row = 0.35, -- window row position (0=top, 1=bottom)
-                col = 0.50, -- window col position (0=left, 1=right)
+                width = 0.90,  -- window width
+                row = 0.35,    -- window row position (0=top, 1=bottom)
+                col = 0.50,    -- window col position (0=left, 1=right)
                 -- border argument passthrough to nvim_open_win(), also used
                 -- to manually draw the border characters around the preview
                 -- window, can be set to 'false' to remove all borders or to
@@ -472,18 +476,18 @@ return {
                 preview = {
                     -- default     = 'bat',           -- override the default previewer?
                     -- default uses the 'builtin' previewer
-                    border = "border", -- border|noborder, applies only to
+                    border = "border",        -- border|noborder, applies only to
                     -- native fzf previewers (bat/cat/git/etc)
-                    wrap = "nowrap", -- wrap|nowrap
-                    hidden = "nohidden", -- hidden|nohidden
-                    vertical = "down:45%", -- up|down:size
+                    wrap = "nowrap",          -- wrap|nowrap
+                    hidden = "nohidden",      -- hidden|nohidden
+                    vertical = "down:45%",    -- up|down:size
                     horizontal = "right:60%", -- right|left:size
-                    layout = "flex", -- horizontal|vertical|flex
-                    flip_columns = 120, -- #cols to switch to horizontal on flex
+                    layout = "flex",          -- horizontal|vertical|flex
+                    flip_columns = 120,       -- #cols to switch to horizontal on flex
                     -- Only used with the builtin previewer:
-                    title = true, -- preview border title (file/buf)?
-                    title_pos = "left", -- left|center|right, title alignment
-                    scrollbar = "float", -- `false` or string:'float|border'
+                    title = true,             -- preview border title (file/buf)?
+                    title_pos = "left",       -- left|center|right, title alignment
+                    scrollbar = "float",      -- `false` or string:'float|border'
                     -- float:  in-window floating border
                     -- border: in-border chars (see below)
                     scrolloff = "-2", -- float scrollbar offset from right
@@ -614,7 +618,7 @@ return {
                     cmd = "bat",
                     args = "--style=numbers,changes --color always",
                     theme = "Coldark-Dark", -- bat preview theme (bat --list-themes)
-                    config = nil, -- nil uses $BAT_CONFIG_PATH
+                    config = nil,           -- nil uses $BAT_CONFIG_PATH
                 },
                 head = {
                     cmd = "head",
@@ -633,10 +637,10 @@ return {
                     cmd = "man -c %s | col -bx",
                 },
                 builtin = {
-                    syntax = true, -- preview syntax highlight?
-                    syntax_limit_l = 0, -- syntax limit (lines), 0=nolimit
+                    syntax = true,                -- preview syntax highlight?
+                    syntax_limit_l = 0,           -- syntax limit (lines), 0=nolimit
                     syntax_limit_b = 1024 * 1024, -- syntax limit (bytes), 0=nolimit
-                    limit_b = 1024 * 1024 * 10, -- preview limit (bytes), 0=nolimit
+                    limit_b = 1024 * 1024 * 10,   -- preview limit (bytes), 0=nolimit
                     -- preview extensions using a custom shell command:
                     -- for example, use `viu` for image previews
                     -- will do nothing if `viu` isn't executable
@@ -661,9 +665,9 @@ return {
                 -- set to 'false' to disable
                 prompt = "Files❯ ",
                 multiprocess = true, -- run command in a separate process
-                git_icons = true, -- show git icons?
-                file_icons = true, -- show file icons?
-                color_icons = true, -- colorize file|git icons
+                git_icons = true,    -- show git icons?
+                file_icons = true,   -- show file icons?
+                color_icons = true,  -- colorize file|git icons
                 -- path_shorten   = 1,              -- 'true' or number, shorten path?
                 -- executed command priority is 'cmd' (if exists)
                 -- otherwise auto-detect prioritizes `fd`:`rg`:`find`
@@ -694,9 +698,9 @@ return {
                     prompt = "GitFiles❯ ",
                     cmd = "git ls-files --exclude-standard",
                     multiprocess = true, -- run command in a separate process
-                    git_icons = true, -- show git icons?
-                    file_icons = true, -- show file icons?
-                    color_icons = true, -- colorize file|git icons
+                    git_icons = true,    -- show git icons?
+                    file_icons = true,   -- show file icons?
+                    color_icons = true,  -- colorize file|git icons
                     -- force display the cwd header line regardles of your current working
                     -- directory can also be used to hide the header when not wanted
                     -- show_cwd_header = true
@@ -787,9 +791,9 @@ return {
                 prompt = "Rg❯ ",
                 input_prompt = "Grep For❯ ",
                 multiprocess = true, -- run command in a separate process
-                git_icons = true, -- show git icons?
-                file_icons = true, -- show file icons?
-                color_icons = true, -- colorize file|git icons
+                git_icons = true,    -- show git icons?
+                file_icons = true,   -- show file icons?
+                color_icons = true,  -- colorize file|git icons
                 -- executed command priority is 'cmd' (if exists)
                 -- otherwise auto-detect prioritizes `rg` over `grep`
                 -- default options are controlled by 'rg|grep_opts'
@@ -800,8 +804,8 @@ return {
                 -- search strings will be split using the 'glob_separator' and translated
                 -- to '--iglob=' arguments, requires 'rg'
                 -- can still be used when 'false' by calling 'live_grep_glob' directly
-                rg_glob = false, -- default to glob parsing?
-                glob_flag = "--iglob", -- for case sensitive globs use '--glob'
+                rg_glob = false,           -- default to glob parsing?
+                glob_flag = "--iglob",     -- for case sensitive globs use '--glob'
                 glob_separator = "%s%-%-", -- query separator pattern (lua): ' --'
                 -- advanced usage: for custom argument parsing define
                 -- 'rg_glob_fn' to return a pair:
@@ -816,7 +820,7 @@ return {
                     -- this action toggles between 'grep' and 'live_grep'
                     ["ctrl-g"] = { actions.grep_lgrep },
                 },
-                no_header = false, -- hide grep|cwd header?
+                no_header = false,   -- hide grep|cwd header?
                 no_header_i = false, -- hide interactive header?
             },
             args = {
@@ -828,13 +832,13 @@ return {
             oldfiles = {
                 prompt = "History❯ ",
                 cwd_only = false,
-                stat_file = true,    -- verify files exist on disk
+                stat_file = true,                -- verify files exist on disk
                 include_current_session = false, -- include bufs from current session
             },
             buffers = {
                 prompt = "Buffers❯ ",
-                file_icons = true, -- show file icons?
-                color_icons = true, -- colorize file|git icons
+                file_icons = true,    -- show file icons?
+                color_icons = true,   -- colorize file|git icons
                 sort_lastused = true, -- sort buffers() by last used
                 actions = {
                     -- actions inherit from 'actions.buffers' and merge
@@ -849,7 +853,7 @@ return {
                 prompt = "Tabs❯ ",
                 tab_title = "Tab",
                 tab_marker = "<<",
-                file_icons = true, -- show file icons?
+                file_icons = true,  -- show file icons?
                 color_icons = true, -- colorize file|git icons
                 actions = {
                     -- actions inherit from 'actions.buffers' and merge
@@ -863,9 +867,9 @@ return {
                 },
             },
             lines = {
-                previewer = "builtin", -- set to 'false' to disable
+                previewer = "builtin",  -- set to 'false' to disable
                 prompt = "Lines❯ ",
-                show_unlisted = false, -- exclude 'help' buffers
+                show_unlisted = false,  -- exclude 'help' buffers
                 no_term_buffers = true, -- exclude 'term' buffers
                 fzf_opts = {
                     -- do not include bufnr in fuzzy matching
@@ -883,9 +887,9 @@ return {
                 },
             },
             blines = {
-                previewer = "builtin", -- set to 'false' to disable
+                previewer = "builtin",   -- set to 'false' to disable
                 prompt = "BLines❯ ",
-                show_unlisted = true, -- include 'help' buffers
+                show_unlisted = true,    -- include 'help' buffers
                 no_term_buffers = false, -- include 'term' buffers
                 fzf_opts = {
                     -- hide filename, tiebreak by line no.
@@ -916,7 +920,7 @@ return {
                     -- this action toggles between 'grep' and 'live_grep'
                     ["ctrl-g"] = { actions.grep_lgrep },
                 },
-                no_header = false, -- hide grep|cwd header?
+                no_header = false,   -- hide grep|cwd header?
                 no_header_i = false, -- hide interactive header?
             },
             btags = {
@@ -961,7 +965,7 @@ return {
                 -- settings for 'lsp_{document|workspace|lsp_live_workspace}_symbols'
                 symbols = {
                     async_or_timeout = true, -- symbols are async by default
-                    symbol_style = 1, -- style for document/workspace symbols
+                    symbol_style = 1,        -- style for document/workspace symbols
                     -- false: disable,    1: icon+kind
                     --     2: icon only,  3: kind only
                     -- NOTE: icons are extracted from
