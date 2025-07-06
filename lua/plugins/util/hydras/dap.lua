@@ -26,6 +26,7 @@ Hydra({
         color = "teal",
         invoke_on_body = true,
         hint = {
+            type = "cmdline",
             position = "middle",
             border = "rounded",
         },

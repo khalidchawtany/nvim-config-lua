@@ -1,98 +1,50 @@
+local swap = "gS"
+local select = "gs"
+local jump = "gj"
 return {
     "ziontee113/syntax-tree-surfer",
     keys = {
-        { "vD",    mode = "n" },
-        { "vU",    mode = "n" },
-        { "vd",    mode = "n" },
-        { "vu",    mode = "n" },
+        { swap .. "h", "<cmd>STSSwapOrHold<cr>", mode = "n", desc = "Swap/Hold" }, -- gsh
+        { swap .. "h", "<cmd>STSSwapOrHold<cr>", mode = "x", desc = "Swap/Hold" }, -- gsh
 
-        { "J",     mode = "x" },
-        { "K",     mode = "x" },
-        { "H",     mode = "x" },
-        { "L",     mode = "x" },
-        { "<D-l>", mode = "x" },
-        { "<D-h>", mode = "x" },
+        { swap .. "u", function() vim.opt.opfunc = "v:lua.STSSwapUpNormal_Dot" return "g@l" end, expr = true, desc = "Swap Up Normal" }, -- vU
+        { swap .. "d", function() vim.opt.opfunc = "v:lua.STSSwapDownNormal_Dot" return "g@l" end, expr = true, desc = "Swap Down Normal" }, -- vD
 
-        { "gjv",   mode = "n", desc = "Jump to variable_declarations" },
-        { "gjf",   mode = "n", desc = "Jump to functions" },
-        { "gjl",   mode = "n", desc = "Jump to for_statements" },
-        { "gji",   mode = "n", desc = "Jump to if_statements" },
-        { "gjj",   mode = "n", desc = "Jump to all" },
+        { swap .. "n", function() vim.opt.opfunc = "v:lua.STSSwapCurrentNodeNextNormal_Dot" return "g@l" end, mode = "n", expr = true }, -- vd
+        { swap .. "n", "<cmd>STSSwapNextVisual<cr>", mode = "x", desc = "Select Master" },
 
-        { "gsh", mode ={ "x", "n" }},
-    },
+        { swap .. "p", function() vim.opt.opfunc = "v:lua.STSSwapCurrentNodePrevNormal_Dot" return "g@l" end, mode = "n", expr = true }, -- vu
+        { swap .. "p", "<cmd>STSSwapPrevVisual<cr>", mode = "x", desc = "Select Current" },
 
-    config = function()
-        -- Syntax Tree Surfer
-        local opts = { noremap = true, silent = true }
-        -- Holds a node, or swaps the held node
-        vim.keymap.set("n", "gsh", "<cmd>STSSwapOrHold<cr>", opts)
-        -- Same for visual
-        vim.keymap.set("x", "gsh", "<cmd>STSSwapOrHoldVisual<cr>", opts)
+        { select .. "m", "<cmd>STSSelectCurrentNode<cr>", mode = "n", desc = "Select Master" }, -- vM
+        { select .. "c", "<cmd>STSSelectCurrentNode<cr>", mode = "n", desc = "Select Current" }, -- vC
 
-        -- Normal Mode Swapping:
-        -- Swap The Master Node relative to the cursor with it's siblings, Dot Repeatable
-        vim.keymap.set("n", "vU", function()
-            vim.opt.opfunc = "v:lua.STSSwapUpNormal_Dot"
-            return "g@l"
-        end, { silent = true, expr = true })
+        { select .. "n", "<cmd>STSSelectNextSiblingNode<cr>", mode = "x", desc = "Select Next Sibling" },
+        { select .. "p", "<cmd>STSSelectPrevSiblingNode<cr>", mode = "x", desc = "Select Prev Sibling" },
 
-        vim.keymap.set("n", "vD", function()
-            vim.opt.opfunc = "v:lua.STSSwapDownNormal_Dot"
-            return "g@l"
-        end, { silent = true, expr = true })
+        { "<c-l>", "<cmd>STSSelectNextSiblingNode<cr>", mode = "x", desc = "Select Next Sibling" },
+        { "<c-h>", "<cmd>STSSelectPrevSiblingNode<cr>", mode = "x", desc = "Select Prev Sibling" },
+        { "<c-k>", "<cmd>STSSelectParentNode<cr>", mode = "x", desc = "Select Parent" },
+        { "<c-j>", "<cmd>STSSelectChildNode<cr>", mode = "x", desc = "Select Child" },
 
-        -- Swap Current Node at the Cursor with it's siblings, Dot Repeatable
-        vim.keymap.set("n", "vd", function()
-            vim.opt.opfunc = "v:lua.STSSwapCurrentNodeNextNormal_Dot"
-            return "g@l"
-        end, { silent = true, expr = true })
+        { jump .. "v", function()
+            require("syntax-tree-surfer").targeted_jump({ "variable_declaration" })
+        end, desc = "Jump to variable_declarations" },
 
-        vim.keymap.set("n", "vu", function()
-            vim.opt.opfunc = "v:lua.STSSwapCurrentNodePrevNormal_Dot"
-            return "g@l"
-        end, { silent = true, expr = true })
+        { jump .. "f", function()
+            require("syntax-tree-surfer").targeted_jump({ "function", "arrow_function", "function_definition" })
+        end, desc = "Jump to functions" },
 
-        --> If the mappings above don't work, use these instead (no dot repeatable)
-        -- vim.keymap.set("n", "vd", '<cmd>STSSwapCurrentNodeNextNormal<cr>', opts)
-        -- vim.keymap.set("n", "vu", '<cmd>STSSwapCurrentNodePrevNormal<cr>', opts)
-        -- vim.keymap.set("n", "vD", '<cmd>STSSwapDownNormal<cr>', opts)
-        -- vim.keymap.set("n", "vU", '<cmd>STSSwapUpNormal<cr>', opts)
+        { jump .. "i", function()
+            require("syntax-tree-surfer").targeted_jump({ "if_statement"})
+        end,desc = "Jump to If" },
 
-        -- Visual Selection from Normal Mode
-        vim.keymap.set("n", "vx", "<cmd>STSSelectMasterNode<cr>", opts)
-        vim.keymap.set("n", "vn", "<cmd>STSSelectCurrentNode<cr>", opts)
+        { jump .. "l", function()
+            require("syntax-tree-surfer").targeted_jump({ "for_statement" })
+        end, desc = "Jump to Loop" },
 
-        -- Select Nodes in Visual Mode
-        vim.keymap.set("x", "J", "<cmd>STSSelectNextSiblingNode<cr>", opts)
-        vim.keymap.set("x", "K", "<cmd>STSSelectPrevSiblingNode<cr>", opts)
-        vim.keymap.set("x", "H", "<cmd>STSSelectParentNode<cr>", opts)
-        vim.keymap.set("x", "L", "<cmd>STSSelectChildNode<cr>", opts)
-
-        -- Swapping Nodes in Visual Mode
-        vim.keymap.set("x", "<D-l>", "<cmd>STSSwapNextVisual<cr>", opts)
-        vim.keymap.set("x", "<D-h>", "<cmd>STSSwapPrevVisual<cr>", opts)
-
-        -- Syntax Tree Surfer V2 Mappings
-        -- Targeted Jump with virtual_text
-        local sts = require("syntax-tree-surfer")
-        vim.keymap.set("n", "gjv", function() -- only jump to variable_declarations
-            sts.targeted_jump({ "variable_declaration" })
-        end, opts)
-        vim.keymap.set("n", "gjf", function() -- only jump to functions
-            sts.targeted_jump({ "function", "arrow_function", "function_definition" })
-            --> In this example, the Lua language schema uses "function",
-            --  when the Python language uses "function_definition"
-            --  we include both, so this keymap will work on both languages
-        end, opts)
-        vim.keymap.set("n", "gji", function() -- only jump to if_statements
-            sts.targeted_jump({ "if_statement" })
-        end, opts)
-        vim.keymap.set("n", "gjl", function() -- only jump to for_statements
-            sts.targeted_jump({ "for_statement" })
-        end, opts)
-        vim.keymap.set("n", "gjj", function() -- jump to all that you specify
-            sts.targeted_jump({
+        { jump .. "j", function()
+            require("syntax-tree-surfer").targeted_jump({
                 "scoped_call_expression",
                 "member_call_expression",
                 "class_declaration",
@@ -106,7 +58,14 @@ return {
                 "while_statement",
                 "switch_statement",
             })
-        end, opts)
+        end, desc = "Jump to Loop" },
+
+    },
+
+    config = function()
+        -- Syntax Tree Surfer
+        -- local opts = { noremap = true, silent = true }
+        -- local sts = require("syntax-tree-surfer")
 
         -- -------------------------------
         -- -- filtered_jump --

@@ -18,6 +18,7 @@ Hydra({
 	name = "Telescope",
 	hint = hint,
 	config = {
+
 		color = "teal",
 		invoke_on_body = true,
 		hint = {

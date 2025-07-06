@@ -291,9 +291,14 @@ return {
             desc = "commands",
         },
         {
-            "<D-p>]",
+            "<D-p><D-]>",
             "<cmd>ListFilesFromBranch<cr>",
             desc = "Git list files from other branch",
+        },
+        {
+            "<D-p><D-i>",
+            "<cmd>PickFileFromCommit<cr>",
+            desc = "Git list files from a commit and shows it",
         },
         {
             "<D-p><D-h>",
