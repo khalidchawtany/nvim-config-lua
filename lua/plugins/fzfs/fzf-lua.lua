@@ -318,15 +318,14 @@ return {
                 actions   = {
                     ["default"] = function(selected, o)
                         local file = require("fzf-lua").path.entry_to_file(selected[1], o)
-                        local rel_path = require('functions').to_relative_path(file.path)
-                        local cmd = string.format("Gedit HEAD:%s", rel_path)
+                        local cmd = string.format("e %s", file.path)
                         vim.cmd(cmd)
                     end,
                     ["ctrl-g"] = function(selected, o)
                         local file = require("fzf-lua").path.entry_to_file(selected[1], o)
-                        -- local cmd = string.format("Gtabedit %s:%s", opts.args, file.path)
-                        local cmd = string.format("e %s", file.path)
-                        vim.cmd(cmd)
+                        local rel_path = require('functions').to_relative_path(file.path)
+                        local cmd = string.format("Gvsplit HEAD:%s", rel_path)
+                        local file = require("fzf-lua").path.entry_to_file(selected[1], o)
                     end,
                     ["ctrl-t"] = function(selected, o)
                         local file = require("fzf-lua").path.entry_to_file(selected[1], o)
