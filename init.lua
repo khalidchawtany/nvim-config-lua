@@ -1,4 +1,3 @@
-
 if vim.env.PROF then
     -- example for lazy.nvim
     -- change this to the correct path for your plugin manager
@@ -131,7 +130,7 @@ require("lazy").setup({
         -- defaults for the `lazy log` command
         -- log = { "--since=3 days ago" }, -- show commits from the last 3 days
         log = { "-8" }, -- show the last 8 commits
-        timeout = 360, -- kill processes that take more than 2 minutes
+        timeout = 360,  -- kill processes that take more than 2 minutes
         url_format = "https://github.com/%s.git",
         -- lazy.nvim requires git >=2.19.0. if you really want to use lazy with an older version,
         -- then set the below to false. this should work, but is not supported and will
@@ -139,7 +138,7 @@ require("lazy").setup({
         filter = true,
     },
 })
-if vim.fn.getcwd() == "/" then
+if vim.fn.getcwd() == "/" or vim.fn.getcwd() == "/Users/juju" then
     vim.cmd.cd("~/.config/nvim")
 end
 vim.cmd.source("~/.config/nvim/func.vim")

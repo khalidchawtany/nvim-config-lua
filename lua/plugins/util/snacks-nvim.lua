@@ -105,6 +105,15 @@ return {
             "<leader>pw",
             function()
                 local cword = vim.fn.expand("<cword>")
+                require("snacks.picker").pick({ source = "files", search = cword, hidden = true, ignored = true, })
+            end,
+            desc = "Files Picker <cword>",
+        },
+
+        {
+            "<leader>pW",
+            function()
+                local cword = vim.fn.expand("<cword>")
                 require("snacks.picker").pick({ source = "smart", search = cword, hidden = true, ignored = true, })
             end,
             desc = "Files Picker <cword>",

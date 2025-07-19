@@ -30,7 +30,7 @@ M.config = function()
 		load_silent = true,
 		debug = false,
 		prompt_no_cr = false,
-		autoload = "last", --false | string | function(): string => last, auto_cwd, last_cwd
+		autoload = false, --false | string | function(): string => last, auto_cwd, last_cwd
 
 		autosave = {
 			current = true, -- or fun(name): boolean

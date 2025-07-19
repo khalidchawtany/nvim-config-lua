@@ -1,5 +1,6 @@
 return {
     "samuelsimoes/vim-drawer",
+    enabled = false,
     cmd = { "VimDrawer" },
     keys = {
         {

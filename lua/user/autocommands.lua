@@ -19,6 +19,20 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufReadPost' }, {
     end
 })
 
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufReadPost' }, {
+    pattern = { '*.js.php' },
+    callback = function(ev)
+        vim.cmd('set filetype=javascript')
+    end
+})
+
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufReadPost' }, {
+    pattern = { '*.css.php' },
+    callback = function(ev)
+        vim.cmd('set filetype=scss')
+    end
+})
+
 -- When cursor moves to a diagnostic line, open the diagnostic float window
 -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 --     group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
