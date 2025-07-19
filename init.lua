@@ -138,6 +138,7 @@ require("lazy").setup({
         filter = true,
     },
 })
+print(vim.fn.getcwd())
 if vim.fn.getcwd() == "/" or vim.fn.getcwd() == "/Users/juju" then
     vim.cmd.cd("~/.config/nvim")
 end
@@ -148,6 +149,7 @@ require("user.commands")
 require("project_maps")
 require("maps")
 require("opts")
+require("user.peek")
 vim.cmd.source("~/.config/nvim/lua/maps.vim")
 vim.cmd([[autocmd user lazyreload source ~/.config/nvim/lua/maps.vim]])
 vim.cmd([[TSEnable highlight]])
