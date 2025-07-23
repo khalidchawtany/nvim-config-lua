@@ -1,135 +1,158 @@
--- Check if 'hidden' option is enabled
-if not vim.o.hidden then
-    vim.notify("VimDrawer requires 'hidden' option enabled!", vim.log.levels.WARN)
-    return
-end
+-- File: lua/vim-drawer/init.lua
+local M = {}
 
--- Module table
-local M = {
-    auto_classification = true,
+-- Default configuration
+M.config = {
+    spaces = vim.g.vim_drawer_spaces or {}
 }
 
--- Get spaces configuration
-local function get_spaces()
-    return vim.g.vim_drawer_spaces or {
-        { "React",  "\\*MartReact\\*" },
-        { "http", "\\*.http$" },
-        { "Admin",  "\\*OneWayAdmin\\*" },
-        { "Docs",  "\\*Docs_OneWay\\*" },
-        { "Driver",  "\\*TaxiDriver\\*" },
-        { "Rider",  "\\*TaxiRider\\*" },
-        { "UserMart",  "\\*UserMart\\*" },
-    }
-end
+-- Set up the plugin with user configuration
+function M.setup(user_config)
+    M.config = vim.tbl_deep_extend("force", M.config, user_config or {})
 
+    -- Set up autocommands
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd" }, {
+        callback = function(args)
+            M.handle_buffer(args.buf)
+        end,
+    })
 
--- Match drawer based on file path
-local function match_drawer(file_path)
-    local tabs = {}
-    local tabpages = vim.api.nvim_list_tabpages()
-
-    for i, tabpage in ipairs(tabpages) do
-        local tab_id = i
-        local ok, label = pcall(vim.api.nvim_tabpage_get_var, tabpage, "tablabel")
-        tabs[tab_id] = ok and label or ""
-    end
-
-    for _, space in ipairs(get_spaces()) do
-        if file_path:match(space[2]) then
-            local tab_index = vim.fn.index(tabs, space[1]) + 1
-            return { existing_drawer = true, tab_name = space[1], tab_id = tab_index }
-        end
-    end
-    return { existing_drawer = false, tab_name = nil, tab_id = 0 }
-end
-
--- Add buffer to tab's drawer list
-local function add_tab_buffer()
-    local tabnr = vim.api.nvim_get_current_tabpage()
-    local buf = vim.api.nvim_get_current_buf()
-    local buf_name = vim.api.nvim_buf_get_name(buf)
-
-    -- Skip if buffer is unmodifiable, unlisted, or NERDTree
-    if not vim.bo[buf].modifiable
-        or not vim.bo[buf].buflisted
-        or buf_name:match("NERD_tree_") then
-        return
-    end
-
-    -- Handle auto-classification
-    if not M.auto_classification then
-        return
-    end
-
-    local match = match_drawer(buf_name)
-    local current_tab = vim.api.nvim_get_current_tabpage()
-    local is_first_buffer = buf == 1
-    local prev_buf = vim.fn.bufnr("#")
-
-    if match.existing_drawer and (match.tab_id == 0 or match.tab_id ~= current_tab) then
-        if not is_first_buffer then
-            vim.api.nvim_set_current_buf(prev_buf == buf and vim.api.nvim_create_buf(true, false) or prev_buf)
-        end
-
-        if match.tab_id == 0 then
-            if not is_first_buffer then
-                vim.cmd.tabedit({ args = { buf_name } })
-            end
-            vim.t[vim.api.nvim_get_current_tabpage()].tablabel = match.tab_name or ""
-            vim.cmd.redraw()
-        elseif match.tab_id ~= current_tab then
-            vim.api.nvim_set_current_tabpage(match.tab_id)
-            vim.api.nvim_set_current_buf(buf)
-        end
-    end
-end
-
--- Toggle auto-classification
-local function toggle_auto_classification()
-    M.auto_classification = not M.auto_classification
-    vim.notify("VimDrawer auto-classification " .. (M.auto_classification and "enabled" or "disabled"),
-        vim.log.levels.INFO)
-end
-
--- Tabline function
-function M.vim_drawer_tabline()
-    local tabline = ""
-    local current_tab = vim.api.nvim_get_current_tabpage()
-    local tabpages = vim.api.nvim_list_tabpages()
-    for tab_id = 1, #tabpages do
-        local ok, title = pcall(vim.api.nvim_tabpage_get_var, tab_id, "tablabel")
-        title = ok and title or ""
-        tabline = tabline .. "%" .. tab_id .. "T"
-        tabline = tabline .. (tab_id == current_tab and "%#TabLineSel#" or "%#TabLine#")
-        tabline = tabline .. " " .. tab_id .. " " .. title .. " "
-    end
-    tabline = tabline .. "%#TabLineFill#%T"
-    if #tabpages > 1 then
-        tabline = tabline .. "%=%#TabLine#%999XX"
-    end
-    return tabline
-end
-
--- Setup tabline
-if vim.o.showtabline > 0 then
-    vim.o.tabline = "%!luaeval('require(\"user.vim-drawer\").vim_drawer_tabline()')"
-end
-
--- Setup GUI tab label
-if vim.fn.has("gui_running") == 1 and vim.o.guioptions:match("e") then
-    vim.o.guitablabel = "%{luaeval('require(\"user.vim-drawer\").vim_drawer_tabline()')}"
-    vim.api.nvim_create_autocmd("BufEnter", {
+    -- Handle manual tab creation
+    vim.api.nvim_create_autocmd("TabNew", {
         callback = function()
-            vim.o.guitablabel = "%{luaeval('require(\"user.vim-drawer\").vim_drawer_tabline()')}"
+            -- Set project_name to "Other" for all existing tabs without a project_name
+            for _, tabnr in ipairs(vim.api.nvim_list_tabpages()) do
+                local success, _ = pcall(vim.api.nvim_tabpage_get_var, tabnr, "project_name")
+                if not success then
+                    vim.api.nvim_tabpage_set_var(tabnr, "project_name", "Other")
+                end
+            end
+            -- Set project_name for the new tab if not already set
+            local current_tab = vim.api.nvim_get_current_tabpage()
+            local success, _ = pcall(vim.api.nvim_tabpage_get_var, current_tab, "project_name")
+            if not success then
+                vim.api.nvim_tabpage_set_var(current_tab, "project_name", "Other")
+            end
         end,
     })
 end
 
--- Autocommands
-local group = vim.api.nvim_create_augroup("VimDrawerGroup", { clear = true })
-vim.api.nvim_create_autocmd("BufEnter", { group = group, callback = add_tab_buffer })
+-- Get project name for a given file path
+function M.get_project_name(filepath)
+    for _, space in ipairs(M.config.spaces) do
+        local project_name, pattern = space[1], space[2]
+        if string.match(filepath, pattern) then
+            return project_name
+        end
+    end
+    return "Other" -- Default to "Other" if no match
+end
 
--- Commands
-vim.api.nvim_create_user_command("VimDrawerAutoClassificationToggle", toggle_auto_classification, {})
+-- Find or create a tab for a project
+function M.find_or_create_tab(project_name)
+    -- Check existing tabs
+    local other_tabs = {}
+    for _, tabnr in ipairs(vim.api.nvim_list_tabpages()) do
+        local tab_project = ""  -- Default value if var doesn't exist
+        local success, value = pcall(vim.api.nvim_tabpage_get_var, tabnr, "project_name")
+        if success then
+            tab_project = value
+        end
+        -- Collect all "Other" tabs
+        if tab_project == "Other" then
+            table.insert(other_tabs, tabnr)
+        end
+        -- For non-"Other" projects, return matching tab
+        if tab_project == project_name and project_name ~= "Other" then
+            return tabnr
+        end
+    end
+
+    -- If project_name is "Other" and there are "Other" tabs, return the last one
+    if project_name == "Other" and #other_tabs > 0 then
+        return other_tabs[#other_tabs]
+    end
+
+    -- Create new tab
+    vim.cmd("tabnew")
+    local new_tabnr = vim.api.nvim_get_current_tabpage()
+    vim.api.nvim_tabpage_set_var(new_tabnr, "project_name", project_name)
+    return new_tabnr
+end
+
+-- Handle new buffer
+function M.handle_buffer(bufnr)
+    if not vim.api.nvim_buf_is_valid(bufnr) then
+        return
+    end
+
+    local filepath = vim.api.nvim_buf_get_name(bufnr)
+    if filepath == "" then
+        return
+    end
+
+    local project_name = M.get_project_name(filepath)
+    local current_tab = vim.api.nvim_get_current_tabpage()
+    local current_tab_project = ""
+    local success, value = pcall(vim.api.nvim_tabpage_get_var, current_tab, "project_name")
+    if success then
+        current_tab_project = value
+    end
+
+    -- Collect all "Other" tabs
+    local other_tabs = {}
+    for _, tabnr in ipairs(vim.api.nvim_list_tabpages()) do
+        local tab_project = ""
+        local success, value = pcall(vim.api.nvim_tabpage_get_var, tabnr, "project_name")
+        if success then
+            tab_project = value
+        end
+        if tab_project == "Other" then
+            table.insert(other_tabs, tabnr)
+        end
+    end
+
+    local target_tab
+    if project_name == "Other" and #other_tabs > 0 then
+        -- For "Other" files, use the last "Other" tab
+        target_tab = other_tabs[#other_tabs]
+    else
+        -- For project files, find or create the appropriate tab
+        target_tab = M.find_or_create_tab(project_name)
+    end
+
+    -- Move the buffer to the target tab if we're not already there
+    if vim.api.nvim_get_current_tabpage() ~= target_tab then
+        vim.api.nvim_set_current_tabpage(target_tab)
+        vim.api.nvim_win_set_buf(vim.api.nvim_get_current_win(), bufnr)
+    end
+
+    -- Close all "Other" tabs except the target tab
+    for _, tabnr in ipairs(other_tabs) do
+        if tabnr ~= target_tab and vim.api.nvim_tabpage_is_valid(tabnr) then
+            pcall(vim.cmd, "tabclose " .. tabnr)
+        end
+    end
+end
+
+-- Custom tabline function
+function M.get_tabline()
+    local s = ""
+    for _, tabnr in ipairs(vim.api.nvim_list_tabpages()) do
+        local project_name = "Other"
+        local success, value = pcall(vim.api.nvim_tabpage_get_var, tabnr, "project_name")
+        if success then
+            project_name = value
+        end
+        local is_current = vim.api.nvim_get_current_tabpage() == tabnr
+        s = s .. (is_current and "%#TabLineSel#" or "%#TabLine#")
+        s = s .. " " .. project_name .. " "
+    end
+    s = s .. "%#TabLineFill#"
+    return s
+end
+
+-- Set up custom tabline
+vim.o.tabline = "%!luaeval('require(\"user.vim-drawer\").get_tabline()')"
 
 return M

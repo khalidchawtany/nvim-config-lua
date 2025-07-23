@@ -257,3 +257,14 @@ end
 --         end
 --     end,
 -- })
+require('user.vim-drawer').setup({
+  spaces = {
+        { "React",  "\\*MartReact\\*" },
+        { "http", "\\*.http$" },
+        { "Admin",  "\\*OneWayAdmin\\*" },
+        { "Docs",  "\\*Docs_OneWay\\*" },
+        { "Driver",  "\\*TaxiDriver\\*" },
+        { "Rider",  "\\*TaxiRider\\*" },
+        { "UserMart",  "\\*UserMart\\*" },
+    }
+})
