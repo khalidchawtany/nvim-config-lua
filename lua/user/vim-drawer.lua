@@ -13,6 +13,14 @@ function M.setup(user_config)
     -- Set up autocommands
     vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd" }, {
         callback = function(args)
+            local buftype = vim.bo.buftype
+            local filetype = vim.bo.filetype
+            local excludeBuftype = { "quickfix", "terminal", "nowrite" }
+            local excludeFiletype = { "oil", }
+            if vim.tbl_contains(excludeBuftype, buftype) or vim.tbl_contains(excludeFiletype, filetype) then
+                return
+            end
+
             M.handle_buffer(args.buf)
         end,
     })
@@ -53,7 +61,7 @@ function M.find_or_create_tab(project_name)
     -- Check existing tabs
     local other_tabs = {}
     for _, tabnr in ipairs(vim.api.nvim_list_tabpages()) do
-        local tab_project = ""  -- Default value if var doesn't exist
+        local tab_project = "" -- Default value if var doesn't exist
         local success, value = pcall(vim.api.nvim_tabpage_get_var, tabnr, "project_name")
         if success then
             tab_project = value

@@ -1,28 +1,36 @@
 local Hydra = require("hydra")
 
 local window_hint = [[
-                   Move            Size               Split
-              -------------    -----------       ---------------
-      _k_          _K_           _<C-k>_       _s_: horizontally
-  _h_     _l_  _H_     _L_   _<C-h>_ _<C-l>_   _v_: vertically
-      _j_          _J_           _<C-j>_       _q_, _c_: close
-  focus        window         _=_: equalize    _z_: maximize
-                                               _o_: remain only
-  _b_: choose buffer
+               Move          Size             Split                 other
+            ---------      ---------     ----------------      ----------------
+   _k_            _K_           _<C-k>_          _s_: horizontally     _c_: close window
+_h_     _l_      _H_     _L_     _<C-h>_ _<C-l>_       _v_: vertically       _q_, _;_, _<Esc>_: close
+   _j_            _J_           _<C-j>_          _z_: maximize
+            _t_: to tab     _e_, _=_: equalize   _o_: remain only
 ]]
 
 Hydra({
     name = "Change / Resize Window",
     hint = window_hint,
     config = {
-        -- color = "pink",
+        color = "pink",
+        invoke_on_body = true,
         hint = {
             position = "middle",
-            border = "rounded",
+            float_opts = {
+                -- row, col, height, width, relative, and anchor should not be
+                -- overridden
+                -- style = "minimal",
+                border = 'rounded',
+                focusable = false,
+                noautocmd = true,
+                title = "TreeSitter",
+                title_pos = "center",
+            },
         },
     },
     mode = { "n" },
-    body = "<leader><C-w>",
+    body = "<C-w>",
     heads = {
         -- focus windows
         { "h",     "<C-w>h" },
@@ -49,20 +57,14 @@ Hydra({
         { "z",     "<C-w>c" },
 
         -- only
-        { "o",     "<C-w>o" },
+        { "o",     "<C-w>o", { nowait = true, exit = true } },
 
         -- move to tab
-        { "t",     "<C-w>t" },
+        { "t",     "<C-w>T", { nowait = true, exit = true } },
 
         -- equalize window sizes
         { "e",     "<C-w>=" },
         { "=",     "<C-w>=" },
-
-        -- close active window
-        { "Q",     ":q<cr>" },
-        { "<C-q>", ":q<cr>" },
-
-        { "b",     ":Telescope buffers<cr>", { exit = true, nowait = true } },
 
         -- exit this Hydra
         { "q",     nil,      { exit = true, nowait = true } },

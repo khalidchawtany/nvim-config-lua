@@ -3,6 +3,21 @@ local select = "gs"
 local jump = "gj"
 return {
     "ziontee113/syntax-tree-surfer",
+    cmd = {
+        "STSSelectChildNode",
+        "STSSelectCurrentNode",
+        "STSSelectMasterNode",
+        "STSSelectNextSiblingNode",
+        "STSSelectParentNode",
+        "STSSelectPrevSiblingNode",
+        "STSSwapCurrentNodeNextNormal",
+        "STSSwapCurrentNodePrevNormal",
+        "STSSwapDownNormal",
+        "STSSwapNextVisual",
+        "STSSwapOrHold",
+        "STSSwapPrevVisual",
+        "STSSwapUpNormal",
+    },
     keys = {
         { swap .. "h", "<cmd>STSSwapOrHold<cr>", mode = "n", desc = "Swap/Hold" }, -- gsh
         { swap .. "h", "<cmd>STSSwapOrHold<cr>", mode = "x", desc = "Swap/Hold" }, -- gsh

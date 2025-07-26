@@ -257,14 +257,24 @@ end
 --         end
 --     end,
 -- })
-require('user.vim-drawer').setup({
-  spaces = {
-        { "React",  "\\*MartReact\\*" },
-        { "http", "\\*.http$" },
-        { "Admin",  "\\*OneWayAdmin\\*" },
-        { "Docs",  "\\*Docs_OneWay\\*" },
-        { "Driver",  "\\*TaxiDriver\\*" },
-        { "Rider",  "\\*TaxiRider\\*" },
-        { "UserMart",  "\\*UserMart\\*" },
-    }
-})
+
+-- Possible mappings
+-- s(d,r
+-- d(s,r)
+-- c(s,d,r)
+
+-- require('user.vim-drawer').setup({
+--   spaces = {
+--         { "React",  "\\*MartReact\\*" },
+--         { "http", "\\*.http$" },
+--         { "Admin",  "\\*OneWayAdmin\\*" },
+--         { "Docs",  "\\*Docs_OneWay\\*" },
+--         { "Driver",  "\\*TaxiDriver\\*" },
+--         { "Rider",  "\\*TaxiRider\\*" },
+--         { "UserMart",  "\\*UserMart\\*" },
+--         { "evoc",  "\\*evoc\\*" },
+--         { "pvoc",  "\\*pvov\\*" },
+--         { "ltcoc",  "\\*ltcoc\\*" },
+--         { "sms",  "\\*sms\\*" },
+--     }
+-- })

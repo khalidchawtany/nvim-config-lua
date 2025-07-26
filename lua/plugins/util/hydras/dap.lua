@@ -28,7 +28,6 @@ Hydra({
         hint = {
             type = "cmdline",
             position = "middle",
-            border = "rounded",
         },
     },
     mode = "n",

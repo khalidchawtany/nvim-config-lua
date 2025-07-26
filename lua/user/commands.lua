@@ -1,12 +1,32 @@
 vim.api.nvim_create_user_command("EL", function(args)
     local functions = require("user.functions")
-    local parts = functions.splitBy(args.args, "@")
 
-    local filePath = parts[1]:gsub("\\", "/")..'.php'
+    -- if args.args contains @ then split by @ else split by colon
+    local parts = {}
+    local hasColon = false
+    if string.find(args.args, "@") then
+        parts = vim.split(args.args, "@", { plain = true })
+    else
+        parts = vim.split(args.args, ":", { plain = true })
+        hasColon = true
+    end
+
+    local filePath = parts[1]
+    filePath = string.gsub(filePath, " ", "")
+    filePath = string.gsub(filePath, "\\", "/")
+
+    if not filePath:match(".php") then
+        filePath = filePath .. ".php"
+    end
+
     if #parts == 2 then
-        local function_name = parts[2]
-        vim.cmd("e " .. filePath .. ' | /' .. function_name)
-        return
+        local function_name = string.gsub(parts[2], " ", "")
+        if hasColon then
+            vim.cmd("e " .. filePath .. ' |:' .. function_name)
+        else
+            vim.cmd("e " .. filePath .. ' | /' .. function_name)
+            return
+        end
     end
     vim.cmd.edit(filePath)
 end, { desc = "Edit File", nargs = 1 })

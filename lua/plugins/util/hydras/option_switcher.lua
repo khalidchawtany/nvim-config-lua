@@ -21,7 +21,6 @@ Hydra({
 		color = "amaranth",
 		invoke_on_body = true,
 		hint = {
-			border = "rounded",
 			position = "middle",
 		},
 	},

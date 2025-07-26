@@ -1,5 +1,5 @@
 return {
-    "ldelossa/buffertag", -- put a tag on each windo with the file name
+    "khalidchawtany/buffertag", -- put a tag on each windo with the file name
     event = "BufEnter",
     keys = {
         { "yoq", "<cmd>BuffertagToggle<cr>", desc = "Buffertag" },
