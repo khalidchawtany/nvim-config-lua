@@ -5,8 +5,8 @@ local window_hint = [[
             ---------      ---------     ----------------      ----------------
    _k_            _K_           _<C-k>_          _s_: horizontally     _c_: close window
 _h_     _l_      _H_     _L_     _<C-h>_ _<C-l>_       _v_: vertically       _q_, _;_, _<Esc>_: close
-   _j_            _J_           _<C-j>_          _z_: maximize
-            _t_: to tab     _e_, _=_: equalize   _o_: remain only
+   _j_            _J_           _<C-j>_           _o_: remain only
+            _t_: to tab     _e_, _=_: equalize   
 ]]
 
 Hydra({
@@ -18,13 +18,12 @@ Hydra({
         hint = {
             position = "middle",
             float_opts = {
-                -- row, col, height, width, relative, and anchor should not be
-                -- overridden
+                -- row, col, height, width, relative, and anchor should not be overridden
                 -- style = "minimal",
                 border = 'rounded',
                 focusable = false,
                 noautocmd = true,
-                title = "TreeSitter",
+                title = "Window Management",
                 title_pos = "center",
             },
         },
@@ -54,7 +53,7 @@ Hydra({
         { "s",     "<C-w>s" },
         { "v",     "<C-w>v" },
         { "c",     "<C-w>c" },
-        { "z",     "<C-w>c" },
+        -- { "z",     "<C-w>c" },
 
         -- only
         { "o",     "<C-w>o", { nowait = true, exit = true } },
