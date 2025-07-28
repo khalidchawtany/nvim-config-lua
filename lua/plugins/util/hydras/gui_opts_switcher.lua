@@ -27,7 +27,7 @@ Hydra({
 		},
 	},
 	mode = "n",
-	body = "<leader>of",
+	body = "<localleader>of",
 	heads = {
 		{ "f",       cmd("Telescope find_files") },
 		{ "g",       cmd("Telescope live_grep") },
