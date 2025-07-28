@@ -31,7 +31,7 @@ Hydra({
         },
     },
     mode = "n",
-    body = "<leader>dd",
+    body = "<localleader>dd",
     heads = {
         { "s",       cmd([[:lua require"osv".launch({port = 8086})<CR>]]),                     { desc = "DAP Launch" } },
         { "e",       cmd([[:lua require"dap".stop()<CR>]]),                                    { desc = "DAP Stop" } },
