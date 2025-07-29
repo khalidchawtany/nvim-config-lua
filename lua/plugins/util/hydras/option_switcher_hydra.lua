@@ -18,7 +18,7 @@ Hydra({
 	name = "Options",
 	hint = hint,
 	config = {
-		color = "amaranth",
+		color = "red",
 		invoke_on_body = true,
 		hint = {
 			position = "middle",

@@ -213,24 +213,24 @@ end, { bar = true, nargs = '?' })
 
 vim.cmd.hi("SnacksPickerDir guifg=#8893b5")
 -- vim.cmd[[set rtp+=/opt/homebrew/opt/fzf]]
-local function table_to_string(tbl, indent)
-    indent = indent or 0
-    local result = "{\n"
-    local indent_str = string.rep("  ", indent + 1)
-
-    for key, value in pairs(tbl) do
-        local key_str = type(key) == "string" and key or "[" .. tostring(key) .. "]"
-        if type(value) == "table" then
-            result = result .. indent_str .. key_str .. " = " .. table_to_string(value, indent + 1) .. ",\n"
-        else
-            result = result .. indent_str .. key_str .. " = " .. tostring(value) .. ",\n"
-        end
-    end
-
-    result = result .. string.rep("  ", indent) .. "}"
-    return result
-end
-
+-- local function table_to_string(tbl, indent)
+--     indent = indent or 0
+--     local result = "{\n"
+--     local indent_str = string.rep("  ", indent + 1)
+--
+--     for key, value in pairs(tbl) do
+--         local key_str = type(key) == "string" and key or "[" .. tostring(key) .. "]"
+--         if type(value) == "table" then
+--             result = result .. indent_str .. key_str .. " = " .. table_to_string(value, indent + 1) .. ",\n"
+--         else
+--             result = result .. indent_str .. key_str .. " = " .. tostring(value) .. ",\n"
+--         end
+--     end
+--
+--     result = result .. string.rep("  ", indent) .. "}"
+--     return result
+-- end
+--
 -- vim.api.nvim_create_autocmd("OptionSet", {
 --     -- pattern = "viewoptions",
 --     callback = function(args)
@@ -258,11 +258,6 @@ end
 --     end,
 -- })
 
--- Possible mappings
--- s(d,r
--- d(s,r)
--- c(s,d,r)
-
 -- require('user.vim-drawer').setup({
 --   spaces = {
 --         { "React",  "\\*MartReact\\*" },
@@ -278,3 +273,9 @@ end
 --         { "sms",  "\\*sms\\*" },
 --     }
 -- })
+
+
+-- Possible mappings
+-- s(d,r
+-- d(s,r)
+-- c(s,d,r,m)
