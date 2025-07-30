@@ -43,7 +43,7 @@ return {
             { "<leader>fn", desc = "New File" },
             { "<leader>f1", hidden = true }, -- hide this keymap
 
-            { "<c-w>", hidden = true }, -- proxy to window mappings
+            { "<c-w>",      hidden = true }, -- proxy to window mappings
             -- { "<leader>w",  proxy = "<c-w>",  group = "windows" }, -- proxy to window mappings
             {
                 "<leader>b",
@@ -62,6 +62,15 @@ return {
             },
         })
 
+        wk.add({ "s", group = "Seek | Swap" })
+        vim.keymap.set("n", "s",
+            function()
+                require("which-key").show({
+                    keys = "s",
+                    loop = true, -- this will keep the popup open until you hit <esc>
+                })
+            end
+            , { noremap = true, silent = true, desc = "WK: Seek | Swap" })
         wk.add({ "<D-p>", group = "fzf-lua" })
         wk.add({ "<C-p>", group = "fzf" })
         wk.add({ "<C-s>", group = "telescope" })
