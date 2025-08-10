@@ -148,6 +148,7 @@
   "one-small-step-for-vimkind": { "branch": "main", "commit": "91b4e0fb0d640def73812aceb22dafb99261dd67" },
   "orgmode.nvim": { "branch": "master", "commit": "2b91d9ab8688b5df9436aa7340b7a477c4b336d4" },
   "otter.nvim": { "branch": "main", "commit": "71fec0dc58c3a66078e691b9a77b2516fe3e319b" },
+  "overlook.nvim": { "branch": "master", "commit": "bf7efb744c866bc124a26a3624abfe03c6d9ab00" },
   "package-info.nvim": { "branch": "master", "commit": "5cb3483ec886ca23e2c57e5d4a63c958d9a98179" },
   "pathlib.nvim": { "branch": "main", "commit": "57e5598af6fe253761c1b48e0b59b7cd6699e2c1" },
   "phprefactoring.nvim": { "branch": "main", "commit": "dbc2d39602500a9aab5342487e6192c86deebc02" },
