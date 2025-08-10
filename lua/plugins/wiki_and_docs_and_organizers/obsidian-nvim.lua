@@ -67,10 +67,9 @@ return {
             -- Trigger completion at 2 chars.
             min_chars = 2,
         },
+        checkbox = {
+            order = {
 
-        ui = {
-            enable = true,
-            checkboxes = {
                 -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
                 [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
                 ["x"] = { char = "", hl_group = "ObsidianDone" },
@@ -80,9 +79,11 @@ return {
                 -- Replace the above with this if you don't have a patched font:
                 -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
                 -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
+            }
+        },
 
-                -- You can also add more custom ones...
-            },
+        ui = {
+            enable = true,
             -- Use bullet marks for non-checkbox lists.
             bullets = { char = "•", hl_group = "ObsidianBullet" },
             external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
@@ -136,28 +137,23 @@ return {
         -- see below for full list of options 👇
         -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
         -- way then set 'mappings = {}'.
-        mappings = {
-            -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-            ["gf"] = {
-                action = function()
-                    return require("obsidian").util.gf_passthrough()
-                end,
-                opts = { noremap = false, expr = true, buffer = true },
-            },
-            -- Toggle check-boxes.
-            ["<leader>ch"] = {
-                action = function()
-                    return require("obsidian").util.toggle_checkbox()
-                end,
-                opts = { buffer = true },
-            },
-            -- Smart action depending on context: follow link, show notes with tag, or toggle checkbox.
-            ["<cr>"] = {
-                action = function()
-                    return require("obsidian").util.smart_action()
-                end,
-                opts = { buffer = true, expr = true },
-            }
+        callbacks = {
+            enter_note = function(_, note)
+                vim.keymap.set("n", "<leader>ch", "<cmd>Obsidian toggle_checkbox<cr>", {
+                    buffer = note.bufnr,
+                    desc = "Toggle checkbox",
+                })
+
+                vim.keymap.set("n", "gf", function() return require("obsidian").util.gf_passthrough() end, {
+                    buffer = note.bufnr,
+                    desc = "Go to link",
+                })
+
+                vim.keymap.set("n", "<cr>", function() return require("obsidian").util.smart_action() end, {
+                    buffer = note.bufnr,
+                    desc = "Smart action",
+                })
+            end,
         },
     },
 }
