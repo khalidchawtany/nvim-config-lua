@@ -12,14 +12,25 @@ local hint = [[
  Pomodoro
  --------------
  _sp_: Pomodoro
- _sr_: Repeat
+ _sw_: Wrok 15m
+ _s._: Repeat
  _st_: Stop
+ _sr_: Resume
+ _s<Space>_: Pause
 
  _<BS>_: quit
 ]]
 
 local pomo = function(functionName, args)
 	return function()
+        if args['pass_id'] ~= nil then
+            local timer = require("pomo").get_first_to_finish()
+            if timer == nil then
+                require("snacks").notify.warn("No timer is active")
+                return
+            end
+            args.args = tostring(timer.id)
+        end
 		require("pomo.commands")[functionName](args)
 	end
 end
@@ -52,6 +63,8 @@ Hydra({
 	mode = { "n" },
 	body = "coo",
 	heads = {
+
+        -- doing
 		{
 			"dn",
             function() vim.cmd.Do() end,
@@ -77,6 +90,7 @@ Hydra({
 		},
 
 
+        -- pomodoro
 		{
 			"sp",
 			pomo("TimerSession", { fargs = { "pomodoro" } }),
@@ -84,13 +98,32 @@ Hydra({
 		},
 
 		{
-			"st",
-			pomo("TimerStop", nil),
+			"sw",
+			pomo("TimerStart", { fargs = { 900 } }), -- 15mins
 			{ nowait = true, mode = { "n" }, exit_before = true },
 		},
+
+		{
+			"s.",
+			pomo("TimerRepeat", nil),
+			{ nowait = true, mode = { "n" }, exit_before = true },
+		},
+
+		{
+			"st",
+            pomo("TimerStop", { pass_id = true }),
+			{ nowait = true, mode = { "n" }, exit_before = true },
+		},
+
 		{
 			"sr",
-			pomo("TimerRepeat", nil),
+			pomo("TimerResume", {pass_id = true }),
+			{ nowait = true, mode = { "n" }, exit_before = true },
+		},
+
+		{
+			"s<Space>",
+            pomo("TimerPause", {  pass_id = true }),
 			{ nowait = true, mode = { "n" }, exit_before = true },
 		},
 
@@ -99,5 +132,6 @@ Hydra({
 			nil,
 			{ nowait = true, exit_before = true, exit = true },
 		},
+
 	},
 })
