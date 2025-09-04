@@ -4,8 +4,10 @@ return {
     opts = {
         -- pass here all the options
         -- UI dimensions and appearance
-        width = 0.8, -- Window width as fraction of screen
-        height = 0.8, -- Window height as fraction of screen
+        layout ={
+            height = 0.8, -- Window height as fraction of screen
+            width = 0.8, -- Window width as fraction of screen
+        },
         preview_width = 0.5, -- Preview pane width as fraction of picker
         prompt = '🪿 ', -- Input prompt symbol
         title = 'FFF Files', -- Window title

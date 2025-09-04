@@ -6,7 +6,7 @@ local State = {
 }
 local _state = State.ANTICIPATING_OUTPUTTING
 
-local openai = require("codecompanion.adapters.openai")
+local openai = require("codecompanion.adapters.http.openai")
 local utils = require("codecompanion.utils.adapters")
 
 local setup_kimi = function()

@@ -29,6 +29,14 @@ return {
         },
 
         {
+            "<leader>pe",
+            function()
+               require('user.fff_snacks_picker').fff()
+            end,
+            desc = "FFF Snacks Picker",
+        },
+
+        {
             "<leader>p\\",
             function()
                 require('lua.plugins.fzfs.telescope-projects-nvim.telescope-projects-nvim-snacks-picker').project({})

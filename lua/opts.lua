@@ -205,6 +205,7 @@ vim.opt.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,term
 --
 
 -- vim.cmd[[hi DiffviewDiffAdd guibg=orange]]
+vim.opt.diffopt="internal,filler,closeoff,linematch:40"
 
 -- Add ignorance of whitespace to diff
 -- vim.opt.diffopt:append({ "algorithm:patience" })

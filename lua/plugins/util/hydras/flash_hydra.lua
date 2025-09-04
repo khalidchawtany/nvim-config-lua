@@ -18,7 +18,7 @@ local window_hint = [[
 
  Swap
  --------------
- _sl_: Swap left
+ sl: Swap left
 
 
  _<BS>_: quit

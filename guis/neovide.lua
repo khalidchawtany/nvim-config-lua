@@ -81,7 +81,7 @@ vim.schedule(function()
     vim.cmd("NeovideFocus")
 end)
 
-vim.g.gui_font_default_size = 17
+vim.g.gui_font_default_size = 16
 vim.g.gui_font_size = vim.g.gui_font_default_size
 
 RefreshGuiFont = function()

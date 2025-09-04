@@ -10,11 +10,12 @@ local hint = [[
   _c_ %{cul} cursor line
   _n_ %{nu} number
   _r_ %{rnu} relative number
+  _h_ %{hardtime} hard time
   ^
-       ^^^^                _<Esc>_
-]]
+  ^^^^                _<Esc>_
+  ]]
 
-Hydra({
+  Hydra({
 	name = "Options",
 	hint = hint,
 	config = {
@@ -22,10 +23,18 @@ Hydra({
 		invoke_on_body = true,
 		hint = {
 			position = "middle",
+			funcs = {
+				hardtime = function()
+					if require("hardtime.config").config.enabled then
+						return "[x]"
+					end
+					return "[ ]"
+				end,
+			},
 		},
 	},
-	mode = { "n", "x" },
-	body = "<localleader>oo",
+	mode = { "n" },
+	body = "cop",
 	heads = {
 		{
 			"n",
@@ -118,6 +127,13 @@ Hydra({
 				end
 			end,
 			{ desc = "cursor line" },
+		},
+		{
+			"h",
+			function()
+				vim.cmd[[Hardtime toggle]]
+			end,
+			{ desc = "Toggle Hardtime" },
 		},
 		{ "<Esc>", nil, { exit = true } },
 	},
