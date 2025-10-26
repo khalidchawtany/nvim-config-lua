@@ -125,7 +125,7 @@ execute "tnoremap <silent> <D-" . i . "> <c-\\><c-n><cmd>tabnext 10<cr>"
 
 let $PATH=$PATH.":/Users/juju/Development/Libraries/zf/zig-out/bin/"
 let $PATH=$PATH.":/Users/juju/.composer/vendor/bin/"
-let $PATH=$PATH.":/Users/juju/local/bin/:/opt/homebrew/bin"
+let $PATH="/Users/juju/bin:".$PATH.":/Users/juju/local/bin/:/opt/homebrew/bin"
 
 
 let NVIM_QT_RUNTIME_PATH="./Contents/Resources/runtime"

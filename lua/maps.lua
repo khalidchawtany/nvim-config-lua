@@ -1,6 +1,10 @@
 vim.keymap.set("n", "<leader>xl", "<cmd>.lua<CR>", { desc = "Execute current line" })
 vim.keymap.set("v", "<leader>xl", "<cmd>'<,'>lua<CR>", { desc = "Execute visual line" })
 
+vim.keymap.set("n", "<leader>rp", "<cmd>%s/protected function setUp/public function setUp<cr>", { desc = "Replace protected by public in php test" })
+
+ 
+
 
 vim.keymap.set("n", "<D-p>e", function()
 	require("user.fze").fze({})

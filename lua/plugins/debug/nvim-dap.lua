@@ -16,7 +16,7 @@ return {
     dependencies = {
         "nvim-telescope/telescope-dap.nvim",
         "theHamsta/nvim-dap-virtual-text",
-        "mfussenegger/nvim-dap-python",
+        -- "mfussenegger/nvim-dap-python",
         "jbyuki/one-small-step-for-vimkind",
     },
     cmd = { "DapLoad" },

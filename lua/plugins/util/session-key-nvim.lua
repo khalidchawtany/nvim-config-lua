@@ -1,6 +1,7 @@
 return {
 
-    "shmerl/session-keys",
+
+    'https://gitlab.com/shmerl/session-keys.git',
 
     keys = {
         {

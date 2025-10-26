@@ -40,7 +40,15 @@ return {
 
             -- 1 min
             if time_left % 60 == 0 then
-                vim.fn.jobstart({ "afplay", "/Users/juju/Development/Sounds/1_tic_short_faded.mp3" }, {
+                vim.fn.jobstart({ "afplay", "/Users/juju/Development/Sounds/tic_short_faded.mp3" }, {
+                    on_stdout = function(j, d, e) end,
+                })
+                return
+            end
+
+            -- 1 min
+            if time_left % 5 == 0 then
+                vim.fn.jobstart({ "afplay", "/Users/juju/Development/Sounds/tic_short_faded.mp3", "-v", "0.2" }, {
                     on_stdout = function(j, d, e) end,
                 })
                 return

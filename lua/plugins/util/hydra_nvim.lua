@@ -1,7 +1,7 @@
 return {
     "nvimtools/hydra.nvim",
     -- event = "VeryLazy",
-    -- enabled = false,
+    enabled = false,
     config = function()
         local handle = vim.loop.fs_scandir(vim.fn.stdpath("config") .. "/lua/plugins/util/hydras")
         while handle do
