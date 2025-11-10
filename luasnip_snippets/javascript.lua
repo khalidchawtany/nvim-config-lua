@@ -98,8 +98,11 @@ local if_snippet = s(
 		if_fmt_1,
 		if_fmt_2,
 	})
-) --}}}
-local function_fmt = fmt( --{{{
+)
+
+table.insert(autosnippets, if_snippet)
+
+local function_fmt = fmt(
 	[[
 function {}({}) {{
   {}
@@ -113,7 +116,22 @@ function {}({}) {{
 )
 
 local function_snippet = s({ trig = "f[un]?", regTrig = true, hidden = true }, function_fmt)
-local function_snippet_func = s({ trig = "func" }, vim.deepcopy(function_fmt)) --}}}
+table.insert(snippets, function_snippet)
+
+local function_snip = fmt(
+	[[
+function {}({}) {{
+  {}
+}}
+    ]],
+	{
+		i(1, "myFunc"),
+		c(2, { i(1, "arg"), i(1, "") }),
+		i(3, "//TODO:"),
+	}
+)
+local function_snippet_func = s({ trig = "func" }, function_snip)
+table.insert(snippets, function_snippet_func)
 
 local short_hand_if_fmt = fmt( --{{{
 	[[
@@ -132,6 +150,7 @@ if ({}) {}
 	}
 )
 local short_hand_if_statement = s({ trig = "if[>%s](.+)>>(.+)\\", regTrig = true, hidden = true }, short_hand_if_fmt)
+table.insert(autosnippets, short_hand_if_statement)
 
 local short_hand_if_statement_return_shortcut = s({ trig = "(if[>%s].+>>)[r<]", regTrig = true, hidden = true }, {
 	f(function(_, snip)
@@ -139,11 +158,7 @@ local short_hand_if_statement_return_shortcut = s({ trig = "(if[>%s].+>>)[r<]", 
 	end),
 	t("return "),
 }) --}}}
-table.insert(autosnippets, if_snippet)
-table.insert(autosnippets, short_hand_if_statement)
 table.insert(autosnippets, short_hand_if_statement_return_shortcut)
-table.insert(snippets, function_snippet)
-table.insert(snippets, function_snippet_func)
 
 -- Begin Refactoring --
 

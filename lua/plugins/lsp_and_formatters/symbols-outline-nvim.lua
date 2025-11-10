@@ -1,6 +1,13 @@
 return {
 	"simrat39/symbols-outline.nvim",
 	cmd = { "SymbolsOutline", "SymbolsOutlineOpen" },
+	keys = {
+		{
+			"<leader>so",
+			"<cmd>SymbolsOutline<cr>",
+			desc = "Symbols Outline",
+		},
+	},
 	config = function()
 		require("symbols-outline").setup({
 			highlight_hovered_item = true,

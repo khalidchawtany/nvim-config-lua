@@ -138,7 +138,6 @@ require("lazy").setup({
         filter = true,
     },
 })
-print(vim.fn.getcwd())
 if vim.fn.getcwd() == "/" or vim.fn.getcwd() == "/Users/juju" then
     vim.cmd.cd("~/.config/nvim")
 end

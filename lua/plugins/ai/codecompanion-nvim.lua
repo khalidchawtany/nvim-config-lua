@@ -152,7 +152,8 @@ return {
                     return require("codecompanion.adapters").extend("copilot", {
                         schema = {
                             model = {
-                                default = "claude-3.7-sonnet",
+                                default = "gpt-4o",
+                                -- default = "claude-3.7-sonnet",
                                 -- default = "claude-3.7-sonnet-thought",
                                 -- default = "claude-3.5-sonnet",
                                 -- default = "gemini-2.0-flash",
