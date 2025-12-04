@@ -75,7 +75,7 @@ return {
                                 adapter = "jina",
                             },
                         },
-                        ["file"] = {
+                        ["file1"] = {
                             callback = "strategies.chat.slash_commands.file",
                             description = "Insert a file",
                             opts = {

@@ -60,6 +60,7 @@ return {
 
         { jump .. "j", function()
             require("syntax-tree-surfer").targeted_jump({
+                "object_creation_expression",
                 "scoped_call_expression",
                 "member_call_expression",
                 "class_declaration",
@@ -73,7 +74,16 @@ return {
                 "while_statement",
                 "switch_statement",
             })
-        end, desc = "Jump to Loop" },
+        end, desc = "Jump to ALL" },
+
+        { jump .. "a", function()
+            require("syntax-tree-surfer").targeted_jump({
+                "invocation_expression",
+                "argument_list",
+                "scoped_call_expression",
+                "member_call_expression",
+            })
+        end, desc = "Jump to Calls" },
 
     },
 
@@ -157,7 +167,7 @@ return {
                 "switch_statement",
             },
             left_hand_side = "fdsawervcxqtzb",
-            right_hand_side = "jkl;oiu.,mpy/n",
+            right_hand_side = "jhklgasdfyuioqwerop[]",
             icon_dictionary = {
                 ["if_statement"] = "",
                 ["else_clause"] = "",
