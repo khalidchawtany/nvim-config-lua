@@ -23,7 +23,7 @@ return {
 			"<leader>rd",
 			function()
 				local files = {}
-				local cmd = string.format("git status -s | cut -c4-")
+				local cmd = string.format("git status -s --no-renames | cut -c4-")
 				local handle = io.popen(cmd)
 				for line in handle:lines() do
 					table.insert(files, line)
