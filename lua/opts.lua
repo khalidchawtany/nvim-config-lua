@@ -54,7 +54,7 @@ vim.g.editorconfig = false
 vim.g.fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 vim.opt.wildignore = { "*.o", "*~", "*.pyc", "*pycache*" } -- Ignore compiled files
 vim.opt.wildignorecase = true
-vim.opt.wildmode = "full"                                  -- Complete the longest common string,
+vim.opt.wildmode = "noselect,full"                                  -- Complete the longest common string,
 vim.opt.wildoptions = "pum"                                -- show wildmenu as normal autocompleting menu
 vim.opt.pumblend = 0                                       -- make pum NOT transparent
 vim.opt.pumheight = 15
@@ -62,6 +62,7 @@ vim.opt.wildmenu = true
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.inccommand = "nosplit"
 vim.opt.splitkeep = "topline" -- topline, screen, cursor
+vim.o.pumborder = 'single'
 
 vim.opt.showmode = true
 vim.opt.cmdheight = 0  -- Height of the command bar

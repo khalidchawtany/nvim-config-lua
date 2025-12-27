@@ -100,8 +100,11 @@ nnoremap <silent> <leader>ev <cmd>e ~/.config/nvim/init.lua<cr>
 nnoremap <silent> <leader>ep <cmd>e ~/.config/nvim/lua/plugins<cr>
 nnoremap <silent> <leader>el <cmd>e ~/.config/nvim/lua<cr>
 nnoremap <silent> <leader>ed <cmd>e ~/dotfiles/<cr>
+nnoremap <silent> <leader>ec <cmd>e ~/.config/<cr>
 nnoremap <silent> <leader>ez <cmd>e ~/dotfiles/zsh/<cr>
 nnoremap <silent> <leader>eL <cmd>e ~/.local/share/nvim/lazy/<cr>
+nnoremap <silent> <leader>eq <cmd>e ~/Documents/Universities/Datasets/Question_Bank_Scans/<cr>
+nnoremap <silent> <leader>ea <cmd>e ~/Documents/Universities/Datasets/Question_Bank_Scans/Applications/<cr>
 Map N <leader>eg    <cmd>if has("nvim") \| tabe ~/.config/nvim/ginit.vim \| else \| tabe ~/.gvimrc \| endif<cr>
 
 
