@@ -108,7 +108,7 @@ M.fzf_missing_translations = function(opts)
 
     -- we should find all translations even if they are located in another
     -- plugin referencing our plugin lang
-    local all_translations = M.locate_all_translations(path .. "/../", M.get_plugin_namespace() .. "::lang.*.\\w+")
+    local all_translations = M.locate_all_translations(path .. "/../", M.get_plugin_namespace() .. "::lang.\\w+.\\w+")
     local current_translations = M.get_current_translations(path, M.get_plugin_namespace() .. "::lang.")
     local missing_translations = M.get_missing_translations(all_translations, current_translations)
 

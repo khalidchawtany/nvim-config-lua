@@ -1,1 +1,7 @@
-{}
+{
+  "lt": {
+    "body": "{{ 'khalid.shipman::lang.print.${1:${TM_SELECTED_TEXT}}'|trans }}",
+    "description":"HTM: trans lang",
+    "prefix":"lt"
+  }
+}

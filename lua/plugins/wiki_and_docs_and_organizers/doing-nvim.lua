@@ -41,7 +41,7 @@ return {
             store = {
                 -- automatically create a .tasks when calling :Do
                 auto_create_file = true,
-                file_name = '.tasks',
+                file_name = '.tasks.norg',
             },
         }
         -- example on how to change the winbar highlight
