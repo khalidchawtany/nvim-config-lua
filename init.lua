@@ -151,7 +151,7 @@ require("opts")
 require("user.peek")
 vim.cmd.source("~/.config/nvim/lua/maps.vim")
 vim.cmd([[autocmd user lazyreload source ~/.config/nvim/lua/maps.vim]])
-vim.cmd([[TSEnable highlight]])
+-- vim.cmd([[TSEnable highlight]])
 
 vim.cmd([[
 " config for differnt guis
@@ -280,11 +280,11 @@ vim.cmd.hi("SnacksPickerDir guifg=#8893b5")
 -- c(s,d,r,m)
 
 require('vim._extui').enable({
- enable = true, -- Whether to enable or disable the UI.
- msg = { -- Options related to the message module.
-   ---@type 'cmd'|'msg' Where to place regular messages, either in the
-   ---cmdline or in a separate ephemeral message window.
-   target = 'msg',
-   timeout = 2000, -- Time a message is visible in the message window.
- },
+    enable = true, -- Whether to enable or disable the UI.
+    msg = { -- Options related to the message module.
+        ---@type 'cmd'|'msg' Where to place regular messages, either in the
+        ---cmdline or in a separate ephemeral message window.
+        target = 'msg',
+        timeout = 2000, -- Time a message is visible in the message window.
+    },
 })

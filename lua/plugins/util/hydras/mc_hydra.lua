@@ -40,7 +40,7 @@ Hydra({
         },
     },
     mode = { "n", "x" },
-    body = "<leader>cm",
+    body = "<localleader>m",
     heads = {
 
         -- add/skip cursor

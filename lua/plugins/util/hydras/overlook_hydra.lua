@@ -8,7 +8,7 @@ local window_hint = [[
  _m_: Mark
  _u_: Restore Popup
  _U_: Restore All Popups
- _x_: Close
+ _q_: Close
  _f_: Switch Focus
  _s_: Open in Split
  _v_: Open in VSplit
@@ -60,6 +60,7 @@ Hydra({
 
 
         -- exit this Hydra
+        { "q", nil,                                { exit = true, nowait = true } },
         { "<BS>", nil,                                { exit = true, nowait = true } },
     },
 })
