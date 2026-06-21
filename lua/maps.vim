@@ -339,28 +339,22 @@ inoremap <silent> <s-cr> <esc>m`o<esc>``a
   endf
 
 
-
-
-
     "Open current directory in Finder
     "nnoremap gof <cmd>silent !open .<cr>
 
     " allow replacing word under cursor
+    nnoremap grw :%s/<c-r>=expand('<cword>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
     nnoremap grW :%s/<c-r>=expand('<cWORD>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
-    nnoremap graW :%s/<c-r>=expand('<cWORD>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
-    nnoremap graw :bufdo :silent! %s/<c-r>=expand('<cword>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
-    nnoremap graw :bufdo :silent! %s/<c-r>=expand('<cword>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
+    " nnoremap graw :bufdo :silent! %s/<c-r>=expand('<cword>')<cr>/<c-r>=expand('<cword>')<cr>/g<left><left>
+    " nnoremap graW :bufdo :silent! %s/<c-r>=expand('<cWORD>')<cr>/<c-r>=expand('<cWORD>')<cr>/g<left><left>
 
     nnoremap ycd :!mkdir -p %:p:h<CR>
-
-    "Go to alternate file
-    nnoremap go <C-^>
 
     "toggle tabline
     nnoremap <silent> cot  :execute "set  showtabline=" . (&showtabline+2)%3<cr>
 
     "Toggle laststatus (statusline | statusbar)
-    nnoremap <silent> co<space> :execute "set laststatus=" . (&laststatus+2)%3<cr>
+    nnoremap <silent> co<space> :execute "set laststatus=" . (&laststatus+1)%4<cr>
 
     "Command-line Mode Key Mappings
     cnoremap <c-a> <home>

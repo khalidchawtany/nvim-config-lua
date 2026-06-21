@@ -296,7 +296,7 @@ return {
                 -- require("snacks").terminal()
                 require("snacks").terminal("lazysql mysql://root:root@localhost")
             end,
-            desc = "which_key_ignore",
+            desc = "Toggle SQL Terminal",
         },
         {
             "]]",

@@ -1,6 +1,7 @@
 return {
     "3rd/image.nvim",
-    cond = os.getenv("VAR_IS_KITTY_TERM") == "true",
+    -- cond = false and os.getenv("VAR_IS_KITTY_TERM") == "true" or os.getenv("$TERM_PROGRAM") == "WezTerm" ,
+    cond = false,
     event = { "BufEnter", "BufWinEnter" },
     config = function()
         _G.only_render_image_at_cursor = false

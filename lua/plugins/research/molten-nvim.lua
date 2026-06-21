@@ -3,7 +3,8 @@ return {
     -- version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
     build = ":UpdateRemotePlugins",
     ft = { "jpynb", "ipynb" },
-    cond = os.getenv("VAR_IS_KITTY_TERM") == "true",
+    -- cond = false and os.getenv("VAR_IS_KITTY_TERM") == "true" or os.getenv("$TERM_PROGRAM") == "WezTerm" ,
+    cond = false,
     init = function()
         -- these are examples, not defaults. Please see the readme
         vim.g.molten_image_provider = "image.nvim"

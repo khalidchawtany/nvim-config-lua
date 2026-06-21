@@ -4,26 +4,7 @@ return {
     -- lazy = true,
     -- ft = "markdown",
     cmd = {
-        "ObsidianOpen",
-        "ObsidianNew",
-        "ObsidianQuickSwitch",
-        "ObsidianFollowLink",
-        "ObsidianBacklinks",
-        "ObsidianTags",
-        "ObsidianToday",
-        "ObsidianYesterday",
-        "ObsidianTomorrow",
-        "ObsidianDailies",
-        "ObsidianTemplate",
-        "ObsidianSearch",
-        "ObsidianLink",
-        "ObsidianLinkNew",
-        "ObsidianLinks",
-        "ObsidianExtractNote",
-        "ObsidianWorkspace",
-        "ObsidianPasteImg",
-        "ObsidianRename",
-        "ObsidianToggleCheckbox",
+        "Obsidian",
     },
     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
     -- event = {
@@ -33,13 +14,13 @@ return {
     --   "BufNewFile path/to/my-vault/**.md",
     -- },
     keys = {
-        { "<leader>ooo", "<cmd>ObsidianOpen<cr>",           desc = "Open (Obsidian)" },
-        { "<leader>oos", "<cmd>ObsidianSearch<cr>",         desc = "Search (Obsidian)" },
-        { "<leader>ood", "<cmd>ObsidianDailies<cr>",        desc = "Dailies (Obsidian)" },
-        { "<leader>ooe", "<cmd>ObsidianExtractNote<cr>",    desc = "Extract (Obsidian)" },
-        { "<leader>oow", "<cmd>ObsidianWorkspace<cr>",      desc = "Workspace (Obsidian)" },
-        { "<leader>oor", "<cmd>ObsidianRename<cr>",         desc = "Rename (Obsidian)" },
-        { "<leader>oot", "<cmd>ObsidianToggleCheckbox<cr>", desc = "Toggle Checkbox (Obsidian)" },
+        { "<leader>ooo", "<cmd>Obsidian open<cr>",           desc = "Open (Obsidian)" },
+        { "<leader>oos", "<cmd>Obsidian search<cr>",         desc = "Search (Obsidian)" },
+        { "<leader>ood", "<cmd>Obsidian dailies<cr>",        desc = "Dailies (Obsidian)" },
+        { "<leader>ooe", "<cmd>Obsidian extract_note<cr>",    desc = "Extract (Obsidian)" },
+        { "<leader>oow", "<cmd>Obsidian workspace<cr>",      desc = "Workspace (Obsidian)" },
+        { "<leader>oor", "<cmd>Obsidian rename<cr>",         desc = "Rename (Obsidian)" },
+        { "<leader>oot", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle Checkbox (Obsidian)" },
         {
             "<leader>ooS",
             "<cmd>call jobstart('open -a /Applications/Obsidian.app --background \"obsidian://advanced-uri?vault=MyObsidianNotes&commandid=remotely-save%253Astart-sync\"', {})<cr>",
@@ -58,6 +39,7 @@ return {
         -- see below for full list of optional dependencies 👇
     },
     opts = {
+        legacy_commands = false,
         -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
         completion = {
             -- Enables completion using nvim_cmp
@@ -138,7 +120,7 @@ return {
         -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
         -- way then set 'mappings = {}'.
         callbacks = {
-            enter_note = function(_, note)
+            enter_note = function(note)
                 vim.keymap.set("n", "<leader>ch", "<cmd>Obsidian toggle_checkbox<cr>", {
                     buffer = note.bufnr,
                     desc = "Toggle checkbox",
@@ -156,4 +138,20 @@ return {
             end,
         },
     },
+    config = function(_, opts)
+        require("obsidian").setup(opts)
+
+		vim.api.nvim_create_autocmd("CmdlineChanged", {
+			callback = function()
+				local cmdline = vim.fn.getcmdline()
+				if vim.fn.getcmdtype() ~= ":" then
+					return
+				end
+				if not cmdline:match("^Obsidian[A-Za-z0-9]*$") then
+					return
+				end
+				vim.fn.wildtrigger()
+			end,
+		})
+    end,
 }

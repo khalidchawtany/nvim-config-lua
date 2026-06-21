@@ -3,7 +3,7 @@ return {
 	dependencies = "nvim-treesitter/nvim-treesitter",
 	enabled = false,
 	config = function()
-		require("nvim-treesitter.configs").setup({
+		require("nvim-treesitter.config").setup({
 			textsubjects = {
 				enable = true,
 				prev_selection = "g;;",

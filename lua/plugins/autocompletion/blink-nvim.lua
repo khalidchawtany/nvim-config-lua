@@ -17,12 +17,6 @@ return {
         },
 
         {
-            "buschco/nvim-cmp-ts-tag-close",
-            config = function()
-                require("nvim-cmp-ts-tag-close").setup({ skip_tags = { "img" } })
-            end,
-        },
-        {
             "Exafunction/codeium.nvim",
             dependencies = {
                 "nvim-lua/plenary.nvim",
@@ -228,7 +222,6 @@ return {
                     "buffer",
                     "ripgrep",
                     "codecompanion",
-                    "nvim-cmp-ts-tag-close",
                 },
                 html = {
                     "path",
@@ -239,7 +232,6 @@ return {
                     "buffer",
                     "ripgrep",
                     "codecompanion",
-                    "nvim-cmp-ts-tag-close",
                 },
                 php = {
                     "path",
@@ -250,7 +242,6 @@ return {
                     "buffer",
                     "ripgrep",
                     "codecompanion",
-                    "nvim-cmp-ts-tag-close",
                 },
                 blade = {
                     "path",
@@ -261,7 +252,6 @@ return {
                     "buffer",
                     "ripgrep",
                     "codecompanion",
-                    "nvim-cmp-ts-tag-close",
                 },
             },
             -- If you'd prefer the menu doesn't popup when typing abbreviations like wq, you may set the minimum keyword length to 2 when typing the command.
@@ -273,10 +263,6 @@ return {
                 return 0
             end,
             providers = {
-                ["nvim-cmp-ts-tag-close"] = {
-                    name = "nvim-cmp-ts-tag-close",
-                    module = "blink.compat.source",
-                },
                 -- laravel = {
                 --     name = "laravel",
                 --     module = "laravel.blink_source",

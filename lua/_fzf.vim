@@ -104,6 +104,7 @@ nnoremap silent! <c-p>a <cmd>Rg <c-r><c-w><cr>
 
 
 command! -bang -nargs=* FZFAg call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!{.git,node_modules,vendor}/*" --color "always" '.shellescape(<q-args>) . ' 2> /dev/'.s:null, 1, <bang>0)
+nnoremap <silent> <c-p><c-space> :FZFAg<CR>
 
 command! -bang -nargs=* FzfHelpOctober call fzf#vim#grep('rg --column --no-ignore --line-number --no-heading --color=always --smart-case --glob "!{.git,node_modules,vendor}/*" --glob  "!**/lang/*" --glob "!**/{ru,zh-cn}/*" '.shellescape(<q-args>) . ' ~/Development/Libraries/october', 1,fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
@@ -113,7 +114,7 @@ command! -bang -nargs=* FzfHelpTic call fzf#vim#grep('rg --column --no-ignore --
 " nnoremap <silent> <leader>hot <cmd>FzfHelpTic<cr>
 
 
-command! -bang -nargs=* Rg2 call fzf#vim#grep("rg --column --no-ignore --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+command! -bang -nargs=* Rg2 call fzf#vim#grep("rg --column --hidden --no-ignore --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 nnoremap <silent> <c-p><c-a> :Rg2 <CR>
 nnoremap <silent> <c-p>a :Rg2 <C-R><C-W><CR>
 nnoremap <silent> <c-p><c-j> :FzfAg <CR>
@@ -399,7 +400,7 @@ function! s:ag_handler(lines)
 endfunction
 
 command! -nargs=* AgCustom call fzf#run({
-      \ 'source':  printf('ag --nogroup --column --color "%s"',
+      \ 'source':  printf('ag --nogroup --hidden --column --ignore="*.git*" --color "%s"',
       \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
       \ 'sink*':    function('<sid>ag_handler'),
       \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
@@ -407,7 +408,7 @@ command! -nargs=* AgCustom call fzf#run({
       \            '--color hl:68,hl+:110',
       \   'window': { 'width': 0.9, 'height': 0.7 }
       \ })
-nnoremap <silent> <c-p><c-q> <cmd>FZFNeigh<cr>
+nnoremap <silent> <c-p><c-q> <cmd>AgCustom<cr>
 "}}} _Ag
 
 "open_terms {{{

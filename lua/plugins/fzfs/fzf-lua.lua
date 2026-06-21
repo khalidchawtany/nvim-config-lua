@@ -347,16 +347,110 @@ return {
                     end,
                 },
 
-                previewer = false,
+                -- previewer = false,
                 -- preview = "git diff {ref} {file}",
-                preview   = require('fzf-lua.previewer.fzf').git_diff,
-                preview   = require("fzf-lua").shell.raw_preview_action_cmd(function(items)
+                -- preview   = require('fzf-lua.previewer.fzf').git_diff,
+                preview={
+                    type="cmd",
+                    fn = function(items) 
+
                     local file = require("fzf-lua").path.entry_to_file(items[1])
                     return string.format("git --no-pager diff   %s HEAD~1 -- %s | delta", opts.args, file.path)
-                end),
+
+                    end
+                },
+                -- preview   = require("fzf-lua").shell.raw_preview_action_cmd(function(items)
+                --     local file = require("fzf-lua").path.entry_to_file(items[1])
+                --     return string.format("git --no-pager diff   %s HEAD~1 -- %s | delta", opts.args, file.path)
+                -- end),
             })
         end, {
             force = true,
+        })
+
+        vim.api.nvim_create_user_command("PickFileFromCommit", function(opts)
+            require("lazy").load({ plugins = { "vim-fugitive" } })
+            local fzf = require("fzf-lua")
+            local args = opts.args
+
+            local listFilesFromCommit = function(commit_sha)
+                fzf.fzf_exec(
+                    "git show --name-only --pretty=format: " .. commit_sha .. " | grep -v '^$'",
+                    {
+                        prompt = commit_sha:sub(1, 8) .. "❯ ",
+                        actions = {
+                            ["default"] = function(selected)
+                                local file = selected[1]
+                                vim.cmd(string.format("Gedit %s:%s", commit_sha, file))
+                            end,
+                            ["ctrl-s"] = function(selected)
+                                local file = selected[1]
+                                vim.cmd(string.format("Gsplit %s:%s", commit_sha, file))
+                            end,
+                            ["ctrl-v"] = function(selected)
+                                local file = selected[1]
+                                vim.cmd(string.format("Gvsplit %s:%s", commit_sha, file))
+                            end,
+                            ["ctrl-t"] = function(selected)
+                                local file = selected[1]
+                                vim.cmd(string.format("Gtabedit %s:%s", commit_sha, file))
+                            end,
+                            ["ctrl-e"] = function(selected)
+                                local file = selected[1]
+                                vim.cmd(string.format("e %s", file))
+                            end,
+                        },
+                        previewer = false,
+                        preview = fzf.shell.action(function(items)
+                            local file = items[1]
+                            return string.format(
+                                "git show --color %s -- %s | delta",
+                                commit_sha,
+                                file
+                            )
+                        end),
+                    }
+                )
+            end
+
+            if #args > 0 then
+                listFilesFromCommit(args)
+            else
+                -- show git log to pick a commit
+                fzf.fzf_exec(
+                    "git log --color --pretty=format:'%C(yellow)%h%Creset %Cgreen(%><(12)%cr%><|(12))%Creset %s %C(blue)<%an>%Creset'",
+                    {
+                        prompt = "Commits❯ ",
+                        previewer = false,
+                        preview = fzf.shell.action(function(items)
+                            local sha = items[1]:match("%S+")
+                            return string.format(
+                                "git show --stat --color %s | delta",
+                                sha
+                            )
+                        end),
+                        actions = {
+                            ["default"] = function(selected)
+                                local sha = selected[1]:match("%S+")
+                                if sha then
+                                    listFilesFromCommit(sha)
+                                end
+                            end,
+                        },
+                    }
+                )
+            end
+        end, {
+            nargs = "?",
+            force = true,
+            complete = function()
+                local commits = vim.fn.systemlist(
+                    "git log --pretty=format:'%h' -50"
+                )
+                if vim.v.shell_error == 0 then
+                    return commits
+                end
+            end,
         })
 
         vim.api.nvim_create_user_command("ListFilesFromBranch", function(opts)

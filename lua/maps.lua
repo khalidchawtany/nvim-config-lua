@@ -55,9 +55,6 @@ vim.keymap.set("n", "i", function()
 	end
 end, { expr = true, desc = "properly indent on empty line when insert" })
 
-vim.keymap.set("n", "<m-cr>", function()
-	vim.lsp.buf.code_action()
-end, { desc = "Code Actions" })
 
 if vim.lsp.inlay_hint then
 	vim.keymap.set("n", "coi", function()

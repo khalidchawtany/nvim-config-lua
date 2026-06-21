@@ -160,6 +160,6 @@ return {
 
         require("telescope").setup()
         require("telescope").load_extension("dap")
-        require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
+        -- require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
     end,
 }

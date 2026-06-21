@@ -64,6 +64,8 @@ vim.opt.inccommand = "nosplit"
 vim.opt.splitkeep = "topline" -- topline, screen, cursor
 vim.o.pumborder = 'single'
 
+vim.o.conceallevel = 2
+
 vim.opt.showmode = true
 vim.opt.cmdheight = 0  -- Height of the command bar
 vim.opt.laststatus = 3 -- make the status bar global
@@ -111,29 +113,9 @@ vim.wo.foldlevel = 99
 vim.opt.foldlevelstart = 99 -- start with all folds open
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- causes random folding to be closed on some edits
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
 vim.wo.foldmethod = "expr" -- 'manual'
 vim.o.foldtext =
 [[substitute(getline(v:foldstart),'\\\\t',repeat('\\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
-
--- vim.api.nvim_create_autocmd("LspNotify", {
--- 	callback = function(args)
--- 		-- client.supports_method('textDocument/foldingRange')
--- 		local bufnr = vim.api.nvim_get_current_buf() -- get buffer number
--- 		for _, client in pairs(vim.lsp.get_clients()) do -- loop over each client to check notifications
--- 			if args.data.client_id == client.id then
--- 				if client.supports_method("textDocument/foldingRange", bufnr) then
--- 					dd("client_id=" .. args.data.client_id, "client.id=" .. client.id, "client.name=" .. client.name)
--- 					vim.lsp.foldclose("methods", vim.fn.bufwinid(args.buf))
--- 					-- if args.data.method == "textDocument/didOpen" then
--- 					-- 	vim.lsp.foldclose("imports", vim.fn.bufwinid(args.buf))
--- 					-- end
--- 				end
--- 			end
--- 		end
--- 	end,
--- })
-
 
 vim.opt.belloff = "all"
 
