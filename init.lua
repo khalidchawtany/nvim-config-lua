@@ -288,3 +288,8 @@ vim.cmd.hi("SnacksPickerDir guifg=#8893b5")
 --         timeout = 2000, -- Time a message is visible in the message window.
 --     },
 -- })
+--
+vim.cmd[[
+let @r="department\|office\|truck\|merchant\|balance\|visual\|kurdish\|inspector\|inspection\|regapedan\|blended\|print_using_special_paper\|is_special_paper\|skip_payment\|refund\|debt\|delay_results\|is_staff\|deport"
+nnoremap  <leader>/ /department\\|office\\|truck\\|merchant\\|balance\\|visual\\|kurdish\\|inspector\\|inspection\\|regapedan\\|blended\\|print_using_special_paper\\|is_special_paper\\|skip_payment\\|refund\\|debt\\|delay_results\\|is_staff\\|deport<cr>
+]]

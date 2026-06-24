@@ -7,7 +7,7 @@ local State = {
 local _state = State.ANTICIPATING_OUTPUTTING
 
 local openai = require("codecompanion.adapters.http.openai")
-local utils = require("codecompanion.utils.adapters")
+local utils = require("codecompanion.adapters.utils")
 
 local setup_kimi = function()
 	return require("codecompanion.adapters").extend("openai_compatible", {
