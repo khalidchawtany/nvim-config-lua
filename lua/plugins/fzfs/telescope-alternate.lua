@@ -58,8 +58,8 @@ return {
                         { "[1]/Models/[2:strip_controller].php",                  "Model",   true },
                         -- {"[1]/Http/Controllers/[2].php", "Controller", true},
                         { "[1]/Http/Requests/[2:strip_controller,pluralize]/",    "Request", true },
-                        { "[1]/../resources/views/[2:pluralize,camel_to_snake]/", "View",    true },
-                        { "[1]/../resources/views/[2:pluralize,camel_to_snake]/", "View",    true },
+                        { "[1]/../resources/views/[2:strip_controller,pluralize,camel_to_snake]/", "View",    true },
+                        { "[1]/../resources/views/[2:strip_controller,pluralize,camel_to_snake]/", "View",    true },
                     },
                 },
                 {
@@ -169,7 +169,8 @@ return {
                 end,
 
                 strip_controller = function(w)
-                    return string.sub(w, 1, -11)
+                    -- return string.sub(w, 1, -11)
+                    return string.gsub(w, "Controller", "")
                 end,
 
                 camel_to_snake = function(inputString)

@@ -289,7 +289,11 @@ vim.cmd.hi("SnacksPickerDir guifg=#8893b5")
 --     },
 -- })
 --
+
 vim.cmd[[
-let @r="department\|office\|truck\|merchant\|balance\|visual\|kurdish\|inspector\|inspection\|regapedan\|blended\|print_using_special_paper\|is_special_paper\|skip_payment\|refund\|debt\|delay_results\|is_staff\|deport"
-nnoremap  <leader>/ /department\\|office\\|truck\\|merchant\\|balance\\|visual\\|kurdish\\|inspector\\|inspection\\|regapedan\\|blended\\|print_using_special_paper\\|is_special_paper\\|skip_payment\\|refund\\|debt\\|delay_results\\|is_staff\\|deport<cr>
+let @r="department\|office\|truck\|merchant\|balance\|visual\|kurdish\|inspector\|inspection\|regapedan\|blended\|print_using_special_paper\|is_special_paper\|skip_payment\|refund\|debt\|delay_results\|is_staff\|deport\|brand\|DEFAULT_BATCH_NUMBER\|retest_batch_id"
+nnoremap  <leader>/ /department\\|office\\|truck\\|merchant\\|balance\\|visual\\|kurdish\\|inspector\\|inspection\\|regapedan\\|blended\\|print_using_special_paper\\|is_special_paper\\|skip_payment\\|refund\\|debt\\|delay_results\\|is_staff\\|deport\\|brand\\|DEFAULT_BATCH_NUMBER\\|retest_batch_id<cr>
 ]]
+
+ -- retest_batch_id
+ -- transaction_product_id
