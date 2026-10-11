@@ -7,7 +7,6 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-lua/popup.nvim",
 		"nvim-telescope/telescope-fzf-native.nvim",
-		"LinArcX/telescope-command-palette.nvim",
 		"natecraddock/telescope-zf-native.nvim",
 	},
 	cmd = { "Telescope" },

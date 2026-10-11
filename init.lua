@@ -1,35 +1,35 @@
 if vim.env.PROF then
-    -- example for lazy.nvim
-    -- change this to the correct path for your plugin manager
-    local snacks = vim.fn.stdpath("data") .. "/lazy/snacks.nvim"
-    vim.opt.rtp:append(snacks)
-    require("snacks.profiler").startup({
-        startup = {
-            event = "VimEnter", -- stop profiler on this event. Defaults to `VimEnter`
-            -- event = "UIEnter",
-            -- event = "VeryLazy",
-        },
-    })
+	-- example for lazy.nvim
+	-- change this to the correct path for your plugin manager
+	local snacks = vim.fn.stdpath("data") .. "/lazy/snacks.nvim"
+	vim.opt.rtp:append(snacks)
+	require("snacks.profiler").startup({
+		startup = {
+			event = "VimEnter", -- stop profiler on this event. Defaults to `VimEnter`
+			-- event = "UIEnter",
+			-- event = "VeryLazy",
+		},
+	})
 end
 
 vim.deprecate = function() end ---@diagnostic disable-line: duplicate-set-field
 
 local rocks_config = {
-    rocks_path = "/Users/juju/.local/share/nvim/rocks",
-    luarocks_binary = "/Users/juju/.local/share/nvim/rocks/bin/luarocks",
+	rocks_path = "/Users/juju/.local/share/nvim/rocks",
+	luarocks_binary = "/Users/juju/.local/share/nvim/rocks/bin/luarocks",
 }
 
 vim.g.rocks_nvim = rocks_config
 
 local luarocks_path = {
-    vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?.lua"),
-    vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?", "init.lua"),
+	vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?.lua"),
+	vim.fs.joinpath(rocks_config.rocks_path, "share", "lua", "5.1", "?", "init.lua"),
 }
 package.path = package.path .. ";" .. table.concat(luarocks_path, ";")
 
 local luarocks_cpath = {
-    vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.dylib"),
-    vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.dylib"),
+	vim.fs.joinpath(rocks_config.rocks_path, "lib", "lua", "5.1", "?.dylib"),
+	vim.fs.joinpath(rocks_config.rocks_path, "lib64", "lua", "5.1", "?.dylib"),
 }
 package.cpath = package.cpath .. ";" .. table.concat(luarocks_cpath, ";")
 
@@ -67,14 +67,14 @@ vim.fn.setenv("DYLD_LIBRARY_PATH", "/usr/local/lib")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "--single-branch",
-        "https://github.com/folke/lazy.nvim.git",
-        lazypath,
-    })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--single-branch",
+		"https://github.com/folke/lazy.nvim.git",
+		lazypath,
+	})
 end
 vim.opt.runtimepath:prepend(lazypath)
 
@@ -91,55 +91,55 @@ require("functions")
 require("macaltkey").setup()
 
 require("lazy").setup({
-    spec = _G.ListLazyPluginDirs(),
-    defaults = {},
-    -- install = {colorscheme = {"tokyonight", "habamax"}},
-    -- checker = {enabled = true}, -- automatically check for plugin updates
-    performance = {
-        rtp = {
-            -- disable some rtp plugins
-            disabled_plugins = {
-                "gzip",
-                "matchit",
-                "matchparen",
-                "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-            },
-        },
-    },
-    pkg = {
-        enabled = true,
-        cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
-        -- the first package source that is found for a plugin will be used.
-        sources = {
-            "lazy",
-            "rockspec",
-            "packspec",
-        },
-    },
-    rocks = {
-        root = vim.fn.stdpath("data") .. "/lazy-rocks",
-        server = "https://nvim-neorocks.github.io/rocks-binaries/",
-    },
+	spec = _G.ListLazyPluginDirs(),
+	defaults = {},
+	-- install = {colorscheme = {"tokyonight", "habamax"}},
+	-- checker = {enabled = true}, -- automatically check for plugin updates
+	performance = {
+		rtp = {
+			-- disable some rtp plugins
+			disabled_plugins = {
+				"gzip",
+				"matchit",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
+	pkg = {
+		enabled = true,
+		cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
+		-- the first package source that is found for a plugin will be used.
+		sources = {
+			"lazy",
+			"rockspec",
+			"packspec",
+		},
+	},
+	rocks = {
+		root = vim.fn.stdpath("data") .. "/lazy-rocks",
+		server = "https://nvim-neorocks.github.io/rocks-binaries/",
+	},
 
-    concurrency = 20,
-    git = {
-        -- defaults for the `lazy log` command
-        -- log = { "--since=3 days ago" }, -- show commits from the last 3 days
-        log = { "-8" }, -- show the last 8 commits
-        timeout = 360,  -- kill processes that take more than 2 minutes
-        url_format = "https://github.com/%s.git",
-        -- lazy.nvim requires git >=2.19.0. if you really want to use lazy with an older version,
-        -- then set the below to false. this should work, but is not supported and will
-        -- increase downloads a lot.
-        filter = true,
-    },
+	concurrency = 20,
+	git = {
+		-- defaults for the `lazy log` command
+		-- log = { "--since=3 days ago" }, -- show commits from the last 3 days
+		log = { "-8" }, -- show the last 8 commits
+		timeout = 360, -- kill processes that take more than 2 minutes
+		url_format = "https://github.com/%s.git",
+		-- lazy.nvim requires git >=2.19.0. if you really want to use lazy with an older version,
+		-- then set the below to false. this should work, but is not supported and will
+		-- increase downloads a lot.
+		filter = true,
+	},
 })
 if vim.fn.getcwd() == "/" or vim.fn.getcwd() == "/Users/juju" then
-    vim.cmd.cd("~/.config/nvim")
+	vim.cmd.cd("~/.config/nvim")
 end
 vim.cmd.source("~/.config/nvim/func.vim")
 require("user.winbar")
@@ -189,26 +189,24 @@ vnoremap <leader>rl <esc>:'<,'>v/^$/s/^/- /<cr>
 nnoremap <leader>rl :s/^/- /<cr>
 ]])
 
-
 vim.cmd([[
 nnoremap <leader>\l <cmd>SLoad tmp<cr>
 nnoremap <leader>\s <cmd>SSave! tmp<cr>
 ]])
 
 vim.keymap.set({ "n" }, "g`", function()
-    vim.cmd.vsplit()
-    vim.cmd.edit("/Users/juju/Projects/PHP/ltcoc/ltcoc/vendor/kjdion84/laraback/src/LarabackServiceProvider.php")
+	vim.cmd.vsplit()
+	vim.cmd.edit("/Users/juju/Projects/PHP/ltcoc/ltcoc/vendor/kjdion84/laraback/src/LarabackServiceProvider.php")
 end, { noremap = true, silent = true, nowait = true })
 
 -- '<,'>s/\(\w\),$/\1(),
 
-vim.api.nvim_create_user_command('TOhtml', function(args)
-    local outfile = args.args ~= '' and args.args or vim.fn.tempname() .. '.html'
-    local html = require('tohtml').tohtml()
-    vim.fn.writefile(html, outfile)
-    vim.cmd.split(outfile)
-end, { bar = true, nargs = '?' })
-
+vim.api.nvim_create_user_command("TOhtml", function(args)
+	local outfile = args.args ~= "" and args.args or vim.fn.tempname() .. ".html"
+	local html = require("tohtml").tohtml()
+	vim.fn.writefile(html, outfile)
+	vim.cmd.split(outfile)
+end, { bar = true, nargs = "?" })
 
 vim.cmd.hi("SnacksPickerDir guifg=#8893b5")
 -- vim.cmd[[set rtp+=/opt/homebrew/opt/fzf]]
@@ -273,7 +271,6 @@ vim.cmd.hi("SnacksPickerDir guifg=#8893b5")
 --     }
 -- })
 
-
 -- Possible mappings
 -- s(d,r
 -- d(s,r)
@@ -290,10 +287,30 @@ vim.cmd.hi("SnacksPickerDir guifg=#8893b5")
 -- })
 --
 
-vim.cmd[[
+require("vim._core.ui2").enable({
+	enable = true, -- Whether to enable or disable the UI.
+	msg = { -- Options related to the message module.
+		---@type string|table<string, 'cmd'|'msg'|'pager'> Default message target
+		---or table mapping |ui-messages| kinds, triggers and IDs to a target.
+		---Table keys are matched as a Lua pattern to the message ID. 'default'
+		---mapping applies to any omitted kind: { default = 'cmd', progress = 'msg' }.
+		targets = "cmd",
+		dialog = { -- Options related to dialog window.
+			height = 0.5, -- Maximum height.
+		},
+		msg = { -- Options related to msg window.
+			height = 0.5, -- Maximum height.
+		},
+		pager = { -- Options related to message window.
+			height = 0.999, -- Maximum height.
+		},
+	},
+})
+
+vim.cmd([[
 let @r="department\|office\|truck\|merchant\|balance\|visual\|kurdish\|inspector\|inspection\|regapedan\|blended\|print_using_special_paper\|is_special_paper\|skip_payment\|refund\|debt\|delay_results\|is_staff\|deport\|brand\|DEFAULT_BATCH_NUMBER\|retest_batch_id"
 nnoremap  <leader>/ /department\\|office\\|truck\\|merchant\\|balance\\|visual\\|kurdish\\|inspector\\|inspection\\|regapedan\\|blended\\|print_using_special_paper\\|is_special_paper\\|skip_payment\\|refund\\|debt\\|delay_results\\|is_staff\\|deport\\|brand\\|DEFAULT_BATCH_NUMBER\\|retest_batch_id<cr>
-]]
+]])
 
- -- retest_batch_id
- -- transaction_product_id
+-- retest_batch_id
+-- transaction_product_id

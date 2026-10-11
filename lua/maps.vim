@@ -37,10 +37,10 @@ map “ <M-[>
 map ≥ <M-\>>
 map ≤ <M-\<>
 
-nnoremap <silent> <c-h> <c-w><c-h>
-nnoremap <silent> <c-j> <c-w><c-j>
-nnoremap <silent> <c-k> <c-w><c-k>
-nnoremap <silent> <c-l> <c-w><c-l>
+" nnoremap <silent> <c-h> <c-w><c-h>
+" nnoremap <silent> <c-j> <c-w><c-j>
+" nnoremap <silent> <c-k> <c-w><c-k>
+" nnoremap <silent> <c-l> <c-w><c-l>
 
 command! SwithGui :lua os.execute('osascript ~/juju/.config/nvim/switch_nvim_qt_gui_window.scpt')<cr>
  " tell application "System Events" to ¬	perform action "AXRaise" of window 2 of ¬		application process "nvim-qt"-- tell application "nvim-qt" to activate
